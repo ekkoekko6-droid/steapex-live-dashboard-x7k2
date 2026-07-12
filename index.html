@@ -107,22 +107,21 @@
   .rankrow { display: grid; grid-template-columns: 150px 1fr 108px; align-items: center; gap: 14px; padding: 9px 0; }
 
   /* ── Week compare (dropdown + 2 bar charts side by side) ── */
-  .compare-controls { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-  .compare-controls label { font-size: 12.5px; color: var(--text-muted); font-weight: 600; }
+  .compare-controls {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+    padding-bottom: 14px; border-bottom: 1px solid var(--border);
+  }
+  .compare-controls label { font-size: 12.5px; color: var(--text-muted); font-weight: 600; flex-shrink: 0; }
   .compare-controls select {
     appearance: none; font: inherit; font-size: 13px; font-weight: 600; color: var(--text);
     background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px;
-    padding: 7px 32px 7px 12px; cursor: pointer;
+    padding: 7px 32px 7px 12px; cursor: pointer; flex: 1; min-width: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23a89c8c' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat; background-position: right 12px center;
   }
   .compare-controls select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .comparebars { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
   .comparebars .rankbars { margin-bottom: 0; }
-  .panel-label {
-    font-size: 11.5px; font-weight: 700; color: var(--text-muted); margin-bottom: 14px;
-    padding-bottom: 10px; border-bottom: 1px solid var(--border);
-  }
   @media (max-width: 720px) {
     .comparebars { grid-template-columns: 1fr; }
   }
@@ -199,17 +198,19 @@
   </div>
 
   <div id="weekCompareWrap" hidden>
-    <div class="compare-controls">
-      <label for="weekSelect">เทียบสัปดาห์:</label>
-      <select id="weekSelect"></select>
-    </div>
     <div class="comparebars">
       <div class="rankbars">
-        <div class="panel-label" id="panelLabelA">—</div>
+        <div class="compare-controls">
+          <label for="weekSelectA">สัปดาห์ที่ 1:</label>
+          <select id="weekSelectA"></select>
+        </div>
         <div id="rankRowsA"></div>
       </div>
       <div class="rankbars">
-        <div class="panel-label" id="panelLabelB">—</div>
+        <div class="compare-controls">
+          <label for="weekSelectB">สัปดาห์ที่ 2:</label>
+          <select id="weekSelectB"></select>
+        </div>
         <div id="rankRowsB"></div>
       </div>
     </div>
@@ -248,15 +249,21 @@ function renderSummary(lines) {
   }).join('');
 }
 
-function populateWeekSelect() {
-  const sel = document.getElementById('weekSelect');
-  if (sel.dataset.filled) return;
-  sel.innerHTML = WEEKLY.weeks.map((w, idx) => {
+function populateWeekSelects() {
+  const selA = document.getElementById('weekSelectA');
+  const selB = document.getElementById('weekSelectB');
+  if (selA.dataset.filled) return;
+  const options = WEEKLY.weeks.map((w, idx) => {
     const tag = idx === 0 ? ' (สัปดาห์นี้)' : idx === 1 ? ' (สัปดาห์ก่อน)' : '';
     return `<option value="${idx}">${w.label}${tag}</option>`;
   }).join('');
-  sel.dataset.filled = '1';
-  sel.addEventListener('change', renderWeekCompare);
+  selA.innerHTML = options;
+  selB.innerHTML = options;
+  selA.value = '0';
+  selB.value = WEEKLY.weeks.length > 1 ? '1' : '0';
+  selA.dataset.filled = '1';
+  selA.addEventListener('change', renderWeekCompare);
+  selB.addEventListener('change', renderWeekCompare);
 }
 
 function renderSingleWeekPanel(elId, week, maxGmv) {
@@ -273,26 +280,18 @@ function renderSingleWeekPanel(elId, week, maxGmv) {
 }
 
 function renderWeekCompare() {
-  const sel = document.getElementById('weekSelect');
-  const idx = parseInt(sel.value, 10) || 0;
-  const weekA = WEEKLY.weeks[idx];
-  const weekB = WEEKLY.weeks[idx + 1];
+  const idxA = parseInt(document.getElementById('weekSelectA').value, 10) || 0;
+  const idxB = parseInt(document.getElementById('weekSelectB').value, 10) || 0;
+  const weekA = WEEKLY.weeks[idxA];
+  const weekB = WEEKLY.weeks[idxB];
 
   // ใช้สเกลเดียวกันทั้ง 2 กราฟ ไม่งั้นสัปดาห์ยอดน้อยจะดูแท่งยาวพอๆ กับสัปดาห์ยอดเยอะ เทียบกันไม่ได้จริง
   const gmvsA = Object.values(weekA.brands).map(d => d.gmv);
-  const gmvsB = weekB ? Object.values(weekB.brands).map(d => d.gmv) : [];
+  const gmvsB = Object.values(weekB.brands).map(d => d.gmv);
   const sharedMax = Math.max(...gmvsA, ...gmvsB, 1);
 
-  document.getElementById('panelLabelA').textContent = weekA.label;
   renderSingleWeekPanel('rankRowsA', weekA, sharedMax);
-
-  if (weekB) {
-    document.getElementById('panelLabelB').textContent = weekB.label + ' (สัปดาห์ก่อนหน้า)';
-    renderSingleWeekPanel('rankRowsB', weekB, sharedMax);
-  } else {
-    document.getElementById('panelLabelB').textContent = 'ไม่มีข้อมูลย้อนหลังเพิ่มเติมแล้ว';
-    document.getElementById('rankRowsB').innerHTML = '';
-  }
+  renderSingleWeekPanel('rankRowsB', weekB, sharedMax);
 }
 
 function renderWeekly() {
@@ -305,8 +304,7 @@ function renderWeekly() {
 
   document.getElementById('singleRankPanel').hidden = true;
   document.getElementById('weekCompareWrap').hidden = false;
-  populateWeekSelect();
-  document.getElementById('weekSelect').value = '0';
+  populateWeekSelects();
   renderWeekCompare();
 
   document.getElementById('brandGrid').innerHTML = sorted.map(([brand, d], i) => {
