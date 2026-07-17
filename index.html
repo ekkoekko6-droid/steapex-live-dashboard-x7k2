@@ -177,6 +177,27 @@
   .metric { display: flex; justify-content: space-between; font-size: 12.5px; }
   .metric .k { color: var(--text-muted); }
   .metric .v { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .metric .v.good { color: var(--good); }
+  .metric .v.warn { color: var(--bad); }
+
+  /* ── Per-metric guide (พับเก็บได้) ── */
+  .metric-guide { margin-top: 14px; border-top: 1px solid var(--border); padding-top: 12px; }
+  .metric-guide > summary {
+    cursor: pointer; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--accent); list-style: none; user-select: none;
+  }
+  .metric-guide > summary::-webkit-details-marker { display: none; }
+  .metric-guide > summary::before { content: '▸ '; }
+  .metric-guide[open] > summary::before { content: '▾ '; }
+  .mg-list { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .mg-row { padding-left: 10px; border-left: 2px solid var(--border); }
+  .mg-row.good { border-left-color: var(--good); }
+  .mg-row.warn { border-left-color: var(--bad); }
+  .mg-head { display: flex; align-items: center; gap: 7px; font-size: 12px; }
+  .mg-ic { flex-shrink: 0; }
+  .mg-name { font-weight: 700; }
+  .mg-val { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--text-muted); }
+  .mg-tip { font-size: 11.5px; line-height: 1.5; color: var(--text-muted); margin-top: 3px; }
 
   .insight-block { margin-bottom: 4px; }
   .insight-head { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px; }
@@ -298,6 +319,7 @@ const T = {
     footer: 'สร้างจากข้อมูล TikTok Shop LIVE History — รันบน VPS อัตโนมัติทุก 3 ชม.',
     analyzeDay: 'วิเคราะห์วันที่:', compareWith: 'เทียบกับ:', week1: 'สัปดาห์ที่ 1:', week2: 'สัปดาห์ที่ 2:',
     strengths: 'จุดแข็ง', weaknesses: 'จุดอ่อน', recs: '💡 คำแนะนำ / ควรปรับปรุง',
+    metricGuide: '📈 วิธีปรับปรุงแต่ละตัวชี้วัด',
     today: 'วันนี้', yesterday: 'เมื่อวาน', thisWeekTag: 'สัปดาห์นี้', lastWeekTag: 'สัปดาห์ก่อน',
     prevDayPrior: 'สัปดาห์ก่อนหน้า', noMoreData: 'ไม่มีข้อมูลย้อนหลังเพิ่มเติมแล้ว',
     metaDaily: 'เลือกวันเพื่อดูตัวเลข + วิเคราะห์ปัญหารายวัน',
@@ -326,6 +348,7 @@ const T = {
     footer: 'Built from TikTok Shop LIVE History — auto-runs on VPS every 3 hours.',
     analyzeDay: 'Analyze day:', compareWith: 'Compare with:', week1: 'Week 1:', week2: 'Week 2:',
     strengths: 'Strengths', weaknesses: 'Weaknesses', recs: '💡 Recommendations',
+    metricGuide: '📈 How to improve each metric',
     today: 'today', yesterday: 'yesterday', thisWeekTag: 'this week', lastWeekTag: 'last week',
     prevDayPrior: 'prior week', noMoreData: 'No further historical data',
     metaDaily: 'Pick a day to see numbers + daily problem analysis',
@@ -580,11 +603,57 @@ function insBullets(items) {
   return (items || []).map(s => `<li>${typeof s === 'string' ? s : (s[LANG] || s.th)}</li>`).join('');
 }
 
+// ── เกณฑ์ดี/ควรปรับปรุง ต่อตัวชี้วัด (calibrate จากข้อมูลจริง 7 แบรนด์) ──
+// คืน 'good' | 'warn' | 'neutral' (neutral = ตัวชี้วัดเชิงปริมาณ ยิ่งเยอะยิ่งดี ไม่มีเกณฑ์ตายตัว)
+function metricStatus(key, v, brand) {
+  const aovTarget = brand === 'STEAPEX' ? 660 : 500;
+  const B = {
+    aov: v >= aovTarget, live_ctr: v >= 50, ctr: v >= 6, ctor: v >= 2,
+    tap_through_rate: v >= 5, follow_rate: v >= 0.6, avg_view_duration: v >= 40,
+  };
+  if (!(key in B)) return 'neutral';
+  return B[key] ? 'good' : 'warn';
+}
+
+// วิธีทำให้แต่ละตัวชี้วัดดีขึ้น (2 ภาษา) — playbook ที่ปฏิบัติได้จริง
+const METRIC_TIPS = {
+  orders:  {th:'เพิ่มออเดอร์: ดันทราฟฟิก (ยอดวิว) + ปิดการขายให้ดีขึ้น (CTOR) ควบคู่กัน จัดโปรนาทีทองเป็นช่วงๆ', en:'Grow orders: drive traffic (views) + improve closing (CTOR) together; run flash-deal windows'},
+  aov:     {th:'เพิ่ม AOV: จัดเซ็ตพ่วง/โปรซื้อครบลดเพิ่ม ดันรุ่นราคาสูงเป็นตัวชูโรงช่วงคนดูเยอะ', en:'Lift AOV: bundles/spend-more discounts, feature premium items during peak viewership'},
+  customers: {th:'เพิ่มลูกค้าใหม่: ดึงคนดูหน้าใหม่ด้วยของแถม/โค้ดต้อนรับ และแปลงผู้ติดตามเป็นลูกค้า', en:'Grow customers: attract new viewers with welcome gifts/codes and convert followers to buyers'},
+  gmv_per_hour: {th:'เพิ่ม GMV ต่อชั่วโมง: กระชับสคริปต์ หมุนสินค้าเร็วขึ้น ลดช่วงเดดแอร์ เน้นสินค้าทำเงินช่วงคนเยอะ', en:'Raise GMV/hr: tighten the script, rotate products faster, cut dead air, push top-sellers at peak'},
+  views:   {th:'เพิ่มยอดวิว: โพสต์ทีเซอร์ก่อนไลฟ์ ตั้งชื่อ/ปกไลฟ์ให้สะดุด ไลฟ์เวลาเดิมสม่ำเสมอ โปรโมทข้ามช่องทาง', en:'Grow views: pre-live teasers, catchy title/cover, consistent live times, cross-channel promotion'},
+  impressions: {th:'เพิ่มการแสดงผล: ไลฟ์บ่อย/สม่ำเสมอให้อัลกอริทึมดัน ใช้แฮชแท็ก/หมวดสินค้าให้ตรง', en:'Grow impressions: live often/consistently to earn algorithm push, use relevant hashtags/categories'},
+  avg_view_duration: {th:'เพิ่มเวลาดูเฉลี่ย: MC น่าติดตาม มีช่วงอินเทอร์แอกทีฟ/นาทีทองดึงคนอยู่ต่อ เลี่ยงเดดแอร์', en:'Increase avg view time: engaging host, interactive/flash-deal moments to retain viewers, avoid dead air'},
+  live_ctr: {th:'เพิ่ม LIVE CTR: โชว์สินค้า/กดโชว์ตะกร้าถี่ขึ้น ทำการ์ดสินค้าให้สะดุดตา เรียกให้คนแตะดูสินค้า', en:'Raise LIVE CTR: showcase products/open cart more often, eye-catching product cards, prompt taps'},
+  ctr:     {th:'เพิ่ม CTR: ปก/ชื่อสินค้าให้เด่น ปักหมุดสินค้าขายดี ไฮไลต์สินค้าบ่อยขึ้น', en:'Raise CTR: strong product cover/title, pin best-sellers, highlight products more frequently'},
+  ctor:    {th:'เพิ่ม CTOR (ปิดการขาย): MC รีวิว/ตอบข้อสงสัยตรงจุด ปักหมุดสินค้าขายดี เร่งตัดสินใจด้วยโปรจำกัดเวลา', en:'Raise CTOR (closing): host reviews/answers questions, pin best-sellers, urgency via limited-time offers'},
+  tap_through_rate: {th:'เพิ่มอัตราแตะผ่าน: การ์ดสินค้าชัดเจน มี CTA ให้แตะดูสินค้า จัดวางสินค้าให้เห็นง่าย', en:'Raise tap-through: clear product cards, tap-to-view CTA, easy-to-see product placement'},
+  follow_rate: {th:'เพิ่มอัตราติดตาม: จัดของแถม/โค้ดเฉพาะผู้ติดตาม ให้ MC ย้ำ CTA กดติดตามทุก 15-20 นาที', en:'Raise follow rate: follower-only gifts/codes, host repeats follow CTA every 15-20 min'},
+  new_followers: {th:'เพิ่มผู้ติดตามใหม่: ย้ำ CTA กดติดตาม + สิทธิพิเศษเฉพาะผู้ติดตามในไลฟ์', en:'Grow new followers: repeat follow CTA + in-live follower-only perks'},
+  comments: {th:'เพิ่มคอมเมนต์: ตั้งคำถาม/ทำ Q&A ชวนคนพิมพ์ตอบ แจกของให้คนคอมเมนต์', en:'Grow comments: ask questions/Q&A, invite replies, reward commenters'},
+  shares:  {th:'เพิ่มแชร์: สร้างโมเมนต์น่าแชร์ จัดกิจกรรมแจกของเมื่อแชร์ไลฟ์', en:'Grow shares: create shareable moments, giveaways for sharing the live'},
+  likes:   {th:'เพิ่มไลก์: ชวนคนกดไลก์เป็นระยะ ตั้งเป้ายอดไลก์แล้วปลดล็อกโปร', en:'Grow likes: prompt likes periodically, set like-goals that unlock deals'},
+};
+
+function metricGuideHtml(metrics, brand) {
+  const ICON = {good: '✅', warn: '⚠️', neutral: '•'};
+  const rows = CARD_METRICS.map(([key, lk, fmt]) => {
+    const st = metricStatus(key, metrics[key] || 0, brand);
+    const tip = METRIC_TIPS[key] ? METRIC_TIPS[key][LANG] : '';
+    return `<li class="mg-row ${st}">
+      <div class="mg-head"><span class="mg-ic">${ICON[st]}</span><span class="mg-name">${t(lk)}</span><span class="mg-val">${fmt(metrics[key] || 0)}</span></div>
+      <div class="mg-tip">${tip}</div>
+    </li>`;
+  }).join('');
+  return `<details class="metric-guide"><summary>${t('metricGuide')}</summary><ul class="mg-list">${rows}</ul></details>`;
+}
+
 function cardHtml(brand, d, rail, metrics, chip, subLine) {
   const ins = d.insights || {strengths:[], weaknesses:[], recommendations:[]};
-  const metricRows = CARD_METRICS.map(([key, lk, fmt]) =>
-    `<div class="metric"><span class="k">${t(lk)}</span><span class="v">${fmt(metrics[key] || 0)}</span></div>`
-  ).join('');
+  const metricRows = CARD_METRICS.map(([key, lk, fmt]) => {
+    const st = metricStatus(key, metrics[key] || 0, brand);
+    return `<div class="metric"><span class="k">${t(lk)}</span><span class="v ${st}">${fmt(metrics[key] || 0)}</span></div>`;
+  }).join('');
   return `<div class="card" style="--rail:${rail}">
     <div class="card-head"><div class="name">${d.meta.emoji} ${brand}</div></div>
     <div class="card-sub">${subLine}</div>
@@ -593,6 +662,7 @@ function cardHtml(brand, d, rail, metrics, chip, subLine) {
     ${ins.strengths.length ? `<div class="insight-block"><div class="insight-head good">${t('strengths')}</div><ul class="insight-list">${insBullets(ins.strengths)}</ul></div>` : ''}
     ${ins.weaknesses.length ? `<div class="insight-block"><div class="insight-head bad">${t('weaknesses')}</div><ul class="insight-list">${insBullets(ins.weaknesses)}</ul></div>` : ''}
     ${(ins.recommendations && ins.recommendations.length) ? `<div class="rec-block"><div class="insight-head rec">${t('recs')}</div><ul class="rec-list">${insBullets(ins.recommendations)}</ul></div>` : ''}
+    ${metricGuideHtml(metrics, brand)}
   </div>`;
 }
 
