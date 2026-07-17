@@ -316,7 +316,7 @@ const T = {
     tabDaily: 'รายวัน', tabWeekly: 'รายสัปดาห์', tabMonthly: 'รายเดือน',
     langBtn: 'EN', gmvByBrand: 'GMV แยกตามแบรนด์', gmvMonth: 'GMV สะสมเดือนนี้',
     brandDetail: 'รายละเอียดแบรนด์', lastUpdate: 'อัพเดตล่าสุด', nextUpdate: 'อัพเดตถัดไปอีก',
-    footer: 'สร้างจากข้อมูล TikTok Shop LIVE History — รันบน VPS อัตโนมัติทุก 3 ชม.',
+    footer: 'สร้างจากข้อมูล TikTok Shop LIVE History — รันบน VPS อัตโนมัติทุก 2 ชม. (06:00-02:00)',
     analyzeDay: 'วิเคราะห์วันที่:', compareWith: 'เทียบกับ:', week1: 'สัปดาห์ที่ 1:', week2: 'สัปดาห์ที่ 2:',
     strengths: 'จุดแข็ง', weaknesses: 'จุดอ่อน', recs: '💡 คำแนะนำ / ควรปรับปรุง',
     metricGuide: '📈 วิธีปรับปรุงแต่ละตัวชี้วัด',
@@ -345,7 +345,7 @@ const T = {
     tabDaily: 'Daily', tabWeekly: 'Weekly', tabMonthly: 'Monthly',
     langBtn: 'ไทย', gmvByBrand: 'GMV by brand', gmvMonth: 'Month-to-date GMV',
     brandDetail: 'Brand detail', lastUpdate: 'Last updated', nextUpdate: 'Next update in',
-    footer: 'Built from TikTok Shop LIVE History — auto-runs on VPS every 3 hours.',
+    footer: 'Built from TikTok Shop LIVE History — auto-runs on VPS every 2 hours (06:00-02:00).',
     analyzeDay: 'Analyze day:', compareWith: 'Compare with:', week1: 'Week 1:', week2: 'Week 2:',
     strengths: 'Strengths', weaknesses: 'Weaknesses', recs: '💡 Recommendations',
     metricGuide: '📈 How to improve each metric',
@@ -373,8 +373,8 @@ const T = {
 };
 function t(k) { return (T[LANG] && T[LANG][k]) !== undefined ? T[LANG][k] : k; }
 
-// อัพเดตทุก 3 ชม. 07-22 น. (ตรงกับ cron VPS) — ใช้คำนวณนับถอยหลังรอบถัดไป
-const UPDATE_HOURS = [7, 10, 13, 16, 19, 22];
+// อัพเดตทุก 2 ชม. 06:00-02:00 (ตรงกับ cron VPS) — ใช้คำนวณนับถอยหลังรอบถัดไป
+const UPDATE_HOURS = [6, 8, 10, 12, 14, 16, 18, 20, 22, 0, 2];
 
 function fmtMoney(v) { return '฿' + Math.round(v).toLocaleString('en-US'); }
 function fmtPct(v) { return (v >= 0 ? '+' : '') + v.toFixed(1) + '%'; }
@@ -694,11 +694,13 @@ function applyStaticLabels() {
 function updateCountdown() {
   const now = new Date();
   let next = null;
-  for (const h of UPDATE_HOURS) {
-    const c = new Date(now); c.setHours(h, 0, 0, 0);
-    if (c > now) { next = c; break; }
+  // เช็คทั้งวันนี้และพรุ่งนี้ แล้วเลือกรอบที่ใกล้ที่สุดในอนาคต — รองรับชั่วโมงที่ข้ามเที่ยงคืน (00, 02)
+  for (const day of [0, 1]) {
+    for (const h of UPDATE_HOURS) {
+      const c = new Date(now); c.setDate(now.getDate() + day); c.setHours(h, 0, 0, 0);
+      if (c > now && (next === null || c < next)) next = c;
+    }
   }
-  if (!next) { next = new Date(now); next.setDate(now.getDate() + 1); next.setHours(UPDATE_HOURS[0], 0, 0, 0); }
   const diffMin = Math.max(0, Math.round((next - now) / 60000));
   const el = document.getElementById('nextUpdate');
   el.textContent = diffMin <= 0 ? t('cdSoon') : t('cdFmt')(Math.floor(diffMin / 60), diffMin % 60);
