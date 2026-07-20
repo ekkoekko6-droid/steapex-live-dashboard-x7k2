@@ -444,7 +444,7 @@ let LANG = localStorage.getItem('dashLang') || 'th';
 const T = {
   th: {
     tabDaily: 'รายวัน', tabWeekly: 'รายสัปดาห์', tabMonthly: 'รายเดือน', tabMC: '👤 MC',
-    mcMeta: (m, n) => `ฝีมือ MC — STEAPEX เท่านั้น · เดือน ${m} · จาก ${n} ไลฟ์`,
+    mcMeta: (m, n, b) => `ฝีมือ MC — ${b || ''} · เดือน ${m} · จาก ${n} ไลฟ์`,
     mcNoData: 'ยังไม่มีข้อมูล MC (ต้องเก็บ trend รายชั่วโมง + ตารางกะก่อน)',
     mcHours: 'ชั่วโมงยืนไลฟ์', mcViewers: 'คนดูเฉลี่ย', mcGmvTotal: 'GMV รวม',
     mcGmvHr: 'GMV/ชม.', mcGmvViewer: 'GMV/คนดู (ฝีมือปิดการขาย)', mcRetention: 'ดึงคนอยู่ (ท้าย/ต้นกะ)',
@@ -500,7 +500,7 @@ const T = {
   },
   en: {
     tabDaily: 'Daily', tabWeekly: 'Weekly', tabMonthly: 'Monthly', tabMC: '👤 MC',
-    mcMeta: (m, n) => `MC performance — STEAPEX only · ${m} · from ${n} lives`,
+    mcMeta: (m, n, b) => `MC performance — ${b || ''} · ${m} · from ${n} lives`,
     mcNoData: 'No MC data yet (needs hourly trend + schedule collected first)',
     mcHours: 'Live hours', mcViewers: 'Avg viewers', mcGmvTotal: 'Total GMV',
     mcGmvHr: 'GMV/hr', mcGmvViewer: 'GMV/viewer (closing skill)', mcRetention: 'Retention (end/start)',
@@ -1071,7 +1071,7 @@ function renderMC() {
   prov.hidden = !(MC && MC.provisional);
   prov.textContent = t('mcProvisional');
   document.getElementById('footTime').textContent = (MC && MC.generatedAt) || '—';
-  document.getElementById('metaLine').textContent = mcs.length ? t('mcMeta')(MC.month, MC.livesAnalyzed) : t('mcNoData');
+  document.getElementById('metaLine').textContent = mcs.length ? t('mcMeta')(MC.month, MC.livesAnalyzed, MC.brand) : t('mcNoData');
   document.getElementById('mcListLabel').textContent = t('mcListLabel');
   // แถบยอดรวม
   const T2 = MC.totals;
