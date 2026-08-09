@@ -569,6 +569,7 @@ const T = {
     rvViewersDrop: 'คนดูร่วงจาก {a} เหลือ {b}', rvViewersUp: 'ดึงคนดูจาก {a} ขึ้นเป็น {b}',
     rvViewersFlat: 'คนดูคงที่ราว {a}', rvCampaign: 'วันแคมเปญ (ทราฟฟิกสูงกว่าปกติ)',
     rvNoViewer: 'ไม่มีข้อมูลคนดูของรอบนี้', rvShort: 'รอบสั้นกว่า 2 ชม. ตัวเลขแกว่งง่าย',
+    rvLive: '⏳ รอบนี้ยังไม่จบ — ตัวเลขยังไม่ครบ อย่าเพิ่งเทียบ',
     rDate: 'วันที่', rMC: 'MC', rTime: 'ช่วงเวลา', rHours: 'ชม.', rGmv: 'GMV',
     rGmvHr: 'GMV/ชม.', rViewers: 'คนดูเฉลี่ย', rGmvViewer: 'GMV/คนดู',
     monthPick: 'เลือกเดือน:', monthCurrent: 'เดือนนี้', monthLoading: 'กำลังโหลด…',
@@ -649,6 +650,7 @@ const T = {
     rvViewersDrop: 'viewers dropped {a} → {b}', rvViewersUp: 'viewers grew {a} → {b}',
     rvViewersFlat: 'viewers steady around {a}', rvCampaign: 'campaign day (higher traffic)',
     rvNoViewer: 'no viewer data for this round', rvShort: 'under 2 hrs — numbers swing easily',
+    rvLive: '⏳ round still running — partial numbers, do not compare yet',
     rDate: 'Date', rMC: 'MC', rTime: 'Time', rHours: 'Hrs', rGmv: 'GMV',
     rGmvHr: 'GMV/hr', rViewers: 'Avg viewers', rGmvViewer: 'GMV/viewer',
     monthPick: 'Month:', monthCurrent: 'current', monthLoading: 'Loading…',
@@ -1277,8 +1279,20 @@ function renderBrandBar() {
 let roundsMC = '', roundsDay = 0;
 
 // รีวิวรายรอบ — ประกอบจากตัวเลขจริง ไม่ได้ให้ AI แต่ง จะได้ตรงกับข้อมูลเสมอและไม่มีค่าใช้จ่าย
+function isRoundRunning(r) {
+  if (!MC || !MC.month) return false;
+  const [mm, yyyy] = String(MC.month).split('/').map(Number);
+  const now = new Date();
+  if (now.getMonth() + 1 !== mm || now.getFullYear() !== yyyy || now.getDate() !== r.day) return false;
+  const endH = +String(r.end).slice(0, 2);
+  const nowH = now.getHours() + now.getMinutes() / 60;
+  // รอบข้ามเที่ยงคืน (จบ 00:00-05:00) ถือว่ายังไม่จบตราบใดที่ยังเป็นวันเดียวกัน
+  return endH < 6 ? true : nowH < endH;
+}
+
 function roundReview(r) {
   const parts = [];
+  if (isRoundRunning(r)) return `<span class="rv-down">${t('rvLive')}</span>`;
   const pct = p => (p > 0 ? '+' : '') + p + '%';
   if (r.vs_self !== null && r.vs_self !== undefined && Math.abs(r.vs_self) >= 8) {
     const up = r.vs_self > 0;
