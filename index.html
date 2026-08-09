@@ -1279,16 +1279,23 @@ function renderBrandBar() {
 let roundsMC = '', roundsDay = 0;
 
 // รีวิวรายรอบ — ประกอบจากตัวเลขจริง ไม่ได้ให้ AI แต่ง จะได้ตรงกับข้อมูลเสมอและไม่มีค่าใช้จ่าย
-function isRoundRunning(r) {
-  if (!MC || !MC.month) return false;
+// รอบสุดท้ายของวันนี้เท่านั้นที่ยัง "ค้าง" ได้ — ข้อมูลถูกตัดที่ชั่วโมงล่าสุดที่เก็บมา
+// รอบก่อนหน้าจบไปแล้วจริง ตัวเลขครบ เทียบได้เลย
+let _runningKey = '';
+function markRunningRound(all) {
+  _runningKey = '';
+  if (!MC || !MC.month || !all.length) return;
   const [mm, yyyy] = String(MC.month).split('/').map(Number);
   const now = new Date();
-  if (now.getMonth() + 1 !== mm || now.getFullYear() !== yyyy || now.getDate() !== r.day) return false;
-  const endH = +String(r.end).slice(0, 2);
-  const nowH = now.getHours() + now.getMinutes() / 60;
-  if (endH < 6) return true;                 // รอบข้ามเที่ยงคืน ยังไม่จบแน่ๆ ถ้ายังเป็นวันเดียวกัน
-  // ข้อมูลเก็บได้ถึงชั่วโมงล่าสุดเท่านั้น รอบที่ "จบ" ห่างจากตอนนี้ไม่ถึง 1.5 ชม. = ยังไลฟ์อยู่จริง
-  return nowH - endH < 1.5;
+  if (now.getMonth() + 1 !== mm || now.getFullYear() !== yyyy) return;
+  const today = all.filter(r => r.day === now.getDate());
+  if (!today.length) return;
+  const last = today.reduce((a, b) => (a.start > b.start ? a : b));
+  _runningKey = `${last.day}|${last.mc}|${last.start}`;
+}
+
+function isRoundRunning(r) {
+  return _runningKey === `${r.day}|${r.mc}|${r.start}`;
 }
 
 function roundReview(r) {
@@ -1322,6 +1329,7 @@ function renderRounds() {
   mcs.forEach(m => (m.rounds || []).forEach(r => all.push({ ...r, mc: m.name, pt: m.pt })));
   // ใหม่สุดอยู่บน — ทำรายงานย้อนดูวันล่าสุดได้เร็ว
   all.sort((a, b) => b.day - a.day || a.start.localeCompare(b.start));
+  markRunningRound(all);
 
   document.getElementById('roundsLabel').textContent = t('roundsLabel');
   document.getElementById('roundsFilterLbl').textContent = t('roundsFilterLbl');
