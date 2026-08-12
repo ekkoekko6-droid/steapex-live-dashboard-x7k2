@@ -1,5 +1,5 @@
 {
- "generatedAt": "11/08/2026 06:30",
+ "generatedAt": "12/08/2026 06:30",
  "month": "07/2026",
  "brand": "COROLLA",
  "livesAnalyzed": 31,
@@ -99,43 +99,43 @@
  "productRanking": [
   {
    "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-   "sales": 936,
-   "gmv_est": 590510
+   "sales": 1122,
+   "gmv_est": 691648
   },
   {
    "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-   "sales": 1414,
-   "gmv_est": 489752
+   "sales": 1534,
+   "gmv_est": 518260
   },
   {
    "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-   "sales": 1291,
-   "gmv_est": 445262
-  },
-  {
-   "name": "【Buy two pairs and get a 50% d…",
-   "sales": 341,
-   "gmv_est": 303821
+   "sales": 1489,
+   "gmv_est": 503262
   },
   {
    "name": "Corolla Colorblock Shoes รองเท…",
-   "sales": 732,
-   "gmv_est": 271322
+   "sales": 816,
+   "gmv_est": 297704
   },
   {
    "name": "Corolla BreezeStep Shoes รองเท…",
-   "sales": 674,
-   "gmv_est": 269697
+   "sales": 631,
+   "gmv_est": 247279
   },
   {
    "name": "Corolla Rainbow Shoes รองเท้าผ…",
-   "sales": 454,
-   "gmv_est": 176039
+   "sales": 470,
+   "gmv_est": 181330
   },
   {
    "name": "Corolla Aura Shoes รองเท้าผ้าใ…",
-   "sales": 440,
-   "gmv_est": 152598
+   "sales": 414,
+   "gmv_est": 143613
+  },
+  {
+   "name": "Corolla ELEVATE พื้นสูง 5.5 ซม…",
+   "sales": 249,
+   "gmv_est": 137410
   }
  ],
  "campaignInfo": {
