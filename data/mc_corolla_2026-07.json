@@ -1,5 +1,5 @@
 {
- "generatedAt": "12/08/2026 06:30",
+ "generatedAt": "13/08/2026 06:30",
  "month": "07/2026",
  "brand": "COROLLA",
  "livesAnalyzed": 31,
@@ -28,26 +28,26 @@
   2
  ],
  "gmvByHour": [
-  114444,
-  148109,
-  192979,
-  196711,
-  223842,
-  196594,
-  228106,
-  193752,
-  179992,
-  142679,
-  161435,
-  179280,
-  175912,
-  210843,
-  247515,
-  236164,
-  226482,
-  189128,
-  124633,
-  82131,
+  114138,
+  147596,
+  192705,
+  196293,
+  223366,
+  195915,
+  227418,
+  192995,
+  179401,
+  142081,
+  160958,
+  178764,
+  175602,
+  210430,
+  247155,
+  235363,
+  225909,
+  188371,
+  123617,
+  81850,
   5617
  ],
  "viewersByHour": [
@@ -74,18 +74,18 @@
   16
  ],
  "totals": {
-  "gmv": 3658252,
+  "gmv": 3647449,
   "hours": 620.0,
   "lives": 31,
   "days": 31,
   "avg_viewers": 31,
-  "mc_gmv": 3650731,
+  "mc_gmv": 3639928,
   "unassigned_gmv": 7521,
   "double_counted": 0,
   "live_hours": 620.8,
   "unassigned_hours": 0.9,
-  "scaled_lives": 29,
-  "scale_avg": 1.068,
+  "scaled_lives": 28,
+  "scale_avg": 1.0647,
   "shared_hours": 0.0,
   "shopee_hours": 262.0,
   "leave_hours": 24.0
@@ -501,8 +501,8 @@
    "rounds": 4,
    "lives": 1,
    "hours": 20.0,
-   "gmv": 115801,
-   "gmv_per_hour": 5790,
+   "gmv": 104998,
+   "gmv_per_hour": 5250,
    "avg_viewers": 25,
    "live_ctr": 52.98,
    "ctor": 1.68,
@@ -511,10 +511,10 @@
    "follow_rate": 0.71,
    "comment_rate": 3.07,
    "best_mc": "Nut",
-   "best_gmv": 36749,
+   "best_gmv": 33321,
    "best_time": "21:00-02:00",
    "campaign": false,
-   "vs_prev_day": 0
+   "vs_prev_day": -10
   },
   {
    "day": 4,
@@ -534,7 +534,7 @@
    "best_gmv": 40241,
    "best_time": "06:00-11:00",
    "campaign": true,
-   "vs_prev_day": 9
+   "vs_prev_day": 20
   },
   {
    "day": 5,
@@ -1088,9 +1088,9 @@
    "leave_kind": "",
    "shared_hours": 0.0,
    "avg_viewers": 35,
-   "gmv_total": 646985,
-   "gmv_per_hour": 6471,
-   "gmv_per_viewer": 182.3,
+   "gmv_total": 643556,
+   "gmv_per_hour": 6436,
+   "gmv_per_viewer": 181.3,
    "retention": 1.26,
    "hour_dist": [
     5,
@@ -1125,16 +1125,16 @@
    },
    "prime": {
     "hours": 16.0,
-    "gmv_per_hour": 8126,
-    "gmv_per_viewer": 195.8,
+    "gmv_per_hour": 8076,
+    "gmv_per_viewer": 194.6,
     "avg_viewers": 42
    },
    "weekly": [
     {
      "wk": "1-7",
-     "gmv": 194539,
-     "gmv_per_hour": 7783,
-     "gmv_per_viewer": 226.5,
+     "gmv": 191110,
+     "gmv_per_hour": 7646,
+     "gmv_per_viewer": 222.5,
      "avg_viewers": 34,
      "hours": 25.0
     },
@@ -1174,9 +1174,9 @@
    "daily": [
     {
      "day": 3,
-     "gmv": 36749,
-     "gmv_per_hour": 7350,
-     "gmv_per_viewer": 207.6,
+     "gmv": 33321,
+     "gmv_per_hour": 6664,
+     "gmv_per_viewer": 188.3,
      "avg_viewers": 35,
      "hours": 5.0
     },
@@ -1339,18 +1339,18 @@
      "start": "21:00",
      "end": "02:00",
      "hours": 5.0,
-     "gmv": 36749,
-     "gmv_per_hour": 7350,
+     "gmv": 33321,
+     "gmv_per_hour": 6664,
      "avg_viewers": 35,
-     "gmv_per_viewer": 207.6,
+     "gmv_per_viewer": 188.3,
      "v_start": 38,
      "v_end": 19,
      "campaign": false,
      "band": "night",
      "peak_hour": "00:00",
-     "peak_gmv": 10892,
+     "peak_gmv": 9876,
      "low_hour": "01:00",
-     "low_gmv": 3015,
+     "low_gmv": 2734,
      "live_ctr": 52.98,
      "ctor": 1.68,
      "live_gpm": 267,
@@ -1358,9 +1358,9 @@
      "_mc": "Nut",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 14,
-     "vs_team": 27,
-     "vs_band": 41,
+     "vs_self": 4,
+     "vs_team": 15,
+     "vs_band": 27,
      "vs_prev": null,
      "share_of_day": 32
     },
@@ -1388,10 +1388,10 @@
      "_mc": "Nut",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 17,
+     "vs_self": 18,
      "vs_team": 31,
      "vs_band": 27,
-     "vs_prev": 3,
+     "vs_prev": 14,
      "share_of_day": 30
     },
     {
@@ -1418,7 +1418,7 @@
      "_mc": "Nut",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 16,
+     "vs_self": 17,
      "vs_team": 31,
      "vs_band": 25,
      "vs_prev": 0,
@@ -1448,7 +1448,7 @@
      "_mc": "Nut",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 6,
+     "vs_self": 7,
      "vs_team": 19,
      "vs_band": 35,
      "vs_prev": -9,
@@ -1478,7 +1478,7 @@
      "_mc": "Nut",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": 48,
+     "vs_self": 49,
      "vs_team": 66,
      "vs_band": 89,
      "vs_prev": 40,
@@ -1568,7 +1568,7 @@
      "_mc": "Nut",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 10,
+     "vs_self": 11,
      "vs_team": 24,
      "vs_band": 20,
      "vs_prev": 23,
@@ -1598,7 +1598,7 @@
      "_mc": "Nut",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 35,
+     "vs_self": 36,
      "vs_team": 51,
      "vs_band": 44,
      "vs_prev": 22,
@@ -1658,7 +1658,7 @@
      "_mc": "Nut",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -31,
+     "vs_self": -30,
      "vs_team": -22,
      "vs_band": -14,
      "vs_prev": -13,
@@ -1778,7 +1778,7 @@
      "_mc": "Nut",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 14,
+     "vs_self": 15,
      "vs_team": 28,
      "vs_band": 45,
      "vs_prev": 82,
@@ -1808,7 +1808,7 @@
      "_mc": "Nut",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 29,
+     "vs_self": 30,
      "vs_team": 45,
      "vs_band": 60,
      "vs_prev": 14,
@@ -1838,7 +1838,7 @@
      "_mc": "Nut",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -7,
+     "vs_self": -6,
      "vs_team": 5,
      "vs_band": 15,
      "vs_prev": -28,
@@ -1868,7 +1868,7 @@
      "_mc": "Nut",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 25,
+     "vs_self": 26,
      "vs_team": 40,
      "vs_band": 34,
      "vs_prev": 34,
@@ -1898,7 +1898,7 @@
      "_mc": "Nut",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -16,
+     "vs_self": -15,
      "vs_team": -6,
      "vs_band": -10,
      "vs_prev": -33,
@@ -1928,7 +1928,7 @@
      "_mc": "Nut",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -27,
+     "vs_self": -26,
      "vs_team": -18,
      "vs_band": -7,
      "vs_prev": -13,
@@ -1938,25 +1938,25 @@
    "top_products": [
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 122925,
+     "gmv": 122479,
      "pct": 20
     },
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 105974,
+     "gmv": 104810,
      "pct": 17
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 73059,
+     "gmv": 72863,
      "pct": 12
     }
    ],
    "normal": {
     "hours": 50.0,
-    "gmv": 296084,
-    "gmv_per_hour": 5922,
-    "gmv_per_viewer": 171.6,
+    "gmv": 292656,
+    "gmv_per_hour": 5853,
+    "gmv_per_viewer": 169.7,
     "avg_viewers": 34
    },
    "campaign": {
@@ -1966,7 +1966,7 @@
     "gmv_per_viewer": 192.4,
     "avg_viewers": 36
    },
-   "camp_roi": 12,
+   "camp_roi": 13,
    "group": "regular",
    "category": "strong",
    "category_label": {
@@ -1982,21 +1982,21 @@
     ]
    },
    "score": {
-    "total": 76,
+    "total": 77,
     "parts": {
      "closing": 88,
      "audience": 99,
      "retention": 100,
      "consistency": 73,
-     "improvement": 35
+     "improvement": 40
     },
-    "improve_pct": -6,
+    "improve_pct": -4,
     "trend": {
-     "icon": "📉",
-     "th": "ตกลง",
-     "en": "Declining"
+     "icon": "➡️",
+     "th": "ทรงตัว",
+     "en": "Steady"
     },
-    "rank": 6
+    "rank": 5
    }
   },
   {
@@ -2009,9 +2009,9 @@
    "leave_kind": "พักร้อน",
    "shared_hours": 0.0,
    "avg_viewers": 29,
-   "gmv_total": 546891,
-   "gmv_per_hour": 6078,
-   "gmv_per_viewer": 208.2,
+   "gmv_total": 543578,
+   "gmv_per_hour": 6041,
+   "gmv_per_viewer": 206.9,
    "retention": 1.3,
    "hour_dist": [
     3,
@@ -2053,9 +2053,9 @@
    "weekly": [
     {
      "wk": "1-7",
-     "gmv": 129030,
-     "gmv_per_hour": 6456,
-     "gmv_per_viewer": 231.7,
+     "gmv": 125717,
+     "gmv_per_hour": 6290,
+     "gmv_per_viewer": 225.7,
      "avg_viewers": 28,
      "hours": 20.0
     },
@@ -2111,9 +2111,9 @@
     },
     {
      "day": 3,
-     "gmv": 35513,
-     "gmv_per_hour": 7103,
-     "gmv_per_viewer": 284.1,
+     "gmv": 32200,
+     "gmv_per_hour": 6440,
+     "gmv_per_viewer": 257.6,
      "avg_viewers": 25,
      "hours": 5.0
     },
@@ -2304,18 +2304,18 @@
      "start": "11:00",
      "end": "16:00",
      "hours": 5.0,
-     "gmv": 35513,
-     "gmv_per_hour": 7103,
+     "gmv": 32200,
+     "gmv_per_hour": 6440,
      "avg_viewers": 25,
-     "gmv_per_viewer": 284.1,
+     "gmv_per_viewer": 257.6,
      "v_start": 18,
      "v_end": 23,
      "campaign": false,
      "band": "midday",
      "peak_hour": "13:00",
-     "peak_gmv": 8113,
+     "peak_gmv": 7356,
      "low_hour": "14:00",
-     "low_gmv": 6329,
+     "low_gmv": 5739,
      "live_ctr": 52.98,
      "ctor": 1.68,
      "live_gpm": 267,
@@ -2323,10 +2323,10 @@
      "_mc": "Amy",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 17,
-     "vs_team": 23,
-     "vs_band": 17,
-     "vs_prev": 65,
+     "vs_self": 7,
+     "vs_team": 12,
+     "vs_band": 6,
+     "vs_prev": 50,
      "share_of_day": 31
     },
     {
@@ -2353,10 +2353,10 @@
      "_mc": "Amy",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 33,
+     "vs_self": 34,
      "vs_team": 40,
      "vs_band": 59,
-     "vs_prev": 14,
+     "vs_prev": 25,
      "share_of_day": 32
     },
     {
@@ -2383,7 +2383,7 @@
      "_mc": "Amy",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -15,
+     "vs_self": -14,
      "vs_team": -10,
      "vs_band": -1,
      "vs_prev": -36,
@@ -2413,7 +2413,7 @@
      "_mc": "Amy",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 5,
+     "vs_self": 6,
      "vs_team": 10,
      "vs_band": 7,
      "vs_prev": 23,
@@ -2443,7 +2443,7 @@
      "_mc": "Amy",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -29,
+     "vs_self": -28,
      "vs_team": -25,
      "vs_band": -28,
      "vs_prev": -32,
@@ -2473,7 +2473,7 @@
      "_mc": "Amy",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 6,
+     "vs_self": 7,
      "vs_team": 12,
      "vs_band": 23,
      "vs_prev": 49,
@@ -2563,7 +2563,7 @@
      "_mc": "Amy",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 34,
+     "vs_self": 35,
      "vs_team": 41,
      "vs_band": 60,
      "vs_prev": 75,
@@ -2623,7 +2623,7 @@
      "_mc": "Amy",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -14,
+     "vs_self": -13,
      "vs_team": -9,
      "vs_band": 0,
      "vs_prev": 26,
@@ -2713,7 +2713,7 @@
      "_mc": "Amy",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 51,
+     "vs_self": 52,
      "vs_team": 59,
      "vs_band": 81,
      "vs_prev": 44,
@@ -2743,7 +2743,7 @@
      "_mc": "Amy",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -21,
+     "vs_self": -20,
      "vs_team": -17,
      "vs_band": -8,
      "vs_prev": -48,
@@ -2773,7 +2773,7 @@
      "_mc": "Amy",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": -1,
+     "vs_self": 0,
      "vs_team": 5,
      "vs_band": 0,
      "vs_prev": 26,
@@ -2783,25 +2783,25 @@
    "top_products": [
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 127570,
+     "gmv": 126437,
      "pct": 23
     },
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 121631,
+     "gmv": 121083,
      "pct": 22
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 75059,
+     "gmv": 74826,
      "pct": 13
     }
    ],
    "normal": {
     "hours": 59.996111,
-    "gmv": 348717,
-    "gmv_per_hour": 5812,
-    "gmv_per_viewer": 200.9,
+    "gmv": 345405,
+    "gmv_per_hour": 5757,
+    "gmv_per_viewer": 199.0,
     "avg_viewers": 29
    },
    "campaign": {
@@ -2811,7 +2811,7 @@
     "gmv_per_viewer": 222.4,
     "avg_viewers": 30
    },
-   "camp_roi": 11,
+   "camp_roi": 12,
    "group": "regular",
    "category": "closer",
    "category_label": {
@@ -2832,10 +2832,10 @@
      "closing": 100,
      "audience": 81,
      "retention": 100,
-     "consistency": 71,
+     "consistency": 72,
      "improvement": 100
     },
-    "improve_pct": 50,
+    "improve_pct": 54,
     "trend": {
      "icon": "📈",
      "th": "พัฒนาขึ้น",
@@ -2854,9 +2854,9 @@
    "leave_kind": "",
    "shared_hours": 0.0,
    "avg_viewers": 31,
-   "gmv_total": 521963,
-   "gmv_per_hour": 5494,
-   "gmv_per_viewer": 177.8,
+   "gmv_total": 519976,
+   "gmv_per_hour": 5474,
+   "gmv_per_viewer": 177.2,
    "retention": 1.29,
    "hour_dist": [
     3,
@@ -2898,9 +2898,9 @@
    "weekly": [
     {
      "wk": "1-7",
-     "gmv": 138434,
-     "gmv_per_hour": 6923,
-     "gmv_per_viewer": 163.1,
+     "gmv": 136447,
+     "gmv_per_hour": 6823,
+     "gmv_per_viewer": 160.7,
      "avg_viewers": 42,
      "hours": 20.0
     },
@@ -2948,9 +2948,9 @@
     },
     {
      "day": 3,
-     "gmv": 21301,
-     "gmv_per_hour": 4262,
-     "gmv_per_viewer": 190.2,
+     "gmv": 19314,
+     "gmv_per_hour": 3865,
+     "gmv_per_viewer": 172.4,
      "avg_viewers": 22,
      "hours": 5.0
     },
@@ -3116,7 +3116,7 @@
      "_mc": "Honey",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 16,
+     "vs_self": 17,
      "vs_team": 11,
      "vs_band": 6,
      "vs_prev": null,
@@ -3127,18 +3127,18 @@
      "start": "06:00",
      "end": "11:00",
      "hours": 5.0,
-     "gmv": 21301,
-     "gmv_per_hour": 4262,
+     "gmv": 19314,
+     "gmv_per_hour": 3865,
      "avg_viewers": 22,
-     "gmv_per_viewer": 190.2,
+     "gmv_per_viewer": 172.4,
      "v_start": 16,
      "v_end": 20,
      "campaign": false,
      "band": "morning",
      "peak_hour": "07:00",
-     "peak_gmv": 5501,
+     "peak_gmv": 4987,
      "low_hour": "08:00",
-     "low_gmv": 2936,
+     "low_gmv": 2663,
      "live_ctr": 52.98,
      "ctor": 1.68,
      "live_gpm": 267,
@@ -3146,10 +3146,10 @@
      "_mc": "Honey",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -22,
-     "vs_team": -26,
-     "vs_band": -16,
-     "vs_prev": -33,
+     "vs_self": -29,
+     "vs_team": -33,
+     "vs_band": -24,
+     "vs_prev": -39,
      "share_of_day": 18
     },
     {
@@ -3179,7 +3179,7 @@
      "vs_self": 9,
      "vs_team": 4,
      "vs_band": 0,
-     "vs_prev": 40,
+     "vs_prev": 55,
      "share_of_day": 18
     },
     {
@@ -3206,7 +3206,7 @@
      "_mc": "Honey",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 101,
+     "vs_self": 102,
      "vs_team": 92,
      "vs_band": 112,
      "vs_prev": 85,
@@ -3296,7 +3296,7 @@
      "_mc": "Honey",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": -12,
+     "vs_self": -11,
      "vs_team": -16,
      "vs_band": -19,
      "vs_prev": 70,
@@ -3326,7 +3326,7 @@
      "_mc": "Honey",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -26,
+     "vs_self": -25,
      "vs_team": -29,
      "vs_band": -20,
      "vs_prev": -16,
@@ -3356,7 +3356,7 @@
      "_mc": "Honey",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 20,
+     "vs_self": 21,
      "vs_team": 14,
      "vs_band": 26,
      "vs_prev": 62,
@@ -3386,7 +3386,7 @@
      "_mc": "Honey",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -26,
+     "vs_self": -25,
      "vs_team": -29,
      "vs_band": -22,
      "vs_prev": -38,
@@ -3416,7 +3416,7 @@
      "_mc": "Honey",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -5,
+     "vs_self": -4,
      "vs_team": -9,
      "vs_band": -12,
      "vs_prev": 28,
@@ -3446,7 +3446,7 @@
      "_mc": "Honey",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 14,
+     "vs_self": 15,
      "vs_team": 9,
      "vs_band": 4,
      "vs_prev": 20,
@@ -3476,7 +3476,7 @@
      "_mc": "Honey",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -20,
+     "vs_self": -19,
      "vs_team": -24,
      "vs_band": -16,
      "vs_prev": -30,
@@ -3536,7 +3536,7 @@
      "_mc": "Honey",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": 51,
+     "vs_self": 52,
      "vs_team": 44,
      "vs_band": 37,
      "vs_prev": 91,
@@ -3566,7 +3566,7 @@
      "_mc": "Honey",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 26,
+     "vs_self": 27,
      "vs_team": 20,
      "vs_band": 37,
      "vs_prev": -16,
@@ -3596,7 +3596,7 @@
      "_mc": "Honey",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -35,
+     "vs_self": -34,
      "vs_team": -38,
      "vs_band": -31,
      "vs_prev": -48,
@@ -3626,7 +3626,7 @@
      "_mc": "Honey",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": -23,
+     "vs_self": -22,
      "vs_team": -26,
      "vs_band": -29,
      "vs_prev": 18,
@@ -3666,25 +3666,25 @@
    "top_products": [
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 105207,
+     "gmv": 104847,
      "pct": 21
     },
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 71829,
+     "gmv": 71402,
      "pct": 15
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 59151,
+     "gmv": 59073,
      "pct": 12
     }
    ],
    "normal": {
     "hours": 49.9975,
-    "gmv": 252724,
-    "gmv_per_hour": 5055,
-    "gmv_per_viewer": 188.5,
+    "gmv": 250737,
+    "gmv_per_hour": 5015,
+    "gmv_per_viewer": 187.0,
     "avg_viewers": 27
    },
    "campaign": {
@@ -3703,22 +3703,22 @@
    },
    "insights": {
     "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿178 ต่ำกว่าค่ากลางทีม ฿182) — เน้นรีวิว/เร่งปิดการขาย"
+     "ปิดการขายต่ำ (GMV/คนดู ฿177 ต่ำกว่าค่ากลางทีม ฿181) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Low closing (GMV/viewer ฿178 below team median ฿182) — focus on reviews/urgency"
+     "Low closing (GMV/viewer ฿177 below team median ฿181) — focus on reviews/urgency"
     ]
    },
    "score": {
-    "total": 87,
+    "total": 89,
     "parts": {
-     "closing": 85,
+     "closing": 86,
      "audience": 85,
      "retention": 100,
      "consistency": 72,
-     "improvement": 95
+     "improvement": 100
     },
-    "improve_pct": 18,
+    "improve_pct": 20,
     "trend": {
      "icon": "📈",
      "th": "พัฒนาขึ้น",
@@ -4548,10 +4548,10 @@
    },
    "insights": {
     "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿174 ต่ำกว่าค่ากลางทีม ฿182) — เน้นรีวิว/เร่งปิดการขาย"
+     "ปิดการขายต่ำ (GMV/คนดู ฿174 ต่ำกว่าค่ากลางทีม ฿181) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Low closing (GMV/viewer ฿174 below team median ฿182) — focus on reviews/urgency"
+     "Low closing (GMV/viewer ฿174 below team median ฿181) — focus on reviews/urgency"
     ]
    },
    "score": {
@@ -4569,7 +4569,7 @@
      "th": "ทรงตัว",
      "en": "Steady"
     },
-    "rank": 5
+    "rank": 6
    }
   },
   {
@@ -5355,16 +5355,16 @@
    },
    "insights": {
     "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿165 ต่ำกว่าค่ากลางทีม ฿182) — เน้นรีวิว/เร่งปิดการขาย"
+     "ปิดการขายต่ำ (GMV/คนดู ฿165 ต่ำกว่าค่ากลางทีม ฿181) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Low closing (GMV/viewer ฿165 below team median ฿182) — focus on reviews/urgency"
+     "Low closing (GMV/viewer ฿165 below team median ฿181) — focus on reviews/urgency"
     ]
    },
    "score": {
-    "total": 63,
+    "total": 64,
     "parts": {
-     "closing": 79,
+     "closing": 80,
      "audience": 100,
      "retention": 100,
      "consistency": 64,
@@ -6093,9 +6093,9 @@
     ]
    },
    "score": {
-    "total": 92,
+    "total": 93,
     "parts": {
-     "closing": 99,
+     "closing": 100,
      "audience": 87,
      "retention": 100,
      "consistency": 69,
@@ -6120,9 +6120,9 @@
    "leave_kind": "ลา",
    "shared_hours": 0.0,
    "avg_viewers": 26,
-   "gmv_total": 438224,
-   "gmv_per_hour": 5157,
-   "gmv_per_viewer": 196.8,
+   "gmv_total": 436150,
+   "gmv_per_hour": 5133,
+   "gmv_per_viewer": 195.8,
    "retention": 1.2,
    "hour_dist": [
     6,
@@ -6157,16 +6157,16 @@
    },
    "prime": {
     "hours": 17.0,
-    "gmv_per_hour": 5508,
-    "gmv_per_viewer": 151.5,
+    "gmv_per_hour": 5444,
+    "gmv_per_viewer": 149.8,
     "avg_viewers": 36
    },
    "weekly": [
     {
      "wk": "1-7",
-     "gmv": 107092,
-     "gmv_per_hour": 5356,
-     "gmv_per_viewer": 267.7,
+     "gmv": 105018,
+     "gmv_per_hour": 5252,
+     "gmv_per_viewer": 262.5,
      "avg_viewers": 20,
      "hours": 20.0
     },
@@ -6214,9 +6214,9 @@
     },
     {
      "day": 3,
-     "gmv": 22238,
-     "gmv_per_hour": 4448,
-     "gmv_per_viewer": 247.1,
+     "gmv": 20163,
+     "gmv_per_hour": 4033,
+     "gmv_per_viewer": 224.0,
      "avg_viewers": 18,
      "hours": 5.0
     },
@@ -6366,7 +6366,7 @@
      "_mc": "Aum",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 4,
+     "vs_self": 5,
      "vs_team": -7,
      "vs_band": 3,
      "vs_prev": null,
@@ -6377,18 +6377,18 @@
      "start": "16:00",
      "end": "21:00",
      "hours": 5.0,
-     "gmv": 22238,
-     "gmv_per_hour": 4448,
+     "gmv": 20163,
+     "gmv_per_hour": 4033,
      "avg_viewers": 18,
-     "gmv_per_viewer": 247.1,
+     "gmv_per_viewer": 224.0,
      "v_start": 24,
      "v_end": 16,
      "campaign": false,
      "band": "evening",
      "peak_hour": "17:00",
-     "peak_gmv": 5528,
+     "peak_gmv": 5012,
      "low_hour": "18:00",
-     "low_gmv": 3315,
+     "low_gmv": 3006,
      "live_ctr": 52.98,
      "ctor": 1.68,
      "live_gpm": 267,
@@ -6396,10 +6396,10 @@
      "_mc": "Aum",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -14,
-     "vs_team": -23,
-     "vs_band": -26,
-     "vs_prev": -17,
+     "vs_self": -21,
+     "vs_team": -30,
+     "vs_band": -33,
+     "vs_prev": -25,
      "share_of_day": 19
     },
     {
@@ -6429,7 +6429,7 @@
      "vs_self": 25,
      "vs_team": 11,
      "vs_band": 6,
-     "vs_prev": 44,
+     "vs_prev": 59,
      "share_of_day": 26
     },
     {
@@ -6456,7 +6456,7 @@
      "_mc": "Aum",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": 0,
+     "vs_self": 1,
      "vs_team": -10,
      "vs_band": 2,
      "vs_prev": -19,
@@ -6546,7 +6546,7 @@
      "_mc": "Aum",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -27,
+     "vs_self": -26,
      "vs_team": -35,
      "vs_band": -26,
      "vs_prev": -31,
@@ -6576,7 +6576,7 @@
      "_mc": "Aum",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 1,
+     "vs_self": 2,
      "vs_team": -10,
      "vs_band": -13,
      "vs_prev": 38,
@@ -6606,7 +6606,7 @@
      "_mc": "Aum",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -17,
+     "vs_self": -16,
      "vs_team": -26,
      "vs_band": -29,
      "vs_prev": -18,
@@ -6726,7 +6726,7 @@
      "_mc": "Aum",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 17,
+     "vs_self": 18,
      "vs_team": 5,
      "vs_band": 1,
      "vs_prev": 51,
@@ -6756,7 +6756,7 @@
      "_mc": "Aum",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -7,
+     "vs_self": -6,
      "vs_team": -17,
      "vs_band": -20,
      "vs_prev": -21,
@@ -6786,7 +6786,7 @@
      "_mc": "Aum",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 15,
+     "vs_self": 16,
      "vs_team": 3,
      "vs_band": 0,
      "vs_prev": 24,
@@ -6856,25 +6856,25 @@
    "top_products": [
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 91503,
+     "gmv": 91068,
      "pct": 20
     },
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 76185,
+     "gmv": 75410,
      "pct": 17
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 47816,
+     "gmv": 47447,
      "pct": 11
     }
    ],
    "normal": {
     "hours": 59.985278,
-    "gmv": 300844,
-    "gmv_per_hour": 5015,
-    "gmv_per_viewer": 174.4,
+    "gmv": 298770,
+    "gmv_per_hour": 4981,
+    "gmv_per_viewer": 173.2,
     "avg_viewers": 29
    },
    "campaign": {
@@ -6884,7 +6884,7 @@
     "gmv_per_viewer": 273.7,
     "avg_viewers": 20
    },
-   "camp_roi": 57,
+   "camp_roi": 58,
    "group": "regular",
    "category": "closer",
    "category_label": {
@@ -6900,15 +6900,15 @@
     ]
    },
    "score": {
-    "total": 82,
+    "total": 84,
     "parts": {
      "closing": 95,
      "audience": 73,
      "retention": 100,
      "consistency": 71,
-     "improvement": 75
+     "improvement": 82
     },
-    "improve_pct": 10,
+    "improve_pct": 13,
     "trend": {
      "icon": "📈",
      "th": "พัฒนาขึ้น",
