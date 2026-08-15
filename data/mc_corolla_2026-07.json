@@ -1,5 +1,5 @@
 {
- "generatedAt": "14/08/2026 06:30",
+ "generatedAt": "15/08/2026 06:30",
  "month": "07/2026",
  "brand": "COROLLA",
  "livesAnalyzed": 31,
@@ -28,26 +28,26 @@
   2
  ],
  "gmvByHour": [
-  113948,
-  147390,
-  192224,
-  195927,
-  222868,
-  195691,
-  227110,
-  192827,
-  178988,
-  141804,
-  160727,
-  178513,
-  175281,
-  210050,
-  246701,
-  235260,
-  225752,
-  188228,
-  123379,
-  81816,
+  113865,
+  147188,
+  191917,
+  195575,
+  222453,
+  195288,
+  226715,
+  192479,
+  178642,
+  141316,
+  160436,
+  178160,
+  174921,
+  209654,
+  246114,
+  234889,
+  225480,
+  187988,
+  123157,
+  81540,
   5586
  ],
  "viewersByHour": [
@@ -74,18 +74,18 @@
   16
  ],
  "totals": {
-  "gmv": 3641974,
+  "gmv": 3635267,
   "hours": 620.0,
   "lives": 31,
   "days": 31,
   "avg_viewers": 31,
-  "mc_gmv": 3634485,
+  "mc_gmv": 3627778,
   "unassigned_gmv": 7489,
   "double_counted": 0,
   "live_hours": 620.7,
   "unassigned_hours": 0.8,
-  "scaled_lives": 27,
-  "scale_avg": 1.0633,
+  "scaled_lives": 26,
+  "scale_avg": 1.0615,
   "shared_hours": 0.0,
   "shopee_hours": 262.0,
   "leave_hours": 24.0
@@ -541,8 +541,8 @@
    "rounds": 4,
    "lives": 1,
    "hours": 20.0,
-   "gmv": 127577,
-   "gmv_per_hour": 6379,
+   "gmv": 120870,
+   "gmv_per_hour": 6044,
    "avg_viewers": 33,
    "live_ctr": 55.2,
    "ctor": 0.0,
@@ -551,10 +551,10 @@
    "follow_rate": 0.0,
    "comment_rate": 0.0,
    "best_mc": "Fern",
-   "best_gmv": 37779,
+   "best_gmv": 35793,
    "best_time": "16:00-21:00",
    "campaign": true,
-   "vs_prev_day": 6
+   "vs_prev_day": 0
   },
   {
    "day": 6,
@@ -574,7 +574,7 @@
    "best_gmv": 60344,
    "best_time": "21:00-02:00",
    "campaign": true,
-   "vs_prev_day": 28
+   "vs_prev_day": 35
   },
   {
    "day": 7,
@@ -1088,9 +1088,9 @@
    "leave_kind": "",
    "shared_hours": 0.0,
    "avg_viewers": 35,
-   "gmv_total": 641919,
-   "gmv_per_hour": 6420,
-   "gmv_per_viewer": 180.9,
+   "gmv_total": 639939,
+   "gmv_per_hour": 6400,
+   "gmv_per_viewer": 180.3,
    "retention": 1.26,
    "hour_dist": [
     5,
@@ -1132,9 +1132,9 @@
    "weekly": [
     {
      "wk": "1-7",
-     "gmv": 189473,
-     "gmv_per_hour": 7580,
-     "gmv_per_viewer": 220.6,
+     "gmv": 187493,
+     "gmv_per_hour": 7501,
+     "gmv_per_viewer": 218.3,
      "avg_viewers": 34,
      "hours": 25.0
     },
@@ -1190,9 +1190,9 @@
     },
     {
      "day": 5,
-     "gmv": 37663,
-     "gmv_per_hour": 7533,
-     "gmv_per_viewer": 261.5,
+     "gmv": 35683,
+     "gmv_per_hour": 7137,
+     "gmv_per_viewer": 247.8,
      "avg_viewers": 29,
      "hours": 5.0
     },
@@ -1359,8 +1359,8 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": 4,
-     "vs_team": 15,
-     "vs_band": 27,
+     "vs_team": 16,
+     "vs_band": 29,
      "vs_prev": null,
      "share_of_day": 32
     },
@@ -1389,7 +1389,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": 13,
-     "vs_team": 25,
+     "vs_team": 26,
      "vs_band": 21,
      "vs_prev": 9,
      "share_of_day": 30
@@ -1399,18 +1399,18 @@
      "start": "11:00",
      "end": "16:00",
      "hours": 5.0,
-     "gmv": 37663,
-     "gmv_per_hour": 7533,
+     "gmv": 35683,
+     "gmv_per_hour": 7137,
      "avg_viewers": 29,
-     "gmv_per_viewer": 261.5,
+     "gmv_per_viewer": 247.8,
      "v_start": 19,
      "v_end": 45,
      "campaign": true,
      "band": "midday",
      "peak_hour": "15:00",
-     "peak_gmv": 9271,
+     "peak_gmv": 8783,
      "low_hour": "14:00",
-     "low_gmv": 6591,
+     "low_gmv": 6244,
      "live_ctr": 55.2,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -1418,10 +1418,10 @@
      "_mc": "Nut",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 17,
-     "vs_team": 31,
-     "vs_band": 25,
-     "vs_prev": 4,
+     "vs_self": 12,
+     "vs_team": 24,
+     "vs_band": 18,
+     "vs_prev": -1,
      "share_of_day": 30
     },
     {
@@ -1450,8 +1450,8 @@
      "rounds_in_day": 4,
      "vs_self": 7,
      "vs_team": 19,
-     "vs_band": 35,
-     "vs_prev": -9,
+     "vs_band": 38,
+     "vs_prev": -4,
      "share_of_day": 21
     },
     {
@@ -1479,8 +1479,8 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": 50,
-     "vs_team": 66,
-     "vs_band": 89,
+     "vs_team": 67,
+     "vs_band": 92,
      "vs_prev": 40,
      "share_of_day": 24
     },
@@ -1510,7 +1510,7 @@
      "rounds_in_day": 4,
      "vs_self": -7,
      "vs_team": 3,
-     "vs_band": 14,
+     "vs_band": 15,
      "vs_prev": -38,
      "share_of_day": 31
     },
@@ -1538,9 +1538,9 @@
      "_mc": "Nut",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": -10,
-     "vs_team": 0,
-     "vs_band": 11,
+     "vs_self": -9,
+     "vs_team": 1,
+     "vs_band": 12,
      "vs_prev": -2,
      "share_of_day": 30
     },
@@ -1568,7 +1568,7 @@
      "_mc": "Nut",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 11,
+     "vs_self": 12,
      "vs_team": 24,
      "vs_band": 20,
      "vs_prev": 23,
@@ -1599,7 +1599,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": 36,
-     "vs_team": 51,
+     "vs_team": 52,
      "vs_band": 44,
      "vs_prev": 22,
      "share_of_day": 32
@@ -1628,9 +1628,9 @@
      "_mc": "Nut",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -20,
-     "vs_team": -11,
-     "vs_band": 2,
+     "vs_self": -19,
+     "vs_team": -10,
+     "vs_band": 4,
      "vs_prev": -41,
      "share_of_day": 24
     },
@@ -1688,9 +1688,9 @@
      "_mc": "Nut",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -29,
+     "vs_self": -28,
      "vs_team": -20,
-     "vs_band": -12,
+     "vs_band": -11,
      "vs_prev": 2,
      "share_of_day": 24
     },
@@ -1718,7 +1718,7 @@
      "_mc": "Nut",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": -30,
+     "vs_self": -29,
      "vs_team": -22,
      "vs_band": -24,
      "vs_prev": -1,
@@ -1780,7 +1780,7 @@
      "rounds_in_day": 4,
      "vs_self": 15,
      "vs_team": 28,
-     "vs_band": 45,
+     "vs_band": 48,
      "vs_prev": 82,
      "share_of_day": 31
     },
@@ -1808,9 +1808,9 @@
      "_mc": "Nut",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 30,
+     "vs_self": 31,
      "vs_team": 45,
-     "vs_band": 60,
+     "vs_band": 62,
      "vs_prev": 14,
      "share_of_day": 24
     },
@@ -1840,7 +1840,7 @@
      "rounds_in_day": 4,
      "vs_self": -6,
      "vs_team": 5,
-     "vs_band": 15,
+     "vs_band": 17,
      "vs_prev": -28,
      "share_of_day": 19
     },
@@ -1868,7 +1868,7 @@
      "_mc": "Nut",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 26,
+     "vs_self": 27,
      "vs_team": 40,
      "vs_band": 34,
      "vs_prev": 34,
@@ -1930,7 +1930,7 @@
      "rounds_in_day": 4,
      "vs_self": -26,
      "vs_team": -18,
-     "vs_band": -7,
+     "vs_band": -5,
      "vs_prev": -13,
      "share_of_day": 23
     }
@@ -1938,7 +1938,7 @@
    "top_products": [
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 122045,
+     "gmv": 121299,
      "pct": 20
     },
     {
@@ -1948,7 +1948,7 @@
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 72749,
+     "gmv": 72283,
      "pct": 12
     }
    ],
@@ -1961,12 +1961,12 @@
    },
    "campaign": {
     "hours": 49.989167,
-    "gmv": 349263,
-    "gmv_per_hour": 6987,
-    "gmv_per_viewer": 191.5,
+    "gmv": 347283,
+    "gmv_per_hour": 6947,
+    "gmv_per_viewer": 190.4,
     "avg_viewers": 36
    },
-   "camp_roi": 13,
+   "camp_roi": 12,
    "group": "regular",
    "category": "strong",
    "category_label": {
@@ -1984,13 +1984,13 @@
    "score": {
     "total": 78,
     "parts": {
-     "closing": 88,
+     "closing": 87,
      "audience": 99,
      "retention": 100,
      "consistency": 73,
-     "improvement": 42
+     "improvement": 45
     },
-    "improve_pct": -3,
+    "improve_pct": -2,
     "trend": {
      "icon": "➡️",
      "th": "ทรงตัว",
@@ -2265,7 +2265,7 @@
      "rounds_in_day": 4,
      "vs_self": 5,
      "vs_team": 10,
-     "vs_band": 21,
+     "vs_band": 23,
      "vs_prev": null,
      "share_of_day": 27
     },
@@ -2355,7 +2355,7 @@
      "rounds_in_day": 4,
      "vs_self": 28,
      "vs_team": 34,
-     "vs_band": 52,
+     "vs_band": 55,
      "vs_prev": 20,
      "share_of_day": 32
     },
@@ -2385,7 +2385,7 @@
      "rounds_in_day": 4,
      "vs_self": -14,
      "vs_team": -10,
-     "vs_band": -1,
+     "vs_band": 0,
      "vs_prev": -33,
      "share_of_day": 22
     },
@@ -2414,7 +2414,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": 6,
-     "vs_team": 10,
+     "vs_team": 11,
      "vs_band": 7,
      "vs_prev": 23,
      "share_of_day": 34
@@ -2475,7 +2475,7 @@
      "rounds_in_day": 4,
      "vs_self": 7,
      "vs_team": 12,
-     "vs_band": 23,
+     "vs_band": 25,
      "vs_prev": 49,
      "share_of_day": 29
     },
@@ -2504,7 +2504,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": 9,
-     "vs_team": 13,
+     "vs_team": 14,
      "vs_band": 9,
      "vs_prev": 1,
      "share_of_day": 33
@@ -2565,7 +2565,7 @@
      "rounds_in_day": 4,
      "vs_self": 35,
      "vs_team": 41,
-     "vs_band": 60,
+     "vs_band": 63,
      "vs_prev": 75,
      "share_of_day": 29
     },
@@ -2595,7 +2595,7 @@
      "rounds_in_day": 4,
      "vs_self": -31,
      "vs_team": -28,
-     "vs_band": -21,
+     "vs_band": -20,
      "vs_prev": -49,
      "share_of_day": 25
     },
@@ -2625,7 +2625,7 @@
      "rounds_in_day": 4,
      "vs_self": -13,
      "vs_team": -9,
-     "vs_band": 0,
+     "vs_band": 1,
      "vs_prev": 26,
      "share_of_day": 22
     },
@@ -2715,7 +2715,7 @@
      "rounds_in_day": 4,
      "vs_self": 53,
      "vs_team": 59,
-     "vs_band": 81,
+     "vs_band": 84,
      "vs_prev": 44,
      "share_of_day": 27
     },
@@ -2745,7 +2745,7 @@
      "rounds_in_day": 4,
      "vs_self": -20,
      "vs_team": -17,
-     "vs_band": -8,
+     "vs_band": -7,
      "vs_prev": -48,
      "share_of_day": 21
     },
@@ -3148,7 +3148,7 @@
      "rounds_in_day": 4,
      "vs_self": -29,
      "vs_team": -33,
-     "vs_band": -24,
+     "vs_band": -22,
      "vs_prev": -39,
      "share_of_day": 18
     },
@@ -3208,7 +3208,7 @@
      "rounds_in_day": 4,
      "vs_self": 102,
      "vs_team": 92,
-     "vs_band": 112,
+     "vs_band": 114,
      "vs_prev": 85,
      "share_of_day": 27
     },
@@ -3328,7 +3328,7 @@
      "rounds_in_day": 4,
      "vs_self": -25,
      "vs_team": -29,
-     "vs_band": -20,
+     "vs_band": -18,
      "vs_prev": -16,
      "share_of_day": 19
     },
@@ -3358,7 +3358,7 @@
      "rounds_in_day": 4,
      "vs_self": 21,
      "vs_team": 14,
-     "vs_band": 26,
+     "vs_band": 27,
      "vs_prev": 62,
      "share_of_day": 27
     },
@@ -3388,7 +3388,7 @@
      "rounds_in_day": 4,
      "vs_self": -25,
      "vs_team": -29,
-     "vs_band": -22,
+     "vs_band": -21,
      "vs_prev": -38,
      "share_of_day": 20
     },
@@ -3477,8 +3477,8 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": -19,
-     "vs_team": -24,
-     "vs_band": -16,
+     "vs_team": -23,
+     "vs_band": -15,
      "vs_prev": -30,
      "share_of_day": 22
     },
@@ -3568,7 +3568,7 @@
      "rounds_in_day": 4,
      "vs_self": 27,
      "vs_team": 20,
-     "vs_band": 37,
+     "vs_band": 39,
      "vs_prev": -16,
      "share_of_day": 22
     },
@@ -3703,10 +3703,10 @@
    },
    "insights": {
     "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿177 ต่ำกว่าค่ากลางทีม ฿181) — เน้นรีวิว/เร่งปิดการขาย"
+     "ปิดการขายต่ำ (GMV/คนดู ฿177 ต่ำกว่าค่ากลางทีม ฿180) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Low closing (GMV/viewer ฿177 below team median ฿181) — focus on reviews/urgency"
+     "Low closing (GMV/viewer ฿177 below team median ฿180) — focus on reviews/urgency"
     ]
    },
    "score": {
@@ -3737,9 +3737,9 @@
    "leave_kind": "ลา",
    "shared_hours": 0.0,
    "avg_viewers": 33,
-   "gmv_total": 519421,
-   "gmv_per_hour": 5772,
-   "gmv_per_viewer": 174.1,
+   "gmv_total": 518039,
+   "gmv_per_hour": 5757,
+   "gmv_per_viewer": 173.6,
    "retention": 1.14,
    "hour_dist": [
     7,
@@ -3774,16 +3774,16 @@
    },
    "prime": {
     "hours": 13.0,
-    "gmv_per_hour": 6822,
-    "gmv_per_viewer": 187.9,
+    "gmv_per_hour": 6793,
+    "gmv_per_viewer": 187.1,
     "avg_viewers": 36
    },
    "weekly": [
     {
      "wk": "1-7",
-     "gmv": 151704,
-     "gmv_per_hour": 7585,
-     "gmv_per_viewer": 188.7,
+     "gmv": 150322,
+     "gmv_per_hour": 7516,
+     "gmv_per_viewer": 187.0,
      "avg_viewers": 40,
      "hours": 20.0
     },
@@ -3839,9 +3839,9 @@
     },
     {
      "day": 5,
-     "gmv": 26282,
-     "gmv_per_hour": 5256,
-     "gmv_per_viewer": 122.2,
+     "gmv": 24900,
+     "gmv_per_hour": 4980,
+     "gmv_per_viewer": 115.8,
      "avg_viewers": 43,
      "hours": 5.0
     },
@@ -4023,7 +4023,7 @@
      "rounds_in_day": 4,
      "vs_self": 25,
      "vs_team": 25,
-     "vs_band": 42,
+     "vs_band": 45,
      "vs_prev": 24,
      "share_of_day": 31
     },
@@ -4032,18 +4032,18 @@
      "start": "21:00",
      "end": "02:00",
      "hours": 5.0,
-     "gmv": 26282,
-     "gmv_per_hour": 5256,
+     "gmv": 24900,
+     "gmv_per_hour": 4980,
      "avg_viewers": 43,
-     "gmv_per_viewer": 122.2,
+     "gmv_per_viewer": 115.8,
      "v_start": 54,
      "v_end": 31,
      "campaign": true,
      "band": "night",
      "peak_hour": "21:00",
-     "peak_gmv": 7055,
+     "peak_gmv": 6684,
      "low_hour": "00:00",
-     "low_gmv": 4233,
+     "low_gmv": 4011,
      "live_ctr": 55.2,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -4051,10 +4051,10 @@
      "_mc": "Ice",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -9,
-     "vs_team": -9,
-     "vs_band": 1,
-     "vs_prev": -27,
+     "vs_self": -13,
+     "vs_team": -14,
+     "vs_band": -4,
+     "vs_prev": -31,
      "share_of_day": 21
     },
     {
@@ -4081,10 +4081,10 @@
      "_mc": "Ice",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 109,
+     "vs_self": 110,
      "vs_team": 109,
-     "vs_band": 131,
-     "vs_prev": 130,
+     "vs_band": 133,
+     "vs_prev": 142,
      "share_of_day": 37
     },
     {
@@ -4113,7 +4113,7 @@
      "rounds_in_day": 4,
      "vs_self": -34,
      "vs_team": -34,
-     "vs_band": -25,
+     "vs_band": -24,
      "vs_prev": -68,
      "share_of_day": 20
     },
@@ -4143,7 +4143,7 @@
      "rounds_in_day": 4,
      "vs_self": -21,
      "vs_team": -21,
-     "vs_band": -11,
+     "vs_band": -9,
      "vs_prev": 19,
      "share_of_day": 23
     },
@@ -4173,7 +4173,7 @@
      "rounds_in_day": 4,
      "vs_self": -11,
      "vs_team": -11,
-     "vs_band": -2,
+     "vs_band": -1,
      "vs_prev": 13,
      "share_of_day": 26
     },
@@ -4231,8 +4231,8 @@
      "_mc": "Ice",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 30,
-     "vs_team": 30,
+     "vs_self": 31,
+     "vs_team": 31,
      "vs_band": 24,
      "vs_prev": 28,
      "share_of_day": 31
@@ -4263,7 +4263,7 @@
      "rounds_in_day": 4,
      "vs_self": -12,
      "vs_team": -12,
-     "vs_band": 0,
+     "vs_band": 2,
      "vs_prev": -33,
      "share_of_day": 25
     },
@@ -4321,7 +4321,7 @@
      "_mc": "Ice",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -12,
+     "vs_self": -11,
      "vs_team": -12,
      "vs_band": -16,
      "vs_prev": 6,
@@ -4353,7 +4353,7 @@
      "rounds_in_day": 4,
      "vs_self": -15,
      "vs_team": -15,
-     "vs_band": -4,
+     "vs_band": -2,
      "vs_prev": -4,
      "share_of_day": 24
     },
@@ -4381,9 +4381,9 @@
      "_mc": "Ice",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": -14,
-     "vs_team": -14,
-     "vs_band": -2,
+     "vs_self": -13,
+     "vs_team": -13,
+     "vs_band": 0,
      "vs_prev": 2,
      "share_of_day": 24
     },
@@ -4411,9 +4411,9 @@
      "_mc": "Ice",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -4,
-     "vs_team": -4,
-     "vs_band": 6,
+     "vs_self": -3,
+     "vs_team": -3,
+     "vs_band": 7,
      "vs_prev": 12,
      "share_of_day": 23
     },
@@ -4441,8 +4441,8 @@
      "_mc": "Ice",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 3,
-     "vs_team": 3,
+     "vs_self": 4,
+     "vs_team": 4,
      "vs_band": 0,
      "vs_prev": 7,
      "share_of_day": 27
@@ -4503,7 +4503,7 @@
      "rounds_in_day": 4,
      "vs_self": -38,
      "vs_team": -38,
-     "vs_band": -29,
+     "vs_band": -28,
      "vs_prev": -46,
      "share_of_day": 20
     }
@@ -4511,17 +4511,17 @@
    "top_products": [
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 139163,
+     "gmv": 138657,
      "pct": 27
     },
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 77914,
+     "gmv": 77692,
      "pct": 15
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 56438,
+     "gmv": 56024,
      "pct": 11
     }
    ],
@@ -4534,12 +4534,12 @@
    },
    "campaign": {
     "hours": 34.992222,
-    "gmv": 214689,
-    "gmv_per_hour": 6135,
-    "gmv_per_viewer": 165.8,
+    "gmv": 213307,
+    "gmv_per_hour": 6096,
+    "gmv_per_viewer": 164.7,
     "avg_viewers": 37
    },
-   "camp_roi": -8,
+   "camp_roi": -9,
    "group": "regular",
    "category": "traffic",
    "category_label": {
@@ -4548,10 +4548,10 @@
    },
    "insights": {
     "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿174 ต่ำกว่าค่ากลางทีม ฿181) — เน้นรีวิว/เร่งปิดการขาย"
+     "ปิดการขายต่ำ (GMV/คนดู ฿174 ต่ำกว่าค่ากลางทีม ฿180) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Low closing (GMV/viewer ฿174 below team median ฿181) — focus on reviews/urgency"
+     "Low closing (GMV/viewer ฿174 below team median ฿180) — focus on reviews/urgency"
     ]
    },
    "score": {
@@ -4560,10 +4560,10 @@
      "closing": 84,
      "audience": 94,
      "retention": 95,
-     "consistency": 73,
-     "improvement": 50
+     "consistency": 72,
+     "improvement": 52
     },
-    "improve_pct": 0,
+    "improve_pct": 1,
     "trend": {
      "icon": "➡️",
      "th": "ทรงตัว",
@@ -4829,7 +4829,7 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": -11,
-     "vs_team": -12,
+     "vs_team": -11,
      "vs_band": -15,
      "vs_prev": null,
      "share_of_day": 22
@@ -4860,7 +4860,7 @@
      "rounds_in_day": 4,
      "vs_self": -48,
      "vs_team": -48,
-     "vs_band": -43,
+     "vs_band": -42,
      "vs_prev": -42,
      "share_of_day": 12
     },
@@ -4950,7 +4950,7 @@
      "rounds_in_day": 4,
      "vs_self": 40,
      "vs_team": 40,
-     "vs_band": 59,
+     "vs_band": 62,
      "vs_prev": -16,
      "share_of_day": 34
     },
@@ -4980,7 +4980,7 @@
      "rounds_in_day": 4,
      "vs_self": -12,
      "vs_team": -12,
-     "vs_band": -3,
+     "vs_band": -2,
      "vs_prev": -37,
      "share_of_day": 19
     },
@@ -5070,7 +5070,7 @@
      "rounds_in_day": 4,
      "vs_self": -8,
      "vs_team": -8,
-     "vs_band": 1,
+     "vs_band": 2,
      "vs_prev": 19,
      "share_of_day": 23
     },
@@ -5160,7 +5160,7 @@
      "rounds_in_day": 4,
      "vs_self": -32,
      "vs_team": -32,
-     "vs_band": -23,
+     "vs_band": -21,
      "vs_prev": -28,
      "share_of_day": 23
     },
@@ -5190,7 +5190,7 @@
      "rounds_in_day": 4,
      "vs_self": -54,
      "vs_team": -54,
-     "vs_band": -47,
+     "vs_band": -46,
      "vs_prev": -32,
      "share_of_day": 17
     },
@@ -5250,7 +5250,7 @@
      "rounds_in_day": 4,
      "vs_self": -21,
      "vs_team": -21,
-     "vs_band": -10,
+     "vs_band": -8,
      "vs_prev": -54,
      "share_of_day": 19
     },
@@ -5280,7 +5280,7 @@
      "rounds_in_day": 4,
      "vs_self": 9,
      "vs_team": 9,
-     "vs_band": 24,
+     "vs_band": 26,
      "vs_prev": 38,
      "share_of_day": 28
     },
@@ -5310,7 +5310,7 @@
      "rounds_in_day": 4,
      "vs_self": -71,
      "vs_team": -71,
-     "vs_band": -69,
+     "vs_band": -68,
      "vs_prev": -74,
      "share_of_day": 8
     }
@@ -5355,10 +5355,10 @@
    },
    "insights": {
     "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿164 ต่ำกว่าค่ากลางทีม ฿181) — เน้นรีวิว/เร่งปิดการขาย"
+     "ปิดการขายต่ำ (GMV/คนดู ฿164 ต่ำกว่าค่ากลางทีม ฿180) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Low closing (GMV/viewer ฿164 below team median ฿181) — focus on reviews/urgency"
+     "Low closing (GMV/viewer ฿164 below team median ฿180) — focus on reviews/urgency"
     ]
    },
    "score": {
@@ -5389,9 +5389,9 @@
    "leave_kind": "",
    "shared_hours": 0.0,
    "avg_viewers": 31,
-   "gmv_total": 486846,
-   "gmv_per_hour": 6492,
-   "gmv_per_viewer": 206.6,
+   "gmv_total": 484860,
+   "gmv_per_hour": 6466,
+   "gmv_per_viewer": 205.8,
    "retention": 1.22,
    "hour_dist": [
     2,
@@ -5426,16 +5426,16 @@
    },
    "prime": {
     "hours": 27.0,
-    "gmv_per_hour": 8128,
-    "gmv_per_viewer": 206.5,
+    "gmv_per_hour": 8079,
+    "gmv_per_viewer": 205.2,
     "avg_viewers": 39
    },
    "weekly": [
     {
      "wk": "1-7",
-     "gmv": 117990,
-     "gmv_per_hour": 7867,
-     "gmv_per_viewer": 192.5,
+     "gmv": 116004,
+     "gmv_per_hour": 7735,
+     "gmv_per_viewer": 189.2,
      "avg_viewers": 41,
      "hours": 15.0
     },
@@ -5483,9 +5483,9 @@
     },
     {
      "day": 5,
-     "gmv": 37779,
-     "gmv_per_hour": 7556,
-     "gmv_per_viewer": 179.0,
+     "gmv": 35793,
+     "gmv_per_hour": 7159,
+     "gmv_per_viewer": 169.6,
      "avg_viewers": 42,
      "hours": 5.0
     },
@@ -5621,7 +5621,7 @@
      "rounds_in_day": 4,
      "vs_self": -9,
      "vs_team": 2,
-     "vs_band": 16,
+     "vs_band": 18,
      "vs_prev": null,
      "share_of_day": 25
     },
@@ -5630,18 +5630,18 @@
      "start": "16:00",
      "end": "21:00",
      "hours": 5.0,
-     "gmv": 37779,
-     "gmv_per_hour": 7556,
+     "gmv": 35793,
+     "gmv_per_hour": 7159,
      "avg_viewers": 42,
-     "gmv_per_viewer": 179.0,
+     "gmv_per_viewer": 169.6,
      "v_start": 40,
      "v_end": 52,
      "campaign": true,
      "band": "evening",
      "peak_hour": "20:00",
-     "peak_gmv": 11168,
+     "peak_gmv": 10581,
      "low_hour": "16:00",
-     "low_gmv": 5526,
+     "low_gmv": 5235,
      "live_ctr": 55.2,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -5649,10 +5649,10 @@
      "_mc": "Fern",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 16,
-     "vs_team": 31,
-     "vs_band": 26,
-     "vs_prev": 28,
+     "vs_self": 11,
+     "vs_team": 24,
+     "vs_band": 20,
+     "vs_prev": 22,
      "share_of_day": 30
     },
     {
@@ -5679,10 +5679,10 @@
      "_mc": "Fern",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 56,
+     "vs_self": 57,
      "vs_team": 76,
      "vs_band": 70,
-     "vs_prev": 34,
+     "vs_prev": 42,
      "share_of_day": 25
     },
     {
@@ -5709,8 +5709,8 @@
      "_mc": "Fern",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": -3,
-     "vs_team": 9,
+     "vs_self": -2,
+     "vs_team": 10,
      "vs_band": 6,
      "vs_prev": -38,
      "share_of_day": 27
@@ -5741,7 +5741,7 @@
      "rounds_in_day": 4,
      "vs_self": -11,
      "vs_team": 0,
-     "vs_band": 10,
+     "vs_band": 11,
      "vs_prev": -9,
      "share_of_day": 26
     },
@@ -5769,7 +5769,7 @@
      "_mc": "Fern",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 24,
+     "vs_self": 25,
      "vs_team": 40,
      "vs_band": 35,
      "vs_prev": 40,
@@ -5829,9 +5829,9 @@
      "_mc": "Fern",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -24,
+     "vs_self": -23,
      "vs_team": -14,
-     "vs_band": -2,
+     "vs_band": 0,
      "vs_prev": 14,
      "share_of_day": 20
     },
@@ -5860,7 +5860,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": -25,
-     "vs_team": -16,
+     "vs_team": -15,
      "vs_band": -19,
      "vs_prev": -2,
      "share_of_day": 25
@@ -5919,9 +5919,9 @@
      "_mc": "Fern",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -27,
+     "vs_self": -26,
      "vs_team": -17,
-     "vs_band": -9,
+     "vs_band": -8,
      "vs_prev": 15,
      "share_of_day": 23
     },
@@ -5980,7 +5980,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": 42,
-     "vs_team": 59,
+     "vs_team": 60,
      "vs_band": 54,
      "vs_prev": 10,
      "share_of_day": 29
@@ -6009,9 +6009,9 @@
      "_mc": "Fern",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -36,
+     "vs_self": -35,
      "vs_team": -28,
-     "vs_band": -20,
+     "vs_band": -19,
      "vs_prev": -55,
      "share_of_day": 23
     },
@@ -6040,7 +6040,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": 36,
-     "vs_team": 52,
+     "vs_team": 53,
      "vs_band": 47,
      "vs_prev": 111,
      "share_of_day": 42
@@ -6049,17 +6049,17 @@
    "top_products": [
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 86801,
+     "gmv": 86125,
      "pct": 18
     },
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 77809,
+     "gmv": 77689,
      "pct": 16
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 59700,
+     "gmv": 59469,
      "pct": 12
     }
    ],
@@ -6072,12 +6072,12 @@
    },
    "campaign": {
     "hours": 35.0,
-    "gmv": 272787,
-    "gmv_per_hour": 7794,
-    "gmv_per_viewer": 224.5,
+    "gmv": 270801,
+    "gmv_per_hour": 7737,
+    "gmv_per_viewer": 222.9,
     "avg_viewers": 35
    },
-   "camp_roi": 20,
+   "camp_roi": 19,
    "group": "regular",
    "category": "strong",
    "category_label": {
@@ -6101,7 +6101,7 @@
      "consistency": 69,
      "improvement": 100
     },
-    "improve_pct": 60,
+    "improve_pct": 63,
     "trend": {
      "icon": "📈",
      "th": "พัฒนาขึ้น",
@@ -6120,9 +6120,9 @@
    "leave_kind": "ลา",
    "shared_hours": 0.0,
    "avg_viewers": 26,
-   "gmv_total": 434759,
-   "gmv_per_hour": 5116,
-   "gmv_per_viewer": 195.2,
+   "gmv_total": 433400,
+   "gmv_per_hour": 5100,
+   "gmv_per_viewer": 194.6,
    "retention": 1.2,
    "hour_dist": [
     6,
@@ -6164,9 +6164,9 @@
    "weekly": [
     {
      "wk": "1-7",
-     "gmv": 103627,
-     "gmv_per_hour": 5183,
-     "gmv_per_viewer": 259.1,
+     "gmv": 102268,
+     "gmv_per_hour": 5115,
+     "gmv_per_viewer": 255.7,
      "avg_viewers": 20,
      "hours": 20.0
     },
@@ -6230,9 +6230,9 @@
     },
     {
      "day": 5,
-     "gmv": 25853,
-     "gmv_per_hour": 5176,
-     "gmv_per_viewer": 287.3,
+     "gmv": 24494,
+     "gmv_per_hour": 4904,
+     "gmv_per_viewer": 272.2,
      "avg_viewers": 18,
      "hours": 5.0
     },
@@ -6368,7 +6368,7 @@
      "rounds_in_day": 4,
      "vs_self": 5,
      "vs_team": -7,
-     "vs_band": 3,
+     "vs_band": 4,
      "vs_prev": null,
      "share_of_day": 23
     },
@@ -6426,8 +6426,8 @@
      "_mc": "Aum",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 20,
-     "vs_team": 6,
+     "vs_self": 21,
+     "vs_team": 7,
      "vs_band": 2,
      "vs_prev": 52,
      "share_of_day": 26
@@ -6437,18 +6437,18 @@
      "start": "06:00",
      "end": "11:00",
      "hours": 5.0,
-     "gmv": 25853,
-     "gmv_per_hour": 5176,
+     "gmv": 24494,
+     "gmv_per_hour": 4904,
      "avg_viewers": 18,
-     "gmv_per_viewer": 287.3,
+     "gmv_per_viewer": 272.2,
      "v_start": 17,
      "v_end": 24,
      "campaign": true,
      "band": "morning",
      "peak_hour": "10:00",
-     "peak_gmv": 7897,
+     "peak_gmv": 7482,
      "low_hour": "06:00",
-     "low_gmv": 1575,
+     "low_gmv": 1492,
      "live_ctr": 55.2,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -6456,10 +6456,10 @@
      "_mc": "Aum",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": 1,
-     "vs_team": -10,
-     "vs_band": 2,
-     "vs_prev": -16,
+     "vs_self": -4,
+     "vs_team": -15,
+     "vs_band": -2,
+     "vs_prev": -20,
      "share_of_day": 20
     },
     {
@@ -6489,7 +6489,7 @@
      "vs_self": -6,
      "vs_team": -17,
      "vs_band": -21,
-     "vs_prev": -7,
+     "vs_prev": -2,
      "share_of_day": 22
     },
     {
@@ -6516,9 +6516,9 @@
      "_mc": "Aum",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 7,
+     "vs_self": 8,
      "vs_team": -5,
-     "vs_band": 8,
+     "vs_band": 10,
      "vs_prev": 15,
      "share_of_day": 20
     },
@@ -6548,7 +6548,7 @@
      "rounds_in_day": 4,
      "vs_self": -26,
      "vs_team": -35,
-     "vs_band": -26,
+     "vs_band": -24,
      "vs_prev": -31,
      "share_of_day": 19
     },
@@ -6577,7 +6577,7 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": 2,
-     "vs_team": -10,
+     "vs_team": -9,
      "vs_band": -13,
      "vs_prev": 38,
      "share_of_day": 21
@@ -6607,7 +6607,7 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": -16,
-     "vs_team": -26,
+     "vs_team": -25,
      "vs_band": -29,
      "vs_prev": -18,
      "share_of_day": 21
@@ -6638,7 +6638,7 @@
      "rounds_in_day": 4,
      "vs_self": 47,
      "vs_team": 30,
-     "vs_band": 48,
+     "vs_band": 51,
      "vs_prev": 75,
      "share_of_day": 33
     },
@@ -6666,9 +6666,9 @@
      "_mc": "Aum",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -14,
-     "vs_team": -24,
-     "vs_band": -13,
+     "vs_self": -13,
+     "vs_team": -23,
+     "vs_band": -12,
      "vs_prev": -41,
      "share_of_day": 23
     },
@@ -6696,8 +6696,8 @@
      "_mc": "Aum",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -22,
-     "vs_team": -31,
+     "vs_self": -21,
+     "vs_team": -30,
      "vs_band": -23,
      "vs_prev": -9,
      "share_of_day": 26
@@ -6726,7 +6726,7 @@
      "_mc": "Aum",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 18,
+     "vs_self": 19,
      "vs_team": 5,
      "vs_band": 1,
      "vs_prev": 51,
@@ -6786,7 +6786,7 @@
      "_mc": "Aum",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 16,
+     "vs_self": 17,
      "vs_team": 3,
      "vs_band": 0,
      "vs_prev": 24,
@@ -6846,9 +6846,9 @@
      "_mc": "Aum",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -21,
-     "vs_team": -30,
-     "vs_band": -20,
+     "vs_self": -20,
+     "vs_team": -29,
+     "vs_band": -18,
      "vs_prev": -31,
      "share_of_day": 19
     }
@@ -6856,17 +6856,17 @@
    "top_products": [
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 90657,
+     "gmv": 90311,
      "pct": 20
     },
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 75105,
+     "gmv": 75048,
      "pct": 17
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 47293,
+     "gmv": 46985,
      "pct": 11
     }
    ],
@@ -6879,12 +6879,12 @@
    },
    "campaign": {
     "hours": 24.991388999999998,
-    "gmv": 135989,
-    "gmv_per_hour": 5441,
-    "gmv_per_viewer": 270.9,
+    "gmv": 134630,
+    "gmv_per_hour": 5387,
+    "gmv_per_viewer": 268.2,
     "avg_viewers": 20
    },
-   "camp_roi": 56,
+   "camp_roi": 55,
    "group": "regular",
    "category": "closer",
    "category_label": {
@@ -6900,15 +6900,15 @@
     ]
    },
    "score": {
-    "total": 85,
+    "total": 86,
     "parts": {
      "closing": 94,
      "audience": 73,
      "retention": 100,
      "consistency": 71,
-     "improvement": 85
+     "improvement": 90
     },
-    "improve_pct": 14,
+    "improve_pct": 16,
     "trend": {
      "icon": "📈",
      "th": "พัฒนาขึ้น",
