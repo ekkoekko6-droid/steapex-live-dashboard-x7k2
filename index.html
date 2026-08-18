@@ -170,11 +170,13 @@
   .bd-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .bd-chips-row { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
   .bd-bar label { font-size: 12.5px; color: var(--text-muted); font-weight: 600; flex-shrink: 0; }
-  .bd-bar select {
+  .bd-bar select, #bdDrillBrand {
     appearance: none; font: inherit; font-size: 13px; font-weight: 600; color: var(--text);
     background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px;
-    padding: 7px 32px 7px 12px; cursor: pointer; min-width: 210px;
+    padding: 7px 32px 7px 12px; cursor: pointer; min-width: 190px;
   }
+  #bdUnit { min-width: 128px; }
+  #bdDrillBrand { min-width: 190px; }
   .bd-reset {
     font: inherit; font-size: 12px; font-weight: 600; color: var(--text-muted);
     background: transparent; border: 1px solid var(--border); border-radius: 999px;
@@ -193,6 +195,32 @@
   .bd-chip.off { opacity: .42; text-decoration: line-through; }
   .bd-chip:hover { border-color: var(--text-muted); }
   .card[hidden] { display: none; }
+  .bd-note { font-size: 11.5px; color: var(--text-muted); margin-top: 10px; }
+
+  /* ── กราฟเทียบ A vs B ── */
+  .cmp-legend { display: flex; gap: 18px; margin-bottom: 18px; font-size: 12px; color: var(--text-muted); }
+  .cmp-legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .cmp-legend i { width: 13px; height: 13px; border-radius: 4px; display: inline-block; font-style: normal; }
+  .cmp-row { display: grid; grid-template-columns: 150px 1fr 96px; align-items: center; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--border); }
+  .cmp-row:last-child { border-bottom: 0; }
+  .cmp-name { font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .cmp-bars { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+  .cmp-line { display: flex; align-items: center; gap: 9px; }
+  /* span ต้องสั่ง display:block ไม่งั้น width/height ไม่มีผล แท่งจะไม่ขึ้น */
+  .cmp-track { display: block; flex: 1; height: 15px; background: var(--surface-2); border-radius: 5px; overflow: hidden; min-width: 0; }
+  .cmp-fill { display: block; height: 100%; border-radius: 5px; min-width: 2px; }
+  .cmp-fill.a { background: var(--accent); }
+  .cmp-fill.b { background: #b8b0a8; }
+  .cmp-val { font-size: 11.5px; font-variant-numeric: tabular-nums; width: 92px; text-align: right; flex-shrink: 0; }
+  .cmp-tag { font-size: 10px; font-weight: 700; color: var(--text-muted); width: 12px; flex-shrink: 0; }
+  .cmp-delta { font-size: 12.5px; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
+  .cmp-delta.up { color: var(--good, #1f9d55); }
+  .cmp-delta.down { color: var(--bad, #d13b3b); }
+  .cmp-delta.flat { color: var(--text-muted); }
+  @media (max-width: 640px) {
+    .cmp-row { grid-template-columns: 104px 1fr 64px; gap: 9px; }
+    .cmp-val { width: 74px; }
+  }
 
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(272px, 1fr)); gap: 16px; }
   .card {
@@ -509,13 +537,39 @@
   <!-- แถบควบคุมรายละเอียดแบรนด์: เลือกวัน + ปิด/เปิดแบรนด์ทีละตัว -->
   <div class="bd-bar" id="bdBar">
     <div class="bd-row">
+      <label for="bdUnit" id="bdUnitLbl"></label>
+      <select id="bdUnit">
+        <option value="day"></option>
+        <option value="week"></option>
+      </select>
       <label for="bdDaySelect" id="bdDayLbl"></label>
       <select id="bdDaySelect"></select>
+      <label for="bdSelB" id="bdCmpLbl"></label>
+      <select id="bdSelB"></select>
       <button type="button" class="bd-reset" id="bdShowAll"></button>
     </div>
     <div class="bd-row bd-chips-row">
       <span class="bd-hint" id="bdHint"></span>
       <div class="bd-chips" id="bdChips"></div>
+    </div>
+    <div class="bd-note" id="bdUnitNote" hidden></div>
+  </div>
+
+  <!-- กราฟเทียบ A vs B — โผล่เฉพาะเมื่อเลือกครบทั้งสองช่อง -->
+  <div id="bdCompareWrap" hidden>
+    <div class="section-label" id="bdCmpTitle"></div>
+    <div class="rankbars">
+      <div class="cmp-legend" id="bdCmpLegend"></div>
+      <div id="bdCmpRows"></div>
+    </div>
+
+    <div class="section-label" id="bdDrillTitle"></div>
+    <div class="rankbars">
+      <div class="bd-row" style="margin-bottom:16px">
+        <label for="bdDrillBrand" id="bdBrandLbl"></label>
+        <select id="bdDrillBrand"></select>
+      </div>
+      <div id="bdDrillRows"></div>
     </div>
   </div>
 
@@ -645,9 +699,16 @@ const T = {
     mcGmvBasisNet: '(ยอด GMV สุทธิ)',
     langBtn: 'EN', gmvByBrand: 'GMV แยกตามแบรนด์', gmvMonth: 'GMV สะสมเดือนนี้',
     brandDetail: 'รายละเอียดแบรนด์', lastUpdate: 'อัพเดตล่าสุด', nextUpdate: 'อัพเดตถัดไปอีก',
-    bdDayLbl: 'ดูข้อมูลวันที่:', bdAllPeriod: 'ทั้งช่วง (ตามแท็บที่เลือก)',
+    bdDayLbl: 'ดูข้อมูล:', bdAllPeriod: 'ทั้งช่วง (ตามแท็บที่เลือก)',
     bdShowAll: 'แสดงทุกแบรนด์', bdHint: 'กดชื่อแบรนด์เพื่อซ่อน/แสดง',
     bdOnly: (b) => `ดูเฉพาะ ${b}`, bdHiddenNote: (n) => `ซ่อนอยู่ ${n} แบรนด์`,
+    bdUnitLbl: 'เทียบเป็น:', bdUnitDay: 'รายวัน', bdUnitWeek: 'รายสัปดาห์',
+    bdCmpLbl: 'เทียบกับ:', bdNoCompare: '— ไม่เทียบ —',
+    bdCmpTitle: 'เทียบ A กับ B — GMV ทุกแบรนด์',
+    bdDrillTitle: 'เจาะรายแบรนด์ — เทียบทุกตัวชี้วัด',
+    bdBrandLbl: 'แบรนด์:', bdLegendA: 'A', bdLegendB: 'B',
+    bdNoMonthUnit: 'แท็บรายเดือนยังไม่มีชุดเดือนย้อนหลังในหน้านี้ — เทียบเป็นสัปดาห์แทน',
+    bdCmpHint: 'เลือกช่อง A และ B ให้ครบเพื่อดูกราฟเทียบ',
     footer: 'สร้างจากข้อมูล TikTok Shop LIVE History — รันบน VPS อัตโนมัติทุก 2 ชม. (06:00-02:00)',
     analyzeDay: 'วิเคราะห์วันที่:', compareWith: 'เทียบกับ:', week1: 'สัปดาห์ที่ 1:', week2: 'สัปดาห์ที่ 2:',
     strengths: 'จุดแข็ง', weaknesses: 'จุดอ่อน', recs: '💡 คำแนะนำ / ควรปรับปรุง',
@@ -669,7 +730,7 @@ const T = {
     chipPrevDay: 'เทียบวันก่อน', chipPerDay: 'ต่อวัน',
     cdSoon: 'กำลังอัพเดต...', cdFmt: (h,m) => (h>0?`${h} ชม. `:'') + `${m} นาที`,
     updating: 'กำลังอัพเดตข้อมูล... (โหลดใหม่อัตโนมัติเมื่อพร้อม)',
-    m_orders:'Orders', m_aov:'AOV', m_customers:'ลูกค้า', m_gmvhr:'GMV/ชม.',
+    m_gmv:'GMV', m_orders:'Orders', m_aov:'AOV', m_customers:'ลูกค้า', m_gmvhr:'GMV/ชม.',
     m_views:'ยอดเข้าชม', m_impr:'การแสดงผล', m_avgdur:'ดูเฉลี่ย', m_livectr:'LIVE CTR',
     m_ctr:'CTR', m_ctor:'CTOR', m_tap:'อัตราแตะผ่าน', m_follow:'อัตราติดตาม',
     m_newf:'ผู้ติดตามใหม่', m_comments:'คอมเมนต์', m_shares:'แชร์', m_likes:'ไลก์',
@@ -748,6 +809,13 @@ const T = {
     bdDayLbl: 'Show data for:', bdAllPeriod: 'Whole period (per selected tab)',
     bdShowAll: 'Show all brands', bdHint: 'Click a brand to hide / show it',
     bdOnly: (b) => `Only ${b}`, bdHiddenNote: (n) => `${n} brand(s) hidden`,
+    bdUnitLbl: 'Compare by:', bdUnitDay: 'Day', bdUnitWeek: 'Week',
+    bdCmpLbl: 'Compare with:', bdNoCompare: '— no comparison —',
+    bdCmpTitle: 'A vs B — GMV across brands',
+    bdDrillTitle: 'Single brand — all metrics compared',
+    bdBrandLbl: 'Brand:', bdLegendA: 'A', bdLegendB: 'B',
+    bdNoMonthUnit: 'Past months are not preloaded on this page — comparing by week instead',
+    bdCmpHint: 'Pick both A and B to see the comparison chart',
     footer: 'Built from TikTok Shop LIVE History — auto-runs on VPS every 2 hours (06:00-02:00).',
     analyzeDay: 'Analyze day:', compareWith: 'Compare with:', week1: 'Week 1:', week2: 'Week 2:',
     strengths: 'Strengths', weaknesses: 'Weaknesses', recs: '💡 Recommendations',
@@ -769,7 +837,7 @@ const T = {
     chipPrevDay: 'vs prev day', chipPerDay: 'per day',
     cdSoon: 'updating...', cdFmt: (h,m) => (h>0?`${h}h `:'') + `${m}m`,
     updating: 'Updating data... (auto-reloads when ready)',
-    m_orders:'Orders', m_aov:'AOV', m_customers:'Customers', m_gmvhr:'GMV/hr',
+    m_gmv:'GMV', m_orders:'Orders', m_aov:'AOV', m_customers:'Customers', m_gmvhr:'GMV/hr',
     m_views:'Views', m_impr:'Impressions', m_avgdur:'Avg view', m_livectr:'LIVE CTR',
     m_ctr:'CTR', m_ctor:'CTOR', m_tap:'Tap-through', m_follow:'Follow rate',
     m_newf:'New followers', m_comments:'Comments', m_shares:'Shares', m_likes:'Likes',
@@ -954,31 +1022,185 @@ function renderBrandChips() {
   });
 }
 
-function populateBrandDaySelect() {
-  const sel = document.getElementById('bdDaySelect');
-  if (!sel || !DAILY || !DAILY.days) return;
-  const prev = sel.value;
-  sel.innerHTML = `<option value="">${t('bdAllPeriod')}</option>` +
-    DAILY.days.map((d, i) => {
-      const tag = i === 0 ? ` (${t('today')})` : i === 1 ? ` (${t('yesterday')})` : '';
-      return `<option value="${i}">${d.label}${tag}</option>`;
-    }).join('');
-  sel.value = prev || '';
-  if (!sel.dataset.wired) {
-    sel.addEventListener('change', renderBrandDetailForDay);
-    sel.dataset.wired = '1';
-  }
+// หน่วยที่ใช้เลือกช่วง: 'day' = รายวัน (DAILY.days) · 'week' = รายสัปดาห์ (WEEKLY.weeks)
+// ปกติเปลี่ยนตามแท็บให้เอง แต่ผู้ใช้กดเปลี่ยนเองได้
+let BD_UNIT = 'week';
+
+function bdPeriods() {
+  if (BD_UNIT === 'day') return (DAILY && DAILY.days) || [];
+  return (WEEKLY && WEEKLY.weeks) || [];
 }
 
-// เลือกวัน = เอาการ์ดของวันนั้นมาแสดงแทน · เลือก "ทั้งช่วง" = คืนของเดิม
+function bdPeriodTag(i) {
+  if (BD_UNIT !== 'day') return i === 0 ? ` (${t('thisWeekTag')})` : i === 1 ? ` (${t('lastWeekTag')})` : '';
+  return i === 0 ? ` (${t('today')})` : i === 1 ? ` (${t('yesterday')})` : '';
+}
+
+// ตั้งหน่วยเริ่มต้นตามแท็บ — รายวันใช้วัน ที่เหลือใช้สัปดาห์
+// (แท็บรายเดือนไม่มีชุดเดือนย้อนหลังฝังมาในหน้า จึงเทียบเป็นสัปดาห์แทน)
+function bdSetUnitForTab(tab) {
+  const want = tab === 'btnDaily' ? 'day' : 'week';
+  if (BD_UNIT !== want) { BD_UNIT = want; resetBdSelections(); }
+  const note = document.getElementById('bdUnitNote');
+  if (note) {
+    note.hidden = tab !== 'btnMonthly';
+    note.textContent = t('bdNoMonthUnit');
+  }
+  const u = document.getElementById('bdUnit');
+  if (u) u.value = BD_UNIT;
+  populateBrandDaySelect();
+}
+
+function resetBdSelections() {
+  ['bdDaySelect', 'bdSelB'].forEach(id => {
+    const s = document.getElementById(id);
+    if (s) s.value = '';
+  });
+}
+
+function populateBrandDaySelect() {
+  const selA = document.getElementById('bdDaySelect');
+  const selB = document.getElementById('bdSelB');
+  if (!selA || !selB) return;
+  const list = bdPeriods();
+  const opts = list.map((d, i) => `<option value="${i}">${d.label}${bdPeriodTag(i)}</option>`).join('');
+  const prevA = selA.value, prevB = selB.value;
+  selA.innerHTML = `<option value="">${t('bdAllPeriod')}</option>` + opts;
+  selB.innerHTML = `<option value="">${t('bdNoCompare')}</option>` + opts;
+  selA.value = prevA || '';
+  selB.value = prevB || '';
+
+  const u = document.getElementById('bdUnit');
+  if (u) {
+    u.options[0].textContent = t('bdUnitDay');
+    u.options[1].textContent = t('bdUnitWeek');
+    u.value = BD_UNIT;
+    if (!u.dataset.wired) {
+      u.addEventListener('change', () => {
+        BD_UNIT = u.value; resetBdSelections();
+        populateBrandDaySelect(); renderBrandDetailForDay();
+      });
+      u.dataset.wired = '1';
+    }
+  }
+  [selA, selB].forEach(s => {
+    if (!s.dataset.wired) {
+      s.addEventListener('change', renderBrandDetailForDay);
+      s.dataset.wired = '1';
+    }
+  });
+  document.getElementById('bdCmpLbl').textContent = t('bdCmpLbl');
+  document.getElementById('bdUnitLbl').textContent = t('bdUnitLbl');
+}
+
+// เลือกช่วง A = เอาการ์ดของช่วงนั้นมาแสดงแทน · ว่าง = คืนของเดิมตามแท็บ
+// เลือก B ด้วย = โผล่กราฟเทียบ A vs B
 function renderBrandDetailForDay() {
-  const sel = document.getElementById('bdDaySelect');
-  const v = sel ? sel.value : '';
-  if (v === '') { setBrandGrid(PERIOD_CARDS_HTML, false); return; }
-  const idx = parseInt(v, 10);
-  const day = DAILY.days[idx];
-  if (!day) { setBrandGrid(PERIOD_CARDS_HTML, false); return; }
-  setBrandGrid(brandCardsForDay(day, DAILY.days[idx + 1] || null), false);
+  const selA = document.getElementById('bdDaySelect');
+  const selB = document.getElementById('bdSelB');
+  const list = bdPeriods();
+  const a = selA && selA.value !== '' ? list[parseInt(selA.value, 10)] : null;
+  const b = selB && selB.value !== '' ? list[parseInt(selB.value, 10)] : null;
+
+  if (a) {
+    const idx = parseInt(selA.value, 10);
+    setBrandGrid(brandCardsForPeriod(a, b || list[idx + 1] || null), false);
+  } else {
+    setBrandGrid(PERIOD_CARDS_HTML, false);
+  }
+  renderBdCompare(a, b);
+}
+
+function brandCardsForPeriod(period, prev) {
+  const sorted = Object.entries(period.brands).sort((x, y) => y[1].gmv - x[1].gmv);
+  return sorted.map(([brand, d], i) => {
+    const rail = railColor(i, sorted.length);
+    const p = prev ? prev.brands[brand] : null;
+    const delta = (p && p.gmv) ? pctChange(d.gmv, p.gmv) : null;
+    const chip = delta === null ? '' :
+      `<span class="chip ${delta >= 0 ? 'good' : 'bad'}">${fmtPct(delta)}</span>`;
+    let sub = t('subLives')(d.live_count, d.live_hours.toFixed(1));
+    if (d.first_start) sub += ' · ' + t('started')(fmtTime(d.first_start));
+    return cardHtml(brand, d, rail, d, chip, sub);
+  }).join('');
+}
+
+// เดิมใช้ชื่อนี้ในแท็บรายวัน — คงไว้เพื่อไม่ให้โค้ดอื่นพัง
+function brandCardsForDay(day, prevDay) { return brandCardsForPeriod(day, prevDay); }
+
+function deltaHtml(now, before) {
+  if (!before) return '<span class="cmp-delta flat">—</span>';
+  const p = (now - before) / before * 100;
+  const cls = Math.abs(p) < 0.05 ? 'flat' : (p > 0 ? 'up' : 'down');
+  return `<span class="cmp-delta ${cls}">${p >= 0 ? '+' : ''}${p.toFixed(1)}%</span>`;
+}
+
+function cmpRow(name, emoji, va, vb, fmt, max) {
+  const w = v => Math.max(0, Math.min(100, (max ? v / max * 100 : 0)));
+  return `<div class="cmp-row">
+    <div class="cmp-name">${emoji || ''} ${name}</div>
+    <div class="cmp-bars">
+      <div class="cmp-line"><span class="cmp-tag">A</span>
+        <span class="cmp-track"><span class="cmp-fill a" style="width:${w(va)}%"></span></span>
+        <span class="cmp-val">${fmt(va)}</span></div>
+      <div class="cmp-line"><span class="cmp-tag">B</span>
+        <span class="cmp-track"><span class="cmp-fill b" style="width:${w(vb)}%"></span></span>
+        <span class="cmp-val">${fmt(vb)}</span></div>
+    </div>
+    ${deltaHtml(va, vb)}
+  </div>`;
+}
+
+function renderBdCompare(a, b) {
+  const wrap = document.getElementById('bdCompareWrap');
+  if (!wrap) return;
+  if (!a || !b) { wrap.hidden = true; return; }
+  wrap.hidden = false;
+
+  document.getElementById('bdCmpTitle').textContent = t('bdCmpTitle');
+  document.getElementById('bdDrillTitle').textContent = t('bdDrillTitle');
+  document.getElementById('bdBrandLbl').textContent = t('bdBrandLbl');
+  document.getElementById('bdCmpLegend').innerHTML =
+    `<span><i style="background:var(--accent)"></i>A · ${a.label}</span>` +
+    `<span><i style="background:#b8b0a8"></i>B · ${b.label}</span>`;
+
+  // แบรนด์ที่ปิดตาไว้ ไม่ต้องเอามาขึ้นกราฟด้วย
+  const brands = Object.keys(a.brands).filter(x => !BD_HIDDEN.has(x));
+  const sorted = brands.sort((x, y) => a.brands[y].gmv - a.brands[x].gmv);
+  const max = Math.max(1, ...sorted.map(x =>
+    Math.max(a.brands[x].gmv, (b.brands[x] || {}).gmv || 0)));
+
+  document.getElementById('bdCmpRows').innerHTML = sorted.map(x => {
+    const da = a.brands[x], db = b.brands[x] || {};
+    return cmpRow(x, (da.meta || {}).emoji, da.gmv, db.gmv || 0, fmtMoney, max);
+  }).join('');
+
+  // ── เจาะรายแบรนด์: ทุกตัวชี้วัด A vs B ──
+  const sel = document.getElementById('bdDrillBrand');
+  const prev = sel.value;
+  sel.innerHTML = sorted.map(x => `<option value="${x}">${x}</option>`).join('');
+  sel.value = sorted.includes(prev) ? prev : (sorted[0] || '');
+  if (!sel.dataset.wired) {
+    sel.addEventListener('change', () => renderBdDrill(a, b));
+    sel.dataset.wired = '1';
+  }
+  // เก็บช่วงล่าสุดไว้ให้ตัวเลือกแบรนด์เรียกใช้ตอนเปลี่ยนแบรนด์
+  renderBdDrill.last = [a, b];
+  renderBdDrill(a, b);
+}
+
+function renderBdDrill(a, b) {
+  if (!a || !b) { [a, b] = renderBdDrill.last || []; }
+  if (!a || !b) return;
+  const brand = document.getElementById('bdDrillBrand').value;
+  const da = a.brands[brand], db = b.brands[brand];
+  if (!da) { document.getElementById('bdDrillRows').innerHTML = ''; return; }
+
+  const rows = [['gmv', 'm_gmv', fmtMoney]].concat(CARD_METRICS);
+  document.getElementById('bdDrillRows').innerHTML = rows.map(([key, lk, fmt]) => {
+    const va = da[key] || 0, vb = (db || {})[key] || 0;
+    return cmpRow(t(lk) || key, '', va, vb, fmt, Math.max(va, vb, 1));
+  }).join('');
 }
 
 function brandCardsForDay(day, prevDay) {
@@ -1007,11 +1229,11 @@ function renderDailyCards(day, prevDay) {
   if (summaryLines.length === 1) summaryLines.push(t('noProblem'));
   renderSummary(summaryLines);
 
-  setBrandGrid(brandCardsForDay(day, prevDay));
-  // แท็บรายวันเลือกวันจากด้านบนอยู่แล้ว ช่องเลือกวันของรายละเอียดแบรนด์
-  // จึงรีเซ็ตเป็น "ทั้งช่วง" ให้ตรงกัน ไม่งั้นสองที่จะขัดกันเอง
-  const bdSel = document.getElementById('bdDaySelect');
-  if (bdSel) bdSel.value = '';
+  setBrandGrid(brandCardsForPeriod(day, prevDay));
+  // แท็บรายวันเลือกวันจากด้านบนอยู่แล้ว ช่องของรายละเอียดแบรนด์จึงรีเซ็ต
+  // ให้ตรงกัน ไม่งั้นสองที่จะขัดกันเอง
+  resetBdSelections();
+  renderBdCompare(null, null);
 }
 
 function renderDaily() {
@@ -1167,6 +1389,7 @@ function setMCMode(on) {
   document.getElementById('rankLabel').hidden = on;
   document.getElementById('brandDetailLabel').hidden = on;
   document.getElementById('bdBar').hidden = on;
+  if (on) document.getElementById('bdCompareWrap').hidden = true;
   document.getElementById('brandGrid').hidden = on;
   document.getElementById('mcWrap').hidden = !on;
   if (on) {
@@ -1831,6 +2054,7 @@ Object.keys(TABS).forEach(btnId => {
       btn.classList.toggle('active', id === btnId);
       btn.setAttribute('aria-selected', id === btnId ? 'true' : 'false');
     });
+    bdSetUnitForTab(btnId);   // รายวัน→เลือกวัน · ที่เหลือ→เลือกสัปดาห์
     renderCurrentTab();
   });
 });
@@ -1849,6 +2073,7 @@ document.getElementById('bdShowAll').addEventListener('click', () => {
 });
 
 applyStaticLabels();
+bdSetUnitForTab('btnWeekly');
 updateCountdown();
 setInterval(updateCountdown, 60000);
 renderWeekly();
