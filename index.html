@@ -204,6 +204,8 @@
   .cmp-row { display: grid; grid-template-columns: 150px 1fr 96px; align-items: center; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--border); }
   .cmp-row:last-child { border-bottom: 0; }
   .cmp-name { font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .cmp-clickable { cursor: pointer; user-select: none; }
+  .cmp-clickable:hover { color: var(--accent); text-decoration: underline; }
   .cmp-bars { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
   .cmp-line { display: flex; align-items: center; gap: 9px; }
   /* span ต้องสั่ง display:block ไม่งั้น width/height ไม่มีผล แท่งจะไม่ขึ้น */
@@ -559,6 +561,11 @@
   <div id="bdCompareWrap" hidden>
     <div class="section-label" id="bdCmpTitle"></div>
     <div class="rankbars">
+      <div class="bd-row bd-chips-row" style="margin-top:0;padding-top:0;border-top:0;margin-bottom:14px">
+        <span class="bd-hint" id="bdCmpHint"></span>
+        <div class="bd-chips" id="bdCmpChips"></div>
+        <button type="button" class="bd-reset" id="bdCmpShowAll"></button>
+      </div>
       <div class="cmp-legend" id="bdCmpLegend"></div>
       <div id="bdCmpRows"></div>
     </div>
@@ -709,6 +716,8 @@ const T = {
     bdBrandLbl: 'แบรนด์:', bdLegendA: 'A', bdLegendB: 'B',
     bdNoMonthUnit: 'แท็บรายเดือนยังไม่มีชุดเดือนย้อนหลังในหน้านี้ — เทียบเป็นสัปดาห์แทน',
     bdCmpHint: 'เลือกช่อง A และ B ให้ครบเพื่อดูกราฟเทียบ',
+    bdClickHide: 'กดเพื่อซ่อนแบรนด์นี้ (คลิกขวา = ดูเฉพาะแบรนด์นี้)',
+    bdCmpChipHint: 'ซ่อน/แสดงแบรนด์ในกราฟ:',
     footer: 'สร้างจากข้อมูล TikTok Shop LIVE History — รันบน VPS อัตโนมัติทุก 2 ชม. (06:00-02:00)',
     analyzeDay: 'วิเคราะห์วันที่:', compareWith: 'เทียบกับ:', week1: 'สัปดาห์ที่ 1:', week2: 'สัปดาห์ที่ 2:',
     strengths: 'จุดแข็ง', weaknesses: 'จุดอ่อน', recs: '💡 คำแนะนำ / ควรปรับปรุง',
@@ -816,6 +825,8 @@ const T = {
     bdBrandLbl: 'Brand:', bdLegendA: 'A', bdLegendB: 'B',
     bdNoMonthUnit: 'Past months are not preloaded on this page — comparing by week instead',
     bdCmpHint: 'Pick both A and B to see the comparison chart',
+    bdClickHide: 'Click to hide this brand (right-click = show only this one)',
+    bdCmpChipHint: 'Hide / show brands in the chart:',
     footer: 'Built from TikTok Shop LIVE History — auto-runs on VPS every 2 hours (06:00-02:00).',
     analyzeDay: 'Analyze day:', compareWith: 'Compare with:', week1: 'Week 1:', week2: 'Week 2:',
     strengths: 'Strengths', weaknesses: 'Weaknesses', recs: '💡 Recommendations',
@@ -982,14 +993,33 @@ function applyBrandFilter() {
     card.hidden = BD_HIDDEN.has(card.dataset.brand);
   });
   renderBrandChips();
+  // กราฟเทียบต้องตัดแบรนด์ที่ปิดตาออกทันทีด้วย ไม่ต้องรอเลือกช่วงใหม่
+  const last = renderBdDrill.last;
+  if (last && last[0] && last[1] &&
+      !document.getElementById('bdCompareWrap').hidden) {
+    renderBdCompare(last[0], last[1]);
+  }
 }
 
-// ปุ่มแบรนด์: กดแล้วซ่อน/แสดง · กดค้าง (คลิกขวา) = ดูเฉพาะแบรนด์นั้น
+function toggleBrand(b) {
+  if (BD_HIDDEN.has(b)) BD_HIDDEN.delete(b); else BD_HIDDEN.add(b);
+  saveHidden(); applyBrandFilter();
+}
+
+function onlyBrand(b) {
+  const all = [...document.querySelectorAll('#brandGrid .card')].map(c => c.dataset.brand);
+  BD_HIDDEN = new Set(all.filter(x => x !== b));
+  saveHidden(); applyBrandFilter();
+}
+
+// ปุ่มแบรนด์: กดแล้วซ่อน/แสดง · คลิกขวา = ดูเฉพาะแบรนด์นั้น
+// วางไว้ 2 ที่ — เหนือการ์ดแบรนด์ และในกล่องกราฟเทียบ (จะได้ไม่ต้องเลื่อนขึ้นไปกด)
 function renderBrandChips() {
-  const wrap = document.getElementById('bdChips');
-  if (!wrap) return;
-  const cards = [...document.querySelectorAll('#brandGrid .card')];
-  const brands = cards.map(c => ({
+  const wraps = [document.getElementById('bdChips'),
+                 document.getElementById('bdCmpChips')].filter(Boolean);
+  if (!wraps.length) return;
+
+  const brands = [...document.querySelectorAll('#brandGrid .card')].map(c => ({
     name: c.dataset.brand,
     rail: c.style.getPropertyValue('--rail') || 'var(--accent)'
   }));
@@ -998,26 +1028,20 @@ function renderBrandChips() {
     if (!brands.some(x => x.name === b)) brands.push({ name: b, rail: 'var(--border)' });
   });
 
-  wrap.innerHTML = brands.map(b => {
+  const html = brands.map(b => {
     const off = BD_HIDDEN.has(b.name);
     return `<button type="button" class="bd-chip${off ? ' off' : ''}"
       data-brand="${b.name}" style="--railc:${b.rail}"
       title="${t('bdOnly')(b.name)}"><span class="eye">${off ? '🚫' : '👁'}</span>${b.name}</button>`;
   }).join('');
 
-  wrap.querySelectorAll('.bd-chip').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const b = btn.dataset.brand;
-      if (BD_HIDDEN.has(b)) BD_HIDDEN.delete(b); else BD_HIDDEN.add(b);
-      saveHidden(); applyBrandFilter();
-    });
-    // คลิกขวา = ดูเฉพาะแบรนด์นี้ (ซ่อนที่เหลือทั้งหมด)
-    btn.addEventListener('contextmenu', ev => {
-      ev.preventDefault();
-      const b = btn.dataset.brand;
-      const all = [...document.querySelectorAll('#brandGrid .card')].map(c => c.dataset.brand);
-      BD_HIDDEN = new Set(all.filter(x => x !== b));
-      saveHidden(); applyBrandFilter();
+  wraps.forEach(wrap => {
+    wrap.innerHTML = html;
+    wrap.querySelectorAll('.bd-chip').forEach(btn => {
+      btn.addEventListener('click', () => toggleBrand(btn.dataset.brand));
+      btn.addEventListener('contextmenu', ev => {
+        ev.preventDefault(); onlyBrand(btn.dataset.brand);
+      });
     });
   });
 }
@@ -1135,10 +1159,14 @@ function deltaHtml(now, before) {
   return `<span class="cmp-delta ${cls}">${p >= 0 ? '+' : ''}${p.toFixed(1)}%</span>`;
 }
 
-function cmpRow(name, emoji, va, vb, fmt, max) {
+function cmpRow(name, emoji, va, vb, fmt, max, brandKey) {
   const w = v => Math.max(0, Math.min(100, (max ? v / max * 100 : 0)));
+  // แถวที่เป็นแบรนด์ กดชื่อเพื่อซ่อนแบรนด์นั้นได้เลย ไม่ต้องเลื่อนไปกดปุ่มด้านบน
+  const nameAttr = brandKey
+    ? ` class="cmp-name cmp-clickable" data-brand="${brandKey}" title="${t('bdClickHide')}"`
+    : ' class="cmp-name"';
   return `<div class="cmp-row">
-    <div class="cmp-name">${emoji || ''} ${name}</div>
+    <div${nameAttr}>${emoji || ''} ${name}</div>
     <div class="cmp-bars">
       <div class="cmp-line"><span class="cmp-tag">A</span>
         <span class="cmp-track"><span class="cmp-fill a" style="width:${w(va)}%"></span></span>
@@ -1170,10 +1198,22 @@ function renderBdCompare(a, b) {
   const max = Math.max(1, ...sorted.map(x =>
     Math.max(a.brands[x].gmv, (b.brands[x] || {}).gmv || 0)));
 
-  document.getElementById('bdCmpRows').innerHTML = sorted.map(x => {
+  const rowsEl = document.getElementById('bdCmpRows');
+  rowsEl.innerHTML = sorted.map(x => {
     const da = a.brands[x], db = b.brands[x] || {};
-    return cmpRow(x, (da.meta || {}).emoji, da.gmv, db.gmv || 0, fmtMoney, max);
+    return cmpRow(x, (da.meta || {}).emoji, da.gmv, db.gmv || 0, fmtMoney, max, x);
   }).join('');
+  if (!rowsEl.dataset.wired) {
+    rowsEl.addEventListener('click', ev => {
+      const el = ev.target.closest('.cmp-clickable');
+      if (el) toggleBrand(el.dataset.brand);
+    });
+    rowsEl.addEventListener('contextmenu', ev => {
+      const el = ev.target.closest('.cmp-clickable');
+      if (el) { ev.preventDefault(); onlyBrand(el.dataset.brand); }
+    });
+    rowsEl.dataset.wired = '1';
+  }
 
   // ── เจาะรายแบรนด์: ทุกตัวชี้วัด A vs B ──
   const sel = document.getElementById('bdDrillBrand');
@@ -1975,6 +2015,8 @@ function applyStaticLabels() {
   document.getElementById('bdDayLbl').textContent = t('bdDayLbl');
   document.getElementById('bdHint').textContent = t('bdHint');
   document.getElementById('bdShowAll').textContent = t('bdShowAll');
+  document.getElementById('bdCmpShowAll').textContent = t('bdShowAll');
+  document.getElementById('bdCmpHint').textContent = t('bdCmpChipHint');
   populateBrandDaySelect();
   document.getElementById('daySelectALabel').textContent = t('analyzeDay');
   document.getElementById('daySelectBLabel').textContent = t('compareWith');
@@ -2068,8 +2110,10 @@ document.getElementById('btnLang').addEventListener('click', () => {
 });
 
 // ปุ่ม "แสดงทุกแบรนด์" — ล้างที่ปิดตาไว้ทั้งหมด
-document.getElementById('bdShowAll').addEventListener('click', () => {
-  BD_HIDDEN.clear(); saveHidden(); applyBrandFilter();
+['bdShowAll', 'bdCmpShowAll'].forEach(id => {
+  document.getElementById(id).addEventListener('click', () => {
+    BD_HIDDEN.clear(); saveHidden(); applyBrandFilter();
+  });
 });
 
 applyStaticLabels();
