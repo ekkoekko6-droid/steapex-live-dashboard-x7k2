@@ -162,6 +162,38 @@
   .rankrow .rval .delta.bad { color: var(--bad); }
 
   /* ── Brand cards ────────────────────────── */
+  /* ── แถบควบคุมรายละเอียดแบรนด์ (เลือกวัน + ปิดตาแบรนด์) ── */
+  .bd-bar {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    padding: 14px 16px; margin-bottom: 16px;
+  }
+  .bd-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .bd-chips-row { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+  .bd-bar label { font-size: 12.5px; color: var(--text-muted); font-weight: 600; flex-shrink: 0; }
+  .bd-bar select {
+    appearance: none; font: inherit; font-size: 13px; font-weight: 600; color: var(--text);
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px;
+    padding: 7px 32px 7px 12px; cursor: pointer; min-width: 210px;
+  }
+  .bd-reset {
+    font: inherit; font-size: 12px; font-weight: 600; color: var(--text-muted);
+    background: transparent; border: 1px solid var(--border); border-radius: 999px;
+    padding: 6px 13px; cursor: pointer; margin-left: auto;
+  }
+  .bd-reset:hover { color: var(--text); border-color: var(--text-muted); }
+  .bd-hint { font-size: 11.5px; color: var(--text-muted); flex-shrink: 0; }
+  .bd-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .bd-chip {
+    font: inherit; font-size: 12.5px; font-weight: 600; color: var(--text);
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px;
+    padding: 6px 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+    border-left: 3px solid var(--railc, var(--accent));
+  }
+  .bd-chip .eye { font-size: 11px; opacity: .75; }
+  .bd-chip.off { opacity: .42; text-decoration: line-through; }
+  .bd-chip:hover { border-color: var(--text-muted); }
+  .card[hidden] { display: none; }
+
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(272px, 1fr)); gap: 16px; }
   .card {
     background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
@@ -473,6 +505,20 @@
   </div>
 
   <div class="section-label" id="brandDetailLabel"></div>
+
+  <!-- แถบควบคุมรายละเอียดแบรนด์: เลือกวัน + ปิด/เปิดแบรนด์ทีละตัว -->
+  <div class="bd-bar" id="bdBar">
+    <div class="bd-row">
+      <label for="bdDaySelect" id="bdDayLbl"></label>
+      <select id="bdDaySelect"></select>
+      <button type="button" class="bd-reset" id="bdShowAll"></button>
+    </div>
+    <div class="bd-row bd-chips-row">
+      <span class="bd-hint" id="bdHint"></span>
+      <div class="bd-chips" id="bdChips"></div>
+    </div>
+  </div>
+
   <div class="grid" id="brandGrid"></div>
 
   <!-- MC Performance (STEAPEX เท่านั้น) -->
@@ -599,6 +645,9 @@ const T = {
     mcGmvBasisNet: '(ยอด GMV สุทธิ)',
     langBtn: 'EN', gmvByBrand: 'GMV แยกตามแบรนด์', gmvMonth: 'GMV สะสมเดือนนี้',
     brandDetail: 'รายละเอียดแบรนด์', lastUpdate: 'อัพเดตล่าสุด', nextUpdate: 'อัพเดตถัดไปอีก',
+    bdDayLbl: 'ดูข้อมูลวันที่:', bdAllPeriod: 'ทั้งช่วง (ตามแท็บที่เลือก)',
+    bdShowAll: 'แสดงทุกแบรนด์', bdHint: 'กดชื่อแบรนด์เพื่อซ่อน/แสดง',
+    bdOnly: (b) => `ดูเฉพาะ ${b}`, bdHiddenNote: (n) => `ซ่อนอยู่ ${n} แบรนด์`,
     footer: 'สร้างจากข้อมูล TikTok Shop LIVE History — รันบน VPS อัตโนมัติทุก 2 ชม. (06:00-02:00)',
     analyzeDay: 'วิเคราะห์วันที่:', compareWith: 'เทียบกับ:', week1: 'สัปดาห์ที่ 1:', week2: 'สัปดาห์ที่ 2:',
     strengths: 'จุดแข็ง', weaknesses: 'จุดอ่อน', recs: '💡 คำแนะนำ / ควรปรับปรุง',
@@ -696,6 +745,9 @@ const T = {
     mcGmvBasisNet: '(net GMV)',
     langBtn: 'ไทย', gmvByBrand: 'GMV by brand', gmvMonth: 'Month-to-date GMV',
     brandDetail: 'Brand detail', lastUpdate: 'Last updated', nextUpdate: 'Next update in',
+    bdDayLbl: 'Show data for:', bdAllPeriod: 'Whole period (per selected tab)',
+    bdShowAll: 'Show all brands', bdHint: 'Click a brand to hide / show it',
+    bdOnly: (b) => `Only ${b}`, bdHiddenNote: (n) => `${n} brand(s) hidden`,
     footer: 'Built from TikTok Shop LIVE History — auto-runs on VPS every 2 hours (06:00-02:00).',
     analyzeDay: 'Analyze day:', compareWith: 'Compare with:', week1: 'Week 1:', week2: 'Week 2:',
     strengths: 'Strengths', weaknesses: 'Weaknesses', recs: '💡 Recommendations',
@@ -837,6 +889,112 @@ function renderDayCompare() {
   renderDailyCards(dayA, DAILY.days[idxA + 1] || null);
 }
 
+// ── รายละเอียดแบรนด์: เลือกวัน + ปิด/เปิดแบรนด์ ────────────
+// การ์ดของ "ทั้งช่วง" (ตามแท็บ) เก็บไว้เป็นข้อความ เผื่อผู้ใช้เลือกวันแล้วกดกลับ
+let PERIOD_CARDS_HTML = '';
+let BD_HIDDEN = new Set();          // แบรนด์ที่ถูกปิดตาไว้
+try {
+  BD_HIDDEN = new Set(JSON.parse(localStorage.getItem('bdHidden') || '[]'));
+} catch (e) { /* localStorage ปิดอยู่ก็ไม่เป็นไร */ }
+
+function saveHidden() {
+  try { localStorage.setItem('bdHidden', JSON.stringify([...BD_HIDDEN])); }
+  catch (e) { /* ไม่ต้องทำอะไร */ }
+}
+
+// ทุกที่ที่เขียนการ์ดลง brandGrid ให้ผ่านตัวนี้ จะได้จำ + กรองแบรนด์ให้เอง
+function setBrandGrid(html, isPeriod) {
+  if (isPeriod !== false) PERIOD_CARDS_HTML = html;
+  document.getElementById('brandGrid').innerHTML = html;
+  applyBrandFilter();
+}
+
+function applyBrandFilter() {
+  document.querySelectorAll('#brandGrid .card').forEach(card => {
+    card.hidden = BD_HIDDEN.has(card.dataset.brand);
+  });
+  renderBrandChips();
+}
+
+// ปุ่มแบรนด์: กดแล้วซ่อน/แสดง · กดค้าง (คลิกขวา) = ดูเฉพาะแบรนด์นั้น
+function renderBrandChips() {
+  const wrap = document.getElementById('bdChips');
+  if (!wrap) return;
+  const cards = [...document.querySelectorAll('#brandGrid .card')];
+  const brands = cards.map(c => ({
+    name: c.dataset.brand,
+    rail: c.style.getPropertyValue('--rail') || 'var(--accent)'
+  }));
+  // แบรนด์ที่ถูกซ่อนอยู่ก็ต้องยังมีปุ่มให้กดเปิดกลับ
+  BD_HIDDEN.forEach(b => {
+    if (!brands.some(x => x.name === b)) brands.push({ name: b, rail: 'var(--border)' });
+  });
+
+  wrap.innerHTML = brands.map(b => {
+    const off = BD_HIDDEN.has(b.name);
+    return `<button type="button" class="bd-chip${off ? ' off' : ''}"
+      data-brand="${b.name}" style="--railc:${b.rail}"
+      title="${t('bdOnly')(b.name)}"><span class="eye">${off ? '🚫' : '👁'}</span>${b.name}</button>`;
+  }).join('');
+
+  wrap.querySelectorAll('.bd-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const b = btn.dataset.brand;
+      if (BD_HIDDEN.has(b)) BD_HIDDEN.delete(b); else BD_HIDDEN.add(b);
+      saveHidden(); applyBrandFilter();
+    });
+    // คลิกขวา = ดูเฉพาะแบรนด์นี้ (ซ่อนที่เหลือทั้งหมด)
+    btn.addEventListener('contextmenu', ev => {
+      ev.preventDefault();
+      const b = btn.dataset.brand;
+      const all = [...document.querySelectorAll('#brandGrid .card')].map(c => c.dataset.brand);
+      BD_HIDDEN = new Set(all.filter(x => x !== b));
+      saveHidden(); applyBrandFilter();
+    });
+  });
+}
+
+function populateBrandDaySelect() {
+  const sel = document.getElementById('bdDaySelect');
+  if (!sel || !DAILY || !DAILY.days) return;
+  const prev = sel.value;
+  sel.innerHTML = `<option value="">${t('bdAllPeriod')}</option>` +
+    DAILY.days.map((d, i) => {
+      const tag = i === 0 ? ` (${t('today')})` : i === 1 ? ` (${t('yesterday')})` : '';
+      return `<option value="${i}">${d.label}${tag}</option>`;
+    }).join('');
+  sel.value = prev || '';
+  if (!sel.dataset.wired) {
+    sel.addEventListener('change', renderBrandDetailForDay);
+    sel.dataset.wired = '1';
+  }
+}
+
+// เลือกวัน = เอาการ์ดของวันนั้นมาแสดงแทน · เลือก "ทั้งช่วง" = คืนของเดิม
+function renderBrandDetailForDay() {
+  const sel = document.getElementById('bdDaySelect');
+  const v = sel ? sel.value : '';
+  if (v === '') { setBrandGrid(PERIOD_CARDS_HTML, false); return; }
+  const idx = parseInt(v, 10);
+  const day = DAILY.days[idx];
+  if (!day) { setBrandGrid(PERIOD_CARDS_HTML, false); return; }
+  setBrandGrid(brandCardsForDay(day, DAILY.days[idx + 1] || null), false);
+}
+
+function brandCardsForDay(day, prevDay) {
+  const sorted = Object.entries(day.brands).sort((a,b) => b[1].gmv - a[1].gmv);
+  return sorted.map(([brand, d], i) => {
+    const rail = railColor(i, sorted.length);
+    const p = prevDay ? prevDay.brands[brand] : null;
+    const delta = (p && p.gmv) ? pctChange(d.gmv, p.gmv) : null;
+    const chip = delta === null ? '' :
+      `<span class="chip ${delta >= 0 ? 'good' : 'bad'}">${fmtPct(delta)} ${t('chipPrevDay')}</span>`;
+    let sub = t('subLives')(d.live_count, d.live_hours.toFixed(1));
+    if (d.first_start) sub += ' · ' + t('started')(fmtTime(d.first_start));
+    return cardHtml(brand, d, rail, d, chip, sub);
+  }).join('');
+}
+
 function renderDailyCards(day, prevDay) {
   const sorted = Object.entries(day.brands).sort((a,b) => b[1].gmv - a[1].gmv);
 
@@ -849,16 +1007,11 @@ function renderDailyCards(day, prevDay) {
   if (summaryLines.length === 1) summaryLines.push(t('noProblem'));
   renderSummary(summaryLines);
 
-  document.getElementById('brandGrid').innerHTML = sorted.map(([brand, d], i) => {
-    const rail = railColor(i, sorted.length);
-    const p = prevDay ? prevDay.brands[brand] : null;
-    const delta = (p && p.gmv) ? pctChange(d.gmv, p.gmv) : null;
-    const chip = delta === null ? '' :
-      `<span class="chip ${delta >= 0 ? 'good' : 'bad'}">${fmtPct(delta)} ${t('chipPrevDay')}</span>`;
-    let sub = t('subLives')(d.live_count, d.live_hours.toFixed(1));
-    if (d.first_start) sub += ' · ' + t('started')(fmtTime(d.first_start));
-    return cardHtml(brand, d, rail, d, chip, sub);
-  }).join('');
+  setBrandGrid(brandCardsForDay(day, prevDay));
+  // แท็บรายวันเลือกวันจากด้านบนอยู่แล้ว ช่องเลือกวันของรายละเอียดแบรนด์
+  // จึงรีเซ็ตเป็น "ทั้งช่วง" ให้ตรงกัน ไม่งั้นสองที่จะขัดกันเอง
+  const bdSel = document.getElementById('bdDaySelect');
+  if (bdSel) bdSel.value = '';
 }
 
 function renderDaily() {
@@ -894,7 +1047,7 @@ function renderWeekly() {
   populateWeekSelects();
   renderWeekCompare();
 
-  document.getElementById('brandGrid').innerHTML = sorted.map(([brand, d], i) => {
+  setBrandGrid(sorted.map(([brand, d], i) => {
     const rail = railColor(i, sorted.length);
     const tw = d.thisWeek, lw = d.lastWeek;
     const delta = d.gmvChangePct;
@@ -902,7 +1055,8 @@ function renderWeekly() {
       `<span class="chip ${delta >= 0 ? 'good' : 'bad'}">${fmtPct(delta)} ${t('chipPerDay')}</span>`;
     return cardHtml(brand, d, rail, tw, chip,
       t('subLivesWeek')(tw.live_count, tw.live_hours.toFixed(0), lw.live_count, lw.live_hours.toFixed(0)));
-  }).join('');
+  }).join(''));
+  renderBrandDetailForDay();   // ถ้าค้างเลือกวันไว้ ให้คงวันนั้นต่อ
 }
 
 function renderMonthly() {
@@ -935,12 +1089,13 @@ function renderMonthly() {
     </div>`;
   }).join('');
 
-  document.getElementById('brandGrid').innerHTML = sorted.map(([brand, d], i) => {
+  setBrandGrid(sorted.map(([brand, d], i) => {
     const rail = railColor(i, sorted.length);
     const mt = d.monthTotal;
     return cardHtml(brand, d, rail, mt, '',
       t('subLivesMonth')(mt.live_count, mt.live_hours.toFixed(0), MONTHLY.daysElapsed));
-  }).join('');
+  }).join(''));
+  renderBrandDetailForDay();   // ถ้าค้างเลือกวันไว้ ให้คงวันนั้นต่อ
 }
 
 // [key, labelKey, formatter] — ตัวชี้วัดทั้งหมดที่โชว์ในการ์ด (เพิ่มครบตามที่ขอ)
@@ -1011,6 +1166,7 @@ function setMCMode(on) {
   document.getElementById('summarySection').hidden = on;
   document.getElementById('rankLabel').hidden = on;
   document.getElementById('brandDetailLabel').hidden = on;
+  document.getElementById('bdBar').hidden = on;
   document.getElementById('brandGrid').hidden = on;
   document.getElementById('mcWrap').hidden = !on;
   if (on) {
@@ -1512,7 +1668,7 @@ function cardHtml(brand, d, rail, metrics, chip, subLine) {
     const st = metricStatus(key, metrics[key] || 0, brand);
     return `<div class="metric"><span class="k">${t(lk)}</span><span class="v ${st}">${fmt(metrics[key] || 0)}</span></div>`;
   }).join('');
-  return `<div class="card" style="--rail:${rail}">
+  return `<div class="card" data-brand="${brand}" style="--rail:${rail}">
     <div class="card-head"><div class="name">${d.meta.emoji} ${brand}</div></div>
     <div class="card-sub">${subLine}</div>
     <div class="hero"><span class="num">${fmtMoney(metrics.gmv)}</span>${chip}</div>
@@ -1593,6 +1749,10 @@ function applyStaticLabels() {
   document.getElementById('btnMonthly').textContent = t('tabMonthly');
   document.getElementById('btnMC').textContent = t('tabMC');
   document.getElementById('brandDetailLabel').textContent = t('brandDetail');
+  document.getElementById('bdDayLbl').textContent = t('bdDayLbl');
+  document.getElementById('bdHint').textContent = t('bdHint');
+  document.getElementById('bdShowAll').textContent = t('bdShowAll');
+  populateBrandDaySelect();
   document.getElementById('daySelectALabel').textContent = t('analyzeDay');
   document.getElementById('daySelectBLabel').textContent = t('compareWith');
   document.getElementById('weekSelectALabel').textContent = t('week1');
@@ -1681,6 +1841,11 @@ document.getElementById('btnLang').addEventListener('click', () => {
   applyStaticLabels();
   renderCurrentTab();
   updateCountdown();
+});
+
+// ปุ่ม "แสดงทุกแบรนด์" — ล้างที่ปิดตาไว้ทั้งหมด
+document.getElementById('bdShowAll').addEventListener('click', () => {
+  BD_HIDDEN.clear(); saveHidden(); applyBrandFilter();
 });
 
 applyStaticLabels();
