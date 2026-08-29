@@ -96,6 +96,21 @@
   .upd-v.countdown { color: var(--accent); }
   .upd-item.updating { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
   .upd-item.updating .upd-v { color: var(--accent); }
+  .upd-item.rf { gap: 8px; }
+  .rfbtn {
+    appearance: none; background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    font: inherit; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 7px;
+    cursor: pointer; transition: border-color .15s, color .15s;
+  }
+  .rfbtn:hover { border-color: var(--accent); color: var(--accent); }
+  .rfbtn:disabled { opacity: .5; cursor: default; }
+  .rfkey {
+    font: inherit; font-size: 12px; width: 96px; padding: 4px 8px; border-radius: 7px;
+    border: 1px solid var(--border); background: var(--bg); color: var(--text);
+  }
+  .rfmsg { font-size: 12px; color: var(--text-muted); }
+  .rfmsg.err { color: #e5484d; }
+  .rfmsg.ok { color: var(--accent); }
   .pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: pulse 1.1s ease-in-out infinite; }
   @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
   @media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
@@ -477,6 +492,14 @@
   <div class="updatebar">
     <div class="upd-item"><span class="upd-k" id="updK"></span> <span class="upd-v" id="footTime"></span></div>
     <div class="upd-item" id="nextItem"><span class="upd-k" id="nextK"></span> <span class="upd-v countdown" id="nextUpdate"></span></div>
+    <div class="upd-item rf">
+      <button id="btnRefresh" class="rfbtn"></button>
+      <span id="rfBox" hidden>
+        <input id="rfKey" class="rfkey" type="password" autocomplete="current-password">
+        <button id="btnRefreshGo" class="rfbtn"></button>
+      </span>
+      <span class="rfmsg" id="rfMsg"></span>
+    </div>
     <div class="upd-item updating" id="updatingPill" hidden><span class="pulse"></span> <span class="upd-v" id="updatingText"></span></div>
   </div>
 
@@ -706,6 +729,12 @@ const T = {
     mcGmvBasisNet: '(ยอด GMV สุทธิ)',
     langBtn: 'EN', gmvByBrand: 'GMV แยกตามแบรนด์', gmvMonth: 'GMV สะสมเดือนนี้',
     brandDetail: 'รายละเอียดแบรนด์', lastUpdate: 'อัพเดตล่าสุด', nextUpdate: 'อัพเดตถัดไปอีก',
+    rfBtn: '⚡ อัปเดตทันที', rfGo: 'ตกลง', rfKeyPh: 'รหัส',
+    rfStarted: 'เริ่มอัปเดตแล้ว — ใช้เวลาราว 15 นาที หน้าจะรีเฟรชเอง',
+    rfRunning: 'กำลังอัปเดต… หน้าจะรีเฟรชเองเมื่อเสร็จ',
+    rfBadKey: 'รหัสไม่ถูกต้อง', rfBusy: 'กำลังอัปเดตอยู่แล้ว',
+    rfCooldown: (m) => `เพิ่งอัปเดตไป รออีก ${m} นาที`,
+    rfFail: 'ต่อไม่ติด ลองใหม่อีกครั้ง',
     bdDayLbl: 'ดูข้อมูล:', bdAllPeriod: 'ทั้งช่วง (ตามแท็บที่เลือก)',
     bdShowAll: 'แสดงทุกแบรนด์', bdHint: 'กดชื่อแบรนด์เพื่อซ่อน/แสดง',
     bdOnly: (b) => `ดูเฉพาะ ${b}`, bdHiddenNote: (n) => `ซ่อนอยู่ ${n} แบรนด์`,
@@ -816,6 +845,12 @@ const T = {
     mcGmvBasisNet: '(net GMV)',
     langBtn: 'ไทย', gmvByBrand: 'GMV by brand', gmvMonth: 'Month-to-date GMV',
     brandDetail: 'Brand detail', lastUpdate: 'Last updated', nextUpdate: 'Next update in',
+    rfBtn: '⚡ Update now', rfGo: 'Go', rfKeyPh: 'Password',
+    rfStarted: 'Update started — takes about 15 min, the page will refresh itself',
+    rfRunning: 'Updating… the page will refresh when it finishes',
+    rfBadKey: 'Wrong password', rfBusy: 'Already updating',
+    rfCooldown: (m) => `Just updated — wait ${m} more min`,
+    rfFail: 'Could not connect — try again',
     bdDayLbl: 'Show data for:', bdAllPeriod: 'Whole period (per selected tab)',
     bdShowAll: 'Show all brands', bdHint: 'Click a brand to hide / show it',
     bdOnly: (b) => `Only ${b}`, bdHiddenNote: (n) => `${n} brand(s) hidden`,
@@ -2019,6 +2054,9 @@ function applyStaticLabels() {
   document.getElementById('btnWeekly').textContent = t('tabWeekly');
   document.getElementById('btnMonthly').textContent = t('tabMonthly');
   document.getElementById('btnMC').textContent = t('tabMC');
+  document.getElementById('btnRefresh').textContent = t('rfBtn');
+  document.getElementById('btnRefreshGo').textContent = t('rfGo');
+  document.getElementById('rfKey').placeholder = t('rfKeyPh');
   document.getElementById('brandDetailLabel').textContent = t('brandDetail');
   document.getElementById('bdDayLbl').textContent = t('bdDayLbl');
   document.getElementById('bdHint').textContent = t('bdHint');
@@ -2065,13 +2103,15 @@ function isUpdatingNow(now) {
 let _reloadArmed = false;
 function updateCountdown() {
   const now = new Date();
-  const updating = isUpdatingNow(now);
+  const updating = MANUAL_REFRESH || isUpdatingNow(now);
 
   document.getElementById('nextItem').hidden = updating;
   document.getElementById('updatingPill').hidden = !updating;
 
   if (updating) {
     document.getElementById('updatingText').textContent = t('updating');
+    // รอบที่กดปุ่มเอง: ตัวถามสถานะเป็นคนสั่งรีโหลดเมื่อ pipeline จบจริง ไม่ต้องเดาเวลา
+    if (MANUAL_REFRESH) return;
     // โหลดหน้าใหม่เอง (bust cache) เพื่อดึงข้อมูลที่ pipeline เพิ่ง push — ทำครั้งเดียวหลังเจอสถานะ ~90 วิ
     if (!_reloadArmed) {
       _reloadArmed = true;
@@ -2093,6 +2133,91 @@ function updateCountdown() {
   const el = document.getElementById('nextUpdate');
   el.textContent = diffMin <= 0 ? t('cdSoon') : t('cdFmt')(Math.floor(diffMin / 60), diffMin % 60);
 }
+
+// ── ปุ่ม "อัปเดตทันที" ───────────────────────────────────────────────
+// หน้านี้เป็นไฟล์นิ่งบน GitHub Pages สั่ง VPS เองไม่ได้ จึงยิงไปที่ตัวกลางบน VPS
+// ซึ่งจะสั่ง run_dashboard_pipeline.sh ให้เริ่มทันที ไม่ต้องรอรอบ cron ทุก 2 ชม.
+const REFRESH_API = 'https://66-42-59-215.sslip.io';
+let MANUAL_REFRESH = false;
+let _rfPoll = null;
+
+function rfSay(msg, cls) {
+  const el = document.getElementById('rfMsg');
+  el.textContent = msg || '';
+  el.className = 'rfmsg' + (cls ? ' ' + cls : '');
+}
+
+function rfWatch() {
+  // ถามสถานะทุก 20 วิ พอ pipeline จบค่อยรีโหลดหน้าพร้อมล้างแคช
+  if (_rfPoll) return;
+  _rfPoll = setInterval(async () => {
+    try {
+      const r = await fetch(REFRESH_API + '/status', { cache: 'no-store' });
+      const d = await r.json();
+      if (!d.running) {
+        clearInterval(_rfPoll); _rfPoll = null;
+        location.replace(location.pathname + '?u=' + Date.now());
+      }
+    } catch (e) { /* เน็ตสะดุดชั่วคราว — รอบหน้าค่อยถามใหม่ */ }
+  }, 20000);
+}
+
+async function rfSend(key) {
+  const btn = document.getElementById('btnRefresh');
+  const go = document.getElementById('btnRefreshGo');
+  btn.disabled = go.disabled = true;
+  rfSay('…');
+  try {
+    const r = await fetch(REFRESH_API + '/refresh', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ key }),
+    });
+    if (r.status === 202) {
+      localStorage.setItem('dashRefreshKey', key);
+      document.getElementById('rfBox').hidden = true;
+      MANUAL_REFRESH = true;
+      rfSay(t('rfStarted'), 'ok');
+      updateCountdown();
+      rfWatch();
+      return;
+    }
+    if (r.status === 401) {
+      localStorage.removeItem('dashRefreshKey');
+      document.getElementById('rfBox').hidden = false;
+      rfSay(t('rfBadKey'), 'err');
+    } else if (r.status === 409) {
+      MANUAL_REFRESH = true;
+      rfSay(t('rfRunning'), 'ok');
+      updateCountdown();
+      rfWatch();
+    } else if (r.status === 429) {
+      const d = await r.json();
+      rfSay(t('rfCooldown')(Math.ceil((d.cooldown_left || 0) / 60)), 'err');
+    } else {
+      rfSay(t('rfFail'), 'err');
+    }
+  } catch (e) {
+    rfSay(t('rfFail'), 'err');
+  } finally {
+    btn.disabled = go.disabled = false;
+  }
+}
+
+document.getElementById('btnRefresh').addEventListener('click', () => {
+  const saved = localStorage.getItem('dashRefreshKey');
+  if (saved) return rfSend(saved);
+  const box = document.getElementById('rfBox');
+  box.hidden = !box.hidden;
+  if (!box.hidden) document.getElementById('rfKey').focus();
+});
+document.getElementById('btnRefreshGo').addEventListener('click', () => {
+  const k = document.getElementById('rfKey').value.trim();
+  if (k) rfSend(k);
+});
+document.getElementById('rfKey').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') document.getElementById('btnRefreshGo').click();
+});
 
 function renderCurrentTab() { TABS[currentTab](); }
 
