@@ -2034,7 +2034,10 @@ function renderSchedule() {
   const leg = document.getElementById('schedLegend');
   lbl.textContent = t('schedLabel');
   const sc = (SCHEDULE || {})[mcBrand];
-  const ym = (MC && MC.month) || CUR_YM;
+  // MC.month มาเป็น 'MM/YYYY' ส่วนตารางงานเก็บเป็น 'YYYY-MM' — แปลงก่อนเทียบ
+  const rawYm = (MC && MC.month) || CUR_YM;
+  const mm = /^(\d{2})\/(\d{4})$/.exec(rawYm);
+  const ym = mm ? mm[2] + '-' + mm[1] : rawYm;
   if (!sc || !sc.rows || !sc.rows.length || sc.ym !== ym) {
     note.textContent = t('schedNone');
     tbl.innerHTML = '';
