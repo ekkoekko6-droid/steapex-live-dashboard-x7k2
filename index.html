@@ -742,7 +742,7 @@ const T = {
     schedNote: (ym, n) => `เดือน ${ym} · ${n} คน · ตัวเลขในช่อง = เวลาเข้ากะ ชี้ที่ช่องเพื่อดูเวลาเต็ม`,
     schedNone: 'ยังไม่มีตารางงานของเดือนนี้ในชีตที่บอทอ่าน',
     schedHrs: 'ชม.',
-    schedOff: 'วันหยุด', schedPT: 'พาร์ทไทม์', schedAs: 'ผู้ช่วย',
+    schedOff: 'วันหยุด', schedPT: 'พาร์ทไทม์', schedAs: 'ผู้ช่วย', schedLeave: 'ลา/พักร้อน',
     roundsFilterLbl: 'ดูเฉพาะ:', roundsAll: 'ทุกคน', roundsNone: 'ยังไม่มีข้อมูลรอบไลฟ์',
     roundsDayLbl: 'วันที่:', roundsAllDays: 'ทุกวัน', rReview: 'เกิดอะไรขึ้นในรอบนี้',
     rvAbove: 'ทำได้ดีกว่าค่าเฉลี่ยตัวเอง', rvBelow: 'ต่ำกว่าค่าเฉลี่ยตัวเอง',
@@ -863,7 +863,7 @@ const T = {
     schedNote: (ym, n) => `${ym} · ${n} people · number = shift start, hover a cell for the full range`,
     schedNone: 'No schedule for this month in the sheet the bot reads',
     schedHrs: 'hrs',
-    schedOff: 'Day off', schedPT: 'Part-time', schedAs: 'Assistant',
+    schedOff: 'Day off', schedPT: 'Part-time', schedAs: 'Assistant', schedLeave: 'On leave',
     roundsFilterLbl: 'Filter:', roundsAll: 'Everyone', roundsNone: 'No round data yet',
     roundsDayLbl: 'Day:', roundsAllDays: 'All days', rReview: 'What happened',
     rvAbove: 'above own average', rvBelow: 'below own average',
@@ -2055,7 +2055,8 @@ function renderSchedule() {
   }).join('') + `<th class="sd" style="min-width:52px">${t('schedHrs')}</th></tr></thead>`;
   const body = sc.rows.map(r => {
     const tag = r.r === 'as' ? ` <small>${t('schedAs')}</small>`
-              : (r.pt ? ` <small>${t('schedPT')}</small>` : '');
+              : (r.r === 'leave' ? ` <small>${t('schedLeave')}</small>`
+              : (r.pt ? ` <small>${t('schedPT')}</small>` : ''));
     const cells = days.map(d => {
       const v = r.d[String(d)];
       if (!v) return `<td class="sc off" title="${d} — ${t('schedOff')}">–</td>`;
