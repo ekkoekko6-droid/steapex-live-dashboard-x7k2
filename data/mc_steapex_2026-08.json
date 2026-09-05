@@ -1,5 +1,5 @@
 {
- "generatedAt": "04/09/2026 06:30",
+ "generatedAt": "05/09/2026 06:30",
  "month": "08/2026",
  "brand": "STEAPEX",
  "livesAnalyzed": 34,
@@ -28,26 +28,26 @@
   2
  ],
  "gmvByHour": [
-  147111,
-  246842,
-  371534,
-  441554,
-  499765,
-  512449,
-  571796,
-  471764,
-  497184,
-  481320,
-  410674,
-  422468,
-  458731,
-  605966,
-  764460,
-  737814,
-  656178,
-  481561,
-  332635,
-  228902,
+  147197,
+  246934,
+  371787,
+  441865,
+  500071,
+  512788,
+  572095,
+  472121,
+  497456,
+  481619,
+  410938,
+  422726,
+  458981,
+  606287,
+  764854,
+  738218,
+  656354,
+  481654,
+  332705,
+  228963,
   11182
  ],
  "viewersByHour": [
@@ -74,18 +74,18 @@
   33
  ],
  "totals": {
-  "gmv": 9351888,
+  "gmv": 9356795,
   "hours": 610.3,
   "lives": 34,
   "days": 31,
   "avg_viewers": 74,
-  "mc_gmv": 9314503,
-  "unassigned_gmv": 37385,
+  "mc_gmv": 9319412,
+  "unassigned_gmv": 37383,
   "double_counted": 0,
   "live_hours": 615.2,
   "unassigned_hours": 4.9,
   "scaled_lives": 33,
-  "scale_avg": 1.0692,
+  "scale_avg": 1.0696,
   "shared_hours": 0.0,
   "shopee_hours": 30.0,
   "leave_hours": 0
@@ -1042,8 +1042,8 @@
    "rounds": 4,
    "lives": 1,
    "hours": 20.0,
-   "gmv": 365460,
-   "gmv_per_hour": 18273,
+   "gmv": 367242,
+   "gmv_per_hour": 18362,
    "avg_viewers": 89,
    "live_ctr": 29.66,
    "ctor": 0.0,
@@ -1052,7 +1052,7 @@
    "follow_rate": 0.0,
    "comment_rate": 1.69,
    "best_mc": "Gan",
-   "best_gmv": 116334,
+   "best_gmv": 116901,
    "best_time": "14:00-20:00",
    "campaign": true,
    "vs_prev_day": -4
@@ -1062,8 +1062,8 @@
    "rounds": 4,
    "lives": 1,
    "hours": 19.9,
-   "gmv": 394958,
-   "gmv_per_hour": 19847,
+   "gmv": 396475,
+   "gmv_per_hour": 19923,
    "avg_viewers": 100,
    "live_ctr": 54.13,
    "ctor": 0.0,
@@ -1072,7 +1072,7 @@
    "follow_rate": 0.0,
    "comment_rate": 4.27,
    "best_mc": "Mook",
-   "best_gmv": 152416,
+   "best_gmv": 153001,
    "best_time": "14:00-20:00",
    "campaign": true,
    "vs_prev_day": 9
@@ -1082,8 +1082,8 @@
    "rounds": 4,
    "lives": 1,
    "hours": 20.0,
-   "gmv": 350729,
-   "gmv_per_hour": 17536,
+   "gmv": 352336,
+   "gmv_per_hour": 17617,
    "avg_viewers": 66,
    "live_ctr": 45.28,
    "ctor": 0.0,
@@ -1092,7 +1092,7 @@
    "follow_rate": 0.0,
    "comment_rate": 2.66,
    "best_mc": "Guy",
-   "best_gmv": 120268,
+   "best_gmv": 120819,
    "best_time": "11:00-16:00",
    "campaign": true,
    "vs_prev_day": -12
@@ -1109,9 +1109,9 @@
    "leave_kind": "",
    "shared_hours": 0.0,
    "avg_viewers": 78,
-   "gmv_total": 2241389,
-   "gmv_per_hour": 16864,
-   "gmv_per_viewer": 215.6,
+   "gmv_total": 2242729,
+   "gmv_per_hour": 16874,
+   "gmv_per_viewer": 215.8,
    "retention": 1.21,
    "hour_dist": [
     3,
@@ -1185,9 +1185,9 @@
     },
     {
      "wk": "29+",
-     "gmv": 299746,
-     "gmv_per_hour": 21516,
-     "gmv_per_viewer": 257.5,
+     "gmv": 301086,
+     "gmv_per_hour": 21612,
+     "gmv_per_viewer": 258.7,
      "avg_viewers": 83,
      "hours": 13.9
     }
@@ -1363,25 +1363,25 @@
     },
     {
      "day": 29,
-     "gmv": 95736,
-     "gmv_per_hour": 23934,
-     "gmv_per_viewer": 270.4,
+     "gmv": 96203,
+     "gmv_per_hour": 24051,
+     "gmv_per_viewer": 271.8,
      "avg_viewers": 88,
      "hours": 4.0
     },
     {
      "day": 30,
-     "gmv": 83742,
-     "gmv_per_hour": 16982,
-     "gmv_per_viewer": 201.8,
+     "gmv": 84064,
+     "gmv_per_hour": 17048,
+     "gmv_per_viewer": 202.6,
      "avg_viewers": 83,
      "hours": 4.9
     },
     {
      "day": 31,
-     "gmv": 120268,
-     "gmv_per_hour": 24054,
-     "gmv_per_viewer": 304.5,
+     "gmv": 120819,
+     "gmv_per_hour": 24164,
+     "gmv_per_viewer": 305.9,
      "avg_viewers": 79,
      "hours": 5.0
     }
@@ -1411,7 +1411,7 @@
      "_mc": "Guy",
      "rank_in_day": 2,
      "rounds_in_day": 3,
-     "vs_self": -2,
+     "vs_self": -3,
      "vs_team": 4,
      "vs_band": 2,
      "vs_prev": null,
@@ -1471,7 +1471,7 @@
      "_mc": "Guy",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": 19,
+     "vs_self": 18,
      "vs_team": 27,
      "vs_band": 25,
      "vs_prev": 11,
@@ -1561,7 +1561,7 @@
      "_mc": "Guy",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -4,
+     "vs_self": -5,
      "vs_team": 2,
      "vs_band": 15,
      "vs_prev": -46,
@@ -1591,7 +1591,7 @@
      "_mc": "Guy",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 10,
+     "vs_self": 9,
      "vs_team": 17,
      "vs_band": 15,
      "vs_prev": 15,
@@ -1653,7 +1653,7 @@
      "rounds_in_day": 4,
      "vs_self": -15,
      "vs_team": -9,
-     "vs_band": -10,
+     "vs_band": -11,
      "vs_prev": 77,
      "share_of_day": 50
     },
@@ -1681,7 +1681,7 @@
      "_mc": "Guy",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": -54,
+     "vs_self": -55,
      "vs_team": -51,
      "vs_band": -52,
      "vs_prev": -47,
@@ -1982,7 +1982,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": 19,
-     "vs_team": 28,
+     "vs_team": 27,
      "vs_band": 25,
      "vs_prev": 6,
      "share_of_day": 27
@@ -2082,18 +2082,18 @@
      "start": "10:00",
      "end": "14:00",
      "hours": 4.0,
-     "gmv": 95736,
-     "gmv_per_hour": 23934,
+     "gmv": 96203,
+     "gmv_per_hour": 24051,
      "avg_viewers": 88,
-     "gmv_per_viewer": 270.4,
+     "gmv_per_viewer": 271.8,
      "v_start": 94,
      "v_end": 91,
      "campaign": true,
      "band": "midday",
      "peak_hour": "13:00",
-     "peak_gmv": 31154,
+     "peak_gmv": 31306,
      "low_hour": "10:00",
-     "low_gmv": 18574,
+     "low_gmv": 18664,
      "live_ctr": 29.66,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -2101,10 +2101,10 @@
      "_mc": "Guy",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 42,
+     "vs_self": 43,
      "vs_team": 52,
-     "vs_band": 70,
-     "vs_prev": 19,
+     "vs_band": 71,
+     "vs_prev": 20,
      "share_of_day": 26
     },
     {
@@ -2112,18 +2112,18 @@
      "start": "06:00",
      "end": "11:00",
      "hours": 4.9,
-     "gmv": 83742,
-     "gmv_per_hour": 16982,
+     "gmv": 84064,
+     "gmv_per_hour": 17048,
      "avg_viewers": 83,
-     "gmv_per_viewer": 201.8,
+     "gmv_per_viewer": 202.6,
      "v_start": 50,
      "v_end": 109,
      "campaign": true,
      "band": "morning",
      "peak_hour": "10:00",
-     "peak_gmv": 30476,
+     "peak_gmv": 30593,
      "low_hour": "06:00",
-     "low_gmv": 6380,
+     "low_gmv": 6405,
      "live_ctr": 54.13,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -2133,7 +2133,7 @@
      "rounds_in_day": 4,
      "vs_self": 1,
      "vs_team": 8,
-     "vs_band": 83,
+     "vs_band": 84,
      "vs_prev": -29,
      "share_of_day": 21
     },
@@ -2142,18 +2142,18 @@
      "start": "11:00",
      "end": "16:00",
      "hours": 5.0,
-     "gmv": 120268,
-     "gmv_per_hour": 24054,
+     "gmv": 120819,
+     "gmv_per_hour": 24164,
      "avg_viewers": 79,
-     "gmv_per_viewer": 304.5,
+     "gmv_per_viewer": 305.9,
      "v_start": 75,
      "v_end": 74,
      "campaign": true,
      "band": "midday",
      "peak_hour": "11:00",
-     "peak_gmv": 28649,
+     "peak_gmv": 28781,
      "low_hour": "15:00",
-     "low_gmv": 17485,
+     "low_gmv": 17565,
      "live_ctr": 45.28,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -2163,7 +2163,7 @@
      "rounds_in_day": 4,
      "vs_self": 43,
      "vs_team": 53,
-     "vs_band": 71,
+     "vs_band": 72,
      "vs_prev": 42,
      "share_of_day": 34
     }
@@ -2171,17 +2171,17 @@
    "top_products": [
     {
      "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
-     "gmv": 472912,
+     "gmv": 473108,
      "pct": 21
     },
     {
      "name": "รองเท้ากีฬาซีรีส์ oxyflow แบรน…",
-     "gmv": 356254,
+     "gmv": 356479,
      "pct": 16
     },
     {
      "name": "STEAPEX WAVE รองเท้าวิ่งชายหญิ…",
-     "gmv": 288834,
+     "gmv": 289072,
      "pct": 13
     }
    ],
@@ -2194,9 +2194,9 @@
    },
    "campaign": {
     "hours": 64.927778,
-    "gmv": 1308535,
-    "gmv_per_hour": 20154,
-    "gmv_per_viewer": 243.5,
+    "gmv": 1309875,
+    "gmv_per_hour": 20174,
+    "gmv_per_viewer": 243.7,
     "avg_viewers": 83
    },
    "camp_roi": 31,
@@ -2242,9 +2242,9 @@
    "leave_kind": "",
    "shared_hours": 0.0,
    "avg_viewers": 92,
-   "gmv_total": 2158536,
-   "gmv_per_hour": 15773,
-   "gmv_per_viewer": 169.1,
+   "gmv_total": 2159971,
+   "gmv_per_hour": 15783,
+   "gmv_per_viewer": 169.2,
    "retention": 1.26,
    "hour_dist": [
     5,
@@ -2279,8 +2279,8 @@
    },
    "prime": {
     "hours": 30.0,
-    "gmv_per_hour": 21005,
-    "gmv_per_viewer": 195.3,
+    "gmv_per_hour": 21020,
+    "gmv_per_viewer": 195.5,
     "avg_viewers": 104
    },
    "weekly": [
@@ -2318,9 +2318,9 @@
     },
     {
      "wk": "29+",
-     "gmv": 331387,
-     "gmv_per_hour": 19504,
-     "gmv_per_viewer": 198.3,
+     "gmv": 332822,
+     "gmv_per_hour": 19589,
+     "gmv_per_viewer": 199.2,
      "avg_viewers": 98,
      "hours": 17.0
     }
@@ -2504,25 +2504,25 @@
     },
     {
      "day": 29,
-     "gmv": 98566,
-     "gmv_per_hour": 16428,
-     "gmv_per_viewer": 161.8,
+     "gmv": 99046,
+     "gmv_per_hour": 16508,
+     "gmv_per_viewer": 162.6,
      "avg_viewers": 102,
      "hours": 6.0
     },
     {
      "day": 30,
-     "gmv": 152416,
-     "gmv_per_hour": 25403,
-     "gmv_per_viewer": 205.1,
+     "gmv": 153001,
+     "gmv_per_hour": 25500,
+     "gmv_per_viewer": 205.9,
      "avg_viewers": 124,
      "hours": 6.0
     },
     {
      "day": 31,
-     "gmv": 80405,
-     "gmv_per_hour": 16112,
-     "gmv_per_viewer": 252.1,
+     "gmv": 80774,
+     "gmv_per_hour": 16185,
+     "gmv_per_viewer": 253.2,
      "avg_viewers": 64,
      "hours": 5.0
     }
@@ -3223,18 +3223,18 @@
      "start": "20:00",
      "end": "02:00",
      "hours": 6.0,
-     "gmv": 98566,
-     "gmv_per_hour": 16428,
+     "gmv": 99046,
+     "gmv_per_hour": 16508,
      "avg_viewers": 102,
-     "gmv_per_viewer": 161.8,
+     "gmv_per_viewer": 162.6,
      "v_start": 128,
      "v_end": 60,
      "campaign": true,
      "band": "night",
      "peak_hour": "21:00",
-     "peak_gmv": 28812,
+     "peak_gmv": 28953,
      "low_hour": "01:00",
-     "low_gmv": 8363,
+     "low_gmv": 8404,
      "live_ctr": 29.66,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -3242,10 +3242,10 @@
      "_mc": "Mook",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 4,
-     "vs_team": 4,
+     "vs_self": 5,
+     "vs_team": 5,
      "vs_band": 3,
-     "vs_prev": -32,
+     "vs_prev": -31,
      "share_of_day": 27
     },
     {
@@ -3253,18 +3253,18 @@
      "start": "14:00",
      "end": "20:00",
      "hours": 6.0,
-     "gmv": 152416,
-     "gmv_per_hour": 25403,
+     "gmv": 153001,
+     "gmv_per_hour": 25500,
      "avg_viewers": 124,
-     "gmv_per_viewer": 205.1,
+     "gmv_per_viewer": 205.9,
      "v_start": 112,
      "v_end": 139,
      "campaign": true,
      "band": "evening",
      "peak_hour": "17:00",
-     "peak_gmv": 31289,
+     "peak_gmv": 31409,
      "low_hour": "14:00",
-     "low_gmv": 16026,
+     "low_gmv": 16087,
      "live_ctr": 54.13,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -3272,10 +3272,10 @@
      "_mc": "Mook",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 61,
-     "vs_team": 61,
-     "vs_band": 57,
-     "vs_prev": 55,
+     "vs_self": 62,
+     "vs_team": 62,
+     "vs_band": 58,
+     "vs_prev": 54,
      "share_of_day": 39
     },
     {
@@ -3283,18 +3283,18 @@
      "start": "06:00",
      "end": "11:00",
      "hours": 5.0,
-     "gmv": 80405,
-     "gmv_per_hour": 16112,
+     "gmv": 80774,
+     "gmv_per_hour": 16185,
      "avg_viewers": 64,
-     "gmv_per_viewer": 252.1,
+     "gmv_per_viewer": 253.2,
      "v_start": 56,
      "v_end": 75,
      "campaign": true,
      "band": "morning",
      "peak_hour": "08:00",
-     "peak_gmv": 24402,
+     "peak_gmv": 24514,
      "low_hour": "07:00",
-     "low_gmv": 3605,
+     "low_gmv": 3622,
      "live_ctr": 45.28,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -3302,9 +3302,9 @@
      "_mc": "Mook",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 2,
-     "vs_team": 2,
-     "vs_band": 74,
+     "vs_self": 3,
+     "vs_team": 3,
+     "vs_band": 75,
      "vs_prev": -37,
      "share_of_day": 23
     }
@@ -3312,17 +3312,17 @@
    "top_products": [
     {
      "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
-     "gmv": 445098,
+     "gmv": 445290,
      "pct": 21
     },
     {
      "name": "Steapex RUSH รองเท้าวิ่งสำหรับ…",
-     "gmv": 354813,
+     "gmv": 355079,
      "pct": 16
     },
     {
      "name": "【เปิดตัว 8.13 เท่านั้น! 】Steap…",
-     "gmv": 285518,
+     "gmv": 285885,
      "pct": 13
     }
    ],
@@ -3335,9 +3335,9 @@
    },
    "campaign": {
     "hours": 59.978612,
-    "gmv": 1181356,
-    "gmv_per_hour": 19696,
-    "gmv_per_viewer": 189.6,
+    "gmv": 1182791,
+    "gmv_per_hour": 19720,
+    "gmv_per_viewer": 189.8,
     "avg_viewers": 104
    },
    "camp_roi": 27,
@@ -3383,8 +3383,8 @@
    "leave_kind": "",
    "shared_hours": 0.0,
    "avg_viewers": 83,
-   "gmv_total": 2046000,
-   "gmv_per_hour": 18600,
+   "gmv_total": 2046514,
+   "gmv_per_hour": 18605,
    "gmv_per_viewer": 223.7,
    "retention": 1.22,
    "hour_dist": [
@@ -3420,8 +3420,8 @@
    },
    "prime": {
     "hours": 39.0,
-    "gmv_per_hour": 20867,
-    "gmv_per_viewer": 232.3,
+    "gmv_per_hour": 20877,
+    "gmv_per_viewer": 232.4,
     "avg_viewers": 90
    },
    "weekly": [
@@ -3459,9 +3459,9 @@
     },
     {
      "wk": "29+",
-     "gmv": 111965,
-     "gmv_per_hour": 22393,
-     "gmv_per_viewer": 285.6,
+     "gmv": 112478,
+     "gmv_per_hour": 22496,
+     "gmv_per_viewer": 286.9,
      "avg_viewers": 78,
      "hours": 5.0
     }
@@ -3621,9 +3621,9 @@
     },
     {
      "day": 31,
-     "gmv": 111965,
-     "gmv_per_hour": 22393,
-     "gmv_per_viewer": 285.6,
+     "gmv": 112478,
+     "gmv_per_hour": 22496,
+     "gmv_per_viewer": 286.9,
      "avg_viewers": 78,
      "hours": 5.0
     }
@@ -3744,7 +3744,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": 30,
-     "vs_team": 54,
+     "vs_team": 53,
      "vs_band": 72,
      "vs_prev": -43,
      "share_of_day": 36
@@ -3835,7 +3835,7 @@
      "rounds_in_day": 4,
      "vs_self": -37,
      "vs_team": -25,
-     "vs_band": -26,
+     "vs_band": -27,
      "vs_prev": -64,
      "share_of_day": 43
     },
@@ -3924,7 +3924,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": -26,
-     "vs_team": -12,
+     "vs_team": -13,
      "vs_band": -14,
      "vs_prev": 8,
      "share_of_day": 25
@@ -4105,7 +4105,7 @@
      "rounds_in_day": 4,
      "vs_self": 36,
      "vs_team": 60,
-     "vs_band": 58,
+     "vs_band": 57,
      "vs_prev": 70,
      "share_of_day": 34
     },
@@ -4204,18 +4204,18 @@
      "start": "16:00",
      "end": "21:00",
      "hours": 5.0,
-     "gmv": 111965,
-     "gmv_per_hour": 22393,
+     "gmv": 112478,
+     "gmv_per_hour": 22496,
      "avg_viewers": 78,
-     "gmv_per_viewer": 285.6,
+     "gmv_per_viewer": 286.9,
      "v_start": 68,
      "v_end": 106,
      "campaign": true,
      "band": "evening",
      "peak_hour": "20:00",
-     "peak_gmv": 38001,
+     "peak_gmv": 38175,
      "low_hour": "16:00",
-     "low_gmv": 13786,
+     "low_gmv": 13849,
      "live_ctr": 45.28,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -4223,8 +4223,8 @@
      "_mc": "Ohm",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 20,
-     "vs_team": 42,
+     "vs_self": 21,
+     "vs_team": 43,
      "vs_band": 39,
      "vs_prev": 39,
      "share_of_day": 32
@@ -4233,17 +4233,17 @@
    "top_products": [
     {
      "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
-     "gmv": 763616,
+     "gmv": 763720,
      "pct": 37
     },
     {
      "name": "รองเท้ากีฬาซีรีส์ oxyflow แบรน…",
-     "gmv": 300164,
+     "gmv": 300216,
      "pct": 15
     },
     {
      "name": "Steapex RUSH รองเท้าวิ่งสำหรับ…",
-     "gmv": 271371,
+     "gmv": 271433,
      "pct": 13
     }
    ],
@@ -4256,9 +4256,9 @@
    },
    "campaign": {
     "hours": 47.0,
-    "gmv": 1162572,
-    "gmv_per_hour": 24736,
-    "gmv_per_viewer": 267.7,
+    "gmv": 1163085,
+    "gmv_per_hour": 24746,
+    "gmv_per_viewer": 267.8,
     "avg_viewers": 92
    },
    "camp_roi": 46,
@@ -4304,9 +4304,9 @@
    "leave_kind": "",
    "shared_hours": 0.0,
    "avg_viewers": 76,
-   "gmv_total": 1775550,
-   "gmv_per_hour": 15209,
-   "gmv_per_viewer": 199.4,
+   "gmv_total": 1776661,
+   "gmv_per_hour": 15219,
+   "gmv_per_viewer": 199.5,
    "retention": 4.61,
    "hour_dist": [
     3,
@@ -4341,8 +4341,8 @@
    },
    "prime": {
     "hours": 27.0,
-    "gmv_per_hour": 20311,
-    "gmv_per_viewer": 210.8,
+    "gmv_per_hour": 20331,
+    "gmv_per_viewer": 211.0,
     "avg_viewers": 96
    },
    "weekly": [
@@ -4380,9 +4380,9 @@
     },
     {
      "wk": "29+",
-     "gmv": 250513,
-     "gmv_per_hour": 14736,
-     "gmv_per_viewer": 198.5,
+     "gmv": 251624,
+     "gmv_per_hour": 14801,
+     "gmv_per_viewer": 199.4,
      "avg_viewers": 74,
      "hours": 17.0
     }
@@ -4534,25 +4534,25 @@
     },
     {
      "day": 29,
-     "gmv": 116334,
-     "gmv_per_hour": 19389,
-     "gmv_per_viewer": 222.0,
+     "gmv": 116901,
+     "gmv_per_hour": 19484,
+     "gmv_per_viewer": 223.1,
      "avg_viewers": 87,
      "hours": 6.0
     },
     {
      "day": 30,
-     "gmv": 96089,
-     "gmv_per_hour": 16015,
-     "gmv_per_viewer": 184.4,
+     "gmv": 96458,
+     "gmv_per_hour": 16076,
+     "gmv_per_viewer": 185.1,
      "avg_viewers": 87,
      "hours": 6.0
     },
     {
      "day": 31,
-     "gmv": 38091,
-     "gmv_per_hour": 7618,
-     "gmv_per_viewer": 175.5,
+     "gmv": 38265,
+     "gmv_per_hour": 7653,
+     "gmv_per_viewer": 176.3,
      "avg_viewers": 43,
      "hours": 5.0
     }
@@ -4883,7 +4883,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": -47,
-     "vs_team": -48,
+     "vs_team": -49,
      "vs_band": -42,
      "vs_prev": -12,
      "share_of_day": 28
@@ -4974,7 +4974,7 @@
      "rounds_in_day": 4,
      "vs_self": -34,
      "vs_team": -37,
-     "vs_band": -37,
+     "vs_band": -38,
      "vs_prev": -23,
      "share_of_day": 29
     },
@@ -5002,7 +5002,7 @@
      "_mc": "Gan",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 10,
+     "vs_self": 9,
      "vs_team": 6,
      "vs_band": 3,
      "vs_prev": 66,
@@ -5103,18 +5103,18 @@
      "start": "14:00",
      "end": "20:00",
      "hours": 6.0,
-     "gmv": 116334,
-     "gmv_per_hour": 19389,
+     "gmv": 116901,
+     "gmv_per_hour": 19484,
      "avg_viewers": 87,
-     "gmv_per_viewer": 222.0,
+     "gmv_per_viewer": 223.1,
      "v_start": 90,
      "v_end": 84,
      "campaign": true,
      "band": "evening",
      "peak_hour": "15:00",
-     "peak_gmv": 28149,
+     "peak_gmv": 28286,
      "low_hour": "18:00",
-     "low_gmv": 12635,
+     "low_gmv": 12696,
      "live_ctr": 29.66,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -5122,10 +5122,10 @@
      "_mc": "Gan",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 27,
+     "vs_self": 28,
      "vs_team": 23,
-     "vs_band": 20,
-     "vs_prev": 27,
+     "vs_band": 21,
+     "vs_prev": 28,
      "share_of_day": 32
     },
     {
@@ -5133,18 +5133,18 @@
      "start": "20:00",
      "end": "02:00",
      "hours": 6.0,
-     "gmv": 96089,
-     "gmv_per_hour": 16015,
+     "gmv": 96458,
+     "gmv_per_hour": 16076,
      "avg_viewers": 87,
-     "gmv_per_viewer": 184.4,
+     "gmv_per_viewer": 185.1,
      "v_start": 146,
      "v_end": 32,
      "campaign": true,
      "band": "night",
      "peak_hour": "20:00",
-     "peak_gmv": 31823,
+     "peak_gmv": 31945,
      "low_hour": "01:00",
-     "low_gmv": 5171,
+     "low_gmv": 5191,
      "live_ctr": 54.13,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -5152,7 +5152,7 @@
      "_mc": "Gan",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 5,
+     "vs_self": 6,
      "vs_team": 2,
      "vs_band": 0,
      "vs_prev": -17,
@@ -5163,16 +5163,16 @@
      "start": "21:00",
      "end": "02:00",
      "hours": 5.0,
-     "gmv": 38091,
-     "gmv_per_hour": 7618,
+     "gmv": 38265,
+     "gmv_per_hour": 7653,
      "avg_viewers": 43,
-     "gmv_per_viewer": 175.5,
+     "gmv_per_viewer": 176.3,
      "v_start": 117,
      "v_end": 0,
      "campaign": true,
      "band": "night",
      "peak_hour": "21:00",
-     "peak_gmv": 37058,
+     "peak_gmv": 37228,
      "low_hour": "23:00",
      "low_gmv": 0,
      "live_ctr": 45.28,
@@ -5192,17 +5192,17 @@
    "top_products": [
     {
      "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
-     "gmv": 783713,
+     "gmv": 783834,
      "pct": 44
     },
     {
      "name": "【เปิดตัว 8.13 เท่านั้น! 】Steap…",
-     "gmv": 260185,
+     "gmv": 260514,
      "pct": 15
     },
     {
      "name": "Steapex RUSH รองเท้าวิ่งสำหรับ…",
-     "gmv": 215912,
+     "gmv": 216116,
      "pct": 12
     }
    ],
@@ -5215,9 +5215,9 @@
    },
    "campaign": {
     "hours": 53.966389,
-    "gmv": 964240,
-    "gmv_per_hour": 17867,
-    "gmv_per_viewer": 223.0,
+    "gmv": 965351,
+    "gmv_per_hour": 17888,
+    "gmv_per_viewer": 223.3,
     "avg_viewers": 80
    },
    "camp_roi": 26,
@@ -5229,10 +5229,10 @@
    },
    "insights": {
     "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿199 ต่ำกว่าค่ากลางทีม ฿216) — เน้นรีวิว/เร่งปิดการขาย"
+     "ปิดการขายต่ำ (GMV/คนดู ฿200 ต่ำกว่าค่ากลางทีม ฿216) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Low closing (GMV/viewer ฿199 below team median ฿216) — focus on reviews/urgency"
+     "Low closing (GMV/viewer ฿200 below team median ฿216) — focus on reviews/urgency"
     ]
    },
    "score": {
@@ -5263,8 +5263,8 @@
    "leave_kind": "",
    "shared_hours": 0.0,
    "avg_viewers": 40,
-   "gmv_total": 566264,
-   "gmv_per_hour": 7276,
+   "gmv_total": 566532,
+   "gmv_per_hour": 7279,
    "gmv_per_viewer": 176.4,
    "retention": 1.34,
    "hour_dist": [
@@ -5334,9 +5334,9 @@
     },
     {
      "wk": "29+",
-     "gmv": 54824,
-     "gmv_per_hour": 13706,
-     "gmv_per_viewer": 187.1,
+     "gmv": 55092,
+     "gmv_per_hour": 13773,
+     "gmv_per_viewer": 188.0,
      "avg_viewers": 73,
      "hours": 4.0
     }
@@ -5488,9 +5488,9 @@
     },
     {
      "day": 29,
-     "gmv": 54824,
-     "gmv_per_hour": 13706,
-     "gmv_per_viewer": 187.1,
+     "gmv": 55092,
+     "gmv_per_hour": 13773,
+     "gmv_per_viewer": 188.0,
      "avg_viewers": 73,
      "hours": 4.0
     }
@@ -6041,18 +6041,18 @@
      "start": "06:00",
      "end": "10:00",
      "hours": 4.0,
-     "gmv": 54824,
-     "gmv_per_hour": 13706,
+     "gmv": 55092,
+     "gmv_per_hour": 13773,
      "avg_viewers": 73,
-     "gmv_per_viewer": 187.1,
+     "gmv_per_viewer": 188.0,
      "v_start": 63,
      "v_end": 88,
      "campaign": true,
      "band": "morning",
      "peak_hour": "09:00",
-     "peak_gmv": 21002,
+     "peak_gmv": 21104,
      "low_hour": "06:00",
-     "low_gmv": 5057,
+     "low_gmv": 5082,
      "live_ctr": 29.66,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -6060,9 +6060,9 @@
      "_mc": "Bee",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": 88,
+     "vs_self": 89,
      "vs_team": -13,
-     "vs_band": 48,
+     "vs_band": 49,
      "vs_prev": 28,
      "share_of_day": 15
     }
@@ -6070,17 +6070,17 @@
    "top_products": [
     {
      "name": "รองเท้ากีฬาซีรีส์ oxyflow แบรน…",
-     "gmv": 149217,
+     "gmv": 149422,
      "pct": 27
     },
     {
      "name": "STEAPEX WAVE รองเท้าวิ่งชายหญิ…",
-     "gmv": 88476,
+     "gmv": 88530,
      "pct": 16
     },
     {
      "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
-     "gmv": 84656,
+     "gmv": 84663,
      "pct": 15
     }
    ],
@@ -6093,12 +6093,12 @@
    },
    "campaign": {
     "hours": 23.702222,
-    "gmv": 229960,
-    "gmv_per_hour": 9702,
-    "gmv_per_viewer": 188.3,
+    "gmv": 230227,
+    "gmv_per_hour": 9713,
+    "gmv_per_viewer": 188.6,
     "avg_viewers": 51
    },
-   "camp_roi": 11,
+   "camp_roi": 12,
    "group": "pt",
    "category": "improve",
    "category_label": {
@@ -6114,15 +6114,15 @@
     ]
    },
    "score": {
-    "total": 62,
+    "total": 63,
     "parts": {
      "closing": 73,
      "audience": 59,
      "retention": 100,
      "consistency": 70,
-     "improvement": 32
+     "improvement": 35
     },
-    "improve_pct": -7,
+    "improve_pct": -6,
     "trend": {
      "icon": "📉",
      "th": "ตกลง",
@@ -6141,9 +6141,9 @@
    "leave_kind": "",
    "shared_hours": 0.0,
    "avg_viewers": 89,
-   "gmv_total": 316663,
-   "gmv_per_hour": 17592,
-   "gmv_per_viewer": 197.1,
+   "gmv_total": 316904,
+   "gmv_per_hour": 17606,
+   "gmv_per_viewer": 197.2,
    "retention": 1.16,
    "hour_dist": [
     0,
@@ -6196,9 +6196,9 @@
     },
     {
      "wk": "29+",
-     "gmv": 62711,
-     "gmv_per_hour": 20904,
-     "gmv_per_viewer": 197.8,
+     "gmv": 62952,
+     "gmv_per_hour": 20984,
+     "gmv_per_viewer": 198.6,
      "avg_viewers": 106,
      "hours": 3.0
     }
@@ -6238,9 +6238,9 @@
     },
     {
      "day": 30,
-     "gmv": 62711,
-     "gmv_per_hour": 20904,
-     "gmv_per_viewer": 197.8,
+     "gmv": 62952,
+     "gmv_per_hour": 20984,
+     "gmv_per_viewer": 198.6,
      "avg_viewers": 106,
      "hours": 3.0
     }
@@ -6371,18 +6371,18 @@
      "start": "11:00",
      "end": "14:00",
      "hours": 3.0,
-     "gmv": 62711,
-     "gmv_per_hour": 20904,
+     "gmv": 62952,
+     "gmv_per_hour": 20984,
      "avg_viewers": 106,
-     "gmv_per_viewer": 197.8,
+     "gmv_per_viewer": 198.6,
      "v_start": 113,
      "v_end": 96,
      "campaign": true,
      "band": "midday",
      "peak_hour": "11:00",
-     "peak_gmv": 22347,
+     "peak_gmv": 22433,
      "low_hour": "12:00",
-     "low_gmv": 18057,
+     "low_gmv": 18126,
      "live_ctr": 54.13,
      "ctor": 0.0,
      "live_gpm": 0,
@@ -6393,24 +6393,24 @@
      "vs_self": 19,
      "vs_team": 33,
      "vs_band": 49,
-     "vs_prev": -19,
+     "vs_prev": -18,
      "share_of_day": 16
     }
    ],
    "top_products": [
     {
      "name": "รองเท้ากีฬาซีรีส์ oxyflow แบรน…",
-     "gmv": 72280,
+     "gmv": 72290,
      "pct": 23
     },
     {
      "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
-     "gmv": 57756,
+     "gmv": 57831,
      "pct": 18
     },
     {
      "name": "Sport Steapex",
-     "gmv": 52669,
+     "gmv": 52740,
      "pct": 17
     }
    ],
@@ -6423,9 +6423,9 @@
    },
    "campaign": {
     "hours": 6.0,
-    "gmv": 139694,
-    "gmv_per_hour": 23282,
-    "gmv_per_viewer": 236.8,
+    "gmv": 139935,
+    "gmv_per_hour": 23322,
+    "gmv_per_viewer": 237.2,
     "avg_viewers": 98
    },
    "camp_roi": 36,
@@ -6450,9 +6450,9 @@
      "audience": 100,
      "retention": 97,
      "consistency": 77,
-     "improvement": 80
+     "improvement": 82
     },
-    "improve_pct": 12,
+    "improve_pct": 13,
     "trend": {
      "icon": "📈",
      "th": "พัฒนาขึ้น",
