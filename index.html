@@ -502,6 +502,30 @@
   .monthbar .month-loading { font-size: 12px; color: var(--text-muted); }
   .monthbar .month-note { font-size: 12px; color: var(--text-muted); }
 
+  /* STEAPEX traffic: เทียบช่วงวันเดียวกันข้ามเดือน */
+  .traffic-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; margin: 0 0 28px; box-shadow: var(--shadow); }
+  .traffic-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; flex-wrap: wrap; margin-bottom: 16px; }
+  .traffic-title { font-size: 15px; font-weight: 800; }
+  .traffic-period { font-size: 11.5px; color: var(--text-muted); }
+  .traffic-kpis { display: grid; grid-template-columns: repeat(4, minmax(150px, 1fr)); gap: 10px; margin-bottom: 18px; }
+  .traffic-kpi { background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .traffic-k { font-size: 11px; color: var(--text-muted); margin-bottom: 5px; }
+  .traffic-v { font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .traffic-d { font-size: 11px; font-weight: 700; color: var(--bad); margin-top: 4px; }
+  .traffic-bars { display: grid; grid-template-columns: 110px 1fr 90px; gap: 8px 12px; align-items: center; font-size: 12px; }
+  .traffic-track { height: 10px; border-radius: 6px; background: var(--border); overflow: hidden; }
+  .traffic-fill { display: block; height: 100%; border-radius: 6px; }
+  .traffic-fill.aug { background: var(--text-muted); }
+  .traffic-fill.sep { background: var(--accent); }
+  .traffic-num { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .traffic-note { margin-top: 16px; padding: 11px 13px; border-radius: 9px; background: color-mix(in srgb, var(--bad) 8%, var(--surface)); border: 1px solid color-mix(in srgb, var(--bad) 22%, var(--border)); font-size: 12px; line-height: 1.55; }
+  .traffic-caveat { margin-top: 8px; font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+
+  @media (max-width: 760px) {
+    .traffic-kpis { grid-template-columns: repeat(2, minmax(130px, 1fr)); }
+    .traffic-bars { grid-template-columns: 86px 1fr 72px; }
+  }
+
   [hidden] { display: none !important; }
 </style>
 
@@ -591,6 +615,8 @@
       </div>
     </div>
   </div>
+
+  <div id="monthlyTrafficWrap" hidden></div>
 
   <div class="section-label" id="brandDetailLabel"></div>
 
@@ -691,6 +717,13 @@ let MC = MC_BRANDS[mcBrand];
 // เดือนปัจจุบันฝังมากับหน้าเว็บอยู่แล้ว (โหลดเร็ว) เดือนเก่าค่อยดึงไฟล์ตอนผู้ใช้เลือก
 const MONTHS = {"monthly": ["2026-09", "2026-08", "2026-07", "2026-06"], "mc": {"steapex": ["2026-09", "2026-08", "2026-07"], "corolla": ["2026-09", "2026-08", "2026-07"]}};          // {monthly:[...], mc:{steapex:[...], corolla:[...]}}
 const CUR_YM = "2026-09";             // เดือนปัจจุบันตามเวลาไทยจากฝั่งที่สร้างหน้าเว็บ
+const STEAPEX_TRAFFIC_COMPARE = {
+  period: { aug: '2026-08-10 — 2026-08-21', sep: '2026-09-10 — 2026-09-21' },
+  aug: { impressions: 6259927, views: 403016, viewRate: 6.4380, liveHours: 235.58 },
+  sep: { impressions: 5054404, views: 306368, viewRate: 6.0614, liveHours: 237.53 },
+  change: { impressions: -19.26, views: -23.98, viewRatePp: -0.38, viewRateRel: -5.85, liveHours: 0.83 },
+  lossShare: { reach: 80.3, entryRate: 19.7 }
+};
 const MONTHLY_CUR = MONTHLY;
 const MC_CUR = { steapex: MC_BRANDS.steapex, corolla: MC_BRANDS.corolla };
 const MONTH_CACHE = {};
@@ -1368,6 +1401,7 @@ function renderDailyCards(day, prevDay) {
 function renderDaily() {
   showMonthBar(null);
   setMCMode(false);
+  document.getElementById('monthlyTrafficWrap').hidden = true;
   document.getElementById('metaLine').textContent = t('metaDaily');
   document.getElementById('footTime').textContent = DAILY.generatedAt;
   document.getElementById('rankLabel').textContent = t('gmvByBrand');
@@ -1386,6 +1420,7 @@ function pctChange(a, b) {
 function renderWeekly() {
   showMonthBar(null);
   setMCMode(false);
+  document.getElementById('monthlyTrafficWrap').hidden = true;
   const sorted = Object.entries(WEEKLY.brands).sort((a,b) => b[1].thisWeek.gmv - a[1].thisWeek.gmv);
   document.getElementById('metaLine').textContent = t('metaWeekly')(WEEKLY.thisWeekLabel, WEEKLY.lastWeekLabel);
   document.getElementById('footTime').textContent = WEEKLY.generatedAt;
@@ -1410,9 +1445,44 @@ function renderWeekly() {
   renderBrandDetailForDay();   // ถ้าค้างเลือกวันไว้ ให้คงวันนั้นต่อ
 }
 
+function renderMonthlyTraffic() {
+  const wrap = document.getElementById('monthlyTrafficWrap');
+  const d = STEAPEX_TRAFFIC_COMPARE, a = d.aug, s = d.sep;
+  const th = LANG === 'th';
+  const fmtM = v => (v / 1e6).toFixed(3) + 'M';
+  const fmtK = v => (v / 1e3).toFixed(1) + 'K';
+  const delta = v => `${v > 0 ? '+' : ''}${v.toFixed(1)}%`;
+  const rows = [
+    [th ? '10–21 ส.ค.' : 'Aug 10–21', a.impressions, 'aug'],
+    [th ? '10–21 ก.ย.' : 'Sep 10–21', s.impressions, 'sep'],
+  ];
+  wrap.hidden = false;
+  wrap.innerHTML = `<div class="section-label">${th ? 'ทราฟฟิก STEAPEX เทียบช่วงวันเดียวกัน' : 'STEAPEX same-period traffic'}</div>
+    <div class="traffic-panel">
+      <div class="traffic-head">
+        <div class="traffic-title">${th ? 'การแสดงผลเปลี่ยนเป็นคนเข้าดูต่างกันไหม?' : 'Did impressions convert into viewers differently?'}</div>
+        <div class="traffic-period">${th ? 'เทียบ 12 วันเท่ากัน: 10–21 ส.ค. กับ 10–21 ก.ย. 2026' : 'Equal 12-day periods: Aug 10–21 vs Sep 10–21, 2026'}</div>
+      </div>
+      <div class="traffic-kpis">
+        <div class="traffic-kpi"><div class="traffic-k">${th ? 'การแสดงผล' : 'Impressions'}</div><div class="traffic-v">${fmtM(a.impressions)} → ${fmtM(s.impressions)}</div><div class="traffic-d">${delta(d.change.impressions)}</div></div>
+        <div class="traffic-kpi"><div class="traffic-k">${th ? 'คนเข้าดู' : 'Views'}</div><div class="traffic-v">${fmtK(a.views)} → ${fmtK(s.views)}</div><div class="traffic-d">${delta(d.change.views)}</div></div>
+        <div class="traffic-kpi"><div class="traffic-k">${th ? 'อัตราเข้าดู (Views ÷ Impressions)' : 'View rate (Views ÷ Impressions)'}</div><div class="traffic-v">${a.viewRate.toFixed(2)}% → ${s.viewRate.toFixed(2)}%</div><div class="traffic-d">${d.change.viewRatePp.toFixed(2)} ${th ? 'จุดเปอร์เซ็นต์' : 'pp'} (${delta(d.change.viewRateRel)})</div></div>
+        <div class="traffic-kpi"><div class="traffic-k">${th ? 'ชั่วโมงไลฟ์' : 'Live hours'}</div><div class="traffic-v">${a.liveHours.toFixed(1)} → ${s.liveHours.toFixed(1)}</div><div class="traffic-d" style="color:var(--good)">${delta(d.change.liveHours)}</div></div>
+      </div>
+      <div class="traffic-bars">
+        ${rows.map(([label, value, cls]) => `<div>${label}</div><div class="traffic-track"><span class="traffic-fill ${cls}" style="width:${(value / a.impressions * 100).toFixed(1)}%"></span></div><div class="traffic-num">${fmtM(value)}</div>`).join('')}
+      </div>
+      <div class="traffic-note"><b>${th ? 'ข้อสรุป:' : 'Conclusion:'}</b> ${th
+        ? `วิวที่หายไป 96.6K คน มาจากการแสดงผลลดลงประมาณ ${d.lossShare.reach.toFixed(0)}% และจากอัตราเข้าดูลดลงอีก ${d.lossShare.entryRate.toFixed(0)}% ขณะที่ชั่วโมงไลฟ์เพิ่มเล็กน้อย จึงมีหลักฐานว่าการส่งคนเห็นไลฟ์ของบัญชีนี้อ่อนลงจริง ไม่ใช่เพราะไลฟ์สั้นลง`
+        : `The 96.6K-view loss is about ${d.lossShare.reach.toFixed(0)}% from lower reach and ${d.lossShare.entryRate.toFixed(0)}% from a lower view rate. Live hours rose slightly, so this account did receive weaker LIVE distribution; shorter airtime was not the cause.`}</div>
+      <div class="traffic-caveat">${th ? 'ข้อจำกัด: ข้อมูลนี้พิสูจน์ได้เฉพาะบัญชี STEAPEX ยังไม่พอจะฟันธงว่า TikTok ทั้งแพลตฟอร์มมีปัญหา' : 'Limitation: this proves weaker delivery for STEAPEX only; one account cannot establish a platform-wide TikTok issue.'}</div>
+    </div>`;
+}
+
 function renderMonthly() {
   setMCMode(false);
   showMonthBar('monthly');
+  renderMonthlyTraffic();
   const sorted = Object.entries(MONTHLY.brands).sort((a,b) => b[1].monthTotal.gmv - a[1].monthTotal.gmv);
   document.getElementById('metaLine').textContent = t('metaMonthly')(MONTHLY.monthLabel, MONTHLY.daysElapsed);
   document.getElementById('footTime').textContent = MONTHLY.generatedAt;
@@ -1988,6 +2058,7 @@ function renderRounds() {
 function renderMC() {
   setMCMode(true);
   showMonthBar('mc');
+  document.getElementById('monthlyTrafficWrap').hidden = true;
   const mcs = (MC && MC.mcs) || [];
   renderBrandBar();
   const prov = document.getElementById('mcProvisional');
