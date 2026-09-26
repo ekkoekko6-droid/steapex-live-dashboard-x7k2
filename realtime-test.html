@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-  <title>STEAPEX Realtime API Test</title>
+  <title>Realtime API Test</title>
   <style>
     :root{color-scheme:dark;font-family:Inter,"Noto Sans Thai",system-ui,sans-serif;background:#080b10;color:#f8fafc}
     *{box-sizing:border-box} body{margin:0;min-height:100vh;padding:28px;background:radial-gradient(circle at 10% 0,#40210c 0,transparent 34%),#080b10}
@@ -15,7 +15,7 @@
 </head>
 <body>
 <main>
-  <div class="top"><div><div class="eyebrow">PROOF OF CONCEPT · GITHUB PAGES + VPS API</div><h1 class="title">STEAPEX LIVE</h1><div class="sub">หน้าทดสอบแยก ไม่กระทบแดชบอร์ดหลัก · หน้าเว็บเช็ก API ทุก 10 วินาที</div></div><div id="status" class="pill">กำลังเชื่อมต่อ…</div></div>
+  <div class="top"><div><div class="eyebrow">PROOF OF CONCEPT · GITHUB PAGES + VPS API</div><h1 id="brand" class="title">LIVE</h1><div class="sub">หน้าทดสอบแยก ไม่กระทบแดชบอร์ดหลัก · หน้าเว็บเช็ก API ทุก 10 วินาที</div></div><div id="status" class="pill">กำลังเชื่อมต่อ…</div></div>
   <div id="error" class="error" hidden></div>
   <section id="cards" class="grid" hidden>
     <div class="card wide"><div class="label">GMV สะสมใน LIVE</div><div id="gmv" class="value">—</div></div>
@@ -45,6 +45,8 @@ async function load(){
     const live=data.status==='OK'&&!data.stale;
     el('status').className=`pill ${live?'live':'offline'}`;
     el('status').textContent=live?`● LIVE · สด ${data.age_sec} วิ`:`${data.status}${data.stale?' · ข้อมูลเก่า':''}`;
+    const brand=(data.brand||"").replace(/_/g," ");
+    el("brand").textContent=`${brand} LIVE`.trim(); document.title=`${brand} Realtime API Test`.trim();
     const k=data.kpi||{};
     show('gmv',k.gmv,'money'); show('orders',k.orders); show('aov',k.aov,'money');
     show('current_viewers',k.current_viewers); show('peak_viewers',k.peak_viewers);
