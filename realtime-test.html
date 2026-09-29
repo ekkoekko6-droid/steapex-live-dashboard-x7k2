@@ -31,14 +31,16 @@
   <div class="footer"><span id="collected">เก็บข้อมูล: —</span><span id="served">API: —</span><span id="latency">เวลาที่ใช้เก็บ: —</span></div>
 </main>
 <script>
-const API='https://66-42-59-215.sslip.io/live-test';
+// ?brand=BOSTANTENSHOE → ดึงข้อมูลช่องนั้นจากไฟล์ที่ collector office ส่งมา / ไม่ใส่ = latest.json เดิม
+const BRAND=(new URLSearchParams(location.search).get('brand')||'').replace(/[^A-Za-z0-9_]/g,'').toUpperCase();
+const API='https://66-42-59-215.sslip.io/live-test'+(BRAND?`?brand=${BRAND}&`:'?');
 const money=new Intl.NumberFormat('th-TH',{style:'currency',currency:'THB',maximumFractionDigits:0});
 const num=new Intl.NumberFormat('th-TH',{maximumFractionDigits:1});
 const el=id=>document.getElementById(id);
 const show=(id,v,kind='num')=>el(id).textContent=v==null?'—':kind==='money'?money.format(v):kind==='pct'?`${num.format(v)}%`:num.format(v);
 async function load(){
   try{
-    const response=await fetch(`${API}?t=${Date.now()}`,{cache:'no-store'});
+    const response=await fetch(`${API}t=${Date.now()}`,{cache:'no-store'});
     const data=await response.json();
     if(!response.ok) throw new Error(data.error||`HTTP ${response.status}`);
     el('error').hidden=true; el('cards').hidden=false;
