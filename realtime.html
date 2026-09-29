@@ -45,9 +45,66 @@
     .m b{display:block;font-size:17px;margin-top:2px;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .foot{margin-top:10px;font-size:12px;color:var(--dim);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
     .footer{margin-top:18px;color:var(--dim);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .card{cursor:pointer;transition:border-color .15s}
+    .card:hover{border-color:#3b4a63}
+    .card:focus-visible,.tab:focus-visible,.close:focus-visible,.chip:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+    .more{color:var(--orange);font-weight:700}
+    /* แผงสินค้าขายดี + ทราฟฟิก (กดการ์ด) */
+    .panel{position:fixed;inset:0;z-index:10;background:#05070bd9;overflow-y:auto;padding:24px;overscroll-behavior:contain}
+    .panel[hidden]{display:none}
+    .sheet{background:#0d131d;border:1px solid var(--line);border-radius:20px;max-width:1000px;margin:auto;padding:18px 20px 22px}
+    .p-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+    .p-head h2{margin:0;font-size:22px;overflow-wrap:anywhere}
+    .p-sub{color:var(--muted);font-size:13px;margin-top:4px}
+    .close{flex:none;background:#1b2433;color:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer}
+    .tabs{display:flex;gap:6px;overflow-x:auto;padding:12px 0 4px;scrollbar-width:thin}
+    .tab{flex:none;background:#0c1119;border:1px solid #1b2433;color:var(--muted);border-radius:999px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer;white-space:nowrap}
+    .tab[aria-selected=true]{color:#fff;border-color:var(--orange);background:#2a1606}
+    .tab .dot{width:6px;height:6px;margin-right:5px}
+    .kline{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .kline div{background:#0c1119;border:1px solid #1b2433;border-radius:10px;padding:6px 10px;font-size:12px;color:var(--muted)}
+    .kline b{color:#f8fafc;font-size:15px;margin-left:4px;font-variant-numeric:tabular-nums}
+    .sec{margin-top:18px}
+    .sec-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+    .sec-h h3{margin:0;font-size:17px}
+    .sec-h small{color:var(--dim);font-size:12px}
+    .empty{color:var(--dim);font-size:14px;padding:14px 0}
+    .prow{display:grid;grid-template-columns:26px minmax(0,1fr) 96px 78px 96px 84px 70px;gap:10px;align-items:center;padding:10px 2px;border-bottom:1px solid #1b2433}
+    .prow.ph{color:var(--dim);font-size:12px;padding-top:4px}
+    .prow.ph div{text-align:right}.prow.ph div:nth-child(-n+2){text-align:left}
+    .rank{color:var(--dim);font-weight:800;font-variant-numeric:tabular-nums}
+    .pname{font-size:14px;line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere}
+    .pin{display:inline-block;font-size:10px;font-weight:800;color:var(--orange);border:1px solid #7c2d12;border-radius:6px;padding:0 5px;margin-right:5px;vertical-align:1px}
+    .pn{display:contents}
+    .pc{text-align:right;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap;min-width:0}
+    .pc small{display:block;color:var(--dim);font-size:11px}
+    .pc .ml{display:none}
+    .pc.low{color:var(--amber)}
+    .chips{display:flex;gap:6px;flex-wrap:wrap}
+    .chip{background:#0c1119;border:1px solid #1b2433;color:var(--muted);border-radius:999px;padding:4px 10px;font:inherit;font-size:12px;cursor:pointer}
+    .chip[aria-pressed=true]{color:#fff;border-color:var(--orange)}
+    .trow{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr) 58px;gap:10px;align-items:center;padding:7px 0 2px}
+    .trow.sub{padding-top:3px}
+    .trow.sub .tn{padding-left:16px;color:var(--muted);font-size:13px}
+    .tn{font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .bar{height:10px;background:#0c1119;border-radius:6px;overflow:hidden}
+    .bar i{display:block;height:100%;background:var(--orange);border-radius:6px}
+    .trow.sub .bar{height:6px}.trow.sub .bar i{background:#9a5a2a}
+    .tp{text-align:right;font-weight:800;font-variant-numeric:tabular-nums;font-size:14px}
+    .trow.sub .tp{font-weight:600;color:var(--muted);font-size:13px}
+    .tmeta{color:var(--dim);font-size:12px;padding:0 0 6px;font-variant-numeric:tabular-nums}
+    .tmeta.tsub{padding-left:16px}
+    .p-foot{margin-top:16px;color:var(--dim);font-size:12px}
+    body.lock{overflow:hidden}
     @media(max-width:760px){body{padding:16px}.grid{grid-template-columns:1fr}.sum div{flex:1;min-width:0}
-      .m{grid-template-columns:repeat(3,minmax(0,1fr))}.gmv .v{font-size:28px}}
-    @media(prefers-reduced-motion:reduce){.dot{animation:none}}
+      .m{grid-template-columns:repeat(3,minmax(0,1fr))}.gmv .v{font-size:28px}
+      .panel{padding:0}.sheet{border-radius:0;border:0;min-height:100%;padding:14px 16px 24px}
+      .prow{grid-template-columns:22px minmax(0,1fr);row-gap:6px}.prow.ph{display:none}
+      .pn{display:grid;grid-column:2;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+      .pc{text-align:left;background:#0c1119;border:1px solid #1b2433;border-radius:8px;padding:5px 7px;font-size:13px}
+      .pc .ml{display:block;color:var(--muted);font-size:10px}
+      .trow{grid-template-columns:minmax(0,150px) minmax(0,1fr) 52px;gap:8px}}
+    @media(prefers-reduced-motion:reduce){.dot{animation:none}.card{transition:none}}
   </style>
 </head>
 <body>
@@ -56,7 +113,7 @@
     <div>
       <div class="eyebrow">LIVE REALTIME · ทุกช่อง</div>
       <h1>ยอดไลฟ์ตอนนี้</h1>
-      <div class="sub">อัปเดตเองทุก 30 วินาที · ช่องที่ไลฟ์อยู่ขึ้นก่อน เรียงตาม GMV</div>
+      <div class="sub">อัปเดตเองทุก 30 วินาที · ช่องที่ไลฟ์อยู่ขึ้นก่อน เรียงตาม GMV · กดการ์ดดูสินค้าขายดี + ทราฟฟิก</div>
     </div>
     <div class="sum">
       <div><b id="s-live">—</b><span>ช่องที่ไลฟ์อยู่</span></div>
@@ -66,10 +123,36 @@
   </div>
   <div id="banner" class="banner" hidden></div>
   <section id="grid" class="grid" aria-live="polite"></section>
-  <div class="footer"><span id="served">API: —</span><span>ข้อมูลจาก TikTok Shop LIVE dashboard · collector เก็บทุก 60 วิ</span></div>
+  <div class="footer"><span id="served">API: —</span><span>ข้อมูลจาก TikTok Shop LIVE dashboard · KPI เก็บทุก 60 วิ · สินค้า/ทราฟฟิกทุก ~3 นาที</span></div>
 </main>
+<div id="panel" class="panel" hidden role="dialog" aria-modal="true" aria-labelledby="p-title">
+  <div class="sheet">
+    <div class="p-head">
+      <div><h2 id="p-title">—</h2><div id="p-sub" class="p-sub"></div></div>
+      <button id="p-close" class="close" type="button">ปิด ✕</button>
+    </div>
+    <nav id="p-tabs" class="tabs" role="tablist" aria-label="เลือกช่อง"></nav>
+    <div id="p-kpi" class="kline"></div>
+    <section class="sec">
+      <div class="sec-h"><h3>สินค้าขายดี · Top 10 ตาม GMV</h3><small id="p-ptime"></small></div>
+      <div id="p-products"></div>
+    </section>
+    <section class="sec">
+      <div class="sec-h"><h3>ทราฟฟิก · คนดูมาจากไหน</h3>
+        <div class="chips" id="p-metric" role="group" aria-label="สัดส่วนตาม">
+          <button class="chip" type="button" data-m="views" aria-pressed="true">คนดู (Views)</button>
+          <button class="chip" type="button" data-m="impressions" aria-pressed="false">Impressions</button>
+          <button class="chip" type="button" data-m="gmv" aria-pressed="false">GMV</button>
+        </div>
+      </div>
+      <div id="p-traffic"></div>
+    </section>
+    <div class="p-foot">ตัวเลขสะสมตั้งแต่เริ่มไลฟ์ (ห้องปัจจุบัน/ล่าสุด) · คลิก = Impressions × CTR · ออเดอร์ = GMV ÷ AOV ของสินค้านั้น · แสดงเฉพาะ 10 ตัวแรก ผลรวมจึงอาจน้อยกว่า GMV ทั้งไลฟ์</div>
+  </div>
+</div>
 <script>
-const API='https://66-42-59-215.sslip.io/live-test?brand=all';
+const API_BASE='https://66-42-59-215.sslip.io/live-test';
+const API=`${API_BASE}?brand=all`;   // หน้ารวม: KPI ทุกช่อง (ไม่มีตารางสินค้า/ทราฟฟิก ให้ก้อนเล็ก)
 const REFRESH_MS=30000;
 const FRESH_SEC=180;          // ไลฟ์อยู่แต่ข้อมูลไม่ขยับเกิน 3 นาที = collector มีปัญหา → ป้าย "ข้อมูลเก่า"
 const COLLECTOR_DOWN_SEC=600; // ทุกช่องเงียบเกิน 10 นาที = collector น่าจะหยุด
@@ -79,8 +162,9 @@ const LABELS={STEAPEX:'STEAPEX',COROLLA:'COROLLA',COROLLA_MJ:'COROLLA Mary Jane'
   AGEFREE:'AGEFREE',AGEFREE_2:'AGEFREE 2',WESTBRONCO:'West Bronco'};
 const money=new Intl.NumberFormat('th-TH',{style:'currency',currency:'THB',maximumFractionDigits:0});
 const num=new Intl.NumberFormat('th-TH',{maximumFractionDigits:1});
+const compact=new Intl.NumberFormat('en-US',{notation:'compact',maximumFractionDigits:1});
 const $=id=>document.getElementById(id);
-const fmt=(v,kind)=>v==null||v===''?'—':kind==='money'?money.format(v):kind==='pct'?`${num.format(v)}%`:num.format(v);
+const fmt=(v,kind)=>v==null||v===''?'—':kind==='money'?money.format(v):kind==='pct'?`${num.format(v)}%`:kind==='compact'?compact.format(v):num.format(v);
 const label=b=>LABELS[b]||String(b||'').replace(/_/g,' ');
 const hhmm=iso=>iso?new Date(iso).toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'}):'';
 const ago=s=>s<60?`${s} วิที่แล้ว`:s<3600?`${Math.round(s/60)} นาทีที่แล้ว`:`${Math.round(s/3600)} ชม.ที่แล้ว`;
@@ -97,6 +181,10 @@ function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className
 function card(brand,d){
   const st=state(d), k=(d&&d.kpi)||{};
   const c=el('article',`card ${st==='live'?'is-live':st==='ended'||st==='none'?'is-off':''}`);
+  // ทั้งการ์ดกดได้ → เปิดแผงสินค้าขายดี + ทราฟฟิกของช่องนี้
+  c.tabIndex=0; c.setAttribute('role','button'); c.setAttribute('aria-label',`${label(brand)} — ดูสินค้าขายดีและทราฟฟิก`);
+  c.addEventListener('click',()=>openPanel(brand));
+  c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openPanel(brand);}});
   const head=el('div','head');
   head.append(el('div','name',label(brand)));
   const badge=el('span','badge');
@@ -109,14 +197,16 @@ function card(brand,d){
   c.append(g);
   const m=el('div','m');
   [['Orders',k.orders],['AOV',k.aov,'money'],['คนดูตอนนี้',st==='live'||st==='stale'?k.current_viewers:null],
-   ['Peak',k.peak_viewers],['CTR',k.ctr,'pct'],['CTOR',k.ctor,'pct'],['Watch GPM',k.watch_gpm,'money']]
+   ['Peak',k.peak_viewers],['Impressions',k.impressions,'compact'],['CTR',k.ctr,'pct'],['CTOR',k.ctor,'pct'],['Watch GPM',k.watch_gpm,'money']]
    .forEach(([l,v,kind])=>{const x=el('div');x.append(el('span',null,l),el('b',null,fmt(v,kind)));m.append(x);});
   c.append(m);
-  if(d){const f=el('div','foot');f.append(el('span',null,`เก็บ ${hhmm(d.collected_at)} (${ago(d.age_sec)})`),el('span',null,`room ${d.room_id||'—'}`));c.append(f);}
+  const f=el('div','foot');
+  f.append(el('span',null,d?`เก็บ ${hhmm(d.collected_at)} (${ago(d.age_sec)})`:''),el('span','more','สินค้าขายดี · ทราฟฟิก ›'));
+  c.append(f);
   return c;
 }
 
-let lastOk=null;
+let lastOk=null, allData={}, order=[];
 async function load(){
   const banner=$('banner');
   try{
@@ -128,6 +218,8 @@ async function load(){
     brands.sort((a,b)=>{const da=byBrand[a],db=byBrand[b];
       return RANK[state(da)]-RANK[state(db)]||((db&&db.kpi&&db.kpi.gmv)||0)-((da&&da.kpi&&da.kpi.gmv)||0)||label(a).localeCompare(label(b));});
     $('grid').replaceChildren(...brands.map(b=>card(b,byBrand[b])));
+    allData=byBrand; order=brands;
+    if(panelBrand) renderTabs();
     const live=brands.map(b=>byBrand[b]).filter(d=>state(d)==='live');
     $('s-live').textContent=`${live.length} / ${brands.length}`;
     $('s-gmv').textContent=money.format(live.reduce((s,d)=>s+((d.kpi&&d.kpi.gmv)||0),0));
@@ -145,8 +237,115 @@ async function load(){
     banner.textContent=`เชื่อมต่อ API ไม่สำเร็จ: ${e.message}`+(lastOk?` · ตัวเลขด้านล่างเป็นของ ${new Date(lastOk).toLocaleTimeString('th-TH')}`:'');
   }
 }
-load(); setInterval(load,REFRESH_MS);
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)load();});
+// ─── แผงสินค้าขายดี + ทราฟฟิก ───────────────────────────────
+// ชื่อแหล่งทราฟฟิกจาก API เป็นรหัส — แปลงเป็นชื่อเดียวกับหน้า LIVE dashboard ของ TikTok (เทียบจากหน้าจริง 29/09)
+const SRC={foru:'For You feed',search:'Search',others:'Other channels',message:'Inbox',square:'LIVE feed',
+  mall:'Shop tab',follow:'Following',live_cell_draw:'LIVE swipe',live_cell_click:'LIVE preview',
+  video_head_click:'Video profile taps',video_head_draw:'Others\u2019 video profiles',live_top:'Top row profile',
+  live_cell:'LIVE preview',video_head:'LIVE profile photo'};
+const srcName=s=>SRC[s]||String(s||'—').replace(/_/g,' ');
+const LOW_STOCK=20;          // สต๊อกเหลือน้อยกว่านี้ → ตัวเลขสีเหลือง
+let panelBrand=null, panelData=null, panelErr=null, metric='views', lastFocus=null;
+
+function hashBrand(){const m=/^#b=([A-Z0-9_]{2,40})$/i.exec(location.hash);return m?m[1].toUpperCase():null;}
+function openPanel(b){if(hashBrand()!==b) location.hash=`b=${b}`; else syncPanel();}
+function closePanel(){if(hashBrand()) history.pushState(null,'',location.pathname+location.search); syncPanel();}
+function syncPanel(){
+  const b=hashBrand(), p=$('panel');
+  if(!b){ if(!p.hidden){p.hidden=true;document.body.classList.remove('lock');panelBrand=null;if(lastFocus)lastFocus.focus();} return; }
+  if(p.hidden){lastFocus=document.activeElement;p.hidden=false;document.body.classList.add('lock');}
+  if(b!==panelBrand){panelBrand=b;panelData=null;panelErr=null;renderPanel();p.scrollTop=0;$('p-close').focus();}
+  renderTabs(); loadDetail();
+}
+function renderTabs(){
+  const brands=order.length?order:Object.keys(LABELS);
+  $('p-tabs').replaceChildren(...brands.map(b=>{
+    const t=el('button','tab'); t.type='button'; t.setAttribute('role','tab'); t.setAttribute('aria-selected',String(b===panelBrand));
+    if(state(allData[b])==='live') t.append(el('span','dot'));
+    t.append(label(b)); t.addEventListener('click',()=>openPanel(b)); return t;}));
+  const cur=$('p-tabs').querySelector('[aria-selected=true]'); if(cur&&cur.scrollIntoView) cur.scrollIntoView({block:'nearest',inline:'nearest'});
+}
+async function loadDetail(){
+  const b=panelBrand; if(!b) return;
+  try{
+    const r=await fetch(`${API_BASE}?brand=${encodeURIComponent(b)}&t=${Date.now()}`,{cache:'no-store'});
+    const data=await r.json();
+    if(b!==panelBrand) return;               // ผู้ใช้สลับช่องระหว่างรอ
+    if(r.status===503){panelData=null;panelErr='ช่องนี้ยังไม่มีข้อมูลจาก collector';}
+    else if(!r.ok) throw new Error(data.error||`HTTP ${r.status}`);
+    else {panelData=data;panelErr=null;}
+  }catch(e){ if(b!==panelBrand) return; panelErr=`โหลดข้อมูลไม่สำเร็จ: ${e.message}`; }
+  renderPanel();
+}
+function renderPanel(){
+  const b=panelBrand, d=panelData, k=(d&&d.kpi)||{}, st=state(d);
+  $('p-title').textContent=label(b);
+  $('p-sub').textContent=panelErr&&!d?panelErr:!d?'กำลังโหลด…':
+    `${st==='live'?'● LIVE อยู่':st==='stale'?'ข้อมูลเก่า':d.live_ended_at?`ไลฟ์ล่าสุด จบ ${hhmm(d.live_ended_at)}`:'ไลฟ์ล่าสุด'} · KPI เก็บ ${hhmm(d.collected_at)} (${ago(d.age_sec)})`+(panelErr?` · ${panelErr}`:'');
+  $('p-kpi').replaceChildren(...(d?[['GMV',k.gmv,'money'],['Orders',k.orders],['Impressions',k.impressions],['Views',k.views],['คนดูตอนนี้',st==='live'||st==='stale'?k.current_viewers:null],['CTR',k.ctr,'pct']]
+    .map(([l,v,kind])=>{const x=el('div',null,l);x.append(el('b',null,fmt(v,kind)));return x;}):[]));
+  const dt=d&&d.detail_collected_at, dage=dt?Math.max(0,Math.round((Date.now()-new Date(dt))/1000)):null;
+  $('p-ptime').textContent=dt?`อัปเดต ${hhmm(dt)} (${ago(dage)}) · ทุก ~3 นาที`:'';
+  renderProducts(d&&d.products);
+  renderTraffic(d&&d.traffic);
+}
+function pcell(lbl,main,sub,cls){
+  const c=el('div',`pc${cls?' '+cls:''}`); c.append(el('span','ml',lbl),main);
+  if(sub!=null) c.append(el('small',null,sub)); return c;
+}
+function renderProducts(list){
+  const box=$('p-products');
+  if(!list){box.replaceChildren(el('div','empty',panelData?'ยังไม่มีตารางสินค้า — collector ดึงทุก ~3 นาที รอรอบถัดไป':''));return;}
+  if(!list.length){box.replaceChildren(el('div','empty','ไลฟ์นี้ยังไม่มีสินค้าในตะกร้า'));return;}
+  const head=el('div','prow ph');
+  ['#','สินค้า','GMV','ขายได้','คลิก · CTR','Impressions','สต๊อก'].forEach(t=>head.append(el('div',null,t)));
+  box.replaceChildren(head,...list.map((p,i)=>{
+    const row=el('div','prow');
+    row.append(el('div','rank',String(i+1)));
+    const n=el('div','pname'); n.title=p.name||'';
+    if(p.pinned) n.append(el('span','pin','PIN'));
+    n.append(p.name||`ID ${p.id}`); row.append(n);
+    const pn=el('div','pn');
+    pn.append(
+      pcell('GMV',fmt(p.gmv,'money'),p.aov?`AOV ${fmt(p.aov,'money')}`:null),
+      pcell('ขายได้',`${fmt(p.items_sold)} ชิ้น`,p.orders!=null?`${fmt(p.orders)} ออเดอร์`:null),
+      pcell('คลิก · CTR',fmt(p.clicks),p.ctr!=null?`CTR ${fmt(p.ctr,'pct')}`:null),
+      pcell('Impressions',fmt(p.impressions),p.add_to_cart!=null?`ใส่ตะกร้า ${fmt(p.add_to_cart)}`:null),
+      pcell('สต๊อก',fmt(p.stock),null,p.stock!=null&&p.stock<LOW_STOCK?'low':''));
+    row.append(pn); return row;}));
+}
+function renderTraffic(list){
+  const box=$('p-traffic');
+  if(!list){box.replaceChildren(el('div','empty',panelData?'ยังไม่มีข้อมูลทราฟฟิก — collector ดึงทุก ~3 นาที รอรอบถัดไป':''));return;}
+  const total=list.reduce((s,t)=>s+(t[metric]||0),0);
+  if(!list.length||!total){box.replaceChildren(el('div','empty','ยังไม่มีข้อมูลตัวนี้ในไลฟ์นี้'));return;}
+  const share=v=>(v||0)/total*100;
+  const rows=[];
+  [...list].sort((a,b)=>(b[metric]||0)-(a[metric]||0)).forEach(t=>{
+    rows.push(trow(t,share(t[metric]),false));
+    (t.detail||[]).filter(x=>x[metric]).sort((a,b)=>(b[metric]||0)-(a[metric]||0)).forEach(x=>rows.push(trow(x,share(x[metric]),true)));
+  });
+  box.replaceChildren(...rows.flat());
+}
+function trow(t,pctv,sub){
+  const r=el('div',`trow${sub?' sub':''}`);
+  r.append(el('div','tn',srcName(t.source)));
+  const bar=el('div','bar'), i=el('i'); i.style.width=`${Math.min(100,pctv).toFixed(1)}%`; bar.append(i);
+  r.append(bar, el('div','tp',`${num.format(pctv)}%`));
+  const m=el('div',`tmeta${sub?' tsub':''}`,[`คนดู ${fmt(t.views)}`,`Impr ${fmt(t.impressions)}`,`GMV ${fmt(t.gmv,'money')}`,
+    t.enter_rate!=null?`เข้าห้อง ${fmt(t.enter_rate,'pct')}`:null].filter(Boolean).join(' · '));
+  return [r,m];
+}
+$('p-close').addEventListener('click',closePanel);
+$('panel').addEventListener('click',e=>{if(e.target===$('panel'))closePanel();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&panelBrand)closePanel();});
+$('p-metric').addEventListener('click',e=>{const bt=e.target.closest('[data-m]');if(!bt)return;metric=bt.dataset.m;
+  $('p-metric').querySelectorAll('[data-m]').forEach(x=>x.setAttribute('aria-pressed',String(x===bt)));renderTraffic(panelData&&panelData.traffic);});
+window.addEventListener('hashchange',syncPanel);
+
+async function tick(){await load(); if(panelBrand) loadDetail();}
+load().then(syncPanel); setInterval(tick,REFRESH_MS);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick();});
 </script>
 </body>
 </html>
