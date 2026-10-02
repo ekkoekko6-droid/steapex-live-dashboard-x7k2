@@ -96,8 +96,10 @@
     .tmeta.tsub{padding-left:16px}
     .p-foot{margin-top:16px;color:var(--dim);font-size:12px}
     body.lock{overflow:hidden}
-    .langbtn{background:#1b2433;color:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:8px}
-    .langbtn:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+    .langtabs{display:flex;gap:2px;background:#0c1119;border:1px solid var(--line);border-radius:999px;padding:3px;margin-bottom:8px}
+    .langtabs button{background:transparent;color:var(--muted);border:0;border-radius:999px;padding:5px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+    .langtabs button[aria-pressed=true]{background:var(--orange);color:#1a0d02}
+    .langtabs button:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
     @media(max-width:760px){body{padding:16px}.grid{grid-template-columns:1fr}.sum div{flex:1;min-width:0}
       .m{grid-template-columns:repeat(3,minmax(0,1fr))}.gmv .v{font-size:28px}
       .panel{padding:0}.sheet{border-radius:0;border:0;min-height:100%;padding:14px 16px 24px}
@@ -117,7 +119,7 @@
       <h1 data-i18n="h1">ยอดไลฟ์ตอนนี้</h1>
       <div class="sub" data-i18n="sub">อัปเดตเองทุก 30 วินาที · ช่องที่ไลฟ์อยู่ขึ้นก่อน เรียงตาม GMV · กดการ์ดดูสินค้าขายดี + ทราฟฟิก</div>
     </div>
-    <div style="display:flex;flex-direction:column;align-items:flex-end"><button id="btnLang" class="langbtn" type="button" title="Toggle language">EN</button>
+    <div style="display:flex;flex-direction:column;align-items:flex-end"><div id="langTabs" class="langtabs" role="group" aria-label="Language"><button type="button" data-lang="th" aria-pressed="true">ไทย</button><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="zh" aria-pressed="false">中文</button></div>
     <div class="sum">
       <div><b id="s-live">—</b><span data-i18n="sLive">ช่องที่ไลฟ์อยู่</span></div>
       <div><b id="s-gmv">—</b><span data-i18n="sGmv">GMV รวม (ช่องที่ไลฟ์)</span></div>
@@ -167,7 +169,7 @@ const money=new Intl.NumberFormat('th-TH',{style:'currency',currency:'THB',maxim
 const num=new Intl.NumberFormat('th-TH',{maximumFractionDigits:1});
 const compact=new Intl.NumberFormat('en-US',{notation:'compact',maximumFractionDigits:1});
 const $=id=>document.getElementById(id);
-let LANG=(()=>{try{return localStorage.getItem('dashLang')||'th'}catch(e){return 'th'}})();
+let LANG=(()=>{try{const v=localStorage.getItem('rtLang')||localStorage.getItem('dashLang')||'th';return ['th','en','zh'].includes(v)?v:'th'}catch(e){return 'th'}})();
 const EN={eyebrow:'LIVE REALTIME · ALL CHANNELS',h1:'Live sales right now',
   sub:'Auto-refresh every 30 s · live channels first, sorted by GMV · tap a card for top products + traffic',
   sLive:'Channels live',sGmv:'Total GMV (live channels)',sView:'Current viewers (total)',
@@ -198,14 +200,33 @@ const TH={langBtn:'EN',ago_s:s=>`${s} วิที่แล้ว`,ago_m:m=>`${m
   sold:'ขายได้',pcs:n=>`${n} ชิ้น`,ords:n=>`${n} ออเดอร์`,clicks:'คลิก · CTR',addCart:n=>`ใส่ตะกร้า ${n}`,stock:'สต๊อก',
   noTraffic:'ยังไม่มีข้อมูลทราฟฟิก — collector ดึงทุก ~3 นาที รอรอบถัดไป',noMetric:'ยังไม่มีข้อมูลตัวนี้ในไลฟ์นี้',
   tViews:'คนดู',tEnter:'เข้าห้อง',pickCh:'เลือกช่อง',shareBy:'สัดส่วนตาม'};
-const T=k=>(LANG==='en'&&k in EN)?EN[k]:TH[k];
-const LOC=()=>LANG==='en'?'en-GB':'th-TH';
+const ZH={eyebrow:'LIVE 实时 · 全部频道',h1:'当前直播销售',
+  sub:'每 30 秒自动刷新 · 正在直播的频道优先,按 GMV 排序 · 点击卡片查看热销商品和流量',
+  sLive:'正在直播',sGmv:'GMV 合计(直播中频道)',sView:'当前观看人数合计',
+  footer:'数据来自 TikTok Shop LIVE 数据看板 · KPI 每 60 秒 · 商品/流量约每 3 分钟',
+  close:'关闭 ✕',topProd:'热销商品 · 按 GMV 前 10',traffic:'流量 · 观众来源',mViews:'观看(Views)',
+  pfoot:'自直播开始累计(当前/最近一场)· 点击 = 曝光 × CTR · 订单 = GMV ÷ 商品客单价 · 仅显示前 10,合计可能低于整场 GMV',
+  ago_s:s=>`${s} 秒前`,ago_m:m=>`${m} 分钟前`,ago_h:h=>`${h} 小时前`,
+  viewDetail:'查看热销商品和流量',stale:'数据过时',ended:'已结束',endedAt:t=>`已结束 · ${t}`,noData:'暂无数据',
+  gmvLast:'上一场 GMV',gmvLive:'本场累计 GMV',curViewers:'当前观看',collected:(t,a)=>`采集于 ${t}(${a})`,more:'热销商品 · 流量 ›',
+  noCollector:'采集器暂无数据',collectorDown:a=>`采集器已 ${a} 未发送数据 — Mac mini 上的采集器可能已停止`,
+  apiFail:m=>`无法连接 API:${m}`,apiOld:t=>` · 以下数据为 ${t} 的数据`,
+  chNoData:'该频道暂无采集数据',loadFail:m=>`数据加载失败:${m}`,loading:'加载中…',
+  liveNow:'● 直播中',lastLive:'最近一场',lastLiveEnd:t=>`最近一场,${t} 结束`,kpiAt:(t,a)=>`KPI 采集于 ${t}(${a})`,
+  updated:(t,a)=>`更新于 ${t}(${a})· 约每 3 分钟`,noProd:'暂无商品数据 — 采集器约每 3 分钟抓取一次,请等待下一轮',
+  emptyCart:'本场直播购物车暂无商品',ph:['#','商品','GMV','销量','点击 · CTR','曝光','库存'],
+  sold:'销量',pcs:n=>`${n} 件`,ords:n=>`${n} 单`,clicks:'点击 · CTR',addCart:n=>`加购 ${n}`,stock:'库存',
+  noTraffic:'暂无流量数据 — 采集器约每 3 分钟抓取一次,请等待下一轮',noMetric:'本场直播暂无该指标数据',
+  tViews:'观看',tEnter:'进房率',pickCh:'选择频道',shareBy:'占比依据'};
+const DICT={en:EN,zh:ZH};
+const T=k=>(DICT[LANG]&&k in DICT[LANG])?DICT[LANG][k]:TH[k];
+const LOC=()=>LANG==='en'?'en-GB':LANG==='zh'?'zh-CN':'th-TH';
 function applyStatic(){
-  document.documentElement.lang=LANG;
+  document.documentElement.lang=LANG==='zh'?'zh-CN':LANG;
   document.querySelectorAll('[data-i18n]').forEach(e=>{const k=e.dataset.i18n;
     if(e.dataset.th==null) e.dataset.th=e.textContent;
-    e.textContent=LANG==='en'&&EN[k]?EN[k]:e.dataset.th;});
-  $('btnLang').textContent=T('langBtn');
+    const d=DICT[LANG]; e.textContent=d&&d[k]?d[k]:e.dataset.th;});
+  document.querySelectorAll('#langTabs [data-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===LANG)));
   $('p-tabs').setAttribute('aria-label',T('pickCh')); $('p-metric').setAttribute('aria-label',T('shareBy'));
 }
 const fmt=(v,kind)=>v==null||v===''?'—':kind==='money'?money.format(v):kind==='pct'?`${num.format(v)}%`:kind==='compact'?compact.format(v):num.format(v);
@@ -387,7 +408,8 @@ $('p-metric').addEventListener('click',e=>{const bt=e.target.closest('[data-m]')
   $('p-metric').querySelectorAll('[data-m]').forEach(x=>x.setAttribute('aria-pressed',String(x===bt)));renderTraffic(panelData&&panelData.traffic);});
 window.addEventListener('hashchange',syncPanel);
 
-$('btnLang').addEventListener('click',()=>{LANG=LANG==='en'?'th':'en';try{localStorage.setItem('dashLang',LANG)}catch(e){}
+$('langTabs').addEventListener('click',e=>{const b=e.target.closest('[data-lang]');if(!b||b.dataset.lang===LANG)return;LANG=b.dataset.lang;
+  try{localStorage.setItem('rtLang',LANG);if(LANG!=='zh')localStorage.setItem('dashLang',LANG)}catch(e){}
   applyStatic(); load(); if(panelBrand) renderPanel();});
 applyStatic();
 async function tick(){await load(); if(panelBrand) loadDetail();}
