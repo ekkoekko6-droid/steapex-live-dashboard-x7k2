@@ -95,6 +95,7 @@
     .tmeta{color:var(--dim);font-size:12px;padding:0 0 6px;font-variant-numeric:tabular-nums}
     .tmeta.tsub{padding-left:16px}
     .p-foot{margin-top:16px;color:var(--dim);font-size:12px}
+    .meta{font-size:12px;color:var(--muted);margin-top:6px;font-variant-numeric:tabular-nums}
     body.lock{overflow:hidden}
     .langtabs{display:flex;gap:2px;background:#0c1119;border:1px solid var(--line);border-radius:999px;padding:3px;margin-bottom:8px}
     .langtabs button{background:transparent;color:var(--muted);border:0;border-radius:999px;padding:5px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
@@ -187,7 +188,8 @@ const EN={eyebrow:'LIVE REALTIME · ALL CHANNELS',h1:'Live sales right now',
   emptyCart:'No products in this live cart yet',ph:['#','Product','GMV','Sold','Clicks · CTR','Impressions','Stock'],
   sold:'Sold',pcs:n=>`${n} pcs`,ords:n=>`${n} orders`,clicks:'Clicks · CTR',addCart:n=>`Add to cart ${n}`,stock:'Stock',
   noTraffic:'No traffic data yet — the collector pulls every ~3 min, wait for the next round',noMetric:'No data for this metric in this live yet',
-  tViews:'Views',tEnter:'Enter rate',pickCh:'Choose channel',shareBy:'Share by'};
+  tViews:'Views',tEnter:'Enter rate',pickCh:'Choose channel',shareBy:'Share by',
+  startedAt:t=>`Started ${t}`,startedApprox:t=>`Live since before ${t}`,roomsToday:n=>`${n} live session${n===1?'':'s'} today`,sessions:"Today's sessions"};
 const TH={langBtn:'EN',ago_s:s=>`${s} วิที่แล้ว`,ago_m:m=>`${m} นาทีที่แล้ว`,ago_h:h=>`${h} ชม.ที่แล้ว`,
   viewDetail:'ดูสินค้าขายดีและทราฟฟิก',stale:'ข้อมูลเก่า',ended:'ENDED',endedAt:t=>`ENDED · จบ ${t}`,noData:'ยังไม่มีข้อมูล',
   gmvLast:'GMV ไลฟ์ล่าสุด',gmvLive:'GMV สะสมในไลฟ์',curViewers:'คนดูตอนนี้',collected:(t,a)=>`เก็บ ${t} (${a})`,more:'สินค้าขายดี · ทราฟฟิก ›',
@@ -199,7 +201,8 @@ const TH={langBtn:'EN',ago_s:s=>`${s} วิที่แล้ว`,ago_m:m=>`${m
   emptyCart:'ไลฟ์นี้ยังไม่มีสินค้าในตะกร้า',ph:['#','สินค้า','GMV','ขายได้','คลิก · CTR','Impressions','สต๊อก'],
   sold:'ขายได้',pcs:n=>`${n} ชิ้น`,ords:n=>`${n} ออเดอร์`,clicks:'คลิก · CTR',addCart:n=>`ใส่ตะกร้า ${n}`,stock:'สต๊อก',
   noTraffic:'ยังไม่มีข้อมูลทราฟฟิก — collector ดึงทุก ~3 นาที รอรอบถัดไป',noMetric:'ยังไม่มีข้อมูลตัวนี้ในไลฟ์นี้',
-  tViews:'คนดู',tEnter:'เข้าห้อง',pickCh:'เลือกช่อง',shareBy:'สัดส่วนตาม'};
+  tViews:'คนดู',tEnter:'เข้าห้อง',pickCh:'เลือกช่อง',shareBy:'สัดส่วนตาม',
+  startedAt:t=>`เริ่มไลฟ์ ${t}`,startedApprox:t=>`ไลฟ์อยู่ตั้งแต่ก่อน ${t}`,roomsToday:n=>`วันนี้เริ่มไลฟ์ ${n} ครั้ง`,sessions:'รอบวันนี้'};
 const ZH={eyebrow:'LIVE 实时 · 全部频道',h1:'当前直播销售',
   sub:'每 30 秒自动刷新 · 正在直播的频道优先,按 GMV 排序 · 点击卡片查看热销商品和流量',
   sLive:'正在直播',sGmv:'GMV 合计(直播中频道)',sView:'当前观看人数合计',
@@ -217,7 +220,8 @@ const ZH={eyebrow:'LIVE 实时 · 全部频道',h1:'当前直播销售',
   emptyCart:'本场直播购物车暂无商品',ph:['#','商品','GMV','销量','点击 · CTR','曝光','库存'],
   sold:'销量',pcs:n=>`${n} 件`,ords:n=>`${n} 单`,clicks:'点击 · CTR',addCart:n=>`加购 ${n}`,stock:'库存',
   noTraffic:'暂无流量数据 — 采集器约每 3 分钟抓取一次,请等待下一轮',noMetric:'本场直播暂无该指标数据',
-  tViews:'观看',tEnter:'进房率',pickCh:'选择频道',shareBy:'占比依据'};
+  tViews:'观看',tEnter:'进房率',pickCh:'选择频道',shareBy:'占比依据',
+  startedAt:t=>`开播 ${t}`,startedApprox:t=>`${t} 前已开播`,roomsToday:n=>`今日开播 ${n} 次`,sessions:'今日场次'};
 const DICT={en:EN,zh:ZH};
 const T=k=>(DICT[LANG]&&k in DICT[LANG])?DICT[LANG][k]:TH[k];
 const LOC=()=>LANG==='en'?'en-GB':LANG==='zh'?'zh-CN':'th-TH';
@@ -241,6 +245,17 @@ function state(d){
 }
 const RANK={live:0,stale:1,ended:2,none:3};
 
+function metaLine(d,st){
+  if(!d) return '';
+  const parts=[];
+  if(d.live_started_at&&(st==='live'||st==='stale')) parts.push((d.live_started_approx?T('startedApprox'):T('startedAt'))(hhmm(d.live_started_at)));
+  if(d.rooms_today!=null) parts.push(T('roomsToday')(d.rooms_today));
+  return parts.join(' · ');
+}
+function sessionsText(d){
+  const l=(d&&d.rooms_today_list)||[]; if(!l.length) return '';
+  return `${T('sessions')}: `+l.map(r=>`${r.approx?'≤':''}${hhmm(r.start)}–${r.ended?hhmm(r.ended):''}`).join(', ');
+}
 function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
 
 function card(brand,d){
@@ -258,6 +273,7 @@ function card(brand,d){
   else if(st==='ended'){badge.className+=' b-ended';badge.textContent=d.live_ended_at?T('endedAt')(hhmm(d.live_ended_at)):T('ended');}
   else{badge.className+=' b-none';badge.textContent=T('noData');}
   head.append(badge); c.append(head);
+  const ml=metaLine(d,st); if(ml) c.append(el('div','meta',ml));
   const g=el('div','gmv'); g.append(el('div','l',st==='ended'?T('gmvLast'):T('gmvLive')),el('div','v',fmt(k.gmv,'money')));
   c.append(g);
   const m=el('div','m');
@@ -346,7 +362,7 @@ function renderPanel(){
   const b=panelBrand, d=panelData, k=(d&&d.kpi)||{}, st=state(d);
   $('p-title').textContent=label(b);
   $('p-sub').textContent=panelErr&&!d?panelErr:!d?T('loading'):
-    `${st==='live'?T('liveNow'):st==='stale'?T('stale'):d.live_ended_at?T('lastLiveEnd')(hhmm(d.live_ended_at)):T('lastLive')} · ${T('kpiAt')(hhmm(d.collected_at),ago(d.age_sec))}`+(panelErr?` · ${panelErr}`:'');
+    `${st==='live'?T('liveNow'):st==='stale'?T('stale'):d.live_ended_at?T('lastLiveEnd')(hhmm(d.live_ended_at)):T('lastLive')} · ${T('kpiAt')(hhmm(d.collected_at),ago(d.age_sec))}`+(d&&sessionsText(d)?` · ${sessionsText(d)}`:'')+(panelErr?` · ${panelErr}`:'');
   $('p-kpi').replaceChildren(...(d?[['GMV',k.gmv,'money'],['Orders',k.orders],['Impressions',k.impressions],['Views',k.views],[T('curViewers'),st==='live'||st==='stale'?k.current_viewers:null],['CTR',k.ctr,'pct']]
     .map(([l,v,kind])=>{const x=el('div',null,l);x.append(el('b',null,fmt(v,kind)));return x;}):[]));
   const dt=d&&d.detail_collected_at, dage=dt?Math.max(0,Math.round((Date.now()-new Date(dt))/1000)):null;
