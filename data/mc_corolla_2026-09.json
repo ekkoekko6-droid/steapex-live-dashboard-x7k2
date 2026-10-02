@@ -1,5 +1,5 @@
 {
- "generatedAt": "02/10/2026 06:30",
+ "generatedAt": "02/10/2026 15:42",
  "month": "09/2026",
  "brand": "COROLLA",
  "livesAnalyzed": 33,
@@ -87,8 +87,19 @@
   "scaled_lives": 31,
   "scale_avg": 1.0986,
   "shared_hours": 0.0,
-  "shopee_hours": 246.0,
-  "leave_hours": 89.0
+  "shopee_hours": 236.0,
+  "leave_hours": 99.0,
+  "no_mc": [
+   {
+    "key": "vacant",
+    "th": "ว่าง/ไม่มีคน",
+    "en": "No one scheduled",
+    "hours": 0.6,
+    "gmv": 5839,
+    "notes": []
+   }
+  ],
+  "incidents": []
  },
  "balance": [
   {
@@ -1893,17 +1904,17 @@
    "top_products": [
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 143306,
+     "gmv": 149615,
      "pct": 29
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 115697,
-     "pct": 24
+     "gmv": 120741,
+     "pct": 23
     },
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 63975,
+     "gmv": 68376,
      "pct": 13
     }
    ],
@@ -2738,17 +2749,17 @@
    "top_products": [
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 100852,
-     "pct": 21
+     "gmv": 101683,
+     "pct": 20
     },
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 83069,
+     "gmv": 83289,
      "pct": 17
     },
     {
      "name": "Corolla BreezeStep Shoes รองเท…",
-     "gmv": 62209,
+     "gmv": 63139,
      "pct": 13
     }
    ],
@@ -3537,17 +3548,17 @@
    "top_products": [
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 97150,
+     "gmv": 100398,
      "pct": 23
     },
     {
      "name": "【FLASH SALE จำนวนจำกัด !!! 】 C…",
-     "gmv": 51667,
+     "gmv": 51856,
      "pct": 12
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 48307,
+     "gmv": 49940,
      "pct": 12
     }
    ],
@@ -4412,17 +4423,17 @@
    "top_products": [
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 89289,
-     "pct": 23
+     "gmv": 89886,
+     "pct": 22
     },
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 59553,
+     "gmv": 64754,
      "pct": 16
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 44361,
+     "gmv": 47948,
      "pct": 12
     }
    ],
@@ -4478,9 +4489,9 @@
    "pt": false,
    "hours": 80.0,
    "slots": 80,
-   "shopee_hours": 35.0,
-   "leave_hours": 5.0,
-   "leave_kind": "ลา",
+   "shopee_hours": 30.0,
+   "leave_hours": 10.0,
+   "leave_kind": "ลา, หยุด",
    "shared_hours": 0.0,
    "avg_viewers": 29,
    "gmv_total": 409993,
@@ -5181,18 +5192,18 @@
    "top_products": [
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 92750,
+     "gmv": 95409,
      "pct": 23
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 66602,
+     "gmv": 69109,
      "pct": 17
     },
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 51258,
-     "pct": 13
+     "gmv": 56825,
+     "pct": 14
     }
    ],
    "normal": {
@@ -5950,18 +5961,18 @@
    "top_products": [
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 71816,
+     "gmv": 70256,
      "pct": 20
     },
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
      "gmv": 62642,
-     "pct": 17
+     "pct": 18
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 52014,
-     "pct": 14
+     "gmv": 52945,
+     "pct": 15
     }
    ],
    "normal": {
@@ -6016,9 +6027,9 @@
    "pt": false,
    "hours": 70.0,
    "slots": 70,
-   "shopee_hours": 36.0,
-   "leave_hours": 25.0,
-   "leave_kind": "พักร้อน, ลา",
+   "shopee_hours": 31.0,
+   "leave_hours": 30.0,
+   "leave_kind": "พักร้อน, ลา, หยุด",
    "shared_hours": 0.0,
    "avg_viewers": 26,
    "gmv_total": 340342,
@@ -6635,17 +6646,17 @@
    "top_products": [
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 72567,
+     "gmv": 72595,
      "pct": 21
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 69025,
-     "pct": 20
+     "gmv": 72458,
+     "pct": 21
     },
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 58378,
+     "gmv": 57584,
      "pct": 17
     }
    ],

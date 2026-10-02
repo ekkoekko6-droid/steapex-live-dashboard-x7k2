@@ -1,5 +1,5 @@
 {
- "generatedAt": "02/10/2026 06:30",
+ "generatedAt": "02/10/2026 15:42",
  "month": "09/2026",
  "brand": "STEAPEX",
  "livesAnalyzed": 40,
@@ -75,20 +75,44 @@
  ],
  "totals": {
   "gmv": 7044239,
-  "hours": 582.9,
+  "hours": 577.5,
   "lives": 40,
   "days": 30,
   "avg_viewers": 52,
-  "mc_gmv": 7035840,
-  "unassigned_gmv": 8399,
+  "mc_gmv": 7035841,
+  "unassigned_gmv": 8398,
   "double_counted": 0,
   "live_hours": 578.5,
-  "unassigned_hours": 0.8,
+  "unassigned_hours": 0.9,
   "scaled_lives": 38,
   "scale_avg": 1.2052,
-  "shared_hours": 10.8,
-  "shopee_hours": 101.0,
-  "leave_hours": 0
+  "shared_hours": 0.0,
+  "shopee_hours": 89.0,
+  "leave_hours": 22.0,
+  "no_mc": [
+   {
+    "key": "vacant",
+    "th": "ว่าง/ไม่มีคน",
+    "en": "No one scheduled",
+    "hours": 0.8,
+    "gmv": 8399,
+    "notes": [
+     "-Blank-"
+    ]
+   }
+  ],
+  "incidents": [
+   {
+    "key": "equipment",
+    "th": "อุปกรณ์มีปัญหา",
+    "en": "Equipment issue",
+    "hours": 0.4,
+    "gmv": 7997,
+    "notes": [
+     "อุปกรณ์มีปัญหา"
+    ]
+   }
+  ]
  },
  "balance": [
   {
@@ -624,7 +648,7 @@
   },
   {
    "day": 6,
-   "rounds": 5,
+   "rounds": 4,
    "lives": 3,
    "hours": 17.4,
    "gmv": 408653,
@@ -644,11 +668,11 @@
   },
   {
    "day": 7,
-   "rounds": 5,
+   "rounds": 4,
    "lives": 1,
-   "hours": 18.8,
+   "hours": 18.4,
    "gmv": 342660,
-   "gmv_per_hour": 18227,
+   "gmv_per_hour": 18623,
    "avg_viewers": 77,
    "live_ctr": 41.48,
    "ctor": 1.07,
@@ -660,7 +684,7 @@
    "best_gmv": 121742,
    "best_time": "20:00-02:00",
    "campaign": true,
-   "vs_prev_day": -22
+   "vs_prev_day": -21
   },
   {
    "day": 8,
@@ -680,7 +704,7 @@
    "best_gmv": 166961,
    "best_time": "21:00-02:00",
    "campaign": true,
-   "vs_prev_day": 26
+   "vs_prev_day": 23
   },
   {
    "day": 9,
@@ -1024,7 +1048,7 @@
   },
   {
    "day": 26,
-   "rounds": 2,
+   "rounds": 1,
    "lives": 1,
    "hours": 5.0,
    "gmv": 82786,
@@ -1064,11 +1088,11 @@
   },
   {
    "day": 28,
-   "rounds": 5,
+   "rounds": 4,
    "lives": 2,
-   "hours": 25.0,
+   "hours": 20.0,
    "gmv": 128068,
-   "gmv_per_hour": 5123,
+   "gmv_per_hour": 6403,
    "avg_viewers": 39,
    "live_ctr": 47.87,
    "ctor": 0.97,
@@ -1080,7 +1104,7 @@
    "best_gmv": 72934,
    "best_time": "16:00-21:00",
    "campaign": true,
-   "vs_prev_day": -48
+   "vs_prev_day": -35
   },
   {
    "day": 29,
@@ -1100,7 +1124,7 @@
    "best_gmv": 61583,
    "best_time": "16:00-21:00",
    "campaign": true,
-   "vs_prev_day": 89
+   "vs_prev_day": 52
   },
   {
    "day": 30,
@@ -1130,8 +1154,8 @@
    "hours": 131.8,
    "slots": 132,
    "shopee_hours": 18.0,
-   "leave_hours": 0,
-   "leave_kind": "",
+   "leave_hours": 5.0,
+   "leave_kind": "ลา",
    "shared_hours": 0.0,
    "avg_viewers": 57,
    "gmv_total": 1696894,
@@ -1429,8 +1453,8 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": -27,
-     "vs_team": -19,
-     "vs_band": 4,
+     "vs_team": -20,
+     "vs_band": 0,
      "vs_prev": null,
      "share_of_day": 19
     },
@@ -1460,7 +1484,7 @@
      "rounds_in_day": 4,
      "vs_self": -12,
      "vs_team": -3,
-     "vs_band": 25,
+     "vs_band": 20,
      "vs_prev": 20,
      "share_of_day": 24
     },
@@ -1489,8 +1513,8 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": -1,
-     "vs_team": 9,
-     "vs_band": 39,
+     "vs_team": 8,
+     "vs_band": 35,
      "vs_prev": 12,
      "share_of_day": 25
     },
@@ -1519,7 +1543,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": -4,
-     "vs_team": 6,
+     "vs_team": 5,
      "vs_band": 6,
      "vs_prev": -3,
      "share_of_day": 35
@@ -1549,7 +1573,7 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": 7,
-     "vs_team": 18,
+     "vs_team": 17,
      "vs_band": 20,
      "vs_prev": 11,
      "share_of_day": 22
@@ -1577,9 +1601,9 @@
      "avg_view_sec": 35,
      "_mc": "Guy",
      "rank_in_day": 1,
-     "rounds_in_day": 5,
+     "rounds_in_day": 4,
      "vs_self": 114,
-     "vs_team": 135,
+     "vs_team": 134,
      "vs_band": 140,
      "vs_prev": 100,
      "share_of_day": 40
@@ -1607,7 +1631,7 @@
      "avg_view_sec": 25,
      "_mc": "Guy",
      "rank_in_day": 1,
-     "rounds_in_day": 5,
+     "rounds_in_day": 4,
      "vs_self": 58,
      "vs_team": 73,
      "vs_band": 77,
@@ -1639,7 +1663,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": 57,
-     "vs_team": 73,
+     "vs_team": 72,
      "vs_band": 75,
      "vs_prev": 0,
      "share_of_day": 22
@@ -1669,7 +1693,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": 202,
-     "vs_team": 232,
+     "vs_team": 230,
      "vs_band": 238,
      "vs_prev": 92,
      "share_of_day": 27
@@ -1699,8 +1723,8 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": 6,
-     "vs_team": 17,
-     "vs_band": 50,
+     "vs_team": 16,
+     "vs_band": 45,
      "vs_prev": -65,
      "share_of_day": 30
     },
@@ -1789,7 +1813,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": 4,
-     "vs_team": 15,
+     "vs_team": 14,
      "vs_band": 17,
      "vs_prev": 12,
      "share_of_day": 28
@@ -2029,7 +2053,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": -2,
-     "vs_team": 8,
+     "vs_team": 7,
      "vs_band": 10,
      "vs_prev": 151,
      "share_of_day": 33
@@ -2089,7 +2113,7 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": 29,
-     "vs_team": 42,
+     "vs_team": 41,
      "vs_band": 44,
      "vs_prev": 38,
      "share_of_day": 22
@@ -2119,7 +2143,7 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": -24,
-     "vs_team": -16,
+     "vs_team": -17,
      "vs_band": -15,
      "vs_prev": -41,
      "share_of_day": 25
@@ -2224,9 +2248,9 @@
    "pt": false,
    "hours": 98.4,
    "slots": 101,
-   "shopee_hours": 26.0,
-   "leave_hours": 0,
-   "leave_kind": "",
+   "shopee_hours": 21.0,
+   "leave_hours": 5.0,
+   "leave_kind": "หยุด",
    "shared_hours": 0.0,
    "avg_viewers": 69,
    "gmv_total": 1446679,
@@ -2492,7 +2516,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": 23,
-     "vs_team": 55,
+     "vs_team": 54,
      "vs_band": 58,
      "vs_prev": null,
      "share_of_day": 37
@@ -2522,7 +2546,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": -16,
-     "vs_team": 6,
+     "vs_team": 5,
      "vs_band": 8,
      "vs_prev": -32,
      "share_of_day": 26
@@ -2552,7 +2576,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": -10,
-     "vs_team": 14,
+     "vs_team": 13,
      "vs_band": 16,
      "vs_prev": 8,
      "share_of_day": 27
@@ -2612,7 +2636,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": 71,
-     "vs_team": 115,
+     "vs_team": 114,
      "vs_band": 118,
      "vs_prev": 61,
      "share_of_day": 33
@@ -2642,7 +2666,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": 127,
-     "vs_team": 185,
+     "vs_team": 184,
      "vs_band": 191,
      "vs_prev": 33,
      "share_of_day": 36
@@ -2672,7 +2696,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": 172,
-     "vs_team": 242,
+     "vs_team": 240,
      "vs_band": 249,
      "vs_prev": 20,
      "share_of_day": 34
@@ -2733,7 +2757,7 @@
      "rounds_in_day": 4,
      "vs_self": -17,
      "vs_team": 4,
-     "vs_band": 34,
+     "vs_band": 29,
      "vs_prev": 25,
      "share_of_day": 25
     },
@@ -2763,7 +2787,7 @@
      "rounds_in_day": 4,
      "vs_self": -36,
      "vs_team": -19,
-     "vs_band": 4,
+     "vs_band": 0,
      "vs_prev": -22,
      "share_of_day": 24
     },
@@ -2852,8 +2876,8 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": -39,
-     "vs_team": -23,
-     "vs_band": -1,
+     "vs_team": -24,
+     "vs_band": -5,
      "vs_prev": 93,
      "share_of_day": 28
     },
@@ -2970,9 +2994,9 @@
      "avg_view_sec": 32,
      "_mc": "Mook",
      "rank_in_day": 1,
-     "rounds_in_day": 5,
+     "rounds_in_day": 4,
      "vs_self": -1,
-     "vs_team": 25,
+     "vs_team": 24,
      "vs_band": 27,
      "vs_prev": 40,
      "share_of_day": 57
@@ -3002,7 +3026,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": -33,
-     "vs_team": -15,
+     "vs_team": -16,
      "vs_band": -15,
      "vs_prev": -32,
      "share_of_day": 26
@@ -3032,7 +3056,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": 2,
-     "vs_team": 28,
+     "vs_team": 27,
      "vs_band": 28,
      "vs_prev": 51,
      "share_of_day": 37
@@ -3071,17 +3095,17 @@
    },
    "camp_roi": 27,
    "group": "regular",
-   "category": "strong",
+   "category": "traffic",
    "category_label": {
-    "th": "🟢 เก่งรอบด้าน",
-    "en": "🟢 All-round strong"
+    "th": "🟡 คนเยอะแต่ปิดการขายไม่เก่ง",
+    "en": "🟡 High traffic, weak closing"
    },
    "insights": {
     "th": [
-     "ทำได้ดีทุกด้าน — รักษามาตรฐานไว้"
+     "ปิดการขายต่ำ (GMV/คนดู ฿209 ต่ำกว่าค่ากลางทีม ฿226) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Performing well all-round — keep it up"
+     "Low closing (GMV/viewer ฿209 below team median ฿226) — focus on reviews/urgency"
     ]
    },
    "score": {
@@ -3108,13 +3132,13 @@
    "hours": 114.6,
    "slots": 119,
    "shopee_hours": 1.0,
-   "leave_hours": 0,
-   "leave_kind": "",
-   "shared_hours": 0.4,
+   "leave_hours": 2.0,
+   "leave_kind": "หยุด",
+   "shared_hours": 0.0,
    "avg_viewers": 52,
-   "gmv_total": 1344032,
-   "gmv_per_hour": 11725,
-   "gmv_per_viewer": 216.9,
+   "gmv_total": 1348031,
+   "gmv_per_hour": 11760,
+   "gmv_per_viewer": 217.6,
    "retention": 1.23,
    "hour_dist": [
     3,
@@ -3156,9 +3180,9 @@
    "weekly": [
     {
      "wk": "1-7",
-     "gmv": 449211,
-     "gmv_per_hour": 16748,
-     "gmv_per_viewer": 217.3,
+     "gmv": 453210,
+     "gmv_per_hour": 16897,
+     "gmv_per_viewer": 219.3,
      "avg_viewers": 69,
      "hours": 26.8
     },
@@ -3238,9 +3262,9 @@
     },
     {
      "day": 7,
-     "gmv": 55814,
-     "gmv_per_hour": 16522,
-     "gmv_per_viewer": 200.8,
+     "gmv": 59812,
+     "gmv_per_hour": 17706,
+     "gmv_per_viewer": 215.2,
      "avg_viewers": 70,
      "hours": 3.4
     },
@@ -3406,8 +3430,8 @@
      "_mc": "Ohm",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -20,
-     "vs_team": -20,
+     "vs_self": -21,
+     "vs_team": -21,
      "vs_band": -20,
      "vs_prev": null,
      "share_of_day": 19
@@ -3496,8 +3520,8 @@
      "_mc": "Ohm",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 157,
-     "vs_team": 158,
+     "vs_self": 156,
+     "vs_team": 156,
      "vs_band": 158,
      "vs_prev": 162,
      "share_of_day": 33
@@ -3525,10 +3549,10 @@
      "avg_view_sec": 40,
      "_mc": "Ohm",
      "rank_in_day": 3,
-     "rounds_in_day": 5,
-     "vs_self": 128,
-     "vs_team": 128,
-     "vs_band": 193,
+     "rounds_in_day": 4,
+     "vs_self": 127,
+     "vs_team": 127,
+     "vs_band": 183,
      "vs_prev": -11,
      "share_of_day": 16
     },
@@ -3537,10 +3561,10 @@
      "start": "07:00",
      "end": "11:00",
      "hours": 3.4,
-     "gmv": 55814,
-     "gmv_per_hour": 16522,
+     "gmv": 59812,
+     "gmv_per_hour": 17706,
      "avg_viewers": 70,
-     "gmv_per_viewer": 200.8,
+     "gmv_per_viewer": 215.2,
      "v_start": 38,
      "v_end": 82,
      "campaign": true,
@@ -3548,19 +3572,19 @@
      "peak_hour": "08:00",
      "peak_gmv": 20787,
      "low_hour": "07:00",
-     "low_gmv": 3998,
+     "low_gmv": 7997,
      "live_ctr": 41.48,
      "ctor": 1.07,
      "live_gpm": 614,
      "avg_view_sec": 25,
      "_mc": "Ohm",
      "rank_in_day": 4,
-     "rounds_in_day": 5,
-     "vs_self": 41,
-     "vs_team": 41,
-     "vs_band": 81,
-     "vs_prev": -38,
-     "share_of_day": 16
+     "rounds_in_day": 4,
+     "vs_self": 51,
+     "vs_team": 51,
+     "vs_band": 88,
+     "vs_prev": -34,
+     "share_of_day": 17
     },
     {
      "day": 8,
@@ -3586,10 +3610,10 @@
      "_mc": "Ohm",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 65,
-     "vs_team": 65,
+     "vs_self": 64,
+     "vs_team": 64,
      "vs_band": 66,
-     "vs_prev": 17,
+     "vs_prev": 9,
      "share_of_day": 21
     },
     {
@@ -3616,8 +3640,8 @@
      "_mc": "Ohm",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 142,
-     "vs_team": 142,
+     "vs_self": 141,
+     "vs_team": 141,
      "vs_band": 143,
      "vs_prev": 47,
      "share_of_day": 20
@@ -3646,8 +3670,8 @@
      "_mc": "Ohm",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -15,
-     "vs_team": -15,
+     "vs_self": -16,
+     "vs_team": -16,
      "vs_band": -14,
      "vs_prev": -65,
      "share_of_day": 22
@@ -3766,8 +3790,8 @@
      "_mc": "Ohm",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": -19,
-     "vs_team": -19,
+     "vs_self": -20,
+     "vs_team": -20,
      "vs_band": -18,
      "vs_prev": -22,
      "share_of_day": 35
@@ -3888,7 +3912,7 @@
      "rounds_in_day": 4,
      "vs_self": -59,
      "vs_team": -59,
-     "vs_band": -47,
+     "vs_band": -49,
      "vs_prev": -17,
      "share_of_day": 20
     },
@@ -3917,7 +3941,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": -17,
-     "vs_team": -16,
+     "vs_team": -17,
      "vs_band": -16,
      "vs_prev": 104,
      "share_of_day": 31
@@ -3946,8 +3970,8 @@
      "_mc": "Ohm",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 0,
-     "vs_team": 0,
+     "vs_self": -1,
+     "vs_team": -1,
      "vs_band": 0,
      "vs_prev": 19,
      "share_of_day": 27
@@ -4004,8 +4028,8 @@
      "live_gpm": 345,
      "avg_view_sec": 32,
      "_mc": "Ohm",
-     "rank_in_day": 4,
-     "rounds_in_day": 5,
+     "rank_in_day": 3,
+     "rounds_in_day": 4,
      "vs_self": null,
      "vs_team": null,
      "vs_band": null,
@@ -4076,7 +4100,7 @@
    "top_products": [
     {
      "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
-     "gmv": 431602,
+     "gmv": 434657,
      "pct": 33
     },
     {
@@ -4099,36 +4123,36 @@
    },
    "campaign": {
     "hours": 40.822222,
-    "gmv": 721710,
-    "gmv_per_hour": 17679,
-    "gmv_per_viewer": 247.0,
+    "gmv": 725708,
+    "gmv_per_hour": 17777,
+    "gmv_per_viewer": 248.4,
     "avg_viewers": 66
    },
-   "camp_roi": 30,
+   "camp_roi": 31,
    "group": "regular",
-   "category": "strong",
+   "category": "traffic",
    "category_label": {
-    "th": "🟢 เก่งรอบด้าน",
-    "en": "🟢 All-round strong"
+    "th": "🟡 คนเยอะแต่ปิดการขายไม่เก่ง",
+    "en": "🟡 High traffic, weak closing"
    },
    "insights": {
     "th": [
-     "ทำได้ดีทุกด้าน — รักษามาตรฐานไว้"
+     "ปิดการขายต่ำ (GMV/คนดู ฿218 ต่ำกว่าค่ากลางทีม ฿226) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Performing well all-round — keep it up"
+     "Low closing (GMV/viewer ฿218 below team median ฿226) — focus on reviews/urgency"
     ]
    },
    "score": {
-    "total": 81,
+    "total": 80,
     "parts": {
      "closing": 95,
      "audience": 78,
      "retention": 100,
      "consistency": 51,
-     "improvement": 78
+     "improvement": 75
     },
-    "improve_pct": 11,
+    "improve_pct": 10,
     "trend": {
      "icon": "📈",
      "th": "พัฒนาขึ้น",
@@ -4143,8 +4167,8 @@
    "hours": 108.9,
    "slots": 109,
    "shopee_hours": 0,
-   "leave_hours": 0,
-   "leave_kind": "",
+   "leave_hours": 5.0,
+   "leave_kind": "ลา",
    "shared_hours": 0.0,
    "avg_viewers": 51,
    "gmv_total": 1275059,
@@ -4426,7 +4450,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": -1,
-     "vs_team": -1,
+     "vs_team": -2,
      "vs_band": 1,
      "vs_prev": null,
      "share_of_day": 24
@@ -4456,7 +4480,7 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": 20,
-     "vs_team": 20,
+     "vs_team": 19,
      "vs_band": 22,
      "vs_prev": 21,
      "share_of_day": 15
@@ -4484,9 +4508,9 @@
      "avg_view_sec": 35,
      "_mc": "Gan",
      "rank_in_day": 2,
-     "rounds_in_day": 5,
+     "rounds_in_day": 4,
      "vs_self": 63,
-     "vs_team": 63,
+     "vs_team": 62,
      "vs_band": 65,
      "vs_prev": 36,
      "share_of_day": 28
@@ -4514,7 +4538,7 @@
      "avg_view_sec": 25,
      "_mc": "Gan",
      "rank_in_day": 2,
-     "rounds_in_day": 5,
+     "rounds_in_day": 4,
      "vs_self": 55,
      "vs_team": 55,
      "vs_band": 58,
@@ -4546,8 +4570,8 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": 61,
-     "vs_team": 61,
-     "vs_band": 107,
+     "vs_team": 60,
+     "vs_band": 99,
      "vs_prev": 4,
      "share_of_day": 20
     },
@@ -4576,8 +4600,8 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": 128,
-     "vs_team": 128,
-     "vs_band": 192,
+     "vs_team": 127,
+     "vs_band": 182,
      "vs_prev": 42,
      "share_of_day": 19
     },
@@ -4696,7 +4720,7 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": -29,
-     "vs_team": -29,
+     "vs_team": -30,
      "vs_band": -29,
      "vs_prev": -3,
      "share_of_day": 21
@@ -4727,7 +4751,7 @@
      "rounds_in_day": 4,
      "vs_self": 17,
      "vs_team": 17,
-     "vs_band": 51,
+     "vs_band": 46,
      "vs_prev": 66,
      "share_of_day": 83
     },
@@ -4876,7 +4900,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": -40,
-     "vs_team": -40,
+     "vs_team": -41,
      "vs_band": -39,
      "vs_prev": -21,
      "share_of_day": 31
@@ -4963,8 +4987,8 @@
      "live_gpm": 219,
      "avg_view_sec": 30,
      "_mc": "Gan",
-     "rank_in_day": 5,
-     "rounds_in_day": 5,
+     "rank_in_day": 4,
+     "rounds_in_day": 4,
      "vs_self": null,
      "vs_team": null,
      "vs_band": null,
@@ -4997,7 +5021,7 @@
      "rounds_in_day": 4,
      "vs_self": -42,
      "vs_team": -42,
-     "vs_band": -25,
+     "vs_band": -28,
      "vs_prev": -27,
      "share_of_day": 17
     },
@@ -5027,7 +5051,7 @@
      "rounds_in_day": 4,
      "vs_self": -22,
      "vs_team": -22,
-     "vs_band": 0,
+     "vs_band": -3,
      "vs_prev": 34,
      "share_of_day": 22
     }
@@ -5065,17 +5089,17 @@
    },
    "camp_roi": 19,
    "group": "regular",
-   "category": "strong",
+   "category": "closer",
    "category_label": {
-    "th": "🟢 เก่งรอบด้าน",
-    "en": "🟢 All-round strong"
+    "th": "🔵 ปิดการขายเก่งแต่คนดูน้อย (ควรได้กะคนเยอะขึ้น)",
+    "en": "🔵 Strong closer, low traffic (deserves better slots)"
    },
    "insights": {
     "th": [
-     "ทำได้ดีทุกด้าน — รักษามาตรฐานไว้"
+     "ปิดเก่งแต่ได้กะคนน้อย — ลองสลับให้ได้กะช่วงคนเยอะ อาจดันยอดรวมได้อีก"
     ],
     "en": [
-     "Performing well all-round — keep it up"
+     "Strong closer stuck in low-traffic slots — try giving prime-time slots to lift total sales"
     ]
    },
    "score": {
@@ -5326,9 +5350,9 @@
      "avg_view_sec": 35,
      "_mc": "Water",
      "rank_in_day": 4,
-     "rounds_in_day": 5,
+     "rounds_in_day": 4,
      "vs_self": 57,
-     "vs_team": 82,
+     "vs_team": 81,
      "vs_band": 83,
      "vs_prev": 77,
      "share_of_day": 16
@@ -5356,9 +5380,9 @@
      "avg_view_sec": 25,
      "_mc": "Water",
      "rank_in_day": 3,
-     "rounds_in_day": 5,
+     "rounds_in_day": 4,
      "vs_self": 29,
-     "vs_team": 50,
+     "vs_team": 49,
      "vs_band": 50,
      "vs_prev": -18,
      "share_of_day": 20
@@ -5448,7 +5472,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": 17,
-     "vs_team": 36,
+     "vs_team": 35,
      "vs_band": 36,
      "vs_prev": 7,
      "share_of_day": 26
@@ -5547,17 +5571,17 @@
    },
    "camp_roi": -11,
    "group": "pt",
-   "category": "strong",
+   "category": "traffic",
    "category_label": {
-    "th": "🟢 เก่งรอบด้าน",
-    "en": "🟢 All-round strong"
+    "th": "🟡 คนเยอะแต่ปิดการขายไม่เก่ง",
+    "en": "🟡 High traffic, weak closing"
    },
    "insights": {
     "th": [
-     "ทำได้ดีทุกด้าน — รักษามาตรฐานไว้"
+     "ปิดการขายต่ำ (GMV/คนดู ฿232 ต่ำกว่าค่ากลางทีม ฿242) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Performing well all-round — keep it up"
+     "Low closing (GMV/viewer ฿232 below team median ฿242) — focus on reviews/urgency"
     ]
    },
    "score": {
@@ -5584,8 +5608,8 @@
    "hours": 49.5,
    "slots": 53,
    "shopee_hours": 15.0,
-   "leave_hours": 0,
-   "leave_kind": "",
+   "leave_hours": 5.0,
+   "leave_kind": "ลา",
    "shared_hours": 0.0,
    "avg_viewers": 38,
    "gmv_total": 459637,
@@ -5816,7 +5840,7 @@
      "rounds_in_day": 4,
      "vs_self": -40,
      "vs_team": -53,
-     "vs_band": -39,
+     "vs_band": -41,
      "vs_prev": -23,
      "share_of_day": 21
     },
@@ -5846,7 +5870,7 @@
      "rounds_in_day": 4,
      "vs_self": -17,
      "vs_team": -34,
-     "vs_band": -15,
+     "vs_band": -18,
      "vs_prev": 39,
      "share_of_day": 30
     },
@@ -5906,7 +5930,7 @@
      "rounds_in_day": 4,
      "vs_self": -31,
      "vs_team": -46,
-     "vs_band": -30,
+     "vs_band": -33,
      "vs_prev": -7,
      "share_of_day": 20
     },
@@ -5936,7 +5960,7 @@
      "rounds_in_day": 4,
      "vs_self": -5,
      "vs_team": -25,
-     "vs_band": -3,
+     "vs_band": -7,
      "vs_prev": 38,
      "share_of_day": 20
     },
@@ -5965,8 +5989,8 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": 108,
-     "vs_team": 65,
-     "vs_band": 112,
+     "vs_team": 64,
+     "vs_band": 105,
      "vs_prev": 120,
      "share_of_day": 26
     },
@@ -5993,9 +6017,9 @@
      "avg_view_sec": 35,
      "_mc": "Mint",
      "rank_in_day": 1,
-     "rounds_in_day": 2,
+     "rounds_in_day": 1,
      "vs_self": 79,
-     "vs_team": 42,
+     "vs_team": 41,
      "vs_band": 42,
      "vs_prev": -14,
      "share_of_day": 100
@@ -6025,7 +6049,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": 18,
-     "vs_team": -6,
+     "vs_team": -7,
      "vs_band": -6,
      "vs_prev": -34,
      "share_of_day": 28
@@ -6103,11 +6127,11 @@
    "shopee_hours": 4.0,
    "leave_hours": 0,
    "leave_kind": "",
-   "shared_hours": 5.0,
+   "shared_hours": 0.0,
    "avg_viewers": 34,
-   "gmv_total": 234730,
-   "gmv_per_hour": 7491,
-   "gmv_per_viewer": 216.7,
+   "gmv_total": 262297,
+   "gmv_per_hour": 8371,
+   "gmv_per_viewer": 242.2,
    "retention": 1.55,
    "hour_dist": [
     7,
@@ -6168,9 +6192,9 @@
     },
     {
      "wk": "22-28",
-     "gmv": 78804,
-     "gmv_per_hour": 6062,
-     "gmv_per_viewer": 183.7,
+     "gmv": 106371,
+     "gmv_per_hour": 8182,
+     "gmv_per_viewer": 248.0,
      "avg_viewers": 33,
      "hours": 13.0
     }
@@ -6234,9 +6258,9 @@
     },
     {
      "day": 28,
-     "gmv": 27567,
-     "gmv_per_hour": 5513,
-     "gmv_per_viewer": 136.5,
+     "gmv": 55134,
+     "gmv_per_hour": 11027,
+     "gmv_per_viewer": 272.9,
      "avg_viewers": 40,
      "hours": 5.0
     }
@@ -6266,9 +6290,9 @@
      "_mc": "Bee",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -11,
-     "vs_team": -43,
-     "vs_band": -27,
+     "vs_self": -21,
+     "vs_team": -44,
+     "vs_band": -30,
      "vs_prev": null,
      "share_of_day": 11
     },
@@ -6296,9 +6320,9 @@
      "_mc": "Bee",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 199,
+     "vs_self": 168,
      "vs_team": 91,
-     "vs_band": 146,
+     "vs_band": 137,
      "vs_prev": 237,
      "share_of_day": 19
     },
@@ -6326,9 +6350,9 @@
      "_mc": "Bee",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -40,
+     "vs_self": -46,
      "vs_team": -62,
-     "vs_band": -51,
+     "vs_band": -52,
      "vs_prev": -80,
      "share_of_day": 8
     },
@@ -6356,9 +6380,9 @@
      "_mc": "Bee",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -62,
-     "vs_team": -75,
-     "vs_band": -68,
+     "vs_self": -66,
+     "vs_team": -76,
+     "vs_band": -69,
      "vs_prev": -36,
      "share_of_day": 6
     },
@@ -6386,9 +6410,9 @@
      "_mc": "Bee",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -40,
+     "vs_self": -47,
      "vs_team": -62,
-     "vs_band": -51,
+     "vs_band": -53,
      "vs_prev": 55,
      "share_of_day": 11
     },
@@ -6416,9 +6440,9 @@
      "_mc": "Bee",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -36,
+     "vs_self": -42,
      "vs_team": -59,
-     "vs_band": -47,
+     "vs_band": -49,
      "vs_prev": 8,
      "share_of_day": 10
     },
@@ -6446,9 +6470,9 @@
      "_mc": "Bee",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": 7,
+     "vs_self": -5,
      "vs_team": -32,
-     "vs_band": -12,
+     "vs_band": -15,
      "vs_prev": 66,
      "share_of_day": 16
     },
@@ -6457,47 +6481,47 @@
      "start": "06:00",
      "end": "11:00",
      "hours": 5.0,
-     "gmv": 27567,
-     "gmv_per_hour": 5513,
+     "gmv": 55134,
+     "gmv_per_hour": 11027,
      "avg_viewers": 40,
-     "gmv_per_viewer": 136.5,
+     "gmv_per_viewer": 272.9,
      "v_start": 23,
      "v_end": 49,
      "campaign": true,
      "band": "morning",
      "peak_hour": "08:00",
-     "peak_gmv": 13797,
+     "peak_gmv": 27594,
      "low_hour": "06:00",
-     "low_gmv": 1439,
+     "low_gmv": 2879,
      "live_ctr": 50.61,
      "ctor": 0.85,
      "live_gpm": 219,
      "avg_view_sec": 30,
      "_mc": "Bee",
      "rank_in_day": 2,
-     "rounds_in_day": 5,
-     "vs_self": -26,
-     "vs_team": -53,
-     "vs_band": -40,
-     "vs_prev": -31,
-     "share_of_day": 22
+     "rounds_in_day": 4,
+     "vs_self": 32,
+     "vs_team": -6,
+     "vs_band": 17,
+     "vs_prev": 38,
+     "share_of_day": 43
     }
    ],
    "top_products": [
     {
      "name": "STEAPEX WAVE รองเท้าวิ่งชายหญิ…",
-     "gmv": 62555,
-     "pct": 27
+     "gmv": 63886,
+     "pct": 24
     },
     {
      "name": "รองเท้ากีฬาซีรีส์ oxyflow แบรน…",
-     "gmv": 34317,
-     "pct": 15
+     "gmv": 41522,
+     "pct": 16
     },
     {
-     "name": "Steapex RUSH รองเท้าวิ่งสำหรับ…",
-     "gmv": 28221,
-     "pct": 12
+     "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
+     "gmv": 29598,
+     "pct": 11
     }
    ],
    "normal": {
@@ -6509,36 +6533,36 @@
    },
    "campaign": {
     "hours": 16.984445,
-    "gmv": 175430,
-    "gmv_per_hour": 10329,
-    "gmv_per_viewer": 253.1,
+    "gmv": 202997,
+    "gmv_per_hour": 11952,
+    "gmv_per_viewer": 292.9,
     "avg_viewers": 41
    },
-   "camp_roi": 66,
+   "camp_roi": 93,
    "group": "pt",
-   "category": "improve",
+   "category": "closer",
    "category_label": {
-    "th": "🟠 ต้องพัฒนา",
-    "en": "🟠 Needs improvement"
+    "th": "🔵 ปิดการขายเก่งแต่คนดูน้อย (ควรได้กะคนเยอะขึ้น)",
+    "en": "🔵 Strong closer, low traffic (deserves better slots)"
    },
    "insights": {
     "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿217 ต่ำกว่าค่ากลางทีม ฿232) — เน้นรีวิว/เร่งปิดการขาย"
+     "ปิดเก่งแต่ได้กะคนน้อย — ลองสลับให้ได้กะช่วงคนเยอะ อาจดันยอดรวมได้อีก"
     ],
     "en": [
-     "Low closing (GMV/viewer ฿217 below team median ฿232) — focus on reviews/urgency"
+     "Strong closer stuck in low-traffic slots — try giving prime-time slots to lift total sales"
     ]
    },
    "score": {
-    "total": 38,
+    "total": 40,
     "parts": {
-     "closing": 28,
+     "closing": 31,
      "audience": 57,
      "retention": 100,
-     "consistency": 58,
+     "consistency": 61,
      "improvement": 0
     },
-    "improve_pct": -42,
+    "improve_pct": -22,
     "trend": {
      "icon": "📉",
      "th": "ตกลง",
@@ -6639,8 +6663,8 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": 0,
-     "vs_team": 13,
-     "vs_band": 45,
+     "vs_team": 12,
+     "vs_band": 40,
      "vs_prev": null,
      "share_of_day": 25
     }
@@ -6840,10 +6864,10 @@
    },
    "insights": {
     "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿94 ต่ำกว่าค่ากลางทีม ฿232) — เน้นรีวิว/เร่งปิดการขาย"
+     "ปิดการขายต่ำ (GMV/คนดู ฿94 ต่ำกว่าค่ากลางทีม ฿242) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Low closing (GMV/viewer ฿94 below team median ฿232) — focus on reviews/urgency"
+     "Low closing (GMV/viewer ฿94 below team median ฿242) — focus on reviews/urgency"
     ]
    },
    "score": {
@@ -6862,588 +6886,6 @@
      "en": "Steady"
     },
     "rank": 2
-   }
-  },
-  {
-   "name": "Mint-Dl",
-   "pt": false,
-   "hours": 5.0,
-   "slots": 5,
-   "shopee_hours": 0,
-   "leave_hours": 0,
-   "leave_kind": "",
-   "shared_hours": 5.0,
-   "avg_viewers": 40,
-   "gmv_total": 27567,
-   "gmv_per_hour": 5513,
-   "gmv_per_viewer": 136.5,
-   "retention": 1.87,
-   "hour_dist": [
-    1,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-   ],
-   "primary_slot": "06:00-10:00",
-   "avg_elapsed": 2.0,
-   "elapsed_range": "0-4 ชม.",
-   "dominant_shift": {
-    "th": "เช้า (06-11)",
-    "en": "Morning (06-11)",
-    "pct": 100
-   },
-   "prime": null,
-   "weekly": [
-    {
-     "wk": "22-28",
-     "gmv": 27567,
-     "gmv_per_hour": 5513,
-     "gmv_per_viewer": 136.5,
-     "avg_viewers": 40,
-     "hours": 5.0
-    }
-   ],
-   "daily": [
-    {
-     "day": 28,
-     "gmv": 27567,
-     "gmv_per_hour": 5513,
-     "gmv_per_viewer": 136.5,
-     "avg_viewers": 40,
-     "hours": 5.0
-    }
-   ],
-   "rounds": [
-    {
-     "day": 28,
-     "start": "06:00",
-     "end": "11:00",
-     "hours": 5.0,
-     "gmv": 27567,
-     "gmv_per_hour": 5513,
-     "avg_viewers": 40,
-     "gmv_per_viewer": 136.5,
-     "v_start": 23,
-     "v_end": 49,
-     "campaign": true,
-     "band": "morning",
-     "peak_hour": "08:00",
-     "peak_gmv": 13797,
-     "low_hour": "06:00",
-     "low_gmv": 1439,
-     "live_ctr": 50.61,
-     "ctor": 0.85,
-     "live_gpm": 219,
-     "avg_view_sec": 30,
-     "_mc": "Mint-Dl",
-     "rank_in_day": 3,
-     "rounds_in_day": 5,
-     "vs_self": 0,
-     "vs_team": -53,
-     "vs_band": -40,
-     "vs_prev": null,
-     "share_of_day": 22
-    }
-   ],
-   "top_products": [
-    {
-     "name": "รองเท้ากีฬาซีรีส์ oxyflow แบรน…",
-     "gmv": 7205,
-     "pct": 26
-    },
-    {
-     "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
-     "gmv": 7150,
-     "pct": 26
-    },
-    {
-     "name": "Steapex รองเท้าวิ่งรุ่น Hive s…",
-     "gmv": 5383,
-     "pct": 20
-    }
-   ],
-   "normal": null,
-   "campaign": {
-    "hours": 5.0,
-    "gmv": 27567,
-    "gmv_per_hour": 5513,
-    "gmv_per_viewer": 136.5,
-    "avg_viewers": 40
-   },
-   "camp_roi": null,
-   "group": "regular",
-   "category": "traffic",
-   "category_label": {
-    "th": "🟡 คนเยอะแต่ปิดการขายไม่เก่ง",
-    "en": "🟡 High traffic, weak closing"
-   },
-   "insights": {
-    "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿136 ต่ำกว่าค่ากลางทีม ฿209) — เน้นรีวิว/เร่งปิดการขาย"
-    ],
-    "en": [
-     "Low closing (GMV/viewer ฿136 below team median ฿209) — focus on reviews/urgency"
-    ]
-   },
-   "score": {
-    "total": 69,
-    "parts": {
-     "closing": 60,
-     "audience": 69,
-     "retention": 100,
-     "consistency": 100,
-     "improvement": 50
-    },
-    "improve_pct": 0,
-    "trend": {
-     "icon": "➡️",
-     "th": "ทรงตัว",
-     "en": "Steady"
-    },
-    "rank": 6
-   }
-  },
-  {
-   "name": "อุปกรณ์มีปัญหา",
-   "pt": false,
-   "hours": 0.4,
-   "slots": 1,
-   "shopee_hours": 0,
-   "leave_hours": 0,
-   "leave_kind": "",
-   "shared_hours": 0.4,
-   "avg_viewers": 38,
-   "gmv_total": 3998,
-   "gmv_per_hour": 10576,
-   "gmv_per_viewer": 105.2,
-   "retention": 1.0,
-   "hour_dist": [
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-   ],
-   "primary_slot": "07:00-08:00",
-   "avg_elapsed": 0.0,
-   "elapsed_range": "0-0 ชม.",
-   "dominant_shift": {
-    "th": "เช้า (06-11)",
-    "en": "Morning (06-11)",
-    "pct": 100
-   },
-   "prime": null,
-   "weekly": [
-    {
-     "wk": "1-7",
-     "gmv": 3998,
-     "gmv_per_hour": 10576,
-     "gmv_per_viewer": 105.2,
-     "avg_viewers": 38,
-     "hours": 0.4
-    }
-   ],
-   "daily": [
-    {
-     "day": 7,
-     "gmv": 3998,
-     "gmv_per_hour": 10576,
-     "gmv_per_viewer": 105.2,
-     "avg_viewers": 38,
-     "hours": 0.4
-    }
-   ],
-   "rounds": [
-    {
-     "day": 7,
-     "start": "07:00",
-     "end": "08:00",
-     "hours": 0.4,
-     "gmv": 3998,
-     "gmv_per_hour": 10576,
-     "avg_viewers": 38,
-     "gmv_per_viewer": 105.2,
-     "v_start": 38,
-     "v_end": 38,
-     "campaign": true,
-     "band": "morning",
-     "peak_hour": null,
-     "peak_gmv": null,
-     "low_hour": null,
-     "low_gmv": null,
-     "live_ctr": 41.48,
-     "ctor": 1.07,
-     "live_gpm": 614,
-     "avg_view_sec": 25,
-     "_mc": "อุปกรณ์มีปัญหา",
-     "rank_in_day": 5,
-     "rounds_in_day": 5,
-     "vs_self": 0,
-     "vs_team": -10,
-     "vs_band": 16,
-     "vs_prev": null,
-     "share_of_day": 1
-    }
-   ],
-   "top_products": [
-    {
-     "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
-     "gmv": 3055,
-     "pct": 100
-    }
-   ],
-   "normal": null,
-   "campaign": {
-    "hours": 0.378056,
-    "gmv": 3998,
-    "gmv_per_hour": 10576,
-    "gmv_per_viewer": 105.2,
-    "avg_viewers": 38
-   },
-   "camp_roi": null,
-   "group": "regular",
-   "category": "improve",
-   "category_label": {
-    "th": "🟠 ต้องพัฒนา",
-    "en": "🟠 Needs improvement"
-   },
-   "insights": {
-    "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿105 ต่ำกว่าค่ากลางทีม ฿209) — เน้นรีวิว/เร่งปิดการขาย"
-    ],
-    "en": [
-     "Low closing (GMV/viewer ฿105 below team median ฿209) — focus on reviews/urgency"
-    ]
-   },
-   "score": {
-    "total": 63,
-    "parts": {
-     "closing": 46,
-     "audience": 67,
-     "retention": 83,
-     "consistency": 100,
-     "improvement": 50
-    },
-    "improve_pct": 0,
-    "trend": {
-     "icon": "➡️",
-     "th": "ทรงตัว",
-     "en": "Steady"
-    },
-    "rank": 7
-   }
-  },
-  {
-   "name": "-Blank-",
-   "pt": false,
-   "hours": 0.0,
-   "slots": 1,
-   "shopee_hours": 0,
-   "leave_hours": 0,
-   "leave_kind": "",
-   "shared_hours": 0.0,
-   "avg_viewers": 38,
-   "gmv_total": 0,
-   "gmv_per_hour": 0,
-   "gmv_per_viewer": 0.0,
-   "retention": 1.0,
-   "hour_dist": [
-    0,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-   ],
-   "primary_slot": "10:00-11:00",
-   "avg_elapsed": 0.0,
-   "elapsed_range": "0-0 ชม.",
-   "dominant_shift": {
-    "th": "เช้า (06-11)",
-    "en": "Morning (06-11)",
-    "pct": 100
-   },
-   "prime": null,
-   "weekly": [
-    {
-     "wk": "1-7",
-     "gmv": 0,
-     "gmv_per_hour": 0,
-     "gmv_per_viewer": 0.0,
-     "avg_viewers": 38,
-     "hours": 0.0
-    }
-   ],
-   "daily": [
-    {
-     "day": 6,
-     "gmv": 0,
-     "gmv_per_hour": 0,
-     "gmv_per_viewer": 0.0,
-     "avg_viewers": 38,
-     "hours": 0.0
-    }
-   ],
-   "rounds": [
-    {
-     "day": 6,
-     "start": "10:00",
-     "end": "11:00",
-     "hours": 0.0,
-     "gmv": 0,
-     "gmv_per_hour": null,
-     "avg_viewers": 38,
-     "gmv_per_viewer": 0.0,
-     "v_start": 38,
-     "v_end": 38,
-     "campaign": true,
-     "band": "morning",
-     "peak_hour": null,
-     "peak_gmv": null,
-     "low_hour": null,
-     "low_gmv": null,
-     "live_ctr": 56.67,
-     "ctor": 0.63,
-     "live_gpm": 271,
-     "avg_view_sec": 35,
-     "_mc": "-Blank-",
-     "rank_in_day": 5,
-     "rounds_in_day": 5,
-     "vs_self": null,
-     "vs_team": null,
-     "vs_band": null,
-     "vs_prev": null,
-     "share_of_day": 0
-    }
-   ],
-   "top_products": [],
-   "normal": null,
-   "campaign": {
-    "hours": 0.004722,
-    "gmv": 0,
-    "gmv_per_hour": 0,
-    "gmv_per_viewer": 0.0,
-    "avg_viewers": 38
-   },
-   "camp_roi": null,
-   "group": "regular",
-   "category": "improve",
-   "category_label": {
-    "th": "🟠 ต้องพัฒนา",
-    "en": "🟠 Needs improvement"
-   },
-   "insights": {
-    "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿0 ต่ำกว่าค่ากลางทีม ฿209) — เน้นรีวิว/เร่งปิดการขาย"
-    ],
-    "en": [
-     "Low closing (GMV/viewer ฿0 below team median ฿209) — focus on reviews/urgency"
-    ]
-   },
-   "score": {
-    "total": 48,
-    "parts": {
-     "closing": 0,
-     "audience": 63,
-     "retention": 83,
-     "consistency": 100,
-     "improvement": 50
-    },
-    "improve_pct": 0,
-    "trend": {
-     "icon": "➡️",
-     "th": "ทรงตัว",
-     "en": "Steady"
-    },
-    "rank": 8
-   }
-  },
-  {
-   "name": "Gan-Dl",
-   "pt": false,
-   "hours": 0.0,
-   "slots": 1,
-   "shopee_hours": 0,
-   "leave_hours": 0,
-   "leave_kind": "",
-   "shared_hours": 0.0,
-   "avg_viewers": 0,
-   "gmv_total": 0,
-   "gmv_per_hour": 0,
-   "gmv_per_viewer": 0.0,
-   "retention": 1.0,
-   "hour_dist": [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-   ],
-   "primary_slot": "14:00-15:00",
-   "avg_elapsed": 5.0,
-   "elapsed_range": "5-5 ชม.",
-   "dominant_shift": {
-    "th": "สาย-เที่ยง (11-16)",
-    "en": "Midday (11-16)",
-    "pct": 100
-   },
-   "prime": null,
-   "weekly": [
-    {
-     "wk": "22-28",
-     "gmv": 0,
-     "gmv_per_hour": 0,
-     "gmv_per_viewer": 0.0,
-     "avg_viewers": 0,
-     "hours": 0.0
-    }
-   ],
-   "daily": [
-    {
-     "day": 26,
-     "gmv": 0,
-     "gmv_per_hour": 0,
-     "gmv_per_viewer": null,
-     "avg_viewers": 0,
-     "hours": 0.0
-    }
-   ],
-   "rounds": [
-    {
-     "day": 26,
-     "start": "14:00",
-     "end": "15:00",
-     "hours": 0.0,
-     "gmv": 0,
-     "gmv_per_hour": null,
-     "avg_viewers": 0,
-     "gmv_per_viewer": null,
-     "v_start": 0,
-     "v_end": 0,
-     "campaign": true,
-     "band": "midday",
-     "peak_hour": null,
-     "peak_gmv": null,
-     "low_hour": null,
-     "low_gmv": null,
-     "live_ctr": 59.06,
-     "ctor": 1.39,
-     "live_gpm": 607,
-     "avg_view_sec": 35,
-     "_mc": "Gan-Dl",
-     "rank_in_day": 2,
-     "rounds_in_day": 2,
-     "vs_self": null,
-     "vs_team": null,
-     "vs_band": null,
-     "vs_prev": null,
-     "share_of_day": 0
-    }
-   ],
-   "top_products": [],
-   "normal": null,
-   "campaign": {
-    "hours": 0.035278,
-    "gmv": 0,
-    "gmv_per_hour": 0,
-    "gmv_per_viewer": 0.0,
-    "avg_viewers": 0
-   },
-   "camp_roi": null,
-   "group": "regular",
-   "category": "improve",
-   "category_label": {
-    "th": "🟠 ต้องพัฒนา",
-    "en": "🟠 Needs improvement"
-   },
-   "insights": {
-    "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿0 ต่ำกว่าค่ากลางทีม ฿209) — เน้นรีวิว/เร่งปิดการขาย"
-    ],
-    "en": [
-     "Low closing (GMV/viewer ฿0 below team median ฿209) — focus on reviews/urgency"
-    ]
-   },
-   "score": {
-    "total": 36,
-    "parts": {
-     "closing": 0,
-     "audience": 0,
-     "retention": 83,
-     "consistency": 100,
-     "improvement": 50
-    },
-    "improve_pct": 0,
-    "trend": {
-     "icon": "➡️",
-     "th": "ทรงตัว",
-     "en": "Steady"
-    },
-    "rank": 9
    }
   }
  ],
