@@ -1,5 +1,5 @@
 {
- "generatedAt": "02/10/2026 15:42",
+ "generatedAt": "03/10/2026 06:30",
  "month": "09/2026",
  "brand": "STEAPEX",
  "livesAnalyzed": 40,
@@ -28,26 +28,26 @@
   2
  ],
  "gmvByHour": [
-  148093,
-  287187,
-  401670,
-  394367,
-  396733,
-  369391,
-  416678,
-  312860,
-  324835,
-  298031,
-  274049,
-  306990,
-  294444,
-  449965,
-  564444,
-  561975,
-  433590,
-  334049,
-  278804,
-  175351,
+  148216,
+  288165,
+  404337,
+  395517,
+  398794,
+  371843,
+  419059,
+  315039,
+  327369,
+  299368,
+  276011,
+  308504,
+  295981,
+  451070,
+  567059,
+  565504,
+  434328,
+  334478,
+  279114,
+  175603,
   13143
  ],
  "viewersByHour": [
@@ -74,18 +74,18 @@
   14
  ],
  "totals": {
-  "gmv": 7044239,
+  "gmv": 7076131,
   "hours": 577.5,
   "lives": 40,
   "days": 30,
   "avg_viewers": 52,
-  "mc_gmv": 7035841,
-  "unassigned_gmv": 8398,
+  "mc_gmv": 7067695,
+  "unassigned_gmv": 8436,
   "double_counted": 0,
   "live_hours": 578.5,
   "unassigned_hours": 0.9,
   "scaled_lives": 38,
-  "scale_avg": 1.2052,
+  "scale_avg": 1.2096,
   "shared_hours": 0.0,
   "shopee_hours": 89.0,
   "leave_hours": 22.0,
@@ -95,7 +95,7 @@
     "th": "ว่าง/ไม่มีคน",
     "en": "No one scheduled",
     "hours": 0.8,
-    "gmv": 8399,
+    "gmv": 8436,
     "notes": [
      "-Blank-"
     ]
@@ -1071,8 +1071,8 @@
    "rounds": 4,
    "lives": 1,
    "hours": 20.0,
-   "gmv": 196064,
-   "gmv_per_hour": 9803,
+   "gmv": 200445,
+   "gmv_per_hour": 10022,
    "avg_viewers": 56,
    "live_ctr": 20.81,
    "ctor": 0.45,
@@ -1081,10 +1081,10 @@
    "follow_rate": 0.0,
    "comment_rate": 0.45,
    "best_mc": "Mook",
-   "best_gmv": 62769,
+   "best_gmv": 64171,
    "best_time": "20:00-02:00",
    "campaign": true,
-   "vs_prev_day": -41
+   "vs_prev_day": -39
   },
   {
    "day": 28,
@@ -1094,25 +1094,25 @@
    "gmv": 128068,
    "gmv_per_hour": 6403,
    "avg_viewers": 39,
-   "live_ctr": 47.87,
+   "live_ctr": 47.86,
    "ctor": 0.97,
-   "gpm": 287.91,
-   "avg_view_sec": 31.09,
+   "gpm": 288.09,
+   "avg_view_sec": 31.1,
    "follow_rate": 0.4,
    "comment_rate": 3.66,
    "best_mc": "Mook",
    "best_gmv": 72934,
    "best_time": "16:00-21:00",
    "campaign": true,
-   "vs_prev_day": -35
+   "vs_prev_day": -36
   },
   {
    "day": 29,
    "rounds": 4,
    "lives": 1,
    "hours": 20.0,
-   "gmv": 194086,
-   "gmv_per_hour": 9704,
+   "gmv": 198011,
+   "gmv_per_hour": 9901,
    "avg_viewers": 42,
    "live_ctr": 38.14,
    "ctor": 0.99,
@@ -1121,18 +1121,18 @@
    "follow_rate": 0.26,
    "comment_rate": 2.82,
    "best_mc": "Ohm",
-   "best_gmv": 61583,
+   "best_gmv": 62829,
    "best_time": "16:00-21:00",
    "campaign": true,
-   "vs_prev_day": 52
+   "vs_prev_day": 55
   },
   {
    "day": 30,
    "rounds": 4,
    "lives": 1,
    "hours": 20.0,
-   "gmv": 203097,
-   "gmv_per_hour": 10155,
+   "gmv": 226643,
+   "gmv_per_hour": 11332,
    "avg_viewers": 36,
    "live_ctr": 42.53,
    "ctor": 1.8,
@@ -1141,10 +1141,10 @@
    "follow_rate": 0.72,
    "comment_rate": 4.94,
    "best_mc": "Mook",
-   "best_gmv": 74786,
+   "best_gmv": 83456,
    "best_time": "11:00-16:00",
    "campaign": true,
-   "vs_prev_day": 5
+   "vs_prev_day": 14
   }
  ],
  "mcs": [
@@ -1158,9 +1158,9 @@
    "leave_kind": "ลา",
    "shared_hours": 0.0,
    "avg_viewers": 57,
-   "gmv_total": 1696894,
-   "gmv_per_hour": 12877,
-   "gmv_per_viewer": 226.0,
+   "gmv_total": 1701219,
+   "gmv_per_hour": 12910,
+   "gmv_per_viewer": 226.6,
    "retention": 2.92,
    "hour_dist": [
     4,
@@ -1195,8 +1195,8 @@
    },
    "prime": {
     "hours": 34.0,
-    "gmv_per_hour": 20433,
-    "gmv_per_viewer": 265.9,
+    "gmv_per_hour": 20529,
+    "gmv_per_viewer": 267.1,
     "avg_viewers": 77
    },
    "weekly": [
@@ -1234,9 +1234,9 @@
     },
     {
      "wk": "29+",
-     "gmv": 77746,
-     "gmv_per_hour": 7775,
-     "gmv_per_viewer": 222.8,
+     "gmv": 82071,
+     "gmv_per_hour": 8207,
+     "gmv_per_viewer": 235.2,
      "avg_viewers": 35,
      "hours": 10.0
     }
@@ -1412,17 +1412,17 @@
     },
     {
      "day": 29,
-     "gmv": 48989,
-     "gmv_per_hour": 9798,
-     "gmv_per_viewer": 206.7,
+     "gmv": 49980,
+     "gmv_per_hour": 9996,
+     "gmv_per_viewer": 210.9,
      "avg_viewers": 47,
      "hours": 5.0
     },
     {
      "day": 30,
-     "gmv": 28757,
-     "gmv_per_hour": 5751,
-     "gmv_per_viewer": 256.8,
+     "gmv": 32091,
+     "gmv_per_hour": 6418,
+     "gmv_per_viewer": 286.5,
      "avg_viewers": 22,
      "hours": 5.0
     }
@@ -1483,7 +1483,7 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": -12,
-     "vs_team": -3,
+     "vs_team": -4,
      "vs_band": 20,
      "vs_prev": 20,
      "share_of_day": 24
@@ -1512,9 +1512,9 @@
      "_mc": "Guy",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -1,
-     "vs_team": 8,
-     "vs_band": 35,
+     "vs_self": -2,
+     "vs_team": 7,
+     "vs_band": 34,
      "vs_prev": 12,
      "share_of_day": 25
     },
@@ -1543,7 +1543,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": -4,
-     "vs_team": 5,
+     "vs_team": 4,
      "vs_band": 6,
      "vs_prev": -3,
      "share_of_day": 35
@@ -1573,7 +1573,7 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": 7,
-     "vs_team": 17,
+     "vs_team": 16,
      "vs_band": 20,
      "vs_prev": 11,
      "share_of_day": 22
@@ -1602,8 +1602,8 @@
      "_mc": "Guy",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 114,
-     "vs_team": 134,
+     "vs_self": 113,
+     "vs_team": 133,
      "vs_band": 140,
      "vs_prev": 100,
      "share_of_day": 40
@@ -1632,8 +1632,8 @@
      "_mc": "Guy",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 58,
-     "vs_team": 73,
+     "vs_self": 57,
+     "vs_team": 72,
      "vs_band": 77,
      "vs_prev": -26,
      "share_of_day": 36
@@ -1662,8 +1662,8 @@
      "_mc": "Guy",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 57,
-     "vs_team": 72,
+     "vs_self": 56,
+     "vs_team": 71,
      "vs_band": 75,
      "vs_prev": 0,
      "share_of_day": 22
@@ -1692,9 +1692,9 @@
      "_mc": "Guy",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 202,
-     "vs_team": 230,
-     "vs_band": 238,
+     "vs_self": 201,
+     "vs_team": 228,
+     "vs_band": 236,
      "vs_prev": 92,
      "share_of_day": 27
     },
@@ -1724,7 +1724,7 @@
      "rounds_in_day": 4,
      "vs_self": 6,
      "vs_team": 16,
-     "vs_band": 45,
+     "vs_band": 44,
      "vs_prev": -65,
      "share_of_day": 30
     },
@@ -1753,7 +1753,7 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": -43,
-     "vs_team": -37,
+     "vs_team": -38,
      "vs_band": -36,
      "vs_prev": -46,
      "share_of_day": 30
@@ -1783,8 +1783,8 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": -7,
-     "vs_team": 2,
-     "vs_band": 4,
+     "vs_team": 1,
+     "vs_band": 3,
      "vs_prev": 63,
      "share_of_day": 36
     },
@@ -1814,7 +1814,7 @@
      "rounds_in_day": 4,
      "vs_self": 4,
      "vs_team": 14,
-     "vs_band": 17,
+     "vs_band": 16,
      "vs_prev": 12,
      "share_of_day": 28
     },
@@ -1843,7 +1843,7 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": -31,
-     "vs_team": -24,
+     "vs_team": -25,
      "vs_band": -22,
      "vs_prev": -34,
      "share_of_day": 23
@@ -1903,7 +1903,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": -49,
-     "vs_team": -44,
+     "vs_team": -45,
      "vs_band": -43,
      "vs_prev": -14,
      "share_of_day": 25
@@ -1963,8 +1963,8 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": -12,
-     "vs_team": -3,
-     "vs_band": -1,
+     "vs_team": -4,
+     "vs_band": -2,
      "vs_prev": 82,
      "share_of_day": 35
     },
@@ -1993,7 +1993,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": -52,
-     "vs_team": -47,
+     "vs_team": -48,
      "vs_band": -47,
      "vs_prev": -46,
      "share_of_day": 27
@@ -2023,7 +2023,7 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": -61,
-     "vs_team": -57,
+     "vs_team": -58,
      "vs_band": -56,
      "vs_prev": -19,
      "share_of_day": 22
@@ -2053,7 +2053,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": -2,
-     "vs_team": 7,
+     "vs_team": 6,
      "vs_band": 10,
      "vs_prev": 151,
      "share_of_day": 33
@@ -2083,7 +2083,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": -7,
-     "vs_team": 2,
+     "vs_team": 1,
      "vs_band": 4,
      "vs_prev": -5,
      "share_of_day": 28
@@ -2113,8 +2113,8 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": 29,
-     "vs_team": 41,
-     "vs_band": 44,
+     "vs_team": 40,
+     "vs_band": 43,
      "vs_prev": 38,
      "share_of_day": 22
     },
@@ -2123,18 +2123,18 @@
      "start": "21:00",
      "end": "02:00",
      "hours": 5.0,
-     "gmv": 48989,
-     "gmv_per_hour": 9798,
+     "gmv": 49980,
+     "gmv_per_hour": 9996,
      "avg_viewers": 47,
-     "gmv_per_viewer": 206.7,
+     "gmv_per_viewer": 210.9,
      "v_start": 72,
      "v_end": 22,
      "campaign": true,
      "band": "night",
      "peak_hour": "21:00",
-     "peak_gmv": 17144,
+     "peak_gmv": 17491,
      "low_hour": "22:00",
-     "low_gmv": 4860,
+     "low_gmv": 4958,
      "live_ctr": 38.14,
      "ctor": 0.99,
      "live_gpm": 304,
@@ -2142,10 +2142,10 @@
      "_mc": "Guy",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -24,
-     "vs_team": -17,
-     "vs_band": -15,
-     "vs_prev": -41,
+     "vs_self": -23,
+     "vs_team": -15,
+     "vs_band": -13,
+     "vs_prev": -40,
      "share_of_day": 25
     },
     {
@@ -2153,16 +2153,16 @@
      "start": "21:00",
      "end": "02:00",
      "hours": 5.0,
-     "gmv": 28757,
-     "gmv_per_hour": 5751,
+     "gmv": 32091,
+     "gmv_per_hour": 6418,
      "avg_viewers": 22,
-     "gmv_per_viewer": 256.8,
+     "gmv_per_viewer": 286.5,
      "v_start": 70,
      "v_end": 0,
      "campaign": true,
      "band": "night",
      "peak_hour": "21:00",
-     "peak_gmv": 24995,
+     "peak_gmv": 27892,
      "low_hour": "23:00",
      "low_gmv": 0,
      "live_ctr": 42.53,
@@ -2172,27 +2172,27 @@
      "_mc": "Guy",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -55,
-     "vs_team": -51,
-     "vs_band": -50,
-     "vs_prev": -41,
+     "vs_self": -50,
+     "vs_team": -46,
+     "vs_band": -44,
+     "vs_prev": -36,
      "share_of_day": 14
     }
    ],
    "top_products": [
     {
      "name": "Steapex AERO รองเท้าคุชชันระดั…",
-     "gmv": 245000,
+     "gmv": 245915,
      "pct": 14
     },
     {
      "name": "STEAPEX WAVE รองเท้าวิ่งชายหญิ…",
-     "gmv": 236611,
+     "gmv": 237177,
      "pct": 14
     },
     {
      "name": "Steapex RUSH รองเท้าวิ่งสำหรับ…",
-     "gmv": 231729,
+     "gmv": 231773,
      "pct": 14
     }
    ],
@@ -2205,9 +2205,9 @@
    },
    "campaign": {
     "hours": 48.0,
-    "gmv": 884341,
-    "gmv_per_hour": 18424,
-    "gmv_per_viewer": 257.2,
+    "gmv": 888666,
+    "gmv_per_hour": 18514,
+    "gmv_per_viewer": 258.4,
     "avg_viewers": 72
    },
    "camp_roi": 29,
@@ -2226,19 +2226,19 @@
     ]
    },
    "score": {
-    "total": 75,
+    "total": 79,
     "parts": {
      "closing": 99,
      "audience": 80,
      "retention": 100,
-     "consistency": 78,
-     "improvement": 32
+     "consistency": 77,
+     "improvement": 48
     },
-    "improve_pct": -7,
+    "improve_pct": -1,
     "trend": {
-     "icon": "📉",
-     "th": "ตกลง",
-     "en": "Declining"
+     "icon": "➡️",
+     "th": "ทรงตัว",
+     "en": "Steady"
     },
     "rank": 5
    }
@@ -2253,9 +2253,9 @@
    "leave_kind": "หยุด",
    "shared_hours": 0.0,
    "avg_viewers": 69,
-   "gmv_total": 1446679,
-   "gmv_per_hour": 14695,
-   "gmv_per_viewer": 208.6,
+   "gmv_total": 1457755,
+   "gmv_per_hour": 14807,
+   "gmv_per_viewer": 210.2,
    "retention": 1.16,
    "hour_dist": [
     3,
@@ -2290,8 +2290,8 @@
    },
    "prime": {
     "hours": 24.0,
-    "gmv_per_hour": 20217,
-    "gmv_per_viewer": 232.3,
+    "gmv_per_hour": 20249,
+    "gmv_per_viewer": 232.6,
     "avg_viewers": 87
    },
    "weekly": [
@@ -2321,17 +2321,17 @@
     },
     {
      "wk": "22-28",
-     "gmv": 238373,
-     "gmv_per_hour": 11354,
-     "gmv_per_viewer": 211.9,
+     "gmv": 239776,
+     "gmv_per_hour": 11421,
+     "gmv_per_viewer": 213.1,
      "avg_viewers": 51,
      "hours": 21.0
     },
     {
      "wk": "29+",
-     "gmv": 124340,
-     "gmv_per_hour": 12434,
-     "gmv_per_viewer": 249.2,
+     "gmv": 134012,
+     "gmv_per_hour": 13401,
+     "gmv_per_viewer": 268.6,
      "avg_viewers": 50,
      "hours": 10.0
     }
@@ -2459,9 +2459,9 @@
     },
     {
      "day": 27,
-     "gmv": 62769,
-     "gmv_per_hour": 10461,
-     "gmv_per_viewer": 159.7,
+     "gmv": 64171,
+     "gmv_per_hour": 10695,
+     "gmv_per_viewer": 163.3,
      "avg_viewers": 66,
      "hours": 6.0
     },
@@ -2475,17 +2475,17 @@
     },
     {
      "day": 29,
-     "gmv": 49554,
-     "gmv_per_hour": 9911,
-     "gmv_per_viewer": 206.5,
+     "gmv": 50556,
+     "gmv_per_hour": 10111,
+     "gmv_per_viewer": 210.7,
      "avg_viewers": 48,
      "hours": 5.0
     },
     {
      "day": 30,
-     "gmv": 74786,
-     "gmv_per_hour": 14957,
-     "gmv_per_viewer": 288.7,
+     "gmv": 83456,
+     "gmv_per_hour": 16691,
+     "gmv_per_viewer": 322.2,
      "avg_viewers": 52,
      "hours": 5.0
     }
@@ -2515,8 +2515,8 @@
      "_mc": "Mook",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 23,
-     "vs_team": 54,
+     "vs_self": 22,
+     "vs_team": 53,
      "vs_band": 58,
      "vs_prev": null,
      "share_of_day": 37
@@ -2545,8 +2545,8 @@
      "_mc": "Mook",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": -16,
-     "vs_team": 5,
+     "vs_self": -17,
+     "vs_team": 4,
      "vs_band": 8,
      "vs_prev": -32,
      "share_of_day": 26
@@ -2576,7 +2576,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": -10,
-     "vs_team": 13,
+     "vs_team": 12,
      "vs_band": 16,
      "vs_prev": 8,
      "share_of_day": 27
@@ -2605,9 +2605,9 @@
      "_mc": "Mook",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 6,
-     "vs_team": 33,
-     "vs_band": 36,
+     "vs_self": 5,
+     "vs_team": 32,
+     "vs_band": 35,
      "vs_prev": 17,
      "share_of_day": 32
     },
@@ -2635,9 +2635,9 @@
      "_mc": "Mook",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 71,
-     "vs_team": 114,
-     "vs_band": 118,
+     "vs_self": 70,
+     "vs_team": 112,
+     "vs_band": 117,
      "vs_prev": 61,
      "share_of_day": 33
     },
@@ -2665,8 +2665,8 @@
      "_mc": "Mook",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 127,
-     "vs_team": 184,
+     "vs_self": 126,
+     "vs_team": 182,
      "vs_band": 191,
      "vs_prev": 33,
      "share_of_day": 36
@@ -2695,8 +2695,8 @@
      "_mc": "Mook",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 172,
-     "vs_team": 240,
+     "vs_self": 170,
+     "vs_team": 239,
      "vs_band": 249,
      "vs_prev": 20,
      "share_of_day": 34
@@ -2755,9 +2755,9 @@
      "_mc": "Mook",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -17,
-     "vs_team": 4,
-     "vs_band": 29,
+     "vs_self": -18,
+     "vs_team": 3,
+     "vs_band": 28,
      "vs_prev": 25,
      "share_of_day": 25
     },
@@ -2786,7 +2786,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": -36,
-     "vs_team": -19,
+     "vs_team": -20,
      "vs_band": 0,
      "vs_prev": -22,
      "share_of_day": 24
@@ -2845,8 +2845,8 @@
      "_mc": "Mook",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -68,
-     "vs_team": -60,
+     "vs_self": -69,
+     "vs_team": -61,
      "vs_band": -60,
      "vs_prev": -51,
      "share_of_day": 17
@@ -2906,8 +2906,8 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": -34,
-     "vs_team": -17,
-     "vs_band": -15,
+     "vs_team": -18,
+     "vs_band": -16,
      "vs_prev": 9,
      "share_of_day": 26
     },
@@ -2936,8 +2936,8 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": -27,
-     "vs_team": -8,
-     "vs_band": -6,
+     "vs_team": -9,
+     "vs_band": -7,
      "vs_prev": 11,
      "share_of_day": 25
     },
@@ -2946,18 +2946,18 @@
      "start": "20:00",
      "end": "02:00",
      "hours": 6.0,
-     "gmv": 62769,
-     "gmv_per_hour": 10461,
+     "gmv": 64171,
+     "gmv_per_hour": 10695,
      "avg_viewers": 66,
-     "gmv_per_viewer": 159.7,
+     "gmv_per_viewer": 163.3,
      "v_start": 81,
      "v_end": 44,
      "campaign": true,
      "band": "night",
      "peak_hour": "20:00",
-     "peak_gmv": 21033,
+     "peak_gmv": 21503,
      "low_hour": "00:00",
-     "low_gmv": 4778,
+     "low_gmv": 4885,
      "live_ctr": 20.81,
      "ctor": 0.45,
      "live_gpm": 367,
@@ -2965,10 +2965,10 @@
      "_mc": "Mook",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": -29,
-     "vs_team": -11,
-     "vs_band": -9,
-     "vs_prev": -3,
+     "vs_self": -28,
+     "vs_team": -10,
+     "vs_band": -7,
+     "vs_prev": -1,
      "share_of_day": 32
     },
     {
@@ -2997,8 +2997,8 @@
      "rounds_in_day": 4,
      "vs_self": -1,
      "vs_team": 24,
-     "vs_band": 27,
-     "vs_prev": 40,
+     "vs_band": 26,
+     "vs_prev": 37,
      "share_of_day": 57
     },
     {
@@ -3006,18 +3006,18 @@
      "start": "11:00",
      "end": "16:00",
      "hours": 5.0,
-     "gmv": 49554,
-     "gmv_per_hour": 9911,
+     "gmv": 50556,
+     "gmv_per_hour": 10111,
      "avg_viewers": 48,
-     "gmv_per_viewer": 206.5,
+     "gmv_per_viewer": 210.7,
      "v_start": 47,
      "v_end": 38,
      "campaign": true,
      "band": "midday",
      "peak_hour": "11:00",
-     "peak_gmv": 12969,
+     "peak_gmv": 13231,
      "low_hour": "14:00",
-     "low_gmv": 5491,
+     "low_gmv": 5602,
      "live_ctr": 38.14,
      "ctor": 0.99,
      "live_gpm": 304,
@@ -3025,10 +3025,10 @@
      "_mc": "Mook",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": -33,
-     "vs_team": -16,
-     "vs_band": -15,
-     "vs_prev": -32,
+     "vs_self": -32,
+     "vs_team": -14,
+     "vs_band": -13,
+     "vs_prev": -31,
      "share_of_day": 26
     },
     {
@@ -3036,18 +3036,18 @@
      "start": "11:00",
      "end": "16:00",
      "hours": 5.0,
-     "gmv": 74786,
-     "gmv_per_hour": 14957,
+     "gmv": 83456,
+     "gmv_per_hour": 16691,
      "avg_viewers": 52,
-     "gmv_per_viewer": 288.7,
+     "gmv_per_viewer": 322.2,
      "v_start": 44,
      "v_end": 57,
      "campaign": true,
      "band": "midday",
      "peak_hour": "14:00",
-     "peak_gmv": 18861,
+     "peak_gmv": 21048,
      "low_hour": "15:00",
-     "low_gmv": 7820,
+     "low_gmv": 8727,
      "live_ctr": 42.53,
      "ctor": 1.8,
      "live_gpm": 401,
@@ -3055,27 +3055,27 @@
      "_mc": "Mook",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 2,
-     "vs_team": 27,
-     "vs_band": 28,
-     "vs_prev": 51,
+     "vs_self": 13,
+     "vs_team": 41,
+     "vs_band": 43,
+     "vs_prev": 65,
      "share_of_day": 37
     }
    ],
    "top_products": [
     {
      "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
-     "gmv": 254051,
+     "gmv": 256412,
      "pct": 18
     },
     {
      "name": "STEAPEX WAVE รองเท้าวิ่งชายหญิ…",
-     "gmv": 188320,
+     "gmv": 189220,
      "pct": 13
     },
     {
      "name": "Steapex RUSH รองเท้าวิ่งสำหรับ…",
-     "gmv": 179119,
+     "gmv": 179652,
      "pct": 12
     }
    ],
@@ -3088,12 +3088,12 @@
    },
    "campaign": {
     "hours": 42.994167000000004,
-    "gmv": 895936,
-    "gmv_per_hour": 20839,
-    "gmv_per_viewer": 230.3,
+    "gmv": 907012,
+    "gmv_per_hour": 21096,
+    "gmv_per_viewer": 233.2,
     "avg_viewers": 88
    },
-   "camp_roi": 27,
+   "camp_roi": 29,
    "group": "regular",
    "category": "traffic",
    "category_label": {
@@ -3102,10 +3102,10 @@
    },
    "insights": {
     "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿209 ต่ำกว่าค่ากลางทีม ฿226) — เน้นรีวิว/เร่งปิดการขาย"
+     "ปิดการขายต่ำ (GMV/คนดู ฿210 ต่ำกว่าค่ากลางทีม ฿226) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Low closing (GMV/viewer ฿209 below team median ฿226) — focus on reviews/urgency"
+     "Low closing (GMV/viewer ฿210 below team median ฿226) — focus on reviews/urgency"
     ]
    },
    "score": {
@@ -3114,10 +3114,10 @@
      "closing": 92,
      "audience": 100,
      "retention": 97,
-     "consistency": 46,
+     "consistency": 45,
      "improvement": 100
     },
-    "improve_pct": 31,
+    "improve_pct": 41,
     "trend": {
      "icon": "📈",
      "th": "พัฒนาขึ้น",
@@ -3136,9 +3136,9 @@
    "leave_kind": "หยุด",
    "shared_hours": 0.0,
    "avg_viewers": 52,
-   "gmv_total": 1348031,
-   "gmv_per_hour": 11760,
-   "gmv_per_viewer": 217.6,
+   "gmv_total": 1355548,
+   "gmv_per_hour": 11825,
+   "gmv_per_viewer": 218.8,
    "retention": 1.23,
    "hour_dist": [
     3,
@@ -3173,8 +3173,8 @@
    },
    "prime": {
     "hours": 27.0,
-    "gmv_per_hour": 11584,
-    "gmv_per_viewer": 211.2,
+    "gmv_per_hour": 11748,
+    "gmv_per_viewer": 214.2,
     "avg_viewers": 55
    },
    "weekly": [
@@ -3212,9 +3212,9 @@
     },
     {
      "wk": "29+",
-     "gmv": 115679,
-     "gmv_per_hour": 11568,
-     "gmv_per_viewer": 240.5,
+     "gmv": 123196,
+     "gmv_per_hour": 12320,
+     "gmv_per_viewer": 256.1,
      "avg_viewers": 48,
      "hours": 10.0
     }
@@ -3390,17 +3390,17 @@
     },
     {
      "day": 29,
-     "gmv": 61583,
-     "gmv_per_hour": 12317,
-     "gmv_per_viewer": 234.2,
+     "gmv": 62829,
+     "gmv_per_hour": 12566,
+     "gmv_per_viewer": 238.9,
      "avg_viewers": 53,
      "hours": 5.0
     },
     {
      "day": 30,
-     "gmv": 54096,
-     "gmv_per_hour": 10819,
-     "gmv_per_viewer": 248.1,
+     "gmv": 60368,
+     "gmv_per_hour": 12074,
+     "gmv_per_viewer": 276.9,
      "avg_viewers": 44,
      "hours": 5.0
     }
@@ -3460,9 +3460,9 @@
      "_mc": "Ohm",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 5,
-     "vs_team": 5,
-     "vs_band": 7,
+     "vs_self": 4,
+     "vs_team": 4,
+     "vs_band": 6,
      "vs_prev": 32,
      "share_of_day": 26
     },
@@ -3490,9 +3490,9 @@
      "_mc": "Ohm",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": -2,
-     "vs_team": -2,
-     "vs_band": 0,
+     "vs_self": -3,
+     "vs_team": -3,
+     "vs_band": -1,
      "vs_prev": -7,
      "share_of_day": 28
     },
@@ -3520,8 +3520,8 @@
      "_mc": "Ohm",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 156,
-     "vs_team": 156,
+     "vs_self": 155,
+     "vs_team": 155,
      "vs_band": 158,
      "vs_prev": 162,
      "share_of_day": 33
@@ -3550,9 +3550,9 @@
      "_mc": "Ohm",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 127,
-     "vs_team": 127,
-     "vs_band": 183,
+     "vs_self": 126,
+     "vs_team": 126,
+     "vs_band": 182,
      "vs_prev": -11,
      "share_of_day": 16
     },
@@ -3580,9 +3580,9 @@
      "_mc": "Ohm",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": 51,
-     "vs_team": 51,
-     "vs_band": 88,
+     "vs_self": 50,
+     "vs_team": 50,
+     "vs_band": 87,
      "vs_prev": -34,
      "share_of_day": 17
     },
@@ -3640,8 +3640,8 @@
      "_mc": "Ohm",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 141,
-     "vs_team": 141,
+     "vs_self": 140,
+     "vs_team": 140,
      "vs_band": 143,
      "vs_prev": 47,
      "share_of_day": 20
@@ -3700,8 +3700,8 @@
      "_mc": "Ohm",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": -35,
-     "vs_team": -35,
+     "vs_self": -36,
+     "vs_team": -36,
      "vs_band": -34,
      "vs_prev": -23,
      "share_of_day": 31
@@ -3730,9 +3730,9 @@
      "_mc": "Ohm",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 3,
-     "vs_team": 3,
-     "vs_band": 5,
+     "vs_self": 2,
+     "vs_team": 2,
+     "vs_band": 4,
      "vs_prev": 59,
      "share_of_day": 31
     },
@@ -4000,8 +4000,8 @@
      "_mc": "Ohm",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 63,
-     "vs_team": 63,
+     "vs_self": 62,
+     "vs_team": 62,
      "vs_band": 64,
      "vs_prev": 64,
      "share_of_day": 26
@@ -4041,18 +4041,18 @@
      "start": "16:00",
      "end": "21:00",
      "hours": 5.0,
-     "gmv": 61583,
-     "gmv_per_hour": 12317,
+     "gmv": 62829,
+     "gmv_per_hour": 12566,
      "avg_viewers": 53,
-     "gmv_per_viewer": 234.2,
+     "gmv_per_viewer": 238.9,
      "v_start": 32,
      "v_end": 73,
      "campaign": true,
      "band": "evening",
      "peak_hour": "20:00",
-     "peak_gmv": 22378,
+     "peak_gmv": 22830,
      "low_hour": "18:00",
-     "low_gmv": 4821,
+     "low_gmv": 4918,
      "live_ctr": 38.14,
      "ctor": 0.99,
      "live_gpm": 304,
@@ -4060,10 +4060,10 @@
      "_mc": "Ohm",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 5,
-     "vs_team": 5,
-     "vs_band": 7,
-     "vs_prev": -36,
+     "vs_self": 6,
+     "vs_team": 6,
+     "vs_band": 9,
+     "vs_prev": -34,
      "share_of_day": 32
     },
     {
@@ -4071,18 +4071,18 @@
      "start": "16:00",
      "end": "21:00",
      "hours": 5.0,
-     "gmv": 54096,
-     "gmv_per_hour": 10819,
+     "gmv": 60368,
+     "gmv_per_hour": 12074,
      "avg_viewers": 44,
-     "gmv_per_viewer": 248.1,
+     "gmv_per_viewer": 276.9,
      "v_start": 46,
      "v_end": 57,
      "campaign": true,
      "band": "evening",
      "peak_hour": "20:00",
-     "peak_gmv": 14598,
+     "peak_gmv": 16290,
      "low_hour": "19:00",
-     "low_gmv": 5795,
+     "low_gmv": 6466,
      "live_ctr": 42.53,
      "ctor": 1.8,
      "live_gpm": 401,
@@ -4090,27 +4090,27 @@
      "_mc": "Ohm",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": -8,
-     "vs_team": -8,
-     "vs_band": -6,
-     "vs_prev": -12,
+     "vs_self": 2,
+     "vs_team": 2,
+     "vs_band": 4,
+     "vs_prev": -4,
      "share_of_day": 27
     }
    ],
    "top_products": [
     {
      "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
-     "gmv": 434657,
+     "gmv": 437081,
      "pct": 33
     },
     {
      "name": "Steapex AERO รองเท้าคุชชันระดั…",
-     "gmv": 166726,
+     "gmv": 167337,
      "pct": 13
     },
     {
      "name": "Steapex Flux รองเท้าวิ่งผู้ชาย…",
-     "gmv": 154080,
+     "gmv": 155893,
      "pct": 12
     }
    ],
@@ -4123,12 +4123,12 @@
    },
    "campaign": {
     "hours": 40.822222,
-    "gmv": 725708,
-    "gmv_per_hour": 17777,
-    "gmv_per_viewer": 248.4,
+    "gmv": 733226,
+    "gmv_per_hour": 17961,
+    "gmv_per_viewer": 250.9,
     "avg_viewers": 66
    },
-   "camp_roi": 31,
+   "camp_roi": 32,
    "group": "regular",
    "category": "traffic",
    "category_label": {
@@ -4137,28 +4137,28 @@
    },
    "insights": {
     "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿218 ต่ำกว่าค่ากลางทีม ฿226) — เน้นรีวิว/เร่งปิดการขาย"
+     "ปิดการขายต่ำ (GMV/คนดู ฿219 ต่ำกว่าค่ากลางทีม ฿226) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Low closing (GMV/viewer ฿218 below team median ฿226) — focus on reviews/urgency"
+     "Low closing (GMV/viewer ฿219 below team median ฿226) — focus on reviews/urgency"
     ]
    },
    "score": {
-    "total": 80,
+    "total": 85,
     "parts": {
      "closing": 95,
      "audience": 78,
      "retention": 100,
      "consistency": 51,
-     "improvement": 75
+     "improvement": 92
     },
-    "improve_pct": 10,
+    "improve_pct": 17,
     "trend": {
      "icon": "📈",
      "th": "พัฒนาขึ้น",
      "en": "Improving"
     },
-    "rank": 4
+    "rank": 3
    }
   },
   {
@@ -4171,9 +4171,9 @@
    "leave_kind": "ลา",
    "shared_hours": 0.0,
    "avg_viewers": 51,
-   "gmv_total": 1275059,
-   "gmv_per_hour": 11705,
-   "gmv_per_viewer": 227.9,
+   "gmv_total": 1282056,
+   "gmv_per_hour": 11769,
+   "gmv_per_viewer": 229.2,
    "retention": 1.19,
    "hour_dist": [
     5,
@@ -4208,8 +4208,8 @@
    },
    "prime": {
     "hours": 24.0,
-    "gmv_per_hour": 14575,
-    "gmv_per_viewer": 219.0,
+    "gmv_per_hour": 14590,
+    "gmv_per_viewer": 219.3,
     "avg_viewers": 67
    },
    "weekly": [
@@ -4239,17 +4239,17 @@
     },
     {
      "wk": "22-28",
-     "gmv": 178850,
-     "gmv_per_hour": 8942,
-     "gmv_per_viewer": 218.9,
+     "gmv": 179890,
+     "gmv_per_hour": 8994,
+     "gmv_per_viewer": 220.2,
      "avg_viewers": 41,
      "hours": 20.0
     },
     {
      "wk": "29+",
-     "gmv": 79417,
-     "gmv_per_hour": 7963,
-     "gmv_per_viewer": 330.9,
+     "gmv": 85375,
+     "gmv_per_hour": 8561,
+     "gmv_per_viewer": 355.7,
      "avg_viewers": 24,
      "hours": 10.0
     }
@@ -4393,9 +4393,9 @@
     },
     {
      "day": 27,
-     "gmv": 46522,
-     "gmv_per_hour": 9304,
-     "gmv_per_viewer": 174.9,
+     "gmv": 47562,
+     "gmv_per_hour": 9512,
+     "gmv_per_viewer": 178.8,
      "avg_viewers": 53,
      "hours": 5.0
     },
@@ -4409,17 +4409,17 @@
     },
     {
      "day": 29,
-     "gmv": 33960,
-     "gmv_per_hour": 6812,
-     "gmv_per_viewer": 336.2,
+     "gmv": 34646,
+     "gmv_per_hour": 6949,
+     "gmv_per_viewer": 343.0,
      "avg_viewers": 20,
      "hours": 5.0
     },
     {
      "day": 30,
-     "gmv": 45458,
-     "gmv_per_hour": 9115,
-     "gmv_per_viewer": 327.0,
+     "gmv": 50728,
+     "gmv_per_hour": 10172,
+     "gmv_per_viewer": 365.0,
      "avg_viewers": 28,
      "hours": 5.0
     }
@@ -4449,9 +4449,9 @@
      "_mc": "Gan",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": -1,
+     "vs_self": -2,
      "vs_team": -2,
-     "vs_band": 1,
+     "vs_band": 0,
      "vs_prev": null,
      "share_of_day": 24
     },
@@ -4479,8 +4479,8 @@
      "_mc": "Gan",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": 20,
-     "vs_team": 19,
+     "vs_self": 19,
+     "vs_team": 18,
      "vs_band": 22,
      "vs_prev": 21,
      "share_of_day": 15
@@ -4509,8 +4509,8 @@
      "_mc": "Gan",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 63,
-     "vs_team": 62,
+     "vs_self": 62,
+     "vs_team": 61,
      "vs_band": 65,
      "vs_prev": 36,
      "share_of_day": 28
@@ -4540,8 +4540,8 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": 55,
-     "vs_team": 55,
-     "vs_band": 58,
+     "vs_team": 54,
+     "vs_band": 57,
      "vs_prev": -4,
      "share_of_day": 27
     },
@@ -4569,8 +4569,8 @@
      "_mc": "Gan",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": 61,
-     "vs_team": 60,
+     "vs_self": 60,
+     "vs_team": 59,
      "vs_band": 99,
      "vs_prev": 4,
      "share_of_day": 20
@@ -4599,9 +4599,9 @@
      "_mc": "Gan",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": 128,
-     "vs_team": 127,
-     "vs_band": 182,
+     "vs_self": 126,
+     "vs_team": 125,
+     "vs_band": 181,
      "vs_prev": 42,
      "share_of_day": 19
     },
@@ -4629,8 +4629,8 @@
      "_mc": "Gan",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 2,
-     "vs_team": 2,
+     "vs_self": 1,
+     "vs_team": 1,
      "vs_band": 4,
      "vs_prev": -55,
      "share_of_day": 26
@@ -4690,7 +4690,7 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": -27,
-     "vs_team": -27,
+     "vs_team": -28,
      "vs_band": -26,
      "vs_prev": -6,
      "share_of_day": 21
@@ -4719,7 +4719,7 @@
      "_mc": "Gan",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -29,
+     "vs_self": -30,
      "vs_team": -30,
      "vs_band": -29,
      "vs_prev": -3,
@@ -4750,8 +4750,8 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": 17,
-     "vs_team": 17,
-     "vs_band": 46,
+     "vs_team": 16,
+     "vs_band": 45,
      "vs_prev": 66,
      "share_of_day": 83
     },
@@ -4780,7 +4780,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": -28,
-     "vs_team": -28,
+     "vs_team": -29,
      "vs_band": -28,
      "vs_prev": -39,
      "share_of_day": 32
@@ -4840,7 +4840,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": -2,
-     "vs_team": -2,
+     "vs_team": -3,
      "vs_band": 0,
      "vs_prev": 117,
      "share_of_day": 45
@@ -4869,8 +4869,8 @@
      "_mc": "Gan",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": -24,
-     "vs_team": -24,
+     "vs_self": -25,
+     "vs_team": -25,
      "vs_band": -23,
      "vs_prev": -23,
      "share_of_day": 27
@@ -4899,9 +4899,9 @@
      "_mc": "Gan",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": -40,
+     "vs_self": -41,
      "vs_team": -41,
-     "vs_band": -39,
+     "vs_band": -40,
      "vs_prev": -21,
      "share_of_day": 31
     },
@@ -4930,7 +4930,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": 66,
-     "vs_team": 66,
+     "vs_team": 65,
      "vs_band": 70,
      "vs_prev": 179,
      "share_of_day": 26
@@ -4940,18 +4940,18 @@
      "start": "15:00",
      "end": "20:00",
      "hours": 5.0,
-     "gmv": 46522,
-     "gmv_per_hour": 9304,
+     "gmv": 47562,
+     "gmv_per_hour": 9512,
      "avg_viewers": 53,
-     "gmv_per_viewer": 174.9,
+     "gmv_per_viewer": 178.8,
      "v_start": 58,
      "v_end": 63,
      "campaign": true,
      "band": "evening",
      "peak_hour": "15:00",
-     "peak_gmv": 13140,
+     "peak_gmv": 13433,
      "low_hour": "18:00",
-     "low_gmv": 4716,
+     "low_gmv": 4822,
      "live_ctr": 20.81,
      "ctor": 0.45,
      "live_gpm": 367,
@@ -4959,10 +4959,10 @@
      "_mc": "Gan",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -21,
-     "vs_team": -21,
-     "vs_band": -19,
-     "vs_prev": -52,
+     "vs_self": -19,
+     "vs_team": -20,
+     "vs_band": -18,
+     "vs_prev": -51,
      "share_of_day": 24
     },
     {
@@ -5000,18 +5000,18 @@
      "start": "06:00",
      "end": "11:00",
      "hours": 5.0,
-     "gmv": 33960,
-     "gmv_per_hour": 6812,
+     "gmv": 34646,
+     "gmv_per_hour": 6949,
      "avg_viewers": 20,
-     "gmv_per_viewer": 336.2,
+     "gmv_per_viewer": 343.0,
      "v_start": 16,
      "v_end": 28,
      "campaign": true,
      "band": "morning",
      "peak_hour": "10:00",
-     "peak_gmv": 10407,
+     "peak_gmv": 10618,
      "low_hour": "06:00",
-     "low_gmv": 4556,
+     "low_gmv": 4648,
      "live_ctr": 38.14,
      "ctor": 0.99,
      "live_gpm": 304,
@@ -5019,9 +5019,9 @@
      "_mc": "Gan",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -42,
-     "vs_team": -42,
-     "vs_band": -28,
+     "vs_self": -41,
+     "vs_team": -41,
+     "vs_band": -27,
      "vs_prev": -27,
      "share_of_day": 17
     },
@@ -5030,16 +5030,16 @@
      "start": "06:00",
      "end": "11:00",
      "hours": 5.0,
-     "gmv": 45458,
-     "gmv_per_hour": 9115,
+     "gmv": 50728,
+     "gmv_per_hour": 10172,
      "avg_viewers": 28,
-     "gmv_per_viewer": 327.0,
+     "gmv_per_viewer": 365.0,
      "v_start": 14,
      "v_end": 26,
      "campaign": true,
      "band": "morning",
      "peak_hour": "08:00",
-     "peak_gmv": 19770,
+     "peak_gmv": 22063,
      "low_hour": "06:00",
      "low_gmv": 0,
      "live_ctr": 42.53,
@@ -5049,27 +5049,27 @@
      "_mc": "Gan",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -22,
-     "vs_team": -22,
-     "vs_band": -3,
-     "vs_prev": 34,
+     "vs_self": -14,
+     "vs_team": -14,
+     "vs_band": 7,
+     "vs_prev": 46,
      "share_of_day": 22
     }
    ],
    "top_products": [
     {
      "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
-     "gmv": 310011,
+     "gmv": 313422,
      "pct": 24
     },
     {
      "name": "Steapex RUSH รองเท้าวิ่งสำหรับ…",
-     "gmv": 272687,
+     "gmv": 272941,
      "pct": 21
     },
     {
      "name": "Steapex Flux รองเท้าวิ่งผู้ชาย…",
-     "gmv": 191170,
+     "gmv": 192045,
      "pct": 15
     }
    ],
@@ -5082,12 +5082,12 @@
    },
    "campaign": {
     "hours": 50.94805600000001,
-    "gmv": 725187,
-    "gmv_per_hour": 14234,
-    "gmv_per_viewer": 246.8,
+    "gmv": 732184,
+    "gmv_per_hour": 14371,
+    "gmv_per_viewer": 249.2,
     "avg_viewers": 58
    },
-   "camp_roi": 19,
+   "camp_roi": 20,
    "group": "regular",
    "category": "closer",
    "category_label": {
@@ -5111,7 +5111,7 @@
      "consistency": 58,
      "improvement": 100
     },
-    "improve_pct": 48,
+    "improve_pct": 60,
     "trend": {
      "icon": "📈",
      "th": "พัฒนาขึ้น",
@@ -5292,7 +5292,7 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": 9,
-     "vs_team": 26,
+     "vs_team": 25,
      "vs_band": 27,
      "vs_prev": null,
      "share_of_day": 25
@@ -5322,7 +5322,7 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": -11,
-     "vs_team": 3,
+     "vs_team": 2,
      "vs_band": 3,
      "vs_prev": -19,
      "share_of_day": 20
@@ -5352,7 +5352,7 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": 57,
-     "vs_team": 81,
+     "vs_team": 80,
      "vs_band": 83,
      "vs_prev": 77,
      "share_of_day": 16
@@ -5382,7 +5382,7 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": 29,
-     "vs_team": 49,
+     "vs_team": 48,
      "vs_band": 50,
      "vs_prev": -18,
      "share_of_day": 20
@@ -5412,7 +5412,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": -15,
-     "vs_team": -1,
+     "vs_team": -2,
      "vs_band": -1,
      "vs_prev": -34,
      "share_of_day": 31
@@ -5442,7 +5442,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": 9,
-     "vs_team": 26,
+     "vs_team": 25,
      "vs_band": 27,
      "vs_prev": 27,
      "share_of_day": 30
@@ -5472,7 +5472,7 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": 17,
-     "vs_team": 35,
+     "vs_team": 34,
      "vs_band": 36,
      "vs_prev": 7,
      "share_of_day": 26
@@ -5502,7 +5502,7 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": -32,
-     "vs_team": -21,
+     "vs_team": -22,
      "vs_band": -21,
      "vs_prev": -42,
      "share_of_day": 23
@@ -5578,10 +5578,10 @@
    },
    "insights": {
     "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿232 ต่ำกว่าค่ากลางทีม ฿242) — เน้นรีวิว/เร่งปิดการขาย"
+     "ปิดการขายต่ำ (GMV/คนดู ฿232 ต่ำกว่าค่ากลางทีม ฿243) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Low closing (GMV/viewer ฿232 below team median ฿242) — focus on reviews/urgency"
+     "Low closing (GMV/viewer ฿232 below team median ฿243) — focus on reviews/urgency"
     ]
    },
    "score": {
@@ -5612,9 +5612,9 @@
    "leave_kind": "ลา",
    "shared_hours": 0.0,
    "avg_viewers": 38,
-   "gmv_total": 459637,
-   "gmv_per_hour": 9290,
-   "gmv_per_viewer": 225.9,
+   "gmv_total": 460862,
+   "gmv_per_hour": 9315,
+   "gmv_per_viewer": 226.5,
    "retention": 0.93,
    "hour_dist": [
     5,
@@ -5664,9 +5664,9 @@
     },
     {
      "wk": "22-28",
-     "gmv": 277280,
-     "gmv_per_hour": 13943,
-     "gmv_per_viewer": 251.2,
+     "gmv": 278505,
+     "gmv_per_hour": 14005,
+     "gmv_per_viewer": 252.3,
      "avg_viewers": 53,
      "hours": 19.9
     }
@@ -5746,9 +5746,9 @@
     },
     {
      "day": 27,
-     "gmv": 54814,
-     "gmv_per_hour": 10963,
-     "gmv_per_viewer": 165.6,
+     "gmv": 56039,
+     "gmv_per_hour": 11208,
+     "gmv_per_viewer": 169.3,
      "avg_viewers": 66,
      "hours": 5.0
     }
@@ -5809,7 +5809,7 @@
      "rank_in_day": 3,
      "rounds_in_day": 4,
      "vs_self": -22,
-     "vs_team": -38,
+     "vs_team": -39,
      "vs_band": -37,
      "vs_prev": 135,
      "share_of_day": 23
@@ -5869,7 +5869,7 @@
      "rank_in_day": 1,
      "rounds_in_day": 4,
      "vs_self": -17,
-     "vs_team": -34,
+     "vs_team": -35,
      "vs_band": -18,
      "vs_prev": 39,
      "share_of_day": 30
@@ -5928,7 +5928,7 @@
      "_mc": "Mint",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -31,
+     "vs_self": -32,
      "vs_team": -46,
      "vs_band": -33,
      "vs_prev": -7,
@@ -5959,7 +5959,7 @@
      "rank_in_day": 4,
      "rounds_in_day": 4,
      "vs_self": -5,
-     "vs_team": -25,
+     "vs_team": -26,
      "vs_band": -7,
      "vs_prev": 38,
      "share_of_day": 20
@@ -5988,9 +5988,9 @@
      "_mc": "Mint",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 108,
-     "vs_team": 64,
-     "vs_band": 105,
+     "vs_self": 107,
+     "vs_team": 63,
+     "vs_band": 104,
      "vs_prev": 120,
      "share_of_day": 26
     },
@@ -6018,8 +6018,8 @@
      "_mc": "Mint",
      "rank_in_day": 1,
      "rounds_in_day": 1,
-     "vs_self": 79,
-     "vs_team": 41,
+     "vs_self": 78,
+     "vs_team": 40,
      "vs_band": 42,
      "vs_prev": -14,
      "share_of_day": 100
@@ -6029,18 +6029,18 @@
      "start": "10:00",
      "end": "15:00",
      "hours": 5.0,
-     "gmv": 54814,
-     "gmv_per_hour": 10963,
+     "gmv": 56039,
+     "gmv_per_hour": 11208,
      "avg_viewers": 66,
-     "gmv_per_viewer": 165.6,
+     "gmv_per_viewer": 169.3,
      "v_start": 68,
      "v_end": 56,
      "campaign": true,
      "band": "midday",
      "peak_hour": "11:00",
-     "peak_gmv": 14534,
+     "peak_gmv": 14859,
      "low_hour": "12:00",
-     "low_gmv": 7120,
+     "low_gmv": 7280,
      "live_ctr": 20.81,
      "ctor": 0.45,
      "live_gpm": 367,
@@ -6048,27 +6048,27 @@
      "_mc": "Mint",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 18,
-     "vs_team": -7,
-     "vs_band": -6,
-     "vs_prev": -34,
+     "vs_self": 20,
+     "vs_team": -5,
+     "vs_band": -4,
+     "vs_prev": -33,
      "share_of_day": 28
     }
    ],
    "top_products": [
     {
      "name": "Steapex AERO รองเท้าคุชชันระดั…",
-     "gmv": 114984,
+     "gmv": 115365,
      "pct": 25
     },
     {
      "name": "Steapex OASIS รองเท้าวิ่งผ้าตา…",
-     "gmv": 55587,
+     "gmv": 55714,
      "pct": 12
     },
     {
      "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
-     "gmv": 54990,
+     "gmv": 55065,
      "pct": 12
     }
    ],
@@ -6081,12 +6081,12 @@
    },
    "campaign": {
     "hours": 14.973611,
-    "gmv": 234030,
-    "gmv_per_hour": 15629,
-    "gmv_per_viewer": 262.7,
+    "gmv": 235255,
+    "gmv_per_hour": 15711,
+    "gmv_per_viewer": 264.0,
     "avg_viewers": 59
    },
-   "camp_roi": 33,
+   "camp_roi": 34,
    "group": "regular",
    "category": "closer",
    "category_label": {
@@ -6110,13 +6110,13 @@
      "consistency": 56,
      "improvement": 100
     },
-    "improve_pct": 28,
+    "improve_pct": 29,
     "trend": {
      "icon": "📈",
      "th": "พัฒนาขึ้น",
      "en": "Improving"
     },
-    "rank": 3
+    "rank": 4
    }
   },
   {
@@ -6129,9 +6129,9 @@
    "leave_kind": "",
    "shared_hours": 0.0,
    "avg_viewers": 34,
-   "gmv_total": 262297,
-   "gmv_per_hour": 8371,
-   "gmv_per_viewer": 242.2,
+   "gmv_total": 263011,
+   "gmv_per_hour": 8394,
+   "gmv_per_viewer": 242.9,
    "retention": 1.55,
    "hour_dist": [
     7,
@@ -6192,9 +6192,9 @@
     },
     {
      "wk": "22-28",
-     "gmv": 106371,
-     "gmv_per_hour": 8182,
-     "gmv_per_viewer": 248.0,
+     "gmv": 107086,
+     "gmv_per_hour": 8237,
+     "gmv_per_viewer": 249.6,
      "avg_viewers": 33,
      "hours": 13.0
     }
@@ -6250,9 +6250,9 @@
     },
     {
      "day": 27,
-     "gmv": 31959,
-     "gmv_per_hour": 7990,
-     "gmv_per_viewer": 249.7,
+     "gmv": 32673,
+     "gmv_per_hour": 8168,
+     "gmv_per_viewer": 255.3,
      "avg_viewers": 32,
      "hours": 4.0
     },
@@ -6320,9 +6320,9 @@
      "_mc": "Bee",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 168,
-     "vs_team": 91,
-     "vs_band": 137,
+     "vs_self": 167,
+     "vs_team": 89,
+     "vs_band": 136,
      "vs_prev": 237,
      "share_of_day": 19
     },
@@ -6352,7 +6352,7 @@
      "rounds_in_day": 4,
      "vs_self": -46,
      "vs_team": -62,
-     "vs_band": -52,
+     "vs_band": -53,
      "vs_prev": -80,
      "share_of_day": 8
     },
@@ -6382,7 +6382,7 @@
      "rounds_in_day": 4,
      "vs_self": -66,
      "vs_team": -76,
-     "vs_band": -69,
+     "vs_band": -70,
      "vs_prev": -36,
      "share_of_day": 6
     },
@@ -6440,7 +6440,7 @@
      "_mc": "Bee",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -42,
+     "vs_self": -43,
      "vs_team": -59,
      "vs_band": -49,
      "vs_prev": 8,
@@ -6451,18 +6451,18 @@
      "start": "06:00",
      "end": "10:00",
      "hours": 4.0,
-     "gmv": 31959,
-     "gmv_per_hour": 7990,
+     "gmv": 32673,
+     "gmv_per_hour": 8168,
      "avg_viewers": 32,
-     "gmv_per_viewer": 249.7,
+     "gmv_per_viewer": 255.3,
      "v_start": 22,
      "v_end": 48,
      "campaign": true,
      "band": "morning",
      "peak_hour": "09:00",
-     "peak_gmv": 12248,
+     "peak_gmv": 12522,
      "low_hour": "06:00",
-     "low_gmv": 1386,
+     "low_gmv": 1417,
      "live_ctr": 20.81,
      "ctor": 0.45,
      "live_gpm": 367,
@@ -6470,10 +6470,10 @@
      "_mc": "Bee",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -5,
-     "vs_team": -32,
-     "vs_band": -15,
-     "vs_prev": 66,
+     "vs_self": -3,
+     "vs_team": -31,
+     "vs_band": -14,
+     "vs_prev": 69,
      "share_of_day": 16
     },
     {
@@ -6500,27 +6500,27 @@
      "_mc": "Bee",
      "rank_in_day": 2,
      "rounds_in_day": 4,
-     "vs_self": 32,
-     "vs_team": -6,
-     "vs_band": 17,
-     "vs_prev": 38,
+     "vs_self": 31,
+     "vs_team": -7,
+     "vs_band": 16,
+     "vs_prev": 35,
      "share_of_day": 43
     }
    ],
    "top_products": [
     {
      "name": "STEAPEX WAVE รองเท้าวิ่งชายหญิ…",
-     "gmv": 63886,
+     "gmv": 63992,
      "pct": 24
     },
     {
      "name": "รองเท้ากีฬาซีรีส์ oxyflow แบรน…",
-     "gmv": 41522,
+     "gmv": 41658,
      "pct": 16
     },
     {
      "name": "Steapex SURGE รองเท้าผ้าใบชายห…",
-     "gmv": 29598,
+     "gmv": 29733,
      "pct": 11
     }
    ],
@@ -6533,9 +6533,9 @@
    },
    "campaign": {
     "hours": 16.984445,
-    "gmv": 202997,
-    "gmv_per_hour": 11952,
-    "gmv_per_viewer": 292.9,
+    "gmv": 203711,
+    "gmv_per_hour": 11994,
+    "gmv_per_viewer": 294.0,
     "avg_viewers": 41
    },
    "camp_roi": 93,
@@ -6664,7 +6664,7 @@
      "rounds_in_day": 4,
      "vs_self": 0,
      "vs_team": 12,
-     "vs_band": 40,
+     "vs_band": 39,
      "vs_prev": null,
      "share_of_day": 25
     }
@@ -6864,10 +6864,10 @@
    },
    "insights": {
     "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿94 ต่ำกว่าค่ากลางทีม ฿242) — เน้นรีวิว/เร่งปิดการขาย"
+     "ปิดการขายต่ำ (GMV/คนดู ฿94 ต่ำกว่าค่ากลางทีม ฿243) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Low closing (GMV/viewer ฿94 below team median ฿242) — focus on reviews/urgency"
+     "Low closing (GMV/viewer ฿94 below team median ฿243) — focus on reviews/urgency"
     ]
    },
    "score": {
