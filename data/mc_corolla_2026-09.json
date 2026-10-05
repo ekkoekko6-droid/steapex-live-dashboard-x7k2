@@ -1,5 +1,5 @@
 {
- "generatedAt": "04/10/2026 06:30",
+ "generatedAt": "05/10/2026 06:30",
  "month": "09/2026",
  "brand": "COROLLA",
  "livesAnalyzed": 33,
@@ -28,26 +28,26 @@
   2
  ],
  "gmvByHour": [
-  122957,
-  129149,
-  143185,
-  153621,
-  184558,
-  185417,
-  164638,
-  140043,
-  159280,
-  142980,
-  141616,
-  140959,
-  158033,
-  161270,
-  201523,
-  201891,
-  167834,
-  117014,
-  111747,
-  46748,
+  123015,
+  129176,
+  143220,
+  153670,
+  184619,
+  185444,
+  164687,
+  140063,
+  159348,
+  143008,
+  141647,
+  140969,
+  158084,
+  161323,
+  201581,
+  201930,
+  167878,
+  117062,
+  111777,
+  46758,
   2754
  ],
  "viewersByHour": [
@@ -74,18 +74,18 @@
   13
  ],
  "totals": {
-  "gmv": 2980301,
+  "gmv": 2981096,
   "hours": 595.0,
   "lives": 33,
   "days": 30,
   "avg_viewers": 31,
-  "mc_gmv": 2974462,
-  "unassigned_gmv": 5839,
+  "mc_gmv": 2975256,
+  "unassigned_gmv": 5840,
   "double_counted": 0,
   "live_hours": 595.5,
   "unassigned_hours": 0.7,
   "scaled_lives": 31,
-  "scale_avg": 1.1032,
+  "scale_avg": 1.1035,
   "shared_hours": 0.0,
   "shopee_hours": 236.0,
   "leave_hours": 99.0,
@@ -1045,8 +1045,8 @@
    "rounds": 4,
    "lives": 1,
    "hours": 20.0,
-   "gmv": 85359,
-   "gmv_per_hour": 4268,
+   "gmv": 86153,
+   "gmv_per_hour": 4308,
    "avg_viewers": 24,
    "live_ctr": 36.77,
    "ctor": 0.79,
@@ -1055,10 +1055,10 @@
    "follow_rate": 0.54,
    "comment_rate": 0.54,
    "best_mc": "Nut",
-   "best_gmv": 24751,
+   "best_gmv": 24981,
    "best_time": "06:00-11:00",
    "campaign": true,
-   "vs_prev_day": 13
+   "vs_prev_day": 14
   },
   {
    "day": 30,
@@ -1078,7 +1078,7 @@
    "best_gmv": 22001,
    "best_time": "11:00-16:00",
    "campaign": true,
-   "vs_prev_day": -9
+   "vs_prev_day": -10
   }
  ],
  "mcs": [
@@ -1092,9 +1092,9 @@
    "leave_kind": "",
    "shared_hours": 0.0,
    "avg_viewers": 34,
-   "gmv_total": 516939,
-   "gmv_per_hour": 5442,
-   "gmv_per_viewer": 158.3,
+   "gmv_total": 517140,
+   "gmv_per_hour": 5444,
+   "gmv_per_viewer": 158.4,
    "retention": 1.47,
    "hour_dist": [
     4,
@@ -1129,8 +1129,8 @@
    },
    "prime": {
     "hours": 19.0,
-    "gmv_per_hour": 7610,
-    "gmv_per_viewer": 192.0,
+    "gmv_per_hour": 7619,
+    "gmv_per_viewer": 192.2,
     "avg_viewers": 40
    },
    "weekly": [
@@ -1168,9 +1168,9 @@
     },
     {
      "wk": "29+",
-     "gmv": 43669,
-     "gmv_per_hour": 4367,
-     "gmv_per_viewer": 226.3,
+     "gmv": 43871,
+     "gmv_per_hour": 4387,
+     "gmv_per_viewer": 227.3,
      "avg_viewers": 19,
      "hours": 10.0
     }
@@ -1314,9 +1314,9 @@
     },
     {
      "day": 29,
-     "gmv": 21669,
-     "gmv_per_hour": 4334,
-     "gmv_per_viewer": 202.5,
+     "gmv": 21871,
+     "gmv_per_hour": 4374,
+     "gmv_per_viewer": 204.4,
      "avg_viewers": 21,
      "hours": 5.0
     },
@@ -1354,7 +1354,7 @@
      "_mc": "Amy",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 12,
+     "vs_self": 11,
      "vs_team": 20,
      "vs_band": 32,
      "vs_prev": null,
@@ -1845,18 +1845,18 @@
      "start": "16:00",
      "end": "21:00",
      "hours": 5.0,
-     "gmv": 21669,
-     "gmv_per_hour": 4334,
+     "gmv": 21871,
+     "gmv_per_hour": 4374,
      "avg_viewers": 21,
-     "gmv_per_viewer": 202.5,
+     "gmv_per_viewer": 204.4,
      "v_start": 18,
      "v_end": 24,
      "campaign": true,
      "band": "evening",
      "peak_hour": "20:00",
-     "peak_gmv": 6273,
+     "peak_gmv": 6331,
      "low_hour": "17:00",
-     "low_gmv": 1047,
+     "low_gmv": 1057,
      "live_ctr": 36.77,
      "ctor": 0.79,
      "live_gpm": 186,
@@ -1865,9 +1865,9 @@
      "rank_in_day": 2,
      "rounds_in_day": 4,
      "vs_self": -20,
-     "vs_team": -15,
-     "vs_band": -6,
-     "vs_prev": 24,
+     "vs_team": -14,
+     "vs_band": -5,
+     "vs_prev": 25,
      "share_of_day": 25
     },
     {
@@ -1897,24 +1897,24 @@
      "vs_self": -19,
      "vs_team": -13,
      "vs_band": -4,
-     "vs_prev": 2,
+     "vs_prev": 1,
      "share_of_day": 28
     }
    ],
    "top_products": [
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 150520,
+     "gmv": 150554,
      "pct": 29
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 121300,
+     "gmv": 121379,
      "pct": 23
     },
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 68713,
+     "gmv": 68744,
      "pct": 13
     }
    ],
@@ -1927,9 +1927,9 @@
    },
    "campaign": {
     "hours": 29.993889,
-    "gmv": 235146,
-    "gmv_per_hour": 7840,
-    "gmv_per_viewer": 176.7,
+    "gmv": 235348,
+    "gmv_per_hour": 7847,
+    "gmv_per_viewer": 176.8,
     "avg_viewers": 44
    },
    "camp_roi": 21,
@@ -1956,7 +1956,7 @@
      "consistency": 70,
      "improvement": 100
     },
-    "improve_pct": 20,
+    "improve_pct": 21,
     "trend": {
      "icon": "📈",
      "th": "พัฒนาขึ้น",
@@ -1975,9 +1975,9 @@
    "leave_kind": "",
    "shared_hours": 0.0,
    "avg_viewers": 37,
-   "gmv_total": 499408,
-   "gmv_per_hour": 5549,
-   "gmv_per_viewer": 150.2,
+   "gmv_total": 499599,
+   "gmv_per_hour": 5552,
+   "gmv_per_viewer": 150.3,
    "retention": 1.17,
    "hour_dist": [
     4,
@@ -2051,9 +2051,9 @@
     },
     {
      "wk": "29+",
-     "gmv": 20539,
-     "gmv_per_hour": 4108,
-     "gmv_per_viewer": 137.8,
+     "gmv": 20730,
+     "gmv_per_hour": 4146,
+     "gmv_per_viewer": 139.1,
      "avg_viewers": 30,
      "hours": 5.0
     }
@@ -2197,9 +2197,9 @@
     },
     {
      "day": 29,
-     "gmv": 20539,
-     "gmv_per_hour": 4108,
-     "gmv_per_viewer": 137.8,
+     "gmv": 20730,
+     "gmv_per_hour": 4146,
+     "gmv_per_viewer": 139.1,
      "avg_viewers": 30,
      "hours": 5.0
     }
@@ -2409,7 +2409,7 @@
      "_mc": "Ice",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -24,
+     "vs_self": -25,
      "vs_team": -17,
      "vs_band": 1,
      "vs_prev": -69,
@@ -2720,18 +2720,18 @@
      "start": "11:00",
      "end": "16:00",
      "hours": 5.0,
-     "gmv": 20539,
-     "gmv_per_hour": 4108,
+     "gmv": 20730,
+     "gmv_per_hour": 4146,
      "avg_viewers": 30,
-     "gmv_per_viewer": 137.8,
+     "gmv_per_viewer": 139.1,
      "v_start": 25,
      "v_end": 36,
      "campaign": true,
      "band": "midday",
      "peak_hour": "14:00",
-     "peak_gmv": 7275,
+     "peak_gmv": 7343,
      "low_hour": "13:00",
-     "low_gmv": 2153,
+     "low_gmv": 2173,
      "live_ctr": 36.77,
      "ctor": 0.79,
      "live_gpm": 186,
@@ -2739,27 +2739,27 @@
      "_mc": "Ice",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": -26,
-     "vs_team": -19,
-     "vs_band": -10,
-     "vs_prev": -19,
+     "vs_self": -25,
+     "vs_team": -18,
+     "vs_band": -9,
+     "vs_prev": -18,
      "share_of_day": 24
     }
    ],
    "top_products": [
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 101694,
+     "gmv": 101709,
      "pct": 20
     },
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 83349,
+     "gmv": 83375,
      "pct": 17
     },
     {
      "name": "Corolla BreezeStep Shoes รองเท…",
-     "gmv": 63184,
+     "gmv": 63224,
      "pct": 13
     }
    ],
@@ -2772,9 +2772,9 @@
    },
    "campaign": {
     "hours": 34.995278,
-    "gmv": 276016,
-    "gmv_per_hour": 7887,
-    "gmv_per_viewer": 157.6,
+    "gmv": 276208,
+    "gmv_per_hour": 7893,
+    "gmv_per_viewer": 157.7,
     "avg_viewers": 50
    },
    "camp_roi": 11,
@@ -2801,7 +2801,7 @@
      "consistency": 64,
      "improvement": 0
     },
-    "improve_pct": -42,
+    "improve_pct": -41,
     "trend": {
      "icon": "📉",
      "th": "ตกลง",
@@ -3619,9 +3619,9 @@
    "leave_kind": "พักร้อน",
    "shared_hours": 0.0,
    "avg_viewers": 32,
-   "gmv_total": 418031,
-   "gmv_per_hour": 4401,
-   "gmv_per_viewer": 136.5,
+   "gmv_total": 418261,
+   "gmv_per_hour": 4404,
+   "gmv_per_viewer": 136.6,
    "retention": 1.53,
    "hour_dist": [
     6,
@@ -3695,9 +3695,9 @@
     },
     {
      "wk": "29+",
-     "gmv": 59933,
-     "gmv_per_hour": 3996,
-     "gmv_per_viewer": 216.4,
+     "gmv": 60163,
+     "gmv_per_hour": 4011,
+     "gmv_per_viewer": 217.2,
      "avg_viewers": 18,
      "hours": 15.0
     }
@@ -3833,9 +3833,9 @@
     },
     {
      "day": 29,
-     "gmv": 24751,
-     "gmv_per_hour": 4951,
-     "gmv_per_viewer": 188.9,
+     "gmv": 24981,
+     "gmv_per_hour": 4997,
+     "gmv_per_viewer": 190.7,
      "avg_viewers": 26,
      "hours": 5.0
     },
@@ -3903,7 +3903,7 @@
      "_mc": "Nut",
      "rank_in_day": 3,
      "rounds_in_day": 4,
-     "vs_self": 90,
+     "vs_self": 89,
      "vs_team": 64,
      "vs_band": 82,
      "vs_prev": 57,
@@ -3993,7 +3993,7 @@
      "_mc": "Nut",
      "rank_in_day": 4,
      "rounds_in_day": 4,
-     "vs_self": -53,
+     "vs_self": -54,
      "vs_team": -60,
      "vs_band": -40,
      "vs_prev": -60,
@@ -4334,18 +4334,18 @@
      "start": "06:00",
      "end": "11:00",
      "hours": 5.0,
-     "gmv": 24751,
-     "gmv_per_hour": 4951,
+     "gmv": 24981,
+     "gmv_per_hour": 4997,
      "avg_viewers": 26,
-     "gmv_per_viewer": 188.9,
+     "gmv_per_viewer": 190.7,
      "v_start": 20,
      "v_end": 30,
      "campaign": true,
      "band": "morning",
      "peak_hour": "10:00",
-     "peak_gmv": 6576,
+     "peak_gmv": 6638,
      "low_hour": "07:00",
-     "low_gmv": 2896,
+     "low_gmv": 2923,
      "live_ctr": 36.77,
      "ctor": 0.79,
      "live_gpm": 186,
@@ -4353,10 +4353,10 @@
      "_mc": "Nut",
      "rank_in_day": 1,
      "rounds_in_day": 4,
-     "vs_self": 12,
+     "vs_self": 13,
      "vs_team": -2,
-     "vs_band": 19,
-     "vs_prev": 21,
+     "vs_band": 20,
+     "vs_prev": 22,
      "share_of_day": 29
     },
     {
@@ -4386,7 +4386,7 @@
      "vs_self": -7,
      "vs_team": -19,
      "vs_band": -1,
-     "vs_prev": -17,
+     "vs_prev": -18,
      "share_of_day": 26
     },
     {
@@ -4423,17 +4423,17 @@
    "top_products": [
     {
      "name": "Corolla 1990s รองเท้าผ้าใบแบบ …",
-     "gmv": 90316,
+     "gmv": 90326,
      "pct": 22
     },
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 65280,
+     "gmv": 65284,
      "pct": 16
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 48045,
+     "gmv": 48052,
      "pct": 12
     }
    ],
@@ -4446,9 +4446,9 @@
    },
    "campaign": {
     "hours": 44.992777000000004,
-    "gmv": 246885,
-    "gmv_per_hour": 5487,
-    "gmv_per_viewer": 185.2,
+    "gmv": 247115,
+    "gmv_per_hour": 5492,
+    "gmv_per_viewer": 185.4,
     "avg_viewers": 30
    },
    "camp_roi": 87,
@@ -4460,10 +4460,10 @@
    },
    "insights": {
     "th": [
-     "ปิดการขายต่ำ (GMV/คนดู ฿136 ต่ำกว่าค่ากลางทีม ฿158) — เน้นรีวิว/เร่งปิดการขาย"
+     "ปิดการขายต่ำ (GMV/คนดู ฿137 ต่ำกว่าค่ากลางทีม ฿158) — เน้นรีวิว/เร่งปิดการขาย"
     ],
     "en": [
-     "Low closing (GMV/viewer ฿136 below team median ฿158) — focus on reviews/urgency"
+     "Low closing (GMV/viewer ฿137 below team median ฿158) — focus on reviews/urgency"
     ]
    },
    "score": {
@@ -4475,7 +4475,7 @@
      "consistency": 61,
      "improvement": 100
     },
-    "improve_pct": 25,
+    "improve_pct": 26,
     "trend": {
      "icon": "📈",
      "th": "พัฒนาขึ้น",
@@ -4494,9 +4494,9 @@
    "leave_kind": "ลา, หยุด",
    "shared_hours": 0.0,
    "avg_viewers": 29,
-   "gmv_total": 410123,
-   "gmv_per_hour": 5129,
-   "gmv_per_viewer": 177.3,
+   "gmv_total": 410295,
+   "gmv_per_hour": 5132,
+   "gmv_per_viewer": 177.4,
    "retention": 1.46,
    "hour_dist": [
     4,
@@ -4531,8 +4531,8 @@
    },
    "prime": {
     "hours": 15.0,
-    "gmv_per_hour": 4592,
-    "gmv_per_viewer": 179.4,
+    "gmv_per_hour": 4594,
+    "gmv_per_viewer": 179.5,
     "avg_viewers": 26
    },
    "weekly": [
@@ -4570,9 +4570,9 @@
     },
     {
      "wk": "29+",
-     "gmv": 18400,
-     "gmv_per_hour": 3680,
-     "gmv_per_viewer": 172.0,
+     "gmv": 18571,
+     "gmv_per_hour": 3714,
+     "gmv_per_viewer": 173.6,
      "avg_viewers": 21,
      "hours": 5.0
     }
@@ -4700,9 +4700,9 @@
     },
     {
      "day": 29,
-     "gmv": 18400,
-     "gmv_per_hour": 3680,
-     "gmv_per_viewer": 172.0,
+     "gmv": 18571,
+     "gmv_per_hour": 3714,
+     "gmv_per_viewer": 173.6,
      "avg_viewers": 21,
      "hours": 5.0
     }
@@ -5163,18 +5163,18 @@
      "start": "21:00",
      "end": "02:00",
      "hours": 5.0,
-     "gmv": 18400,
-     "gmv_per_hour": 3680,
+     "gmv": 18571,
+     "gmv_per_hour": 3714,
      "avg_viewers": 21,
-     "gmv_per_viewer": 172.0,
+     "gmv_per_viewer": 173.6,
      "v_start": 27,
      "v_end": 11,
      "campaign": true,
      "band": "night",
      "peak_hour": "23:00",
-     "peak_gmv": 5167,
+     "peak_gmv": 5215,
      "low_hour": "01:00",
-     "low_gmv": 1118,
+     "low_gmv": 1128,
      "live_ctr": 36.77,
      "ctor": 0.79,
      "live_gpm": 186,
@@ -5184,20 +5184,20 @@
      "rounds_in_day": 4,
      "vs_self": -28,
      "vs_team": -27,
-     "vs_band": 7,
-     "vs_prev": -53,
+     "vs_band": 8,
+     "vs_prev": -52,
      "share_of_day": 22
     }
    ],
    "top_products": [
     {
      "name": "【มีไซส์ใหญ่】Corolla Ace Shoes …",
-     "gmv": 95428,
+     "gmv": 95452,
      "pct": 23
     },
     {
      "name": "Corolla MEXIC66 Shoes รองเท้าผ…",
-     "gmv": 69152,
+     "gmv": 69208,
      "pct": 17
     },
     {
@@ -5215,9 +5215,9 @@
    },
    "campaign": {
     "hours": 29.9575,
-    "gmv": 213423,
-    "gmv_per_hour": 7124,
-    "gmv_per_viewer": 220.9,
+    "gmv": 213594,
+    "gmv_per_hour": 7130,
+    "gmv_per_viewer": 221.1,
     "avg_viewers": 32
    },
    "camp_roi": 51,
@@ -5241,7 +5241,7 @@
      "closing": 95,
      "audience": 81,
      "retention": 100,
-     "consistency": 39,
+     "consistency": 40,
      "improvement": 10
     },
     "improve_pct": -16,
