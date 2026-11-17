@@ -43,6 +43,17 @@
     .m div{background:#0c1119;border:1px solid #1b2433;border-radius:12px;padding:8px 10px;min-width:0}
     .m span{display:block;font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .m b{display:block;font-size:17px;margin-top:2px;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    /* ยอดวันนี้ = รวมทุกไลฟ์ที่เริ่มวันนี้ (เวลาไทย) — แยกกรอบจากยอดไลฟ์ปัจจุบันให้ไม่สับสน */
+    .today{margin-top:10px;border:1px solid #3a2a1a;background:#160f08;border-radius:12px;padding:8px 10px}
+    .today .tl{font-size:11px;color:var(--orange);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .today .tv{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:8px;margin-top:4px;align-items:start}
+    .today .tv div{min-width:0}
+    .today .tv span{display:block;font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .today .tv b{display:block;font-size:15px;line-height:24px;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .today .tv div:first-child b{font-size:19px}
+    .today .tn0{font-size:13px;color:var(--dim);margin-top:2px}
+    .today .tw{font-size:11px;color:var(--amber);margin-top:4px}
+    .sum div.st{border-color:#5a3412;background:#160f08}
     .foot{margin-top:10px;font-size:12px;color:var(--dim);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
     .footer{margin-top:18px;color:var(--dim);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     .card{cursor:pointer;transition:border-color .15s}
@@ -101,7 +112,9 @@
     .langtabs button{background:transparent;color:var(--muted);border:0;border-radius:999px;padding:5px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
     .langtabs button[aria-pressed=true]{background:var(--orange);color:#1a0d02}
     .langtabs button:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
-    @media(max-width:760px){body{padding:16px}.grid{grid-template-columns:1fr}.sum div{flex:1;min-width:0}
+    @media(max-width:760px){body{padding:16px}.grid{grid-template-columns:1fr}.top>div:last-child{width:100%;align-items:stretch!important}
+      .langtabs{align-self:flex-end}.sum{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}.sum div{min-width:0;padding:8px 10px;grid-column:span 2}.sum div.st{grid-column:span 3}
+      .sum b{font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sum span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
       .m{grid-template-columns:repeat(3,minmax(0,1fr))}.gmv .v{font-size:28px}
       .panel{padding:0}.sheet{border-radius:0;border:0;min-height:100%;padding:14px 16px 24px}
       .prow{grid-template-columns:22px minmax(0,1fr);row-gap:6px}.prow.ph{display:none}
@@ -125,6 +138,8 @@
       <div><b id="s-live">—</b><span data-i18n="sLive">ช่องที่ไลฟ์อยู่</span></div>
       <div><b id="s-gmv">—</b><span data-i18n="sGmv">GMV รวม (ช่องที่ไลฟ์)</span></div>
       <div><b id="s-view">—</b><span data-i18n="sView">คนดูตอนนี้รวม</span></div>
+      <div class="st"><b id="s-tgmv">—</b><span data-i18n="sTGmv">GMV วันนี้ รวมทุกช่อง</span></div>
+      <div class="st"><b id="s-tord">—</b><span data-i18n="sTOrd">ออเดอร์วันนี้ รวมทุกช่อง</span></div>
     </div></div>
   </div>
   <div id="banner" class="banner" hidden></div>
@@ -174,6 +189,7 @@ let LANG=(()=>{try{const v=localStorage.getItem('rtLang')||localStorage.getItem(
 const EN={eyebrow:'LIVE REALTIME · ALL CHANNELS',h1:'Live sales right now',
   sub:'Auto-refresh every 30 s · live channels first, sorted by GMV · tap a card for top products + traffic',
   sLive:'Channels live',sGmv:'Total GMV (live channels)',sView:'Current viewers (total)',
+  sTGmv:'GMV today · all channels',sTOrd:'Orders today · all channels',
   footer:'Data from TikTok Shop LIVE dashboard · KPI every 60 s · products/traffic every ~3 min',
   close:'Close ✕',topProd:'Top products · Top 10 by GMV',traffic:'Traffic · where viewers come from',mViews:'Viewers (Views)',
   pfoot:'Cumulative since the live started (current/latest room) · Clicks = Impressions × CTR · Orders = GMV ÷ product AOV · Top 10 only, so totals may be below the live GMV',
@@ -189,7 +205,9 @@ const EN={eyebrow:'LIVE REALTIME · ALL CHANNELS',h1:'Live sales right now',
   sold:'Sold',pcs:n=>`${n} pcs`,ords:n=>`${n} orders`,clicks:'Clicks · CTR',addCart:n=>`Add to cart ${n}`,stock:'Stock',
   noTraffic:'No traffic data yet — the collector pulls every ~3 min, wait for the next round',noMetric:'No data for this metric in this live yet',
   tViews:'Views',tEnter:'Enter rate',pickCh:'Choose channel',shareBy:'Share by',
-  startedAt:t=>`Started ${t}`,startedApprox:t=>`Live since before ${t}`,roomsToday:n=>`${n} live session${n===1?'':'s'} today`,sessions:"Today's sessions"};
+  startedAt:t=>`Started ${t}`,startedApprox:t=>`Live since before ${t}`,roomsToday:n=>`${n} live session${n===1?'':'s'} today`,sessions:"Today's sessions",
+  todayL:(d,n)=>`Today ${d} · ${n} live${n===1?'':'s'} combined`,todayNone:d=>`Today ${d} · no live yet`,
+  todayMiss:n=>`Excludes ${n} live${n===1?'':'s'} with no data`,crossDay:d=>`This live started on ${d} — counted in that day`,tOrders:'Orders',tGmv:'GMV'};
 const TH={langBtn:'EN',ago_s:s=>`${s} วิที่แล้ว`,ago_m:m=>`${m} นาทีที่แล้ว`,ago_h:h=>`${h} ชม.ที่แล้ว`,
   viewDetail:'ดูสินค้าขายดีและทราฟฟิก',stale:'ข้อมูลเก่า',ended:'ENDED',endedAt:t=>`ENDED · จบ ${t}`,noData:'ยังไม่มีข้อมูล',
   gmvLast:'GMV ไลฟ์ล่าสุด',gmvLive:'GMV สะสมในไลฟ์',curViewers:'คนดูตอนนี้',collected:(t,a)=>`เก็บ ${t} (${a})`,more:'สินค้าขายดี · ทราฟฟิก ›',
@@ -202,10 +220,13 @@ const TH={langBtn:'EN',ago_s:s=>`${s} วิที่แล้ว`,ago_m:m=>`${m
   sold:'ขายได้',pcs:n=>`${n} ชิ้น`,ords:n=>`${n} ออเดอร์`,clicks:'คลิก · CTR',addCart:n=>`ใส่ตะกร้า ${n}`,stock:'สต๊อก',
   noTraffic:'ยังไม่มีข้อมูลทราฟฟิก — collector ดึงทุก ~3 นาที รอรอบถัดไป',noMetric:'ยังไม่มีข้อมูลตัวนี้ในไลฟ์นี้',
   tViews:'คนดู',tEnter:'เข้าห้อง',pickCh:'เลือกช่อง',shareBy:'สัดส่วนตาม',
-  startedAt:t=>`เริ่มไลฟ์ ${t}`,startedApprox:t=>`ไลฟ์อยู่ตั้งแต่ก่อน ${t}`,roomsToday:n=>`วันนี้เริ่มไลฟ์ ${n} ครั้ง`,sessions:'รอบวันนี้'};
+  startedAt:t=>`เริ่มไลฟ์ ${t}`,startedApprox:t=>`ไลฟ์อยู่ตั้งแต่ก่อน ${t}`,roomsToday:n=>`วันนี้เริ่มไลฟ์ ${n} ครั้ง`,sessions:'รอบวันนี้',
+  todayL:(d,n)=>`ยอดวันนี้ ${d} · รวม ${n} ไลฟ์`,todayNone:d=>`ยอดวันนี้ ${d} · ยังไม่มีไลฟ์`,
+  todayMiss:n=>`ยังไม่รวม ${n} ไลฟ์ที่ไม่มีข้อมูล`,crossDay:d=>`ไลฟ์นี้เริ่มวันที่ ${d} — นับเป็นยอดของวันนั้น`,tOrders:'ออเดอร์',tGmv:'GMV'};
 const ZH={eyebrow:'LIVE 实时 · 全部频道',h1:'当前直播销售',
   sub:'每 30 秒自动刷新 · 正在直播的频道优先,按 GMV 排序 · 点击卡片查看热销商品和流量',
   sLive:'正在直播',sGmv:'GMV 合计(直播中频道)',sView:'当前观看人数合计',
+  sTGmv:'今日 GMV · 全部频道',sTOrd:'今日订单 · 全部频道',
   footer:'数据来自 TikTok Shop LIVE 数据看板 · KPI 每 60 秒 · 商品/流量约每 3 分钟',
   close:'关闭 ✕',topProd:'热销商品 · 按 GMV 前 10',traffic:'流量 · 观众来源',mViews:'观看(Views)',
   pfoot:'自直播开始累计(当前/最近一场)· 点击 = 曝光 × CTR · 订单 = GMV ÷ 商品客单价 · 仅显示前 10,合计可能低于整场 GMV',
@@ -221,7 +242,9 @@ const ZH={eyebrow:'LIVE 实时 · 全部频道',h1:'当前直播销售',
   sold:'销量',pcs:n=>`${n} 件`,ords:n=>`${n} 单`,clicks:'点击 · CTR',addCart:n=>`加购 ${n}`,stock:'库存',
   noTraffic:'暂无流量数据 — 采集器约每 3 分钟抓取一次,请等待下一轮',noMetric:'本场直播暂无该指标数据',
   tViews:'观看',tEnter:'进房率',pickCh:'选择频道',shareBy:'占比依据',
-  startedAt:t=>`开播 ${t}`,startedApprox:t=>`${t} 前已开播`,roomsToday:n=>`今日开播 ${n} 次`,sessions:'今日场次'};
+  startedAt:t=>`开播 ${t}`,startedApprox:t=>`${t} 前已开播`,roomsToday:n=>`今日开播 ${n} 次`,sessions:'今日场次',
+  todayL:(d,n)=>`今日 ${d} · 共 ${n} 场合计`,todayNone:d=>`今日 ${d} · 尚未开播`,
+  todayMiss:n=>`未含 ${n} 场无数据的直播`,crossDay:d=>`本场于 ${d} 开播 — 计入当天`,tOrders:'订单',tGmv:'GMV'};
 const DICT={en:EN,zh:ZH};
 const T=k=>(DICT[LANG]&&k in DICT[LANG])?DICT[LANG][k]:TH[k];
 const LOC=()=>LANG==='en'?'en-GB':LANG==='zh'?'zh-CN':'th-TH';
@@ -256,6 +279,27 @@ function sessionsText(d){
   const l=(d&&d.rooms_today_list)||[]; if(!l.length) return '';
   return `${T('sessions')}: `+l.map(r=>`${r.approx?'≤':''}${hhmm(r.start)}–${r.ended?hhmm(r.ended):''}`).join(', ');
 }
+// วันที่แบบสั้นตามเวลาไทย (ข้อมูลตัดวันที่ 00:00 เวลาไทย ไม่ใช่เวลาเครื่องคนดู)
+const dmy=ymd=>ymd?new Date(`${ymd}T12:00:00+07:00`).toLocaleDateString(LOC(),{day:'numeric',month:'numeric',timeZone:'Asia/Bangkok'}):'';
+const ymdTH=iso=>iso?new Date(new Date(iso).getTime()+7*3600e3).toISOString().slice(0,10):null;
+function todayBox(d,st){
+  const t=d&&d.today; if(!t) return null;
+  const box=el('div','today');
+  if(!t.lives){
+    box.append(el('div','tl',T('todayNone')(dmy(t.date))));
+    // ไลฟ์ที่ยังไลฟ์อยู่แต่เริ่มเมื่อวาน (ข้ามเที่ยงคืน) — บอกว่ายอดไปอยู่วันไหน ไม่งั้นดูเหมือนยอดหาย
+    const sd=ymdTH(d.live_started_at);
+    if((st==='live'||st==='stale')&&sd&&sd!==t.date) box.append(el('div','tn0',T('crossDay')(dmy(sd))));
+    return box;
+  }
+  box.append(el('div','tl',T('todayL')(dmy(t.date),t.lives)));
+  const v=el('div','tv');
+  [[T('tGmv'),t.gmv,'money'],[T('tOrders'),t.orders],['AOV',t.aov,'money'],['Views',t.views,'compact']]
+    .forEach(([l,x,kind])=>{const c=el('div');c.append(el('span',null,l),el('b',null,fmt(x,kind)));v.append(c);});
+  box.append(v);
+  if(t.missing_kpi) box.append(el('div','tw',T('todayMiss')(t.missing_kpi)));
+  return box;
+}
 function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
 
 function card(brand,d){
@@ -281,6 +325,7 @@ function card(brand,d){
    ['Peak',k.peak_viewers],['Impressions',k.impressions,'compact'],['CTR',k.ctr,'pct'],['CTOR',k.ctor,'pct'],['Watch GPM',k.watch_gpm,'money']]
    .forEach(([l,v,kind])=>{const x=el('div');x.append(el('span',null,l),el('b',null,fmt(v,kind)));m.append(x);});
   c.append(m);
+  const tb=todayBox(d,st); if(tb) c.append(tb);
   const f=el('div','foot');
   f.append(el('span',null,d?T('collected')(hhmm(d.collected_at),ago(d.age_sec)):''),el('span','more',T('more')));
   c.append(f);
@@ -305,6 +350,10 @@ async function load(){
     $('s-live').textContent=`${live.length} / ${brands.length}`;
     $('s-gmv').textContent=money.format(live.reduce((s,d)=>s+((d.kpi&&d.kpi.gmv)||0),0));
     $('s-view').textContent=num.format(live.reduce((s,d)=>s+((d.kpi&&d.kpi.current_viewers)||0),0));
+    // ยอดวันนี้ทุกช่อง = ผลรวม today ของแต่ละช่อง (VPS รวมทุกไลฟ์ที่เริ่มวันนี้ไว้ให้แล้ว)
+    const td=Object.values(byBrand).map(d=>d.today).filter(Boolean);
+    $('s-tgmv').textContent=td.length?money.format(td.reduce((s,t)=>s+(t.gmv||0),0)):'—';
+    $('s-tord').textContent=td.length?num.format(td.reduce((s,t)=>s+(t.orders||0),0)):'—';
     const ages=Object.values(byBrand).map(d=>d.age_sec).filter(a=>a!=null);
     const newest=ages.length?Math.min(...ages):null;
     if(newest==null||newest>COLLECTOR_DOWN_SEC){
