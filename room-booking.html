@@ -63,6 +63,23 @@
     .muted{color:var(--muted)}
     .loading{color:var(--dim);padding:12px 0}
     .foot{margin-top:18px;color:var(--dim);font-size:12px;text-align:center}
+    /* ผังชั้น — รูปจาก room-booking/floorN.webp · ตำแหน่งห้อง = map [x,y,w,h] เป็น % ใน config บน VPS */
+    .fhead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:14px}
+    .mapbtn{min-height:36px;padding:6px 12px;font-size:13px;color:var(--orange);border-color:var(--orange);background:transparent}
+    .map{position:relative;margin:10px 0 4px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;cursor:zoom-in}
+    .map img,.lbinner img{display:block;width:100%;height:auto}
+    .hl{position:absolute;border:2px solid rgba(242,107,29,.55);border-radius:3px;background:rgba(242,107,29,.06);cursor:pointer}
+    .hl.busy{background:rgba(31,35,41,.22)}
+    .hl.sel{border:3px solid #f26b1d;background:rgba(242,107,29,.30);box-shadow:0 0 0 3px rgba(242,107,29,.35);animation:blink 1.4s ease-in-out infinite}
+    @keyframes blink{50%{box-shadow:0 0 0 7px rgba(242,107,29,.12)}}
+    .maphint{font-size:12px;color:var(--dim)}
+    .lb{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.94);display:none;flex-direction:column}
+    .lb.on{display:flex}
+    .lbbar{display:flex;align-items:center;gap:8px;padding:10px 12px;color:#fff}
+    .lbbar .t{flex:1;font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .lbbar button{background:#1f2329;border-color:#3a404a;color:#fff;min-width:44px}
+    .lbscroll{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;display:flex}
+    .lbinner{position:relative;margin:auto;flex:none;width:100%}
   </style>
 </head>
 <body>
@@ -90,6 +107,7 @@
       <input type="date" id="fdate" required>
       <label for="froom">ห้อง <span class="req">*</span></label>
       <select id="froom" required></select>
+      <div id="fmap"></div>
       <div class="row2">
         <div><label for="fstart">เวลาเริ่ม <span class="req">*</span></label><select id="fstart" required></select></div>
         <div><label for="fend">เวลาจบ <span class="req">*</span></label><select id="fend" required></select></div>
@@ -119,12 +137,21 @@
 
   <div class="foot">ข้อมูลอัปเดตเมื่อเปิดหน้า เปลี่ยนวัน หรือจองเสร็จ · ทุกการจอง/ยกเลิกแจ้งเข้ากลุ่ม Feishu "จองห้องไลฟ์"</div>
 </main>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="ผังชั้น">
+  <div class="lbbar">
+    <div class="t" id="lbTitle"></div>
+    <button type="button" id="lbOut" aria-label="ย่อ">−</button>
+    <button type="button" id="lbIn" aria-label="ขยาย">+</button>
+    <button type="button" id="lbClose" aria-label="ปิด">✕</button>
+  </div>
+  <div class="lbscroll" id="lbScroll"><div class="lbinner" id="lbInner"></div></div>
+</div>
 <script>
 (() => {
   const API = "https://66-42-59-215.sslip.io/room-booking";
   const $ = id => document.getElementById(id);
   const DAYS = ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"];
-  let state = {date: "", floors: [], brands: [], bookings: [], floor: "all", loadedFor: ""};
+  let state = {date: "", floors: [], brands: [], bookings: [], floor: "all", loadedFor: "", maps: {}};
 
   const store = {
     get(k){ try { return localStorage.getItem(k) || ""; } catch(e){ return ""; } },
@@ -173,7 +200,9 @@
     const floors = state.floors.filter(f => state.floor === "all" || f.floor === state.floor);
     let html = "";
     for (const f of floors){
-      if (state.floor === "all") html += `<div class="muted" style="font-weight:700;margin-top:14px">ชั้น ${esc(f.floor)}</div>`;
+      const open = !!state.maps[f.floor];
+      html += `<div class="fhead"><div class="muted" style="font-weight:700">ชั้น ${esc(f.floor)}</div>${f.image ? `<button type="button" class="mapbtn" data-mapf="${esc(f.floor)}" aria-expanded="${open}">${open ? "ซ่อนผังชั้น" : "ดูผังชั้น"}</button>` : ""}</div>`;
+      if (open && f.image) html += mapHTML(f, $("froom").value) + '<div class="maphint">แตะรูปเพื่อขยายเต็มจอ · แตะกรอบห้องเพื่อเลือกจอง · สีเทา = วันนี้มีคนจองแล้ว</div>';
       for (const r of f.rooms){
         const bs = state.bookings.filter(b => b.room === r.id);
         const segs = bs.map(b => {
@@ -195,8 +224,10 @@
       }
     }
     $("rooms").innerHTML = html || '<div class="loading">ไม่มีห้อง</div>';
+    $("rooms").querySelectorAll(".mapbtn").forEach(b => b.onclick = () => { state.maps[b.dataset.mapf] = !state.maps[b.dataset.mapf]; renderRooms(); });
+    bindMaps($("rooms"));
     $("rooms").querySelectorAll(".room").forEach(el => {
-      const pick = () => { $("froom").value = el.dataset.room; $("fdate").value = state.date; updateHint(); $("formCard").scrollIntoView({behavior:"smooth"}); };
+      const pick = () => pickRoom(el.dataset.room);
       el.onclick = pick; el.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } };
     });
   }
@@ -205,12 +236,82 @@
     const cur = $("froom").value;
     $("froom").innerHTML = state.floors.map(f => `<optgroup label="ชั้น ${esc(f.floor)}">${f.rooms.map(r => `<option value="${esc(r.id)}">${esc(r.id)}${r.name ? " · " + esc(r.name) : ""}</option>`).join("")}</optgroup>`).join("");
     if (cur) $("froom").value = cur;
+    renderFormMap();
     if (!$("fbrand").options.length){
       $("fbrand").innerHTML = '<option value="">— เลือกแบรนด์ —</option>' + state.brands.map(b => `<option>${esc(b)}</option>`).join("") + '<option value="__other">อื่นๆ (พิมพ์เอง)</option>';
       const last = store.get("rb_brand"); if (last && [...$("fbrand").options].some(o => o.value === last)) $("fbrand").value = last;
     }
     updateHint();
   }
+
+  // ── ผังชั้น ──
+  const floorOf = id => state.floors.find(f => f.rooms.some(r => r.id === id));
+  function mapHTML(f, sel){
+    const busy = new Set(state.bookings.map(b => b.room));
+    const boxes = f.rooms.filter(r => Array.isArray(r.map)).map(r => {
+      const [x,y,w,h] = r.map;
+      return `<div class="hl ${r.id === sel ? "sel" : busy.has(r.id) ? "busy" : ""}" data-pick="${esc(r.id)}" title="${esc(r.id)} ${esc(r.name)}" style="left:${x}%;top:${y}%;width:${w}%;height:${h}%"></div>`;
+    }).join("");
+    return `<div class="map" data-zoomf="${esc(f.floor)}" data-sel="${esc(sel || "")}"><img src="${esc(f.image)}" alt="ผังชั้น ${esc(f.floor)}" loading="lazy">${boxes}</div>`;
+  }
+  function bindMaps(root){
+    root.querySelectorAll(".map").forEach(m => m.onclick = e => {
+      const box = e.target.closest(".hl");
+      if (box && !m.closest(".lb")) return pickRoom(box.dataset.pick);
+      openLB(m.dataset.zoomf, m.dataset.sel);
+    });
+  }
+  function pickRoom(id){
+    $("froom").value = id; if (state.date >= $("fdate").min) $("fdate").value = state.date;
+    updateHint(); renderFormMap(); if (Object.values(state.maps).some(Boolean)) renderRooms();
+    $("formCard").scrollIntoView({behavior:"smooth"});
+  }
+  function renderFormMap(){
+    const id = $("froom").value, f = floorOf(id);
+    $("fmap").innerHTML = f && f.image ? mapHTML(f, id) + `<div class="maphint">ห้อง ${esc(id)} อยู่ชั้น ${esc(f.floor)} (กรอบส้ม) · แตะเพื่อขยาย</div>` : "";
+    bindMaps($("fmap"));
+  }
+  let zoom = 1;
+  function setZoom(z, cx, cy){
+    const sc = $("lbScroll"), old = zoom;
+    zoom = Math.min(5, Math.max(1, z));
+    // คงจุดที่นิ้ว/กลางจออยู่ไว้ที่เดิมตอนซูม
+    const px = (cx ?? sc.clientWidth/2), py = (cy ?? sc.clientHeight/2);
+    const fx = (sc.scrollLeft + px) / old, fy = (sc.scrollTop + py) / old;
+    $("lbInner").style.width = `${zoom*100}%`;
+    sc.scrollLeft = fx*zoom - px; sc.scrollTop = fy*zoom - py;
+  }
+  function openLB(floor, sel){
+    const f = state.floors.find(x => x.floor === floor); if (!f) return;
+    $("lbTitle").textContent = `ผังชั้น ${f.floor}` + (sel ? ` · ห้อง ${sel}` : "");
+    $("lbInner").innerHTML = mapHTML(f, sel).replace('class="map"', 'class="map" style="margin:0;border:0;border-radius:0;cursor:default"');
+    zoom = 1; $("lbInner").style.width = "100%";
+    $("lb").classList.add("on"); document.body.style.overflow = "hidden";
+    const s = $("lbInner").querySelector(".hl.sel");   // เปิดมาซูม 2 เท่าที่ห้องที่เลือกเลย จอมือถือเล็ก
+    if (s) requestAnimationFrame(() => { setZoom(2); const sc = $("lbScroll"); sc.scrollLeft = s.offsetLeft + s.offsetWidth/2 - sc.clientWidth/2; sc.scrollTop = s.offsetTop + s.offsetHeight/2 - sc.clientHeight/2; });
+  }
+  function closeLB(){ $("lb").classList.remove("on"); document.body.style.overflow = ""; }
+  $("lbClose").onclick = closeLB;
+  $("lbIn").onclick = () => setZoom(zoom * 1.5);
+  $("lbOut").onclick = () => setZoom(zoom / 1.5);
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeLB(); });
+  // ซูมด้วย 2 นิ้ว (pinch) — จัดการเองในกรอบรูป ไม่ซูมทั้งหน้า
+  let pinch = null, lastTap = 0;
+  const dist = t => Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+  $("lbScroll").addEventListener("touchstart", e => {
+    if (e.touches.length === 2){
+      const r = $("lbScroll").getBoundingClientRect();
+      pinch = {d: dist(e.touches), z: zoom, cx: (e.touches[0].clientX + e.touches[1].clientX)/2 - r.left, cy: (e.touches[0].clientY + e.touches[1].clientY)/2 - r.top};
+    } else if (e.touches.length === 1){
+      const t = Date.now();
+      if (t - lastTap < 300){ const r = $("lbScroll").getBoundingClientRect(); setZoom(zoom > 1.5 ? 1 : 2.5, e.touches[0].clientX - r.left, e.touches[0].clientY - r.top); e.preventDefault(); }
+      lastTap = t;
+    }
+  }, {passive: false});
+  $("lbScroll").addEventListener("touchmove", e => {
+    if (pinch && e.touches.length === 2){ e.preventDefault(); setZoom(pinch.z * dist(e.touches) / pinch.d, pinch.cx, pinch.cy); }
+  }, {passive: false});
+  $("lbScroll").addEventListener("touchend", e => { if (e.touches.length < 2) pinch = null; });
 
   function updateHint(){
     const s = $("fstart").value, e = $("fend").value, h = $("spanHint");
@@ -280,6 +381,7 @@
   };
 
   $("fbrand").onchange = () => { $("fbrandOther").style.display = $("fbrand").value === "__other" ? "block" : "none"; };
+  $("froom").onchange = () => { renderFormMap(); if (Object.values(state.maps).some(Boolean)) renderRooms(); };
   $("fstart").onchange = updateHint; $("fend").onchange = updateHint;
   $("date").onchange = () => $("date").value && load($("date").value);
   $("prev").onclick = () => load(addDays(state.date, -1));
