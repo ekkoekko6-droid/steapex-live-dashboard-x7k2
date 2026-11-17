@@ -206,8 +206,9 @@ const EN={eyebrow:'LIVE REALTIME · ALL CHANNELS',h1:'Live sales right now',
   noTraffic:'No traffic data yet — the collector pulls every ~3 min, wait for the next round',noMetric:'No data for this metric in this live yet',
   tViews:'Views',tEnter:'Enter rate',pickCh:'Choose channel',shareBy:'Share by',
   startedAt:t=>`Started ${t}`,startedApprox:t=>`Live since before ${t}`,roomsToday:n=>`${n} live session${n===1?'':'s'} today`,sessions:"Today's sessions",
-  todayL:(d,n)=>`Today ${d} · ${n} live${n===1?'':'s'} combined`,todayNone:d=>`Today ${d} · no live yet`,
-  todayMiss:n=>`Excludes ${n} live${n===1?'':'s'} with no data`,crossDay:d=>`This live started on ${d} — counted in that day`,tOrders:'Orders',tGmv:'GMV'};
+  todayL:(d,w,c,n)=>`${c?`Day ${d} · closed`:`Today ${d}`} (${w}) · ${n} live${n===1?'':'s'}`,todayNone:(d,w,c)=>`${c?`Day ${d} · closed`:`Today ${d}`} (${w}) · no live`,
+  todayMiss:n=>`Excludes ${n} live${n===1?'':'s'} with no data`,crossDay:d=>`This live counts toward ${d}`,
+  sTGmvD:(d,c)=>c?`GMV ${d} · closed`:`GMV today · all channels`,sTOrdD:(d,c)=>c?`Orders ${d} · closed`:`Orders today · all channels`,tOrders:'Orders',tGmv:'GMV'};
 const TH={langBtn:'EN',ago_s:s=>`${s} วิที่แล้ว`,ago_m:m=>`${m} นาทีที่แล้ว`,ago_h:h=>`${h} ชม.ที่แล้ว`,
   viewDetail:'ดูสินค้าขายดีและทราฟฟิก',stale:'ข้อมูลเก่า',ended:'ENDED',endedAt:t=>`ENDED · จบ ${t}`,noData:'ยังไม่มีข้อมูล',
   gmvLast:'GMV ไลฟ์ล่าสุด',gmvLive:'GMV สะสมในไลฟ์',curViewers:'คนดูตอนนี้',collected:(t,a)=>`เก็บ ${t} (${a})`,more:'สินค้าขายดี · ทราฟฟิก ›',
@@ -221,8 +222,9 @@ const TH={langBtn:'EN',ago_s:s=>`${s} วิที่แล้ว`,ago_m:m=>`${m
   noTraffic:'ยังไม่มีข้อมูลทราฟฟิก — collector ดึงทุก ~3 นาที รอรอบถัดไป',noMetric:'ยังไม่มีข้อมูลตัวนี้ในไลฟ์นี้',
   tViews:'คนดู',tEnter:'เข้าห้อง',pickCh:'เลือกช่อง',shareBy:'สัดส่วนตาม',
   startedAt:t=>`เริ่มไลฟ์ ${t}`,startedApprox:t=>`ไลฟ์อยู่ตั้งแต่ก่อน ${t}`,roomsToday:n=>`วันนี้เริ่มไลฟ์ ${n} ครั้ง`,sessions:'รอบวันนี้',
-  todayL:(d,n)=>`ยอดวันนี้ ${d} · รวม ${n} ไลฟ์`,todayNone:d=>`ยอดวันนี้ ${d} · ยังไม่มีไลฟ์`,
-  todayMiss:n=>`ยังไม่รวม ${n} ไลฟ์ที่ไม่มีข้อมูล`,crossDay:d=>`ไลฟ์นี้เริ่มวันที่ ${d} — นับเป็นยอดของวันนั้น`,tOrders:'ออเดอร์',tGmv:'GMV'};
+  todayL:(d,w,c,n)=>`${c?`ยอดวันที่ ${d} · ปิดยอดแล้ว`:`ยอดวันนี้ ${d}`} (${w}) · รวม ${n} ไลฟ์`,todayNone:(d,w,c)=>`${c?`ยอดวันที่ ${d} · ปิดยอดแล้ว`:`ยอดวันนี้ ${d}`} (${w}) · ยังไม่มีไลฟ์`,
+  todayMiss:n=>`ยังไม่รวม ${n} ไลฟ์ที่ไม่มีข้อมูล`,crossDay:d=>`ไลฟ์นี้นับเป็นยอดของวันที่ ${d}`,
+  sTGmvD:(d,c)=>c?`GMV ${d} · ปิดยอดแล้ว`:'GMV วันนี้ รวมทุกช่อง',sTOrdD:(d,c)=>c?`ออเดอร์ ${d} · ปิดยอด`:'ออเดอร์วันนี้ รวมทุกช่อง',tOrders:'ออเดอร์',tGmv:'GMV'};
 const ZH={eyebrow:'LIVE 实时 · 全部频道',h1:'当前直播销售',
   sub:'每 30 秒自动刷新 · 正在直播的频道优先,按 GMV 排序 · 点击卡片查看热销商品和流量',
   sLive:'正在直播',sGmv:'GMV 合计(直播中频道)',sView:'当前观看人数合计',
@@ -243,8 +245,9 @@ const ZH={eyebrow:'LIVE 实时 · 全部频道',h1:'当前直播销售',
   noTraffic:'暂无流量数据 — 采集器约每 3 分钟抓取一次,请等待下一轮',noMetric:'本场直播暂无该指标数据',
   tViews:'观看',tEnter:'进房率',pickCh:'选择频道',shareBy:'占比依据',
   startedAt:t=>`开播 ${t}`,startedApprox:t=>`${t} 前已开播`,roomsToday:n=>`今日开播 ${n} 次`,sessions:'今日场次',
-  todayL:(d,n)=>`今日 ${d} · 共 ${n} 场合计`,todayNone:d=>`今日 ${d} · 尚未开播`,
-  todayMiss:n=>`未含 ${n} 场无数据的直播`,crossDay:d=>`本场于 ${d} 开播 — 计入当天`,tOrders:'订单',tGmv:'GMV'};
+  todayL:(d,w,c,n)=>`${c?`${d}(已结算)`:`今日 ${d}`}(${w})· 共 ${n} 场`,todayNone:(d,w,c)=>`${c?`${d}(已结算)`:`今日 ${d}`}(${w})· 尚未开播`,
+  todayMiss:n=>`未含 ${n} 场无数据的直播`,crossDay:d=>`本场计入 ${d}`,
+  sTGmvD:(d,c)=>c?`${d} GMV · 已结算`:'今日 GMV · 全部频道',sTOrdD:(d,c)=>c?`${d} 订单 · 已结算`:'今日订单 · 全部频道',tOrders:'订单',tGmv:'GMV'};
 const DICT={en:EN,zh:ZH};
 const T=k=>(DICT[LANG]&&k in DICT[LANG])?DICT[LANG][k]:TH[k];
 const LOC=()=>LANG==='en'?'en-GB':LANG==='zh'?'zh-CN':'th-TH';
@@ -281,23 +284,25 @@ function sessionsText(d){
 }
 // วันที่แบบสั้นตามเวลาไทย (ข้อมูลตัดวันที่ 00:00 เวลาไทย ไม่ใช่เวลาเครื่องคนดู)
 const dmy=ymd=>ymd?new Date(`${ymd}T12:00:00+07:00`).toLocaleDateString(LOC(),{day:'numeric',month:'numeric',timeZone:'Asia/Bangkok'}):'';
-const ymdTH=iso=>iso?new Date(new Date(iso).getTime()+7*3600e3).toISOString().slice(0,10):null;
 function todayBox(d,st){
   const t=d&&d.today; if(!t) return null;
   const box=el('div','today');
+  // วันทำการ 06:00–02:00 (VPS ส่งช่วงเวลามาใน window) · closed = ช่วง 02:00–06:00 ยังโชว์ยอดวันที่เพิ่งจบ
+  const w=t.window||'', c=!!t.closed;
+  // ไลฟ์ที่กำลังไลฟ์แต่นับเข้าวันทำการอื่น (เช่น เริ่ม 02:00–06:00 = วันถัดไป) — บอกไว้ ไม่งั้นดูเหมือนยอดหาย
+  const cross=(st==='live'||st==='stale')&&d.live_biz_day&&d.live_biz_day!==t.date?el('div','tn0',T('crossDay')(dmy(d.live_biz_day))):null;
   if(!t.lives){
-    box.append(el('div','tl',T('todayNone')(dmy(t.date))));
-    // ไลฟ์ที่ยังไลฟ์อยู่แต่เริ่มเมื่อวาน (ข้ามเที่ยงคืน) — บอกว่ายอดไปอยู่วันไหน ไม่งั้นดูเหมือนยอดหาย
-    const sd=ymdTH(d.live_started_at);
-    if((st==='live'||st==='stale')&&sd&&sd!==t.date) box.append(el('div','tn0',T('crossDay')(dmy(sd))));
+    box.append(el('div','tl',T('todayNone')(dmy(t.date),w,c)));
+    if(cross) box.append(cross);
     return box;
   }
-  box.append(el('div','tl',T('todayL')(dmy(t.date),t.lives)));
+  box.append(el('div','tl',T('todayL')(dmy(t.date),w,c,t.lives)));
   const v=el('div','tv');
   [[T('tGmv'),t.gmv,'money'],[T('tOrders'),t.orders],['AOV',t.aov,'money'],['Views',t.views,'compact']]
     .forEach(([l,x,kind])=>{const c=el('div');c.append(el('span',null,l),el('b',null,fmt(x,kind)));v.append(c);});
   box.append(v);
   if(t.missing_kpi) box.append(el('div','tw',T('todayMiss')(t.missing_kpi)));
+  if(cross) box.append(cross);
   return box;
 }
 function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
@@ -354,6 +359,9 @@ async function load(){
     const td=Object.values(byBrand).map(d=>d.today).filter(Boolean);
     $('s-tgmv').textContent=td.length?money.format(td.reduce((s,t)=>s+(t.gmv||0),0)):'—';
     $('s-tord').textContent=td.length?num.format(td.reduce((s,t)=>s+(t.orders||0),0)):'—';
+    const t0=td.find(t=>t.date); if(t0){const c=!!t0.closed, dd=dmy(t0.date);
+      $('s-tgmv').nextElementSibling.textContent=T('sTGmvD')(dd,c);
+      $('s-tord').nextElementSibling.textContent=T('sTOrdD')(dd,c);}
     const ages=Object.values(byBrand).map(d=>d.age_sec).filter(a=>a!=null);
     const newest=ages.length?Math.min(...ages):null;
     if(newest==null||newest>COLLECTOR_DOWN_SEC){
