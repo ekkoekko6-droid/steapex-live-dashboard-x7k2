@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>จองห้องไลฟ์</title>
+  <link rel="icon" href="data:,">
+  <style>
+    /* หน้าจองห้องไลฟ์ — ข้อมูลทั้งหมดมาจาก API บน VPS (/room-booking/*) ไม่มี token/รหัสในหน้านี้ */
+    :root{font-family:Inter,"Noto Sans Thai",system-ui,sans-serif;color-scheme:light;
+      --bg:#f6f6f4;--card:#fff;--line:#e4e4df;--text:#14161a;--muted:#5f646d;--dim:#8a8f98;
+      --orange:#f26b1d;--orange-soft:#fff1e8;--busy:#1f2329;--ok:#15803d;--ok-soft:#e9f7ee;--err:#b42318;--err-soft:#fdecea}
+    @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+      --bg:#0b0d11;--card:#141821;--line:#262c38;--text:#f3f4f6;--muted:#a3a9b5;--dim:#6b7280;
+      --orange:#fb8a3c;--orange-soft:#2a1a0f;--busy:#e5e7eb;--ok:#4ade80;--ok-soft:#0f2417;--err:#fca5a5;--err-soft:#2a1215}}
+    :root[data-theme="dark"]{color-scheme:dark;--bg:#0b0d11;--card:#141821;--line:#262c38;--text:#f3f4f6;--muted:#a3a9b5;--dim:#6b7280;
+      --orange:#fb8a3c;--orange-soft:#2a1a0f;--busy:#e5e7eb;--ok:#4ade80;--ok-soft:#0f2417;--err:#fca5a5;--err-soft:#2a1215}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-size:15px;line-height:1.45}
+    main{max-width:760px;margin:auto;padding:20px 16px 60px}
+    .eyebrow{color:var(--orange);font-weight:800;letter-spacing:.12em;font-size:12px}
+    h1{font-size:28px;margin:4px 0 2px}
+    h2{font-size:18px;margin:0 0 12px}
+    .sub{color:var(--muted);font-size:14px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:14px}
+    .datebar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .datebar input{flex:1;min-width:150px}
+    button,input,select,textarea{font:inherit;color:inherit}
+    input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px}
+    textarea{min-height:64px;resize:vertical}
+    button{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:10px 14px;min-height:44px;cursor:pointer;font-weight:600}
+    button.primary{background:var(--orange);border-color:var(--orange);color:#fff;width:100%;font-size:16px}
+    button:disabled{opacity:.55;cursor:wait}
+    .tabs{display:flex;gap:6px;margin:12px 0 4px;flex-wrap:wrap}
+    .tabs button{flex:1;min-width:70px}
+    .tabs button.on{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .room{padding:12px 0;border-top:1px solid var(--line);cursor:pointer}
+    .room:first-of-type{border-top:0}
+    .rhead{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+    .rname{font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .rname b{color:var(--orange);margin-right:6px}
+    .rstate{font-size:12px;color:var(--ok);white-space:nowrap}
+    .rstate.busy{color:var(--muted)}
+    .bar{position:relative;height:14px;background:var(--ok-soft);border-radius:7px;margin:8px 0 2px;overflow:hidden}
+    .seg{position:absolute;top:0;bottom:0;background:var(--busy);border-radius:3px}
+    .now{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--orange)}
+    .ticks{display:flex;justify-content:space-between;font-size:10px;color:var(--dim)}
+    .chips{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+    .chip{font-size:13px;color:var(--muted)}
+    .chip b{color:var(--text);font-variant-numeric:tabular-nums}
+    .legend{display:flex;gap:14px;font-size:12px;color:var(--muted);margin-top:6px}
+    .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:4px}
+    label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px;font-weight:600}
+    label .req{color:var(--orange)}
+    .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .hint{font-size:13px;color:var(--muted);margin-top:6px}
+    .hint.warn{color:var(--orange);font-weight:600}
+    .msg{border-radius:12px;padding:12px 14px;margin-top:12px;font-size:14px}
+    .msg.ok{background:var(--ok-soft);color:var(--ok)}
+    .msg.err{background:var(--err-soft);color:var(--err)}
+    .code{font-size:28px;font-weight:850;letter-spacing:.08em;color:var(--text);margin:6px 0;font-variant-numeric:tabular-nums}
+    .muted{color:var(--muted)}
+    .loading{color:var(--dim);padding:12px 0}
+    .foot{margin-top:18px;color:var(--dim);font-size:12px;text-align:center}
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">LIVE ROOM BOOKING</div>
+  <h1>จองห้องไลฟ์</h1>
+  <div class="sub">เลือกวัน ดูห้องว่าง แล้วกรอกจองด้านล่าง · ระบบเช็คชนให้อัตโนมัติ</div>
+
+  <section class="card">
+    <div class="datebar">
+      <button id="prev" aria-label="วันก่อนหน้า">‹</button>
+      <input type="date" id="date" aria-label="วันที่">
+      <button id="next" aria-label="วันถัดไป">›</button>
+      <button id="today">วันนี้</button>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <div class="legend"><span><i style="background:var(--ok-soft);border:1px solid var(--line)"></i>ว่าง</span><span><i style="background:var(--busy)"></i>มีคนจอง</span><span><i style="background:var(--orange)"></i>ตอนนี้</span></div>
+    <div id="rooms"><div class="loading">กำลังโหลด…</div></div>
+  </section>
+
+  <section class="card" id="formCard">
+    <h2>กรอกจอง</h2>
+    <form id="form" novalidate>
+      <label for="fdate">วันที่ <span class="req">*</span></label>
+      <input type="date" id="fdate" required>
+      <label for="froom">ห้อง <span class="req">*</span></label>
+      <select id="froom" required></select>
+      <div class="row2">
+        <div><label for="fstart">เวลาเริ่ม <span class="req">*</span></label><select id="fstart" required></select></div>
+        <div><label for="fend">เวลาจบ <span class="req">*</span></label><select id="fend" required></select></div>
+      </div>
+      <div class="hint" id="spanHint"></div>
+      <label for="fbrand">แบรนด์ <span class="req">*</span></label>
+      <select id="fbrand" required></select>
+      <input type="text" id="fbrandOther" placeholder="พิมพ์ชื่อแบรนด์" maxlength="40" style="display:none;margin-top:8px">
+      <label for="fbooker">ชื่อคนจอง <span class="req">*</span></label>
+      <input type="text" id="fbooker" maxlength="40" autocomplete="name" placeholder="ชื่อเล่น หรือชื่อจริง">
+      <label for="fnote">หมายเหตุ (ไม่บังคับ)</label>
+      <textarea id="fnote" maxlength="200" placeholder="เช่น ไลฟ์แคมเปญ 12.12"></textarea>
+      <div style="margin-top:14px"><button type="submit" class="primary" id="submit">จองห้อง</button></div>
+      <div id="result"></div>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>ยกเลิกการจอง</h2>
+    <div class="sub">ใส่รหัสจองที่ได้ตอนจอง (เช่น RB-ABC123)</div>
+    <div class="datebar" style="margin-top:10px">
+      <input type="text" id="ccode" placeholder="RB-XXXXXX" maxlength="12" autocomplete="off" style="text-transform:uppercase">
+      <button id="cbtn">ยกเลิก</button>
+    </div>
+    <div id="cresult"></div>
+  </section>
+
+  <div class="foot">ข้อมูลอัปเดตเมื่อเปิดหน้า เปลี่ยนวัน หรือจองเสร็จ · ทุกการจอง/ยกเลิกแจ้งเข้ากลุ่ม Feishu "จองห้องไลฟ์"</div>
+</main>
+<script>
+(() => {
+  const API = "https://66-42-59-215.sslip.io/room-booking";
+  const $ = id => document.getElementById(id);
+  const DAYS = ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"];
+  let state = {date: "", floors: [], brands: [], bookings: [], floor: "all", loadedFor: ""};
+
+  const store = {
+    get(k){ try { return localStorage.getItem(k) || ""; } catch(e){ return ""; } },
+    set(k,v){ try { localStorage.setItem(k, v); } catch(e){} }
+  };
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  // วันที่/เวลาไทยเสมอ ไม่ขึ้นกับเขตเวลาของเครื่องคนเปิด
+  const thNow = () => new Date(Date.now() + 7*3600e3);
+  const ymd = d => d.toISOString().slice(0,10);
+  const todayTH = () => ymd(thNow());
+  const addDays = (s,n) => { const d = new Date(s + "T00:00:00Z"); d.setUTCDate(d.getUTCDate()+n); return ymd(d); };
+  const thDate = s => { const d = new Date(s + "T00:00:00Z"); return `${DAYS[d.getUTCDay()]} ${s.slice(8)}/${s.slice(5,7)}/${s.slice(0,4)}`; };
+  const toMs = iso => new Date(iso).getTime();
+  const dayStartMs = s => new Date(s + "T00:00:00+07:00").getTime();
+
+  function fillTimes(){
+    const opts = [];
+    for (let h=0; h<24; h++) for (let m=0; m<60; m+=15){ const t = `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}`; opts.push(`<option>${t}</option>`); }
+    $("fstart").innerHTML = opts.join(""); $("fend").innerHTML = opts.join("");
+    $("fstart").value = "19:00"; $("fend").value = "23:00";
+  }
+
+  async function load(date){
+    state.date = date; $("date").value = date;
+    $("rooms").innerHTML = '<div class="loading">กำลังโหลด…</div>';
+    try {
+      const r = await fetch(`${API}/day?date=${encodeURIComponent(date)}`, {cache:"no-store"});
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || `HTTP ${r.status}`);
+      if (state.date !== date) return;            // ผู้ใช้เปลี่ยนวันไปแล้วระหว่างรอ
+      Object.assign(state, {floors: d.floors, brands: d.brands, bookings: d.bookings, loadedFor: date});
+      renderTabs(); renderRooms(); fillFormLists();
+    } catch(e){
+      $("rooms").innerHTML = `<div class="msg err">โหลดข้อมูลไม่ได้: ${esc(e.message)} — ลองรีเฟรชอีกครั้ง</div>`;
+    }
+  }
+
+  function renderTabs(){
+    const fl = [{k:"all", t:"ทุกชั้น"}, ...state.floors.map(f => ({k:f.floor, t:`ชั้น ${f.floor}`}))];
+    $("tabs").innerHTML = fl.map(f => `<button type="button" data-f="${esc(f.k)}" class="${state.floor===f.k?"on":""}">${esc(f.t)}</button>`).join("");
+    $("tabs").querySelectorAll("button").forEach(b => b.onclick = () => { state.floor = b.dataset.f; store.set("rb_floor", state.floor); renderTabs(); renderRooms(); });
+  }
+
+  function renderRooms(){
+    const d0 = dayStartMs(state.date), d1 = d0 + 864e5, now = Date.now();
+    const floors = state.floors.filter(f => state.floor === "all" || f.floor === state.floor);
+    let html = "";
+    for (const f of floors){
+      if (state.floor === "all") html += `<div class="muted" style="font-weight:700;margin-top:14px">ชั้น ${esc(f.floor)}</div>`;
+      for (const r of f.rooms){
+        const bs = state.bookings.filter(b => b.room === r.id);
+        const segs = bs.map(b => {
+          const s = Math.max(toMs(b.start_at), d0), e = Math.min(toMs(b.end_at), d1);
+          return `<div class="seg" style="left:${(s-d0)/864e3}%;width:${Math.max(.6,(e-s)/864e3)}%"></div>`;
+        }).join("");
+        const nowMark = now >= d0 && now < d1 ? `<div class="now" style="left:${(now-d0)/864e3}%"></div>` : "";
+        const chips = bs.map(b => {
+          const fromPrev = b.date !== state.date;
+          const when = fromPrev ? `ต่อจากเมื่อวาน ถึง ${b.end}` : `${b.start}–${b.end}${b.overnight ? " (ข้ามเที่ยงคืน)" : ""}`;
+          return `<div class="chip"><b>${esc(when)}</b> · ${esc(b.brand)} · ${esc(b.booker)}${b.note ? ` · <span title="หมายเหตุ">${esc(b.note)}</span>` : ""}</div>`;
+        }).join("");
+        html += `<div class="room" data-room="${esc(r.id)}" role="button" tabindex="0" aria-label="จองห้อง ${esc(r.id)}">
+          <div class="rhead"><div class="rname"><b>${esc(r.id)}</b>${esc(r.name)}</div><div class="rstate ${bs.length?"busy":""}">${bs.length ? `จองแล้ว ${bs.length} ช่วง` : "ว่างทั้งวัน"}</div></div>
+          <div class="bar">${segs}${nowMark}</div>
+          <div class="ticks"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>
+          ${chips ? `<div class="chips">${chips}</div>` : ""}
+        </div>`;
+      }
+    }
+    $("rooms").innerHTML = html || '<div class="loading">ไม่มีห้อง</div>';
+    $("rooms").querySelectorAll(".room").forEach(el => {
+      const pick = () => { $("froom").value = el.dataset.room; $("fdate").value = state.date; updateHint(); $("formCard").scrollIntoView({behavior:"smooth"}); };
+      el.onclick = pick; el.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } };
+    });
+  }
+
+  function fillFormLists(){
+    const cur = $("froom").value;
+    $("froom").innerHTML = state.floors.map(f => `<optgroup label="ชั้น ${esc(f.floor)}">${f.rooms.map(r => `<option value="${esc(r.id)}">${esc(r.id)}${r.name ? " · " + esc(r.name) : ""}</option>`).join("")}</optgroup>`).join("");
+    if (cur) $("froom").value = cur;
+    if (!$("fbrand").options.length){
+      $("fbrand").innerHTML = '<option value="">— เลือกแบรนด์ —</option>' + state.brands.map(b => `<option>${esc(b)}</option>`).join("") + '<option value="__other">อื่นๆ (พิมพ์เอง)</option>';
+      const last = store.get("rb_brand"); if (last && [...$("fbrand").options].some(o => o.value === last)) $("fbrand").value = last;
+    }
+    updateHint();
+  }
+
+  function updateHint(){
+    const s = $("fstart").value, e = $("fend").value, h = $("spanHint");
+    if (!s || !e) return;
+    if (s === e){ h.className = "hint warn"; h.textContent = "เวลาเริ่มกับเวลาจบเท่ากัน"; return; }
+    const [sh,sm] = s.split(":").map(Number), [eh,em] = e.split(":").map(Number);
+    let mins = (eh*60+em) - (sh*60+sm); const over = mins <= 0; if (over) mins += 1440;
+    const dur = `${Math.floor(mins/60)} ชม.${mins%60 ? ` ${mins%60} นาที` : ""}`;
+    h.className = over ? "hint warn" : "hint";
+    h.textContent = over ? `ข้ามเที่ยงคืน — จบ ${e} ของวันถัดไป (รวม ${dur})` : `รวม ${dur}`;
+  }
+
+  function showResult(el, kind, html){ el.innerHTML = `<div class="msg ${kind}">${html}</div>`; }
+
+  async function post(path, body){
+    const r = await fetch(`${API}/${path}`, {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(body)});
+    let d = {}; try { d = await r.json(); } catch(e){}
+    return {ok: r.ok, status: r.status, d};
+  }
+
+  $("form").onsubmit = async ev => {
+    ev.preventDefault();
+    const res = $("result");
+    const brand = $("fbrand").value === "__other" ? $("fbrandOther").value.trim() : $("fbrand").value;
+    const body = {date: $("fdate").value, room: $("froom").value, start: $("fstart").value, end: $("fend").value,
+                  brand, booker: $("fbooker").value.trim(), note: $("fnote").value.trim()};
+    if (!body.date) return showResult(res, "err", "กรุณาเลือกวันที่");
+    if (!body.room) return showResult(res, "err", "กรุณาเลือกห้อง");
+    if (!brand) return showResult(res, "err", "กรุณาเลือกหรือพิมพ์ชื่อแบรนด์");
+    if (!body.booker) return showResult(res, "err", "กรุณากรอกชื่อคนจอง");
+    if (body.start === body.end) return showResult(res, "err", "เวลาเริ่มกับเวลาจบต้องไม่เท่ากัน");
+    $("submit").disabled = true; $("submit").textContent = "กำลังจอง…";
+    try {
+      const {ok, d} = await post("book", body);
+      if (ok){
+        store.set("rb_booker", body.booker); store.set("rb_brand", $("fbrand").value);
+        const b = d.booking;
+        showResult(res, "ok", `จองสำเร็จ — ห้อง <b>${esc(b.room)}${b.room_name ? " " + esc(b.room_name) : ""}</b> (ชั้น ${esc(b.floor)})<br>${esc(thDate(b.date))} ${esc(b.start)}–${esc(b.end)}${b.overnight ? " (ข้ามเที่ยงคืน)" : ""}<div class="code">${esc(d.code)}</div>เก็บรหัสนี้ไว้ ใช้ตอนยกเลิก <button type="button" id="copy" style="margin-left:6px">คัดลอกรหัส</button>`);
+        const cp = $("copy"); if (cp) cp.onclick = async () => { try { await navigator.clipboard.writeText(d.code); cp.textContent = "คัดลอกแล้ว"; } catch(e){ cp.textContent = "คัดลอกไม่ได้ จดไว้นะ"; } };
+        $("fnote").value = "";
+        load(b.date);
+      } else {
+        showResult(res, "err", esc(d.error || "จองไม่สำเร็จ ลองใหม่อีกครั้ง"));
+        if (d.conflicts) load(body.date);
+      }
+    } catch(e){
+      showResult(res, "err", "ติดต่อระบบไม่ได้ ตรวจอินเทอร์เน็ตแล้วลองใหม่");
+    } finally {
+      $("submit").disabled = false; $("submit").textContent = "จองห้อง";
+    }
+  };
+
+  $("cbtn").onclick = async () => {
+    const code = $("ccode").value.trim().toUpperCase(), res = $("cresult");
+    if (!code) return showResult(res, "err", "กรุณาใส่รหัสจอง");
+    if (!confirm(`ยืนยันยกเลิกการจอง ${code} ?`)) return;
+    $("cbtn").disabled = true;
+    try {
+      const {ok, d} = await post("cancel", {code});
+      if (ok){
+        const b = d.booking;
+        showResult(res, "ok", `ยกเลิกแล้ว — ห้อง ${esc(b.room)} ${esc(thDate(b.date))} ${esc(b.start)}–${esc(b.end)} (${esc(b.brand)})`);
+        $("ccode").value = ""; load(state.date);
+      } else showResult(res, "err", esc(d.error || "ยกเลิกไม่สำเร็จ"));
+    } catch(e){ showResult(res, "err", "ติดต่อระบบไม่ได้ ลองใหม่อีกครั้ง"); }
+    finally { $("cbtn").disabled = false; }
+  };
+
+  $("fbrand").onchange = () => { $("fbrandOther").style.display = $("fbrand").value === "__other" ? "block" : "none"; };
+  $("fstart").onchange = updateHint; $("fend").onchange = updateHint;
+  $("date").onchange = () => $("date").value && load($("date").value);
+  $("prev").onclick = () => load(addDays(state.date, -1));
+  $("next").onclick = () => load(addDays(state.date, 1));
+  $("today").onclick = () => load(todayTH());
+
+  const t = todayTH();
+  $("date").min = addDays(t, -7);                    // ดูย้อนหลังได้ 7 วัน แต่จองย้อนหลังไม่ได้
+  $("fdate").min = t; $("fdate").value = t;
+  $("fbooker").value = store.get("rb_booker");
+  state.floor = store.get("rb_floor") || "all";
+  fillTimes(); updateHint();
+  load(t);
+})();
+</script>
+</body>
+</html>
