@@ -252,7 +252,9 @@
       const [x,y,w,h] = r.map;
       return `<div class="hl ${r.id === sel ? "sel" : busy.has(r.id) ? "busy" : ""}" data-pick="${esc(r.id)}" title="${esc(r.id)} ${esc(r.name)}" style="left:${x}%;top:${y}%;width:${w}%;height:${h}%"></div>`;
     }).join("");
-    return `<div class="map" data-zoomf="${esc(f.floor)}" data-sel="${esc(sel || "")}"><img src="${esc(f.image)}" alt="ผังชั้น ${esc(f.floor)}" loading="lazy">${boxes}</div>`;
+    // ใส่ขนาดจริงของรูป → เบราว์เซอร์จองพื้นที่ไว้ก่อนรูปโหลดเสร็จ กรอบห้องไม่แบนเป็น 0 (แตะห้องแล้วกลายเป็นเปิดรูปเต็มจอ)
+    const sz = Array.isArray(f.image_size) ? ` width="${+f.image_size[0]}" height="${+f.image_size[1]}"` : "";
+    return `<div class="map" data-zoomf="${esc(f.floor)}" data-sel="${esc(sel || "")}"><img src="${esc(f.image)}" alt="ผังชั้น ${esc(f.floor)}"${sz}>${boxes}</div>`;
   }
   function bindMaps(root){
     root.querySelectorAll(".map").forEach(m => m.onclick = e => {
