@@ -44,12 +44,17 @@
     .rstate.busy{color:var(--muted)}
     .bar{position:relative;height:14px;background:var(--ok-soft);border-radius:7px;margin:8px 0 2px;overflow:hidden}
     .seg{position:absolute;top:0;bottom:0;background:var(--busy);border-radius:3px}
+    .seg.wait{background:repeating-linear-gradient(135deg,var(--orange) 0 5px,var(--orange-soft) 5px 9px);border:1px solid var(--orange)}
+    .tag{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:1px 7px;margin-left:4px;vertical-align:1px}
+    .tag.wait{background:var(--orange-soft);color:var(--orange);border:1px solid var(--orange)}
+    .tag.ok{background:var(--ok-soft);color:var(--ok)}
+    .hl.wait{background:rgba(242,107,29,.18)}
     .now{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--orange)}
     .ticks{display:flex;justify-content:space-between;font-size:10px;color:var(--dim)}
     .chips{display:flex;flex-direction:column;gap:4px;margin-top:6px}
     .chip{font-size:13px;color:var(--muted)}
     .chip b{color:var(--text);font-variant-numeric:tabular-nums}
-    .legend{display:flex;gap:14px;font-size:12px;color:var(--muted);margin-top:6px}
+    .legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin-top:6px}
     .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:4px}
     label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px;font-weight:600}
     label .req{color:var(--orange)}
@@ -96,7 +101,7 @@
       <button id="today">วันนี้</button>
     </div>
     <div class="tabs" id="tabs"></div>
-    <div class="legend"><span><i style="background:var(--ok-soft);border:1px solid var(--line)"></i>ว่าง</span><span><i style="background:var(--busy)"></i>มีคนจอง</span><span><i style="background:var(--orange)"></i>ตอนนี้</span></div>
+    <div class="legend"><span><i style="background:var(--ok-soft);border:1px solid var(--line)"></i>ว่าง</span><span><i style="background:var(--busy)"></i>จองแล้ว/อนุมัติแล้ว</span><span><i style="background:repeating-linear-gradient(135deg,var(--orange) 0 3px,var(--orange-soft) 3px 6px);border:1px solid var(--orange)"></i>รออนุมัติ</span><span><i style="background:var(--orange)"></i>ตอนนี้</span></div>
     <div id="rooms"><div class="loading">กำลังโหลด…</div></div>
   </section>
 
@@ -116,6 +121,9 @@
       <label for="fbrand">แบรนด์ <span class="req">*</span></label>
       <select id="fbrand" required></select>
       <input type="text" id="fbrandOther" placeholder="พิมพ์ชื่อแบรนด์" maxlength="40" style="display:none;margin-top:8px">
+      <div id="apprWrap"><label for="fappr">คนอนุมัติ <span class="req">*</span></label>
+      <select id="fappr"></select>
+      <div class="hint">ระบบส่งข้อความให้คนนี้กดอนุมัติใน Feishu · ระหว่างรอ ห้องถูกกันไว้ให้แล้ว</div></div>
       <label for="fbooker">ชื่อคนจอง <span class="req">*</span></label>
       <input type="text" id="fbooker" maxlength="40" autocomplete="name" placeholder="ชื่อเล่น หรือชื่อจริง">
       <label for="fnote">หมายเหตุ (ไม่บังคับ)</label>
@@ -182,7 +190,7 @@
       const d = await r.json();
       if (!r.ok) throw new Error(d.error || `HTTP ${r.status}`);
       if (state.date !== date) return;            // ผู้ใช้เปลี่ยนวันไปแล้วระหว่างรอ
-      Object.assign(state, {floors: d.floors, brands: d.brands, bookings: d.bookings, loadedFor: date});
+      Object.assign(state, {floors: d.floors, brands: d.brands, bookings: d.bookings, approvers: d.approvers || [], loadedFor: date});
       renderTabs(); renderRooms(); fillFormLists();
     } catch(e){
       $("rooms").innerHTML = `<div class="msg err">โหลดข้อมูลไม่ได้: ${esc(e.message)} — ลองรีเฟรชอีกครั้ง</div>`;
@@ -202,18 +210,20 @@
     for (const f of floors){
       const open = !!state.maps[f.floor];
       html += `<div class="fhead"><div class="muted" style="font-weight:700">ชั้น ${esc(f.floor)}</div>${f.image ? `<button type="button" class="mapbtn" data-mapf="${esc(f.floor)}" aria-expanded="${open}">${open ? "ซ่อนผังชั้น" : "ดูผังชั้น"}</button>` : ""}</div>`;
-      if (open && f.image) html += mapHTML(f, $("froom").value) + '<div class="maphint">แตะรูปเพื่อขยายเต็มจอ · แตะกรอบห้องเพื่อเลือกจอง · สีเทา = วันนี้มีคนจองแล้ว</div>';
+      if (open && f.image) html += mapHTML(f, $("froom").value) + '<div class="maphint">แตะรูปเพื่อขยายเต็มจอ · แตะกรอบห้องเพื่อเลือกจอง · สีเทา = มีคนจองแล้ว · สีส้มอ่อน = รออนุมัติ</div>';
       for (const r of f.rooms){
         const bs = state.bookings.filter(b => b.room === r.id);
         const segs = bs.map(b => {
           const s = Math.max(toMs(b.start_at), d0), e = Math.min(toMs(b.end_at), d1);
-          return `<div class="seg" style="left:${(s-d0)/864e3}%;width:${Math.max(.6,(e-s)/864e3)}%"></div>`;
+          return `<div class="seg${b.status === "pending" ? " wait" : ""}" title="${esc(b.status_th || "")}" style="left:${(s-d0)/864e3}%;width:${Math.max(.6,(e-s)/864e3)}%"></div>`;
         }).join("");
         const nowMark = now >= d0 && now < d1 ? `<div class="now" style="left:${(now-d0)/864e3}%"></div>` : "";
         const chips = bs.map(b => {
           const fromPrev = b.date !== state.date;
           const when = fromPrev ? `ต่อจากเมื่อวาน ถึง ${b.end}` : `${b.start}–${b.end}${b.overnight ? " (ข้ามเที่ยงคืน)" : ""}`;
-          return `<div class="chip"><b>${esc(when)}</b> · ${esc(b.brand)} · ${esc(b.booker)}${b.note ? ` · <span title="หมายเหตุ">${esc(b.note)}</span>` : ""}</div>`;
+          const tag = b.status === "pending" ? `<span class="tag wait">รออนุมัติ${b.approver ? " · " + esc(b.approver) : ""}</span>`
+                    : b.status === "approved" ? '<span class="tag ok">อนุมัติแล้ว</span>' : "";
+          return `<div class="chip"><b>${esc(when)}</b>${tag} · ${esc(b.brand)} · ${esc(b.booker)}${b.note ? ` · <span title="หมายเหตุ">${esc(b.note)}</span>` : ""}</div>`;
         }).join("");
         html += `<div class="room" data-room="${esc(r.id)}" role="button" tabindex="0" aria-label="จองห้อง ${esc(r.id)}">
           <div class="rhead"><div class="rname"><b>${esc(r.id)}</b>${esc(r.name)}</div><div class="rstate ${bs.length?"busy":""}">${bs.length ? `จองแล้ว ${bs.length} ช่วง` : "ว่างทั้งวัน"}</div></div>
@@ -241,16 +251,21 @@
       $("fbrand").innerHTML = '<option value="">— เลือกแบรนด์ —</option>' + state.brands.map(b => `<option>${esc(b)}</option>`).join("") + '<option value="__other">อื่นๆ (พิมพ์เอง)</option>';
       const last = store.get("rb_brand"); if (last && [...$("fbrand").options].some(o => o.value === last)) $("fbrand").value = last;
     }
+    const ap = state.approvers || [], curA = $("fappr").value || store.get("rb_appr");
+    $("apprWrap").style.display = ap.length ? "" : "none";       // config ไม่มีคนอนุมัติ = จองได้เลยแบบเดิม
+    $("fappr").innerHTML = '<option value="">— เลือกคนอนุมัติ —</option>' + ap.map(a => `<option>${esc(a)}</option>`).join("");
+    if (ap.includes(curA)) $("fappr").value = curA;
     updateHint();
   }
 
   // ── ผังชั้น ──
   const floorOf = id => state.floors.find(f => f.rooms.some(r => r.id === id));
   function mapHTML(f, sel){
-    const busy = new Set(state.bookings.map(b => b.room));
+    const busy = new Set(state.bookings.filter(b => b.status !== "pending").map(b => b.room));
+    const wait = new Set(state.bookings.filter(b => b.status === "pending").map(b => b.room));
     const boxes = f.rooms.filter(r => Array.isArray(r.map)).map(r => {
       const [x,y,w,h] = r.map;
-      return `<div class="hl ${r.id === sel ? "sel" : busy.has(r.id) ? "busy" : ""}" data-pick="${esc(r.id)}" title="${esc(r.id)} ${esc(r.name)}" style="left:${x}%;top:${y}%;width:${w}%;height:${h}%"></div>`;
+      return `<div class="hl ${r.id === sel ? "sel" : busy.has(r.id) ? "busy" : wait.has(r.id) ? "wait" : ""}" data-pick="${esc(r.id)}" title="${esc(r.id)} ${esc(r.name)}" style="left:${x}%;top:${y}%;width:${w}%;height:${h}%"></div>`;
     }).join("");
     // ใส่ขนาดจริงของรูป → เบราว์เซอร์จองพื้นที่ไว้ก่อนรูปโหลดเสร็จ กรอบห้องไม่แบนเป็น 0 (แตะห้องแล้วกลายเป็นเปิดรูปเต็มจอ)
     const sz = Array.isArray(f.image_size) ? ` width="${+f.image_size[0]}" height="${+f.image_size[1]}"` : "";
@@ -339,19 +354,22 @@
     const res = $("result");
     const brand = $("fbrand").value === "__other" ? $("fbrandOther").value.trim() : $("fbrand").value;
     const body = {date: $("fdate").value, room: $("froom").value, start: $("fstart").value, end: $("fend").value,
-                  brand, booker: $("fbooker").value.trim(), note: $("fnote").value.trim()};
+                  brand, booker: $("fbooker").value.trim(), note: $("fnote").value.trim(), approver: $("fappr").value};
     if (!body.date) return showResult(res, "err", "กรุณาเลือกวันที่");
     if (!body.room) return showResult(res, "err", "กรุณาเลือกห้อง");
     if (!brand) return showResult(res, "err", "กรุณาเลือกหรือพิมพ์ชื่อแบรนด์");
+    if ((state.approvers || []).length && !body.approver) return showResult(res, "err", "กรุณาเลือกคนอนุมัติ");
     if (!body.booker) return showResult(res, "err", "กรุณากรอกชื่อคนจอง");
     if (body.start === body.end) return showResult(res, "err", "เวลาเริ่มกับเวลาจบต้องไม่เท่ากัน");
     $("submit").disabled = true; $("submit").textContent = "กำลังจอง…";
     try {
       const {ok, d} = await post("book", body);
       if (ok){
-        store.set("rb_booker", body.booker); store.set("rb_brand", $("fbrand").value);
+        store.set("rb_booker", body.booker); store.set("rb_brand", $("fbrand").value); store.set("rb_appr", body.approver);
         const b = d.booking;
-        showResult(res, "ok", `จองสำเร็จ — ห้อง <b>${esc(b.room)}${b.room_name ? " " + esc(b.room_name) : ""}</b> (ชั้น ${esc(b.floor)})<br>${esc(thDate(b.date))} ${esc(b.start)}–${esc(b.end)}${b.overnight ? " (ข้ามเที่ยงคืน)" : ""}<div class="code">${esc(d.code)}</div>เก็บรหัสนี้ไว้ ใช้ตอนยกเลิก <button type="button" id="copy" style="margin-left:6px">คัดลอกรหัส</button>`);
+        const wait = b.status === "pending"
+          ? `<br><b>รออนุมัติจาก ${esc(b.approver)}</b> — ห้องกันไว้ให้แล้ว ผลอนุมัติจะแจ้งในกลุ่ม Feishu "จองห้องไลฟ์"` : "";
+        showResult(res, "ok", `${b.status === "pending" ? "ส่งคำขอจองแล้ว" : "จองสำเร็จ"} — ห้อง <b>${esc(b.room)}${b.room_name ? " " + esc(b.room_name) : ""}</b> (ชั้น ${esc(b.floor)})<br>${esc(thDate(b.date))} ${esc(b.start)}–${esc(b.end)}${b.overnight ? " (ข้ามเที่ยงคืน)" : ""}${wait}<div class="code">${esc(d.code)}</div>เก็บรหัสนี้ไว้ ใช้ตอนยกเลิก <button type="button" id="copy" style="margin-left:6px">คัดลอกรหัส</button>`);
         const cp = $("copy"); if (cp) cp.onclick = async () => { try { await navigator.clipboard.writeText(d.code); cp.textContent = "คัดลอกแล้ว"; } catch(e){ cp.textContent = "คัดลอกไม่ได้ จดไว้นะ"; } };
         $("fnote").value = "";
         load(b.date);
@@ -396,6 +414,8 @@
   $("fbooker").value = store.get("rb_booker");
   state.floor = store.get("rb_floor") || "all";
   fillTimes(); updateHint();
+  const qc = (new URLSearchParams(location.search).get("cancel") || "").toUpperCase();
+  if (/^RB-[A-Z0-9]{6}$/.test(qc)){ $("ccode").value = qc; setTimeout(() => $("ccode").scrollIntoView({behavior:"smooth", block:"center"}), 300); }
   load(t);
 })();
 </script>
