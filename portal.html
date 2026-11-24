@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STEAPEX Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f3f0; --panel:#ffffff; --ink:#1b1b1f; --muted:#6b6b75; --line:#e6e2dc;
+  --side:#16161a; --side-ink:#d9d6d0; --side-muted:#8a8780; --accent:#ff6a13; --accent-soft:#fff0e6;
+  --ok:#1f9d55; --bad:#d64545;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font-family:"IBM Plex Sans Thai",system-ui,sans-serif;background:var(--bg);color:var(--ink);display:flex;overflow:hidden}
+a{color:inherit}
+/* sidebar */
+#side{width:248px;flex:none;background:var(--side);color:var(--side-ink);display:flex;flex-direction:column;height:100vh}
+.brand{padding:20px 20px 14px;display:flex;align-items:center;gap:10px}
+.logo{width:34px;height:34px;border-radius:9px;background:var(--accent);display:grid;place-items:center;font-weight:700;color:#fff}
+.brand b{display:block;font-size:16px;letter-spacing:.3px}
+.brand small{color:var(--side-muted);font-size:12px}
+nav{flex:1;overflow:auto;padding:6px 10px 16px}
+.grp{font-size:11px;color:var(--side-muted);text-transform:uppercase;letter-spacing:1px;margin:16px 10px 6px}
+.item{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;color:inherit;font:inherit;font-size:14px;text-align:left;padding:9px 10px;border-radius:8px;cursor:pointer}
+.item:hover{background:#25252b}
+.item.on{background:var(--accent);color:#fff}
+.item .ic{width:20px;text-align:center;flex:none}
+.item .ext{margin-left:auto;font-size:11px;opacity:.6}
+.side-foot{padding:12px 20px;font-size:12px;color:var(--side-muted);border-top:1px solid #26262c}
+.side-foot button{background:none;border:1px solid #3a3a42;color:var(--side-ink);border-radius:7px;padding:5px 9px;font:inherit;font-size:12px;cursor:pointer}
+/* main */
+main{flex:1;display:flex;flex-direction:column;min-width:0;height:100vh}
+header{height:56px;flex:none;display:flex;align-items:center;gap:12px;padding:0 20px;background:var(--panel);border-bottom:1px solid var(--line)}
+header h1{font-size:17px;margin:0;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header .sub{color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header .sp{flex:1}
+.btn{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+#menuBtn{display:none}
+#view{flex:1;position:relative;overflow:auto}
+iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+.page{padding:24px;max-width:1200px}
+.hello{font-size:22px;font-weight:600;margin:0 0 4px}
+.muted{color:var(--muted);font-size:14px}
+.sec{margin:26px 0 10px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px}
+.tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi small{color:var(--muted);font-size:12px}
+.kpi b{display:block;font-size:22px;margin-top:4px;font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px}
+th,td{padding:9px 12px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;white-space:nowrap}
+th{font-weight:500;color:var(--muted);font-size:12px;background:#faf9f7}
+th:first-child,td:first-child{text-align:left}
+tr:last-child td{border-bottom:0}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:#bbb}
+.dot.live{background:var(--bad);box-shadow:0 0 0 3px #d6454522}
+.tblwrap{overflow:auto;border-radius:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;text-align:left;font:inherit;color:inherit}
+.card:hover{border-color:var(--accent)}
+.card .t{font-weight:600;display:flex;gap:8px;align-items:center}
+.card .d{color:var(--muted);font-size:13px;margin-top:4px}
+.card .m{font-size:11px;color:var(--accent);margin-top:8px}
+.note{background:var(--panel);border:1px dashed var(--line);border-radius:12px;padding:18px;color:var(--muted);font-size:14px}
+.empty{display:grid;place-items:center;height:100%;padding:24px;text-align:center}
+.empty .box{max-width:420px}
+.empty .big{font-size:40px}
+dialog{border:1px solid var(--line);border-radius:14px;padding:20px;width:min(420px,92vw);font:inherit}
+dialog label{display:block;font-size:13px;margin:10px 0 4px;color:var(--muted)}
+dialog input,dialog select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit}
+dialog .row{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
+.del{margin-left:6px;opacity:0;font-size:12px;color:var(--side-muted)}
+.item:hover .del{opacity:1}
+@media (max-width:820px){
+  #side{position:fixed;left:0;top:0;z-index:20;transform:translateX(-100%);transition:transform .2s}
+  body.open #side{transform:none}
+  #menuBtn{display:inline-block}
+  header .sub{display:none}
+  .page{padding:16px}
+}
+</style>
+</head>
+<body>
+<aside id="side">
+  <div class="brand"><div class="logo">S</div><div><b>STEAPEX Portal</b><small>ทุกระบบในที่เดียว</small></div></div>
+  <nav id="nav"></nav>
+  <div class="side-foot"><button onclick="openAdd()">+ เพิ่มลิงก์</button></div>
+</aside>
+<main>
+  <header>
+    <button class="btn" id="menuBtn" onclick="document.body.classList.toggle('open')">☰</button>
+    <h1 id="title">หน้าแรก</h1><span class="sub" id="sub"></span>
+    <span class="sp"></span>
+    <button class="btn" id="reloadBtn" onclick="reloadView()">รีเฟรช</button>
+    <a class="btn" id="extBtn" target="_blank" rel="noopener">เปิดแท็บใหม่ ↗</a>
+  </header>
+  <div id="view"></div>
+</main>
+
+<dialog id="addDlg">
+  <b>เพิ่มลิงก์เข้าเมนู</b>
+  <div class="muted" style="font-size:12px;margin-top:4px">บันทึกไว้ในเบราว์เซอร์เครื่องนี้เท่านั้น ถ้าจะให้ทุกคนเห็น ให้หัวหน้าเพิ่มในไฟล์</div>
+  <label>ชื่อเมนู</label><input id="aName" placeholder="เช่น ตารางจองห้องประชุม">
+  <label>ลิงก์</label><input id="aUrl" placeholder="https://...">
+  <label>กลุ่ม</label><select id="aGrp"></select>
+  <label>วิธีเปิด</label><select id="aMode"><option value="iframe">ฝังในหน้านี้</option><option value="tab">เปิดแท็บใหม่ (เว็บที่ไม่ให้ฝัง)</option></select>
+  <div class="row"><button class="btn" onclick="addDlg.close()">ยกเลิก</button><button class="btn" style="background:var(--accent);color:#fff;border-color:var(--accent)" onclick="saveAdd()">เพิ่ม</button></div>
+</dialog>
+
+<script>
+/* ====== แก้รายการเมนูตรงนี้ ======
+   mode: "home" = หน้าแรก (ดึงข้อมูลผ่าน API) · "iframe" = ฝังหน้าเว็บ · "tab" = เปิดแท็บใหม่ (เว็บที่ไม่ยอมให้ฝัง เช่น Feishu) · "soon" = ยังไม่มีระบบ */
+const DASH = "https://ekkoekko6-droid.github.io/steapex-live-dashboard-x7k2/";
+const API  = "https://66-42-59-215.sslip.io/live-test?brand=all";
+const MENU = [
+  {grp:"หลัก", id:"home", ic:"⌂", name:"หน้าแรก", mode:"home"},
+  {grp:"ยอดขาย", id:"dash", ic:"▤", name:"Live Dashboard", sub:"ยอดไลฟ์รายวัน รายสัปดาห์ รายเดือน และ MC", url:DASH, fresh:true, mode:"iframe"},
+  {grp:"ยอดขาย", id:"rt", ic:"◉", name:"ยอดเรียลไทม์ 10 ช่อง", sub:"อัปเดตทุก 60 วินาทีระหว่างไลฟ์", url:DASH+"realtime.html", mode:"iframe"},
+  {grp:"ยอดขาย", id:"kpi", ic:"▦", name:"Live KPI Tracker", sub:"Google Sheets · STEAPEX & COROLLA", url:"https://docs.google.com/spreadsheets/d/12Yn8C7m1tzH3rsxMimiDiGeVQoWbvZ0syJ9K8pTkdR4/edit", mode:"iframe"},
+  {grp:"ตารางงาน", id:"shS", ic:"▣", name:"ตารางกะ STEAPEX", sub:"Google Sheets · December 2026", url:"https://docs.google.com/spreadsheets/d/1hzX2KQxo-9fKOo70L4NEwO1YWQZsHW6YJFAdeMVv92I/edit#gid=1500227338", mode:"iframe"},
+  {grp:"ตารางงาน", id:"shC", ic:"▣", name:"ตารางกะ COROLLA", sub:"Google Sheets · December 2026", url:"https://docs.google.com/spreadsheets/d/1ujOPMlBviedloVmZZbSNtkcQ9A7O-jlGfs96pvqXvc0/edit#gid=170473112", mode:"iframe"},
+  {grp:"จองห้อง", id:"room", ic:"▢", name:"จองห้องไลฟ์", sub:"ยังไม่มีระบบ", mode:"soon"},
+  {grp:"ระบบอื่นๆ", id:"car", ic:"✎", name:"ฟอร์มเบิกค่ารถ", sub:"Feishu · กรอกได้ทุกคน ไม่ต้องล็อกอิน", url:"https://hcnnitoo29wy.feishu.cn/share/base/shrcnYZIjeNGifgFSWGVPnHdVgC", mode:"iframe"},
+  {grp:"ระบบอื่นๆ", id:"survey", ic:"◎", name:"สำรวจตลาด COROLLA", sub:"เว็บสำรวจร้านรองเท้าในห้าง", url:"https://corolla-bangkok-shoe-survey.sizedthistle3.chatgpt.site", mode:"iframe"},
+];
+/* ================================== */
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let custom = [];
+try { custom = JSON.parse(localStorage.getItem("portal_custom") || "[]"); } catch(e) {}
+const all = () => MENU.concat(custom);
+let cur = null, apiTimer = null;
+
+function renderNav(){
+  const groups = [...new Set(all().map(m => m.grp))];
+  $("#nav").innerHTML = groups.map(g => `<div class="grp">${esc(g)}</div>` + all().filter(m => m.grp === g).map(m =>
+    `<button class="item${cur && cur.id === m.id ? " on" : ""}" onclick="go('${esc(m.id)}')"><span class="ic">${esc(m.ic || "•")}</span>${esc(m.name)}${m.mode === "tab" ? '<span class="ext">↗</span>' : ""}${m.custom ? `<span class="del" onclick="event.stopPropagation();removeCustom('${esc(m.id)}')">ลบ</span>` : ""}</button>`
+  ).join("")).join("");
+  $("#aGrp").innerHTML = groups.filter(g => g !== "หลัก").map(g => `<option>${esc(g)}</option>`).join("");
+}
+
+function urlOf(m){ return m.fresh ? m.url + "?u=" + Date.now() : m.url; }
+
+function go(id, push = true){
+  const m = all().find(x => x.id === id) || MENU[0];
+  if (m.mode === "tab") { window.open(m.url, "_blank", "noopener"); return; }
+  cur = m; clearInterval(apiTimer);
+  document.body.classList.remove("open");
+  $("#title").textContent = m.name;
+  $("#sub").textContent = m.sub || "";
+  $("#extBtn").style.display = m.url ? "" : "none";
+  $("#reloadBtn").style.display = m.mode === "soon" ? "none" : "";
+  if (m.url) $("#extBtn").href = m.url;
+  const v = $("#view");
+  if (m.mode === "iframe") v.innerHTML = `<iframe src="${esc(urlOf(m))}" allow="clipboard-write; fullscreen" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+  else if (m.mode === "soon") v.innerHTML = `<div class="empty"><div class="box"><div class="big">▢</div><h3>${esc(m.name)}</h3><p class="muted">ยังไม่มีระบบนี้ ถ้ามีลิงก์ระบบจองห้องอยู่แล้ว กด “+ เพิ่มลิงก์” ที่มุมซ้ายล่าง หรือส่งลิงก์ให้หัวหน้าใส่ให้ทุกคนเห็น</p></div></div>`;
+  else renderHome();
+  renderNav();
+  if (push) history.replaceState(null, "", "#" + m.id);
+}
+
+function reloadView(){ if (cur) go(cur.id, false); }
+
+/* ---- หน้าแรก: ดึงยอดเรียลไทม์ผ่าน API ---- */
+const fmt = n => n == null ? "–" : Number(n).toLocaleString("th-TH", {maximumFractionDigits:0});
+function renderHome(){
+  const h = new Date().getHours();
+  const hi = h < 12 ? "สวัสดีตอนเช้า" : h < 17 ? "สวัสดีตอนบ่าย" : "สวัสดีตอนเย็น";
+  $("#view").innerHTML = `<div class="page">
+    <p class="hello">${hi}</p><div class="muted">เลือกเมนูทางซ้ายเพื่อเปิดแต่ละระบบในหน้านี้ ไม่ต้องสลับแท็บ</div>
+    <div class="sec">ยอดไลฟ์ตอนนี้ <span class="tag">ดึงผ่าน API</span><span class="muted" id="apiAt" style="font-weight:400;font-size:12px"></span></div>
+    <div id="apiBox"><div class="note">กำลังโหลด…</div></div>
+    <div class="sec">ระบบทั้งหมด</div>
+    <div class="cards">${all().filter(m => m.mode !== "home").map(m =>
+      `<button class="card" onclick="go('${esc(m.id)}')"><div class="t">${esc(m.ic || "•")} ${esc(m.name)}</div><div class="d">${esc(m.sub || m.grp)}</div><div class="m">${m.mode === "tab" ? "เปิดแท็บใหม่ ↗" : m.mode === "soon" ? "ยังไม่มีระบบ" : "เปิดในหน้านี้"}</div></button>`).join("")}</div>
+  </div>`;
+  loadApi(); apiTimer = setInterval(loadApi, 60000);
+}
+
+async function loadApi(){
+  const box = $("#apiBox"); if (!box) return;
+  try {
+    const r = await fetch(API, {cache:"no-store"});
+    const j = await r.json();
+    const today = new Date().toLocaleDateString("sv-SE", {timeZone:"Asia/Bangkok"});
+    const rows = (j.brands || []).filter(b => (b.collected_at || "").startsWith(today))
+      .sort((a, b) => (b.is_live - a.is_live) || ((b.kpi?.gmv || 0) - (a.kpi?.gmv || 0)));
+    const live = rows.filter(b => b.is_live);
+    const sum = k => rows.reduce((s, b) => s + (b.kpi?.[k] || 0), 0);
+    if (!rows.length) { box.innerHTML = `<div class="note">วันนี้ยังไม่มีช่องไหนไลฟ์</div>`; return; }
+    box.innerHTML = `<div class="kpis">
+      <div class="kpi"><small>ยอดขายรวมวันนี้</small><b>฿${fmt(sum("gmv"))}</b></div>
+      <div class="kpi"><small>ออเดอร์</small><b>${fmt(sum("orders"))}</b></div>
+      <div class="kpi"><small>ช่องที่ไลฟ์อยู่</small><b>${live.length} / ${rows.length}</b></div>
+      <div class="kpi"><small>คนดูตอนนี้ (รวม)</small><b>${fmt(live.reduce((s, b) => s + (b.kpi?.current_viewers || 0), 0))}</b></div>
+    </div>
+    <div class="tblwrap" style="margin-top:12px"><table><tr><th>ช่อง</th><th>ยอดขาย</th><th>ออเดอร์</th><th>AOV</th><th>คนดูตอนนี้</th><th>CTR</th></tr>
+    ${rows.map(b => `<tr><td><span class="dot${b.is_live ? " live" : ""}"></span>${esc(b.brand)}</td><td>฿${fmt(b.kpi?.gmv)}</td><td>${fmt(b.kpi?.orders)}</td><td>฿${fmt(b.kpi?.aov)}</td><td>${b.is_live ? fmt(b.kpi?.current_viewers) : "จบไลฟ์"}</td><td>${b.kpi?.ctr != null ? b.kpi.ctr.toFixed(1) + "%" : "–"}</td></tr>`).join("")}
+    </table></div>`;
+    const at = $("#apiAt"); if (at) at.textContent = "· อัปเดต " + new Date().toLocaleTimeString("th-TH", {hour:"2-digit", minute:"2-digit"});
+  } catch (e) {
+    box.innerHTML = `<div class="note">ดึงยอดเรียลไทม์ไม่ได้จากที่อยู่นี้ ยอดจะขึ้นเมื่อเปิด Portal จากลิงก์บน GitHub Pages · ดูยอดได้ที่เมนู <a href="#rt" onclick="go('rt')">ยอดเรียลไทม์ 10 ช่อง</a></div>`;
+  }
+}
+
+/* ---- เพิ่มลิงก์เอง ---- */
+function openAdd(){ $("#aName").value = ""; $("#aUrl").value = ""; addDlg.showModal(); }
+function saveAdd(){
+  const name = $("#aName").value.trim(), url = $("#aUrl").value.trim();
+  if (!name || !/^https?:\/\//.test(url)) { alert("ใส่ชื่อ และลิงก์ที่ขึ้นต้นด้วย https://"); return; }
+  const m = {grp:$("#aGrp").value, id:"c" + Date.now(), ic:"★", name, url, sub:"ลิงก์ที่เพิ่มเอง", mode:$("#aMode").value, custom:true};
+  custom.push(m);
+  try { localStorage.setItem("portal_custom", JSON.stringify(custom)); } catch(e) {}
+  addDlg.close(); go(m.id);
+}
+function removeCustom(id){
+  custom = custom.filter(m => m.id !== id);
+  try { localStorage.setItem("portal_custom", JSON.stringify(custom)); } catch(e) {}
+  go(cur && cur.id === id ? "home" : cur.id);
+}
+
+go(location.hash.slice(1) || "home");
+</script>
+</body>
+</html>
