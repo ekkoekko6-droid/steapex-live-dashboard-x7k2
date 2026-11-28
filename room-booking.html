@@ -68,6 +68,12 @@
     .dlabel{margin-top:10px;font-size:17px;font-weight:700}
     .dlabel small{font-size:13px;font-weight:600;color:var(--orange);margin-left:6px}
     .fday{margin-top:6px;font-size:15px;font-weight:700}
+    .warnc{color:var(--orange)}
+    .check{display:flex;align-items:center;gap:8px;margin-top:10px;font-weight:600;cursor:pointer}
+    .check input{width:20px;height:20px;margin:0;flex:none}
+    .daylist{margin-top:8px;font-size:13px}
+    .daylist summary{cursor:pointer;font-weight:600}
+    .daylist li{margin:2px 0}
     .msg{border-radius:12px;padding:12px 14px;margin-top:12px;font-size:14px}
     .msg.ok{background:var(--ok-soft);color:var(--ok)}
     .msg.err{background:var(--err-soft);color:var(--err)}
@@ -118,6 +124,12 @@
     <form id="form" novalidate>
       <label for="fdate">วันที่ <span class="req">*</span></label>
       <input type="date" id="fdate" required>
+      <label class="check"><input type="checkbox" id="fmulti"> จองหลายวันติดกัน (เวลาเดียวกันทุกวัน)</label>
+      <div id="fmultiWrap" style="display:none">
+        <label for="fdateTo">ถึงวันที่ <span class="req">*</span></label>
+        <input type="date" id="fdateTo">
+        <div class="hint">จองได้ไม่เกิน 31 วันต่อครั้ง · ทุกวันต้องว่าง ถ้าวันไหนชน จะยังไม่จองให้เลยสักวัน · คนอนุมัติกดครั้งเดียวทั้งชุด</div>
+      </div>
       <div class="fday" id="fdateLabel"></div>
       <label for="froom">ห้อง <span class="req">*</span></label>
       <select id="froom" required></select>
@@ -150,6 +162,7 @@
       <input type="text" id="ccode" placeholder="RB-XXXXXX" maxlength="12" autocomplete="off" style="text-transform:uppercase">
       <button id="cbtn">ยกเลิก</button>
     </div>
+    <label class="check"><input type="checkbox" id="call"> ยกเลิกทุกวันในชุดนี้ (ถ้าจองหลายวัน)</label>
     <div id="cresult"></div>
   </section>
 
@@ -389,7 +402,13 @@
 
   function updateHint(){
     const s = $("fstart").value, e = $("fend").value, h = $("spanHint"), fd = $("fdate").value;
-    $("fdateLabel").textContent = fd ? `จองวัน${thLong(fd)}${relDay(fd) ? ` (${relDay(fd)})` : ""}` : "";
+    const multi = $("fmulti").checked, ft = $("fdateTo").value;
+    const nDays = multi && fd && ft ? Math.round((new Date(ft + "T00:00:00Z") - new Date(fd + "T00:00:00Z")) / 864e5) + 1 : 1;
+    $("fdateLabel").textContent = !fd ? ""
+      : multi && ft && nDays > 1 ? `จอง ${nDays} วัน: ${thLong(fd)} ถึง ${thLong(ft)}${nDays > 31 ? " — เกิน 31 วัน" : ""}`
+      : multi && ft && nDays < 1 ? "วันสุดท้ายต้องไม่ก่อนวันแรก"
+      : `จองวัน${thLong(fd)}${relDay(fd) ? ` (${relDay(fd)})` : ""}`;
+    $("fdateLabel").className = "fday" + (multi && ft && (nDays < 1 || nDays > 31) ? " warnc" : "");
     if (!s || !e) return;
     if (s === e){ h.className = "hint warn"; h.textContent = "เวลาเริ่มกับเวลาจบเท่ากัน"; return; }
     const [sh,sm] = s.split(":").map(Number), [eh,em] = e.split(":").map(Number);
@@ -414,6 +433,11 @@
     const body = {date: $("fdate").value, room: $("froom").value, start: $("fstart").value, end: $("fend").value,
                   brand, booker: $("fbooker").value.trim(), note: $("fnote").value.trim(), approver: $("fappr").value};
     if (!body.date) return showResult(res, "err", "กรุณาเลือกวันที่");
+    if ($("fmulti").checked){
+      if (!$("fdateTo").value) return showResult(res, "err", "กรุณาเลือกวันสุดท้าย (ถึงวันที่)");
+      if ($("fdateTo").value < body.date) return showResult(res, "err", "วันสุดท้ายต้องไม่ก่อนวันแรก");
+      body.date_to = $("fdateTo").value;
+    }
     if (!body.room) return showResult(res, "err", "กรุณาเลือกห้อง");
     if (!brand) return showResult(res, "err", "กรุณาเลือกหรือพิมพ์ชื่อแบรนด์");
     if ((state.approvers || []).length && !body.approver) return showResult(res, "err", "กรุณาเลือกคนอนุมัติ");
@@ -427,7 +451,14 @@
         const b = d.booking;
         const wait = b.status === "pending"
           ? `<br><b>รออนุมัติจาก ${esc(b.approver)}</b> — ห้องกันไว้ให้แล้ว ผลอนุมัติจะแจ้งในกลุ่ม Feishu "จองห้องไลฟ์"` : "";
-        showResult(res, "ok", `${b.status === "pending" ? "ส่งคำขอจองแล้ว" : "จองสำเร็จ"} — ห้อง <b>${esc(b.room)}${b.room_name ? " " + esc(b.room_name) : ""}</b> (ชั้น ${esc(b.floor)})<br>${esc(thLong(b.date))} ${esc(b.start)}–${esc(b.end)}${b.overnight ? " (ข้ามเที่ยงคืน)" : ""}${wait}<div class="code">${esc(d.code)}</div>เก็บรหัสนี้ไว้ ใช้ตอนยกเลิก <button type="button" id="copy" style="margin-left:6px">คัดลอกรหัส</button>`);
+        const days = d.days || [];
+        const when = days.length > 1
+          ? `${esc(thLong(days[0].date))} ถึง ${esc(thLong(days[days.length-1].date))} (${days.length} วัน) เวลา ${esc(b.start)}–${esc(b.end)} ทุกวัน`
+          : `${esc(thLong(b.date))} ${esc(b.start)}–${esc(b.end)}`;
+        const dayCodes = days.length > 1
+          ? `<br>รหัสนี้ยกเลิกทั้งชุดได้ (ติ๊ก "ยกเลิกทุกวันในชุดนี้") · ยกเลิกทีละวันใช้รหัสของวันนั้น<details class="daylist"><summary>ดูรหัสรายวัน</summary><ul>${days.map(x => `<li>${esc(thLong(x.date))} — <b>${esc(x.code)}</b></li>`).join("")}</ul></details>`
+          : "<br>เก็บรหัสนี้ไว้ ใช้ตอนยกเลิก";
+        showResult(res, "ok", `${b.status === "pending" ? "ส่งคำขอจองแล้ว" : "จองสำเร็จ"} — ห้อง <b>${esc(b.room)}${b.room_name ? " " + esc(b.room_name) : ""}</b> (ชั้น ${esc(b.floor)})<br>${when}${b.overnight ? " (ข้ามเที่ยงคืน)" : ""}${wait}<div class="code">${esc(d.code)}</div><button type="button" id="copy">คัดลอกรหัส</button>${dayCodes}`);
         const cp = $("copy"); if (cp) cp.onclick = async () => { try { await navigator.clipboard.writeText(d.code); cp.textContent = "คัดลอกแล้ว"; } catch(e){ cp.textContent = "คัดลอกไม่ได้ จดไว้นะ"; } };
         $("fnote").value = "";
         load(b.date);
@@ -445,13 +476,17 @@
   $("cbtn").onclick = async () => {
     const code = $("ccode").value.trim().toUpperCase(), res = $("cresult");
     if (!code) return showResult(res, "err", "กรุณาใส่รหัสจอง");
-    if (!confirm(`ยืนยันยกเลิกการจอง ${code} ?`)) return;
+    const all = $("call").checked;
+    if (!confirm(all ? `ยืนยันยกเลิกทุกวันที่เหลือในชุด ${code} ?` : `ยืนยันยกเลิกการจอง ${code} ?`)) return;
     $("cbtn").disabled = true;
     try {
-      const {ok, d} = await post("cancel", {code});
+      const {ok, d} = await post("cancel", all ? {code, all: true} : {code});
       if (ok){
         const b = d.booking;
-        showResult(res, "ok", `ยกเลิกแล้ว — ห้อง ${esc(b.room)} ${esc(thLong(b.date))} ${esc(b.start)}–${esc(b.end)} (${esc(b.brand)})`);
+        showResult(res, "ok", d.cancelled_days
+          ? `ยกเลิกทั้งชุดแล้ว ${d.cancelled_days} วัน — ห้อง ${esc(b.room)} เวลา ${esc(b.start)}–${esc(b.end)} (${esc(b.brand)})`
+          : `ยกเลิกแล้ว — ห้อง ${esc(b.room)} ${esc(thLong(b.date))} ${esc(b.start)}–${esc(b.end)} (${esc(b.brand)})`);
+        $("call").checked = false;
         $("ccode").value = ""; load(state.date);
       } else showResult(res, "err", esc(d.error || "ยกเลิกไม่สำเร็จ"));
     } catch(e){ showResult(res, "err", "ติดต่อระบบไม่ได้ ลองใหม่อีกครั้ง"); }
@@ -461,6 +496,12 @@
   $("fbrand").onchange = () => { $("fbrandOther").style.display = $("fbrand").value === "__other" ? "block" : "none"; };
   $("froom").onchange = () => { renderFormMap(); if (Object.values(state.maps).some(Boolean)) renderRooms(); };
   $("fdate").onchange = updateHint; $("fdate").oninput = updateHint;
+  $("fdateTo").onchange = updateHint; $("fdateTo").oninput = updateHint;
+  $("fmulti").onchange = () => {
+    const on = $("fmulti").checked; $("fmultiWrap").style.display = on ? "" : "none";
+    if (on && !$("fdateTo").value && $("fdate").value) $("fdateTo").value = addDays($("fdate").value, 1);
+    updateHint();
+  };
   $("fstart").onchange = updateHint; $("fend").onchange = updateHint;
   $("date").onchange = () => $("date").value && load($("date").value);
   $("prev").onclick = () => load(addDays(state.date, -1));
@@ -469,7 +510,7 @@
 
   const t = todayTH();
   $("date").min = addDays(t, -7);                    // ดูย้อนหลังได้ 7 วัน แต่จองย้อนหลังไม่ได้
-  $("fdate").min = t; $("fdate").value = t;
+  $("fdate").min = t; $("fdate").value = t; $("fdateTo").min = t;
   $("fbooker").value = store.get("rb_booker");
   state.floor = store.get("rb_floor") || "all";
   fillTimes(); updateHint();
