@@ -34,6 +34,7 @@
     button:disabled{opacity:.55;cursor:wait}
     .tabs{display:flex;gap:6px;margin:12px 0 4px;flex-wrap:wrap}
     .tabs button{flex:1;min-width:70px}
+    .tabs button[data-f="booked"]{flex-basis:100%}
     .tabs button.on{background:var(--text);color:var(--bg);border-color:var(--text)}
     .room{padding:12px 0;border-top:1px solid var(--line);cursor:pointer}
     .room:first-of-type{border-top:0}
@@ -211,14 +212,18 @@
   }
 
   function renderTabs(){
-    const fl = [{k:"all", t:"ทุกชั้น"}, ...state.floors.map(f => ({k:f.floor, t:`ชั้น ${f.floor}`}))];
+    const nBooked = new Set(state.bookings.map(b => b.room)).size;
+    const fl = [{k:"all", t:"ทุกชั้น"}, ...state.floors.map(f => ({k:f.floor, t:`ชั้น ${f.floor}`})), {k:"booked", t:`ห้องที่จอง (${nBooked})`}];
     $("tabs").innerHTML = fl.map(f => `<button type="button" data-f="${esc(f.k)}" class="${state.floor===f.k?"on":""}">${esc(f.t)}</button>`).join("");
     $("tabs").querySelectorAll("button").forEach(b => b.onclick = () => { state.floor = b.dataset.f; store.set("rb_floor", state.floor); renderTabs(); renderRooms(); });
   }
 
   function renderRooms(){
     const d0 = dayStartMs(state.date), d1 = d0 + 864e5, now = Date.now();
-    const floors = state.floors.filter(f => state.floor === "all" || f.floor === state.floor);
+    // แท็บ "ห้องที่จอง" = เฉพาะห้องที่มีการจองในวันที่ดูอยู่ (ทุกชั้น)
+    const onlyBooked = state.floor === "booked", booked = new Set(state.bookings.map(b => b.room));
+    const floors = state.floors.filter(f => state.floor === "all" || onlyBooked || f.floor === state.floor)
+      .map(f => onlyBooked ? {...f, rooms: f.rooms.filter(r => booked.has(r.id))} : f).filter(f => f.rooms.length);
     let html = "";
     for (const f of floors){
       const open = !!state.maps[f.floor];
@@ -246,7 +251,7 @@
         </div>`;
       }
     }
-    $("rooms").innerHTML = html || '<div class="loading">ไม่มีห้อง</div>';
+    $("rooms").innerHTML = html || `<div class="loading">${onlyBooked ? `วัน${esc(thLong(state.date))} ยังไม่มีห้องที่จอง` : "ไม่มีห้อง"}</div>`;
     $("rooms").querySelectorAll(".mapbtn").forEach(b => b.onclick = () => { state.maps[b.dataset.mapf] = !state.maps[b.dataset.mapf]; renderRooms(); });
     bindMaps($("rooms"));
     $("rooms").querySelectorAll(".room").forEach(el => {
