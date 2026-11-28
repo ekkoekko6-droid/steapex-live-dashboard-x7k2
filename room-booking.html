@@ -35,6 +35,8 @@
     .tabs{display:flex;gap:6px;margin:12px 0 4px;flex-wrap:wrap}
     .tabs button{flex:1;min-width:70px}
     .tabs button[data-f="booked"]{flex-basis:100%}
+    .rel{font-size:13px;color:var(--orange);margin-left:6px}
+    .tag.live{background:var(--orange);color:#fff}
     .tabs button.on{background:var(--text);color:var(--bg);border-color:var(--text)}
     .room{padding:12px 0;border-top:1px solid var(--line);cursor:pointer}
     .room:first-of-type{border-top:0}
@@ -107,7 +109,7 @@
     </div>
     <div class="dlabel" id="dateLabel" aria-live="polite"></div>
     <div class="tabs" id="tabs"></div>
-    <div class="legend"><span><i style="background:var(--ok-soft);border:1px solid var(--line)"></i>ว่าง</span><span><i style="background:var(--busy)"></i>จองแล้ว/อนุมัติแล้ว</span><span><i style="background:repeating-linear-gradient(135deg,var(--orange) 0 3px,var(--orange-soft) 3px 6px);border:1px solid var(--orange)"></i>รออนุมัติ</span><span><i style="background:var(--orange)"></i>ตอนนี้</span></div>
+    <div class="legend" id="legend"><span><i style="background:var(--ok-soft);border:1px solid var(--line)"></i>ว่าง</span><span><i style="background:var(--busy)"></i>จองแล้ว/อนุมัติแล้ว</span><span><i style="background:repeating-linear-gradient(135deg,var(--orange) 0 3px,var(--orange-soft) 3px 6px);border:1px solid var(--orange)"></i>รออนุมัติ</span><span><i style="background:var(--orange)"></i>ตอนนี้</span></div>
     <div id="rooms"><div class="loading">กำลังโหลด…</div></div>
   </section>
 
@@ -205,25 +207,24 @@
       if (!r.ok) throw new Error(d.error || `HTTP ${r.status}`);
       if (state.date !== date) return;            // ผู้ใช้เปลี่ยนวันไปแล้วระหว่างรอ
       Object.assign(state, {floors: d.floors, brands: d.brands, bookings: d.bookings, approvers: d.approvers || [], loadedFor: date});
-      renderTabs(); renderRooms(); fillFormLists();
+      renderTabs(); renderRooms(); fillFormLists(); loadUpcoming();
     } catch(e){
       $("rooms").innerHTML = `<div class="msg err">โหลดข้อมูลไม่ได้: ${esc(e.message)} — ลองรีเฟรชอีกครั้ง</div>`;
     }
   }
 
   function renderTabs(){
-    const nBooked = new Set(state.bookings.map(b => b.room)).size;
-    const fl = [{k:"all", t:"ทุกชั้น"}, ...state.floors.map(f => ({k:f.floor, t:`ชั้น ${f.floor}`})), {k:"booked", t:`ห้องที่จอง (${nBooked})`}];
+    const nBooked = state.upcoming ? state.upcoming.length : "…";
+    const fl = [{k:"all", t:"ทุกชั้น"}, ...state.floors.map(f => ({k:f.floor, t:`ชั้น ${f.floor}`})), {k:"booked", t:`ห้องที่จองทั้งหมด (${nBooked})`}];
     $("tabs").innerHTML = fl.map(f => `<button type="button" data-f="${esc(f.k)}" class="${state.floor===f.k?"on":""}">${esc(f.t)}</button>`).join("");
-    $("tabs").querySelectorAll("button").forEach(b => b.onclick = () => { state.floor = b.dataset.f; store.set("rb_floor", state.floor); renderTabs(); renderRooms(); });
+    $("tabs").querySelectorAll("button").forEach(b => b.onclick = () => { state.floor = b.dataset.f; store.set("rb_floor", state.floor); renderTabs(); renderRooms(); if (state.floor === "booked") loadUpcoming(); });
   }
 
   function renderRooms(){
     const d0 = dayStartMs(state.date), d1 = d0 + 864e5, now = Date.now();
-    // แท็บ "ห้องที่จอง" = เฉพาะห้องที่มีการจองในวันที่ดูอยู่ (ทุกชั้น)
-    const onlyBooked = state.floor === "booked", booked = new Set(state.bookings.map(b => b.room));
-    const floors = state.floors.filter(f => state.floor === "all" || onlyBooked || f.floor === state.floor)
-      .map(f => onlyBooked ? {...f, rooms: f.rooms.filter(r => booked.has(r.id))} : f).filter(f => f.rooms.length);
+    if (state.floor === "booked") return renderUpcoming();
+    $("legend").style.display = "";
+    const floors = state.floors.filter(f => state.floor === "all" || f.floor === state.floor);
     let html = "";
     for (const f of floors){
       const open = !!state.maps[f.floor];
@@ -251,12 +252,48 @@
         </div>`;
       }
     }
-    $("rooms").innerHTML = html || `<div class="loading">${onlyBooked ? `วัน${esc(thLong(state.date))} ยังไม่มีห้องที่จอง` : "ไม่มีห้อง"}</div>`;
+    $("rooms").innerHTML = html || '<div class="loading">ไม่มีห้อง</div>';
     $("rooms").querySelectorAll(".mapbtn").forEach(b => b.onclick = () => { state.maps[b.dataset.mapf] = !state.maps[b.dataset.mapf]; renderRooms(); });
     bindMaps($("rooms"));
     $("rooms").querySelectorAll(".room").forEach(el => {
       const pick = () => pickRoom(el.dataset.room);
       el.onclick = pick; el.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } };
+    });
+  }
+
+  // แท็บ "ห้องที่จองทั้งหมด" — ทุกการจองที่ยังไม่จบ (กำลังใช้อยู่ + ล่วงหน้า) ทุกชั้น เรียงตามวันและเวลา
+  async function loadUpcoming(){
+    try {
+      const r = await fetch(`${API}/upcoming`, {cache:"no-store"});
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || `HTTP ${r.status}`);
+      state.upcoming = d.bookings || []; state.upErr = "";
+    } catch(e){ state.upErr = e.message; }
+    if (state.floors.length) renderTabs();
+    if (state.floor === "booked") renderRooms();
+  }
+
+  function renderUpcoming(){
+    $("legend").style.display = "none";
+    if (state.upErr && !state.upcoming){ $("rooms").innerHTML = `<div class="msg err">โหลดรายการจองไม่ได้: ${esc(state.upErr)} — ลองรีเฟรชอีกครั้ง</div>`; return; }
+    if (!state.upcoming){ $("rooms").innerHTML = '<div class="loading">กำลังโหลด…</div>'; return; }
+    if (!state.upcoming.length){ $("rooms").innerHTML = '<div class="loading">ยังไม่มีการจองที่กำลังจะถึง</div>'; return; }
+    const names = {}; state.floors.forEach(f => f.rooms.forEach(r => names[r.id] = r.name));
+    const now = Date.now(); let html = "", last = "";
+    for (const b of state.upcoming){
+      if (b.date !== last){ last = b.date; html += `<div class="fhead"><div style="font-weight:700">${esc(thLong(b.date))}${relDay(b.date) ? `<small class="rel">${relDay(b.date)}</small>` : ""}</div></div>`; }
+      const live = toMs(b.start_at) <= now;
+      const tag = b.status === "pending" ? `<span class="tag wait">รออนุมัติ${b.approver ? " · " + esc(b.approver) : ""}</span>`
+                : b.status === "approved" ? '<span class="tag ok">อนุมัติแล้ว</span>' : "";
+      html += `<div class="room up" data-date="${esc(b.date)}" role="button" tabindex="0" aria-label="ดูวัน ${esc(thLong(b.date))}">
+        <div class="rhead"><div class="rname"><b>${esc(b.room)}</b><span>${esc(b.room_name || names[b.room] || "")}</span></div><div class="rstate busy">ชั้น ${esc(b.floor)}</div></div>
+        <div class="chip"><b>${esc(b.start)}–${esc(b.end)}${b.overnight ? ` (จบ ${esc(thShort(addDays(b.date,1)))})` : ""}</b>${live ? '<span class="tag live">กำลังใช้</span>' : ""}${tag} · ${esc(b.brand)} · ${esc(b.booker)}${b.note ? ` · ${esc(b.note)}` : ""}</div>
+      </div>`;
+    }
+    $("rooms").innerHTML = html + '<div class="maphint">แตะรายการเพื่อดูตารางห้องของวันนั้น</div>';
+    $("rooms").querySelectorAll(".room.up").forEach(el => {
+      const go = () => { state.floor = "all"; store.set("rb_floor", "all"); load(el.dataset.date); };
+      el.onclick = go; el.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } };
     });
   }
 
