@@ -61,6 +61,9 @@
     .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
     .hint{font-size:13px;color:var(--muted);margin-top:6px}
     .hint.warn{color:var(--orange);font-weight:600}
+    .dlabel{margin-top:10px;font-size:17px;font-weight:700}
+    .dlabel small{font-size:13px;font-weight:600;color:var(--orange);margin-left:6px}
+    .fday{margin-top:6px;font-size:15px;font-weight:700}
     .msg{border-radius:12px;padding:12px 14px;margin-top:12px;font-size:14px}
     .msg.ok{background:var(--ok-soft);color:var(--ok)}
     .msg.err{background:var(--err-soft);color:var(--err)}
@@ -100,6 +103,7 @@
       <button id="next" aria-label="วันถัดไป">›</button>
       <button id="today">วันนี้</button>
     </div>
+    <div class="dlabel" id="dateLabel" aria-live="polite"></div>
     <div class="tabs" id="tabs"></div>
     <div class="legend"><span><i style="background:var(--ok-soft);border:1px solid var(--line)"></i>ว่าง</span><span><i style="background:var(--busy)"></i>จองแล้ว/อนุมัติแล้ว</span><span><i style="background:repeating-linear-gradient(135deg,var(--orange) 0 3px,var(--orange-soft) 3px 6px);border:1px solid var(--orange)"></i>รออนุมัติ</span><span><i style="background:var(--orange)"></i>ตอนนี้</span></div>
     <div id="rooms"><div class="loading">กำลังโหลด…</div></div>
@@ -110,6 +114,7 @@
     <form id="form" novalidate>
       <label for="fdate">วันที่ <span class="req">*</span></label>
       <input type="date" id="fdate" required>
+      <div class="fday" id="fdateLabel"></div>
       <label for="froom">ห้อง <span class="req">*</span></label>
       <select id="froom" required></select>
       <div id="fmap"></div>
@@ -172,6 +177,11 @@
   const todayTH = () => ymd(thNow());
   const addDays = (s,n) => { const d = new Date(s + "T00:00:00Z"); d.setUTCDate(d.getUTCDate()+n); return ymd(d); };
   const thDate = s => { const d = new Date(s + "T00:00:00Z"); return `${DAYS[d.getUTCDay()]} ${s.slice(8)}/${s.slice(5,7)}/${s.slice(0,4)}`; };
+  const MONTHS = ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
+  // "เสาร์ 28 พ.ย. 2569" — อ่านง่ายกว่าช่องวันที่ของเครื่อง (บางเครื่องโชว์ เดือน/วัน/ปี)
+  const thLong = s => { const d = new Date(s + "T00:00:00Z"); return `${DAYS[d.getUTCDay()]} ${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()+543}`; };
+  const thShort = s => { const d = new Date(s + "T00:00:00Z"); return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}`; };
+  const relDay = s => { const t = todayTH(); return s === t ? "วันนี้" : s === addDays(t,1) ? "พรุ่งนี้" : s === addDays(t,-1) ? "เมื่อวาน" : ""; };
   const toMs = iso => new Date(iso).getTime();
   const dayStartMs = s => new Date(s + "T00:00:00+07:00").getTime();
 
@@ -184,6 +194,7 @@
 
   async function load(date){
     state.date = date; $("date").value = date;
+    $("dateLabel").innerHTML = `ตารางห้องวัน${esc(thLong(date))}${relDay(date) ? `<small>${relDay(date)}</small>` : ""}`;
     $("rooms").innerHTML = '<div class="loading">กำลังโหลด…</div>';
     try {
       const r = await fetch(`${API}/day?date=${encodeURIComponent(date)}`, {cache:"no-store"});
@@ -220,7 +231,7 @@
         const nowMark = now >= d0 && now < d1 ? `<div class="now" style="left:${(now-d0)/864e3}%"></div>` : "";
         const chips = bs.map(b => {
           const fromPrev = b.date !== state.date;
-          const when = fromPrev ? `ต่อจากเมื่อวาน ถึง ${b.end}` : `${b.start}–${b.end}${b.overnight ? " (ข้ามเที่ยงคืน)" : ""}`;
+          const when = fromPrev ? `ต่อจาก ${thShort(b.date)} ถึง ${b.end}` : `${thShort(b.date)} ${b.start}–${b.end}${b.overnight ? ` (จบ ${thShort(addDays(b.date,1))})` : ""}`;
           const tag = b.status === "pending" ? `<span class="tag wait">รออนุมัติ${b.approver ? " · " + esc(b.approver) : ""}</span>`
                     : b.status === "approved" ? '<span class="tag ok">อนุมัติแล้ว</span>' : "";
           return `<div class="chip"><b>${esc(when)}</b>${tag} · ${esc(b.brand)} · ${esc(b.booker)}${b.note ? ` · <span title="หมายเหตุ">${esc(b.note)}</span>` : ""}</div>`;
@@ -331,14 +342,15 @@
   $("lbScroll").addEventListener("touchend", e => { if (e.touches.length < 2) pinch = null; });
 
   function updateHint(){
-    const s = $("fstart").value, e = $("fend").value, h = $("spanHint");
+    const s = $("fstart").value, e = $("fend").value, h = $("spanHint"), fd = $("fdate").value;
+    $("fdateLabel").textContent = fd ? `จองวัน${thLong(fd)}${relDay(fd) ? ` (${relDay(fd)})` : ""}` : "";
     if (!s || !e) return;
     if (s === e){ h.className = "hint warn"; h.textContent = "เวลาเริ่มกับเวลาจบเท่ากัน"; return; }
     const [sh,sm] = s.split(":").map(Number), [eh,em] = e.split(":").map(Number);
     let mins = (eh*60+em) - (sh*60+sm); const over = mins <= 0; if (over) mins += 1440;
     const dur = `${Math.floor(mins/60)} ชม.${mins%60 ? ` ${mins%60} นาที` : ""}`;
     h.className = over ? "hint warn" : "hint";
-    h.textContent = over ? `ข้ามเที่ยงคืน — จบ ${e} ของวันถัดไป (รวม ${dur})` : `รวม ${dur}`;
+    h.textContent = over ? `ข้ามเที่ยงคืน — จบ ${e} ของวัน${fd ? thLong(addDays(fd,1)) : "ถัดไป"} (รวม ${dur})` : `รวม ${dur}`;
   }
 
   function showResult(el, kind, html){ el.innerHTML = `<div class="msg ${kind}">${html}</div>`; }
@@ -369,7 +381,7 @@
         const b = d.booking;
         const wait = b.status === "pending"
           ? `<br><b>รออนุมัติจาก ${esc(b.approver)}</b> — ห้องกันไว้ให้แล้ว ผลอนุมัติจะแจ้งในกลุ่ม Feishu "จองห้องไลฟ์"` : "";
-        showResult(res, "ok", `${b.status === "pending" ? "ส่งคำขอจองแล้ว" : "จองสำเร็จ"} — ห้อง <b>${esc(b.room)}${b.room_name ? " " + esc(b.room_name) : ""}</b> (ชั้น ${esc(b.floor)})<br>${esc(thDate(b.date))} ${esc(b.start)}–${esc(b.end)}${b.overnight ? " (ข้ามเที่ยงคืน)" : ""}${wait}<div class="code">${esc(d.code)}</div>เก็บรหัสนี้ไว้ ใช้ตอนยกเลิก <button type="button" id="copy" style="margin-left:6px">คัดลอกรหัส</button>`);
+        showResult(res, "ok", `${b.status === "pending" ? "ส่งคำขอจองแล้ว" : "จองสำเร็จ"} — ห้อง <b>${esc(b.room)}${b.room_name ? " " + esc(b.room_name) : ""}</b> (ชั้น ${esc(b.floor)})<br>${esc(thLong(b.date))} ${esc(b.start)}–${esc(b.end)}${b.overnight ? " (ข้ามเที่ยงคืน)" : ""}${wait}<div class="code">${esc(d.code)}</div>เก็บรหัสนี้ไว้ ใช้ตอนยกเลิก <button type="button" id="copy" style="margin-left:6px">คัดลอกรหัส</button>`);
         const cp = $("copy"); if (cp) cp.onclick = async () => { try { await navigator.clipboard.writeText(d.code); cp.textContent = "คัดลอกแล้ว"; } catch(e){ cp.textContent = "คัดลอกไม่ได้ จดไว้นะ"; } };
         $("fnote").value = "";
         load(b.date);
@@ -393,7 +405,7 @@
       const {ok, d} = await post("cancel", {code});
       if (ok){
         const b = d.booking;
-        showResult(res, "ok", `ยกเลิกแล้ว — ห้อง ${esc(b.room)} ${esc(thDate(b.date))} ${esc(b.start)}–${esc(b.end)} (${esc(b.brand)})`);
+        showResult(res, "ok", `ยกเลิกแล้ว — ห้อง ${esc(b.room)} ${esc(thLong(b.date))} ${esc(b.start)}–${esc(b.end)} (${esc(b.brand)})`);
         $("ccode").value = ""; load(state.date);
       } else showResult(res, "err", esc(d.error || "ยกเลิกไม่สำเร็จ"));
     } catch(e){ showResult(res, "err", "ติดต่อระบบไม่ได้ ลองใหม่อีกครั้ง"); }
@@ -402,6 +414,7 @@
 
   $("fbrand").onchange = () => { $("fbrandOther").style.display = $("fbrand").value === "__other" ? "block" : "none"; };
   $("froom").onchange = () => { renderFormMap(); if (Object.values(state.maps).some(Boolean)) renderRooms(); };
+  $("fdate").onchange = updateHint; $("fdate").oninput = updateHint;
   $("fstart").onchange = updateHint; $("fend").onchange = updateHint;
   $("date").onchange = () => $("date").value && load($("date").value);
   $("prev").onclick = () => load(addDays(state.date, -1));
