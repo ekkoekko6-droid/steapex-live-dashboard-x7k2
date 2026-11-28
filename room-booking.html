@@ -37,10 +37,11 @@
     .tabs button.on{background:var(--text);color:var(--bg);border-color:var(--text)}
     .room{padding:12px 0;border-top:1px solid var(--line);cursor:pointer}
     .room:first-of-type{border-top:0}
-    .rhead{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
-    .rname{font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-    .rname b{color:var(--orange);margin-right:6px}
-    .rstate{font-size:12px;color:var(--ok);white-space:nowrap}
+    .rhead{display:flex;justify-content:space-between;gap:8px;align-items:center}
+    .rname{font-weight:700;font-size:17px;min-width:0;display:flex;align-items:center;gap:8px;line-height:1.3}
+    .rname span{min-width:0}
+    .rname b{flex:none;background:var(--orange);color:#fff;border-radius:8px;padding:2px 10px;font-size:18px;letter-spacing:.3px}
+    .rstate{font-size:13px;font-weight:600;color:var(--ok);white-space:nowrap}
     .rstate.busy{color:var(--muted)}
     .bar{position:relative;height:14px;background:var(--ok-soft);border-radius:7px;margin:8px 0 2px;overflow:hidden}
     .seg{position:absolute;top:0;bottom:0;background:var(--busy);border-radius:3px}
@@ -117,6 +118,7 @@
       <div class="fday" id="fdateLabel"></div>
       <label for="froom">ห้อง <span class="req">*</span></label>
       <select id="froom" required></select>
+      <div class="fday" id="froomLabel"></div>
       <div id="fmap"></div>
       <div class="row2">
         <div><label for="fstart">เวลาเริ่ม <span class="req">*</span></label><select id="fstart" required></select></div>
@@ -237,7 +239,7 @@
           return `<div class="chip"><b>${esc(when)}</b>${tag} · ${esc(b.brand)} · ${esc(b.booker)}${b.note ? ` · <span title="หมายเหตุ">${esc(b.note)}</span>` : ""}</div>`;
         }).join("");
         html += `<div class="room" data-room="${esc(r.id)}" role="button" tabindex="0" aria-label="จองห้อง ${esc(r.id)}">
-          <div class="rhead"><div class="rname"><b>${esc(r.id)}</b>${esc(r.name)}</div><div class="rstate ${bs.length?"busy":""}">${bs.length ? `จองแล้ว ${bs.length} ช่วง` : "ว่างทั้งวัน"}</div></div>
+          <div class="rhead"><div class="rname"><b>${esc(r.id)}</b><span>${esc(r.name)}</span></div><div class="rstate ${bs.length?"busy":""}">${bs.length ? `จองแล้ว ${bs.length} ช่วง` : "ว่างทั้งวัน"}</div></div>
           <div class="bar">${segs}${nowMark}</div>
           <div class="ticks"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>
           ${chips ? `<div class="chips">${chips}</div>` : ""}
@@ -295,6 +297,8 @@
     $("formCard").scrollIntoView({behavior:"smooth"});
   }
   function renderFormMap(){
+    const rid = $("froom").value, fl = state.floors.find(f => f.rooms.some(r => r.id === rid)), rm = fl && fl.rooms.find(r => r.id === rid);
+    $("froomLabel").textContent = rm ? `จองห้อง ${rm.id}${rm.name ? " · " + rm.name : ""} · ชั้น ${fl.floor}` : "";
     const id = $("froom").value, f = floorOf(id);
     $("fmap").innerHTML = f && f.image ? mapHTML(f, id) + `<div class="maphint">ห้อง ${esc(id)} อยู่ชั้น ${esc(f.floor)} (กรอบส้ม) · แตะเพื่อขยาย</div>` : "";
     bindMaps($("fmap"));
